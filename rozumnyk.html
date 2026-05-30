@@ -492,11 +492,23 @@
           <th style="width:80px">Правильно</th>
           <th style="width:60px">Результат</th>
           <th style="width:44px">Бали</th>
+          <th style="width:60px">Маркер</th>
         </tr>
       </thead>
       <tbody id="tpf-tbody"></tbody>
     </table>
 
+    <div id="tpf-suspicious-note" style="display:none;margin-bottom:8px;background:#fff3cd;border:1px solid #ffc107;border-radius:4px;padding:5px 8px;font-size:9px;color:#856404">
+      <strong>⚠️ Увага:</strong> <span id="tpf-suspicious-text"></span>
+    </div>
+    <div id="tpf-recommended" style="display:none;margin-bottom:8px;font-size:9px;color:#555;padding:4px 8px;background:#f5f5f5;border-radius:4px">
+      <span id="tpf-recommended-text"></span>
+    </div>
+    <div style="margin-bottom:8px;font-size:8.5px;color:#888">
+      🟢 — відповідь без підозрілої паузи (норма) &nbsp;&nbsp;
+      🔴 — пауза &gt;22 сек (можливе звернення до сторонніх джерел) &nbsp;&nbsp;
+      — — питання пропущено
+    </div>
     <div class="tpf-footer">
       <div>Розумник v2.0 · <span id="tpf-footer-date"></span></div>
       <div class="tpf-sign">Підпис вчителя</div>
@@ -559,6 +571,38 @@ let timerLeft = 45;         // секунди що залишились на п�
 let answered = false;       // чи вже відповів учень на поточне питання
 let selectedAnswers = [];   // масив обраних літер ['А','В'] для multiple
 let results = [];           // масив об'єктів результатів: { text, type, selected, correct, partialRatio, skipped }
+let suspiciousCount = 0;    // кількість підозрілих пауз за тест
+let inactivityTimer = null; // таймер бездіяльності
+let questionStartTime = 0;  // час початку питання
+let lastActivityTime  = 0;  // час останньої активності
+let currentPauseSecs  = 0;  // поточна пауза в секундах
+let questionSuspicious = false; // чи є підозріла пауза на поточному питанні
+const INACTIVITY_LIMIT = 22;   // секунд без активності = підозра
+
+// ── Детектор бездіяльності ────────────────────────────────────────
+function startInactivityDetector() {
+  questionStartTime  = Date.now();
+  lastActivityTime   = Date.now();
+  questionSuspicious = false;
+  clearInterval(inactivityTimer);
+  inactivityTimer = setInterval(() => {
+    if (answered) return;
+    const pause = (Date.now() - lastActivityTime) / 1000;
+    if (pause >= INACTIVITY_LIMIT && !questionSuspicious) {
+      questionSuspicious = true;
+      suspiciousCount++;
+    }
+  }, 1000);
+}
+
+function resetActivity() {
+  lastActivityTime = Date.now();
+}
+
+function stopInactivityDetector() {
+  clearInterval(inactivityTimer);
+  currentPauseSecs = Math.round((Date.now() - questionStartTime) / 1000);
+}
 let studentInfo = {};       // { name, surname, cls, date } — дані учня з форми ідентифікації
 let currentTestTitle = '';  // відображувана назва тесту (з аркуша Мета)
 let currentTestMeta  = {};  // всі метадані з аркуша Мета: { Тема, Предмет, Клас, Питань }
@@ -910,8 +954,10 @@ function shuffleAndStart() {
     const remapped = sh.filter(o=>corrOrig.includes(o.orig)).map(o=>o.key).join(',');
     return { ...q, _opts:sh, _correct:remapped };
   });
-  currentIdx = 0; results = [];
+  currentIdx = 0; results = []; suspiciousCount = 0;
   showScreen('quizScreen');
+  document.getElementById('quizScreen').onmousemove = resetActivity;
+  document.getElementById('quizScreen').ontouchstart = resetActivity;
   renderQuestion();
 }
 
@@ -942,6 +988,7 @@ function renderQuestion() {
   document.getElementById('hintText').className = 'hint-text';
   document.getElementById('btnNext').style.display = 'none';
   startTimer();
+  startInactivityDetector();
 }
 
 // ── ВИБІР ВІДПОВІДІ ───────────────────────────────────
@@ -1021,7 +1068,9 @@ function revealAnswer(q) {
     hint.className = 'hint-text wrong-msg';
   }
 
-  results.push({ text:q.text, type:q.type, selected, correct:correctKeys, partialRatio, skipped:false });
+  stopInactivityDetector();
+  const answerTime = Math.round((Date.now() - questionStartTime) / 1000);
+  results.push({ text:q.text, type:q.type, selected, correct:correctKeys, partialRatio, skipped:false, suspicious:questionSuspicious, answerTime });
   document.getElementById('btnNext').style.display = 'inline-flex';
 }
 
@@ -1051,7 +1100,8 @@ function autoSkip() {
   if (answered) return;
   const q = shuffledQuestions[currentIdx];
   const correctKeys = (q._correct||q.correct).toUpperCase().split(',').map(x=>x.trim());
-  results.push({ text:q.text, type:q.type, selected:[], correct:correctKeys, partialRatio:0, skipped:true });
+  stopInactivityDetector();
+  results.push({ text:q.text, type:q.type, selected:[], correct:correctKeys, partialRatio:0, skipped:true, suspicious:false, answerTime:0 });
   answered = true;
   const ov = document.getElementById('timeUpOverlay');
   ov.classList.add('visible');
@@ -1126,6 +1176,52 @@ function showResults() {
 
   // Відправляємо результати на email вчителя автоматично
   sendResultsByEmail(scaled, ppq, correct, partial, wrong, skipped);
+
+  // Відправляємо результати на Google Sheets + Drive
+  sendResultsToSheets(scaled, ppq, correct, wrong, skipped);
+}
+
+// ── ВІДПРАВКА НА GOOGLE SHEETS + DRIVE ───────────────
+async function sendResultsToSheets(scaled, ppq, correct, wrong, skipped) {
+  const APPS_URL = 'https://script.google.com/macros/s/AKfycbwGo-zpfuyasI-cnOdARvcTTJS-6us-OaPA7JuliSsAt8mWBlaZs9znurXz8PsG8JOEyg/exec';
+  try {
+    const recScore = results.reduce((sum, r) => {
+      if (r.skipped) return sum;
+      return sum + (r.partialRatio * ppq * (r.suspicious ? 0.25 : 1));
+    }, 0);
+    const recScaled = Math.min(11, Math.round(recScore / results.length * (11 / ppq)));
+    const percent = Math.round(scaled / 11 * 100);
+    const data = {
+      name:             (studentInfo.surname + ' ' + studentInfo.name).trim(),
+      cls:              studentInfo.cls,
+      subject:          (selectedTest ? selectedTest.subject : ''),
+      topic:            (selectedTest ? selectedTest.title : ''),
+      score:            scaled,
+      percent:          percent,
+      correct:          correct,
+      wrong:            wrong,
+      suspiciousCount:  suspiciousCount,
+      recommendedScore: recScaled,
+      results:          results.map(r => ({
+        text:       r.text,
+        selected:   r.selected ? r.selected.join(',') : '—',
+        correct:    r.correct ? r.correct.join(',') : '—',
+        points:     +(r.partialRatio * ppq).toFixed(1),
+        answerTime: r.answerTime || 0,
+        suspicious: r.suspicious || false,
+        skipped:    r.skipped || false,
+      }))
+    };
+    await fetch(APPS_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    });
+    console.log('✅ Дані надіслано на Google Sheets');
+  } catch(e) {
+    console.warn('⚠️ Помилка надсилання на Sheets:', e);
+  }
 }
 
 // ── ВІДПРАВКА РЕЗУЛЬТАТІВ НА EMAIL ────────────────────
@@ -1176,6 +1272,9 @@ async function sendResultsByEmail(scaled, ppq, correct, partial, wrong, skipped)
       <td style="padding:4px 7px;border-bottom:1px solid #eee;color:#2a7a4a">${cor}</td>
       <td style="padding:4px 7px;border-bottom:1px solid #eee;${resCls}">${resLabel}</td>
       <td style="padding:4px 7px;border-bottom:1px solid #eee;text-align:center;font-weight:700">${pts}</td>
+      <td style="padding:4px 7px;border-bottom:1px solid #eee;text-align:center;font-size:11px">
+        ${r.skipped ? '—' : (r.suspicious ? '🔴' : '🟢')} ${r.skipped ? '' : (r.answerTime + 'с')}
+      </td>
     </tr>`;
   }).join('');
 
@@ -1342,8 +1441,28 @@ function printTeacherForm() {
       <td style="color:#2a7a4a">${cor}</td>
       <td class="${resCls}">${resLabel}</td>
       <td style="text-align:center;font-weight:700">${pts}</td>
+      <td style="text-align:center;font-size:12px">
+        ${r.skipped ? '—' : (r.suspicious ? '🔴' : '🟢')} ${r.skipped ? '' : r.answerTime + 'с'}
+      </td>
     </tr>`;
   }).join('');
+
+  // Рекомендована оцінка і підозрілі паузи
+  const recScore = results.reduce((sum, r) => {
+    if (r.skipped) return sum;
+    const pts = r.partialRatio * ppq;
+    return sum + (r.suspicious ? pts * 0.25 : pts);
+  }, 0);
+  const recScaleScore = Math.round(recScore / results.length * (11 / ppq));
+
+  if (suspiciousCount > 0) {
+    document.getElementById('tpf-suspicious-note').style.display = 'block';
+    document.getElementById('tpf-suspicious-text').textContent =
+      'Зафіксовано ' + suspiciousCount + ' підозрілих пауз (бездіяльність >22 сек).';
+    document.getElementById('tpf-recommended').style.display = 'block';
+    document.getElementById('tpf-recommended-text').textContent =
+      'Рекомендована оцінка з урахуванням пауз: ' + Math.max(0, recScaleScore) + ' балів з 11 (бали за питання з 🔴 знижено на 75%).';
+  }
 
   // Show form, hide student card
   document.getElementById('studentResultCard').style.display = 'none';
