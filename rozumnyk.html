@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!-- © 2026 Радомишльський ліцей №3. Всі права захищені. Автори: Хоменко Олексій, Устименко Іван, Наливайко Олена -->
 <html lang="uk">
 <head>
 <meta charset="UTF-8">
@@ -243,6 +244,7 @@
   <div class="logo"><span class="rozu">Роз</span><span class="mnyk">умник</span><span class="dot"></span></div>
   <div class="timer-badge" id="timerBadge" style="display:none">⏱ <span id="timerNum">45</span>с</div>
   <div class="header-meta" id="headerMeta">Інтелектуальне опитування</div>
+  <div style="font-size:.65rem;color:#555;margin-left:auto;white-space:nowrap">© 2026 Ліцей №3</div>
 </header>
 
 <!-- SCREEN 0: CATALOG -->
@@ -510,7 +512,7 @@
       — — питання пропущено
     </div>
     <div class="tpf-footer">
-      <div>Розумник v2.0 · <span id="tpf-footer-date"></span></div>
+      <div>Розумник v3.0 · <span id="tpf-footer-date"></span></div>
       <div class="tpf-sign">Підпис вчителя</div>
     </div>
 
@@ -956,8 +958,12 @@ function shuffleAndStart() {
   });
   currentIdx = 0; results = []; suspiciousCount = 0;
   showScreen('quizScreen');
-  document.getElementById('quizScreen').onmousemove = resetActivity;
-  document.getElementById('quizScreen').ontouchstart = resetActivity;
+  const qs = document.getElementById('quizScreen');
+  qs.onmousemove   = resetActivity;
+  qs.ontouchstart  = resetActivity;
+  qs.onclick       = resetActivity;
+  qs.onscroll      = resetActivity;
+  document.onkeydown = resetActivity;
   renderQuestion();
 }
 
@@ -1183,7 +1189,7 @@ function showResults() {
 
 // ── ВІДПРАВКА НА GOOGLE SHEETS + DRIVE ───────────────
 async function sendResultsToSheets(scaled, ppq, correct, wrong, skipped) {
-  const APPS_URL = 'https://script.google.com/macros/s/AKfycbwGo-zpfuyasI-cnOdARvcTTJS-6us-OaPA7JuliSsAt8mWBlaZs9znurXz8PsG8JOEyg/exec';
+  const APPS_URL = 'https://script.google.com/macros/s/AKfycbwGo-zpfuyasI-cnOdARvcTTJS-6us-OaPA7JuIiSsAt8mWBlaZs9znurXz8PsG8JOEyg/exec';
   try {
     const recScore = results.reduce((sum, r) => {
       if (r.skipped) return sum;
@@ -1280,6 +1286,7 @@ async function sendResultsByEmail(scaled, ppq, correct, partial, wrong, skipped)
 
   // HTML-лист — повна копія друкованої форми вчителя
   const html_body = `<!DOCTYPE html>
+<!-- © 2026 Радомишльський ліцей №3. Всі права захищені. Автори: Хоменко Олексій, Устименко Іван, Наливайко Олена -->
 <html lang="uk"><head><meta charset="UTF-8">
 <title>Розумник — ${name} · ${subject}</title></head>
 <body style="margin:0;padding:20px;background:#f4f3ef;font-family:Arial,sans-serif;font-size:12px;color:#111">
@@ -1375,7 +1382,7 @@ async function sendResultsByEmail(scaled, ppq, correct, partial, wrong, skipped)
 
   <!-- Підвал -->
   <div style="display:flex;justify-content:space-between;align-items:flex-end;border-top:1px solid #ccc;padding-top:8px;font-size:9px;color:#aaa">
-    <div>Розумник v2.0 · ${dateStr}</div>
+    <div>Розумник v3.0 · ${dateStr}</div>
     <div style="border-top:1px solid #555;width:150px;text-align:center;padding-top:3px;font-size:9px;color:#555">Підпис вчителя</div>
   </div>
 
@@ -1469,13 +1476,14 @@ function printTeacherForm() {
   }, 0);
   const recScaleScore = Math.round(recScore / results.length * (11 / ppq));
 
-  if (suspiciousCount > 0) {
+  const realSuspicious = results.filter(r => r.suspicious && !r.skipped).length;
+  if (realSuspicious > 0) {
     document.getElementById('tpf-suspicious-note').style.display = 'block';
     document.getElementById('tpf-suspicious-text').textContent =
-      'Зафіксовано ' + suspiciousCount + ' підозрілих пауз (бездіяльність >22 сек).';
+      'Зафіксовано ' + realSuspicious + ' підозрілих пауз (бездіяльність >22 сек).';
     document.getElementById('tpf-recommended').style.display = 'block';
     document.getElementById('tpf-recommended-text').textContent =
-      'Рекомендована оцінка з урахуванням пауз: ' + Math.max(0, recScaleScore) + ' балів з 11 (бали за питання з 🔴 знижено на 75%).';
+      'Рекомендована оцінка з урахуванням пауз: ' + Math.max(0, recScaleScore) + ' балів з 11 (за питання де зафіксована пауза >22 сек — бал знижено на 75%).';
   }
 
   // Show form, hide student card
