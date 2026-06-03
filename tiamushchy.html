@@ -74,6 +74,31 @@
       e.preventDefault();
     }
   });
+
+  // keyup: ловить PrintScreen (вона часто не шле keydown)
+  document.addEventListener('keyup', (e) => {
+    const q = document.getElementById('quizScreen');
+    if (!q || !q.classList.contains('active')) return;
+    if (e.key !== 'PrintScreen') return;
+    let label = 'PrintScreen';
+    if (e.metaKey)     label = 'Win+PrintScreen';
+    else if (e.altKey) label = 'Alt+PrintScreen';
+    keyLog[label] = (keyLog[label] || 0) + 1;
+  });
+
+  // Будь-яке копіювання (не лише Ctrl+C)
+  document.addEventListener('copy', () => {
+    const q = document.getElementById('quizScreen');
+    if (q && q.classList.contains('active')) keyLog['Копіювання'] = (keyLog['Копіювання'] || 0) + 1;
+  });
+
+  // Залишення вікна тесту: інша вкладка / згортання / інший застосунок
+  function _quizActiveWL() { const q = document.getElementById('quizScreen'); return q && q.classList.contains('active'); }
+  function _leaveWindow()  { if (!_quizActiveWL() || _awayStart) return; _awayStart = Date.now(); }
+  function _returnWindow() { if (!_awayStart) return; windowAwayMs += Date.now() - _awayStart; windowLeaveCount++; _awayStart = 0; }
+  document.addEventListener('visibilitychange', () => { if (document.hidden) _leaveWindow(); else _returnWindow(); });
+  window.addEventListener('blur',  _leaveWindow);
+  window.addEventListener('focus', _returnWindow);
 </script>
 <style>
 <!-- Google Fonts: Unbounded — заголовки, Manrope — основний текст -->
@@ -569,6 +594,9 @@
     <div id="tpf-keylog-note" style="display:none;margin-bottom:8px;background:#fdf0ef;border:1px solid #f0b8b2;border-radius:4px;padding:5px 8px;font-size:9px;color:#c0392b">
       <strong>⌨️ Підозрілі дії з клавіатурою:</strong> <span id="tpf-keylog-text"></span>
     </div>
+    <div id="tpf-window-note" style="display:none;margin-bottom:8px;background:#fdf0ef;border:1px solid #f0b8b2;border-radius:4px;padding:5px 8px;font-size:9px;color:#c0392b">
+      <strong>🔀 Залишав вікно тесту:</strong> <span id="tpf-window-text"></span>
+    </div>
     <div class="tpf-footer">
       <div>Тямущий v4.0 · <span id="tpf-footer-date"></span></div>
       <div class="tpf-sign">Підпис вчителя</div>
@@ -633,10 +661,17 @@ let selectedAnswers = [];   // масив обраних літер ['А','В'] 
 let results = [];           // масив об'єктів результатів: { text, type, selected, correct, partialRatio, skipped }
 let suspiciousCount = 0;    // кількість підозрілих пауз
 let keyLog = {};            // лічильник підозрілих клавіш { 'PrintScreen': 2, ... }
+let windowLeaveCount = 0;   // скільки разів учень залишав вікно тесту
+let windowAwayMs = 0;       // сумарний час поза вікном (мс)
+let _awayStart = 0;         // мітка початку поточного залишення
 function keyLogSummary() {
   const entries = Object.entries(keyLog);
   if (!entries.length) return '';
   return entries.map(([k, v]) => k + (v > 1 ? ' × ' + v : '')).join(', ');
+}
+function windowLeaveSummary() {
+  if (!windowLeaveCount) return '';
+  return windowLeaveCount + ' раз(ів), сумарно ~' + Math.round(windowAwayMs / 1000) + ' с';
 }
 let inactivityTimer = null; // таймер бездіяльності
 let questionStartTime = 0;  // час початку питання
@@ -1079,7 +1114,7 @@ function shuffleAndStart() {
     const remapped = sh.filter(o=>corrOrig.includes(o.orig)).map(o=>o.key).join(',');
     return { ...q, _opts:sh, _correct:remapped };
   });
-  currentIdx = 0; results = []; suspiciousCount = 0; keyLog = {};
+  currentIdx = 0; results = []; suspiciousCount = 0; keyLog = {}; windowLeaveCount = 0; windowAwayMs = 0; _awayStart = 0;
   showScreen('quizScreen');
   const qs = document.getElementById('quizScreen');
   qs.onmousemove   = resetActivity;
@@ -1498,12 +1533,18 @@ async function sendResultsByEmail(scaled, ppq, correct, partial, wrong, skipped)
     <strong>&#9000; Підозрілі дії з клавіатурою:</strong> ${keyLogSummary()}
   </div>` : ''}
 
+  <!-- Залишення вікна -->
+  ${windowLeaveCount > 0 ? `
+  <div style="background:#fdf0ef;border:1px solid #f0b8b2;border-radius:4px;padding:5px 8px;margin-bottom:8px;font-size:9px;color:#c0392b">
+    <strong>🔀 Залишав вікно тесту:</strong> ${windowLeaveSummary()}
+  </div>` : ''}
+
   <!-- Розшифровка і рекомендована оцінка -->
   ${suspiciousCount > 0 ? `
   <div style="margin:8px 0;background:#fff3cd;border:1px solid #ffc107;border-radius:4px;padding:5px 8px;font-size:9px;color:#856404">
-    <strong>⚠️ Увага:</strong> Зафіксовано ${suspiciousCount} підозрілих пауз (бездіяльність >22 сек).<br>
+    <strong>⚠️ Увага:</strong> Зафіксовано ${suspiciousCount} підозрілих пауз (бездіяльність >${inactivitySecs} сек).<br>
     Рекомендована оцінка: ${Math.max(0, Math.round(results.reduce((s,r)=>s+(r.skipped?0:r.partialRatio*ppq*(r.suspicious?0.25:1)),0)/results.length*(11/ppq)))} з 11
-    (за питання де зафіксована пауза >22 сек — бал знижено на 75%).
+    (за питання де зафіксована пауза >${inactivitySecs} сек — бал знижено на 75%).
   </div>` : ''}
   <div style="margin:6px 0;font-size:8px;color:#888">
     🟢 — відповідь без підозрілої паузи (норма) &nbsp;&nbsp;
@@ -1573,6 +1614,11 @@ function printTeacherForm() {
     document.getElementById('tpf-keylog-note').style.display = 'block';
     document.getElementById('tpf-keylog-text').textContent = klSummary;
   }
+  const wlSummary = windowLeaveSummary();
+  if (wlSummary) {
+    document.getElementById('tpf-window-note').style.display = 'block';
+    document.getElementById('tpf-window-text').textContent = wlSummary;
+  }
   document.getElementById('tpf-score').textContent   = scaled;
   document.getElementById('tpf-pct').textContent     = `${pct}%`;
   document.getElementById('tpf-questions-count').textContent = `Питань: ${n}`;
@@ -1618,10 +1664,10 @@ function printTeacherForm() {
   if (realSuspicious > 0) {
     document.getElementById('tpf-suspicious-note').style.display = 'block';
     document.getElementById('tpf-suspicious-text').textContent =
-      'Зафіксовано ' + realSuspicious + ' підозрілих пауз (бездіяльність >22 сек).';
+      'Зафіксовано ' + realSuspicious + ' підозрілих пауз (бездіяльність >' + inactivitySecs + ' сек).';
     document.getElementById('tpf-recommended').style.display = 'block';
     document.getElementById('tpf-recommended-text').textContent =
-      'Рекомендована оцінка з урахуванням пауз: ' + Math.max(0, recScaleScore) + ' балів з 11 (за питання де зафіксована пауза >22 сек — бал знижено на 75%).';
+      'Рекомендована оцінка з урахуванням пауз: ' + Math.max(0, recScaleScore) + ' балів з 11 (за питання де зафіксована пауза >' + inactivitySecs + ' сек — бал знижено на 75%).';
   }
 
   // Show form, hide student card
