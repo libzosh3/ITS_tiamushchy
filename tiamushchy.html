@@ -409,6 +409,14 @@
       <button class="btn btn-primary" id="btnUseTest" disabled onclick="useSelectedTest()">Розпочати тест →</button>
     </div>
 
+    <div class="code-launch" id="codeLaunchBlock" style="margin:14px 0;padding:14px;border:1.5px dashed var(--gold,#C8A84B);border-radius:10px;background:#fffdf5">
+      <label style="display:block;font-weight:600;margin-bottom:6px">🔑 Запуск за кодом тесту</label>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <input type="text" id="codeInput" placeholder="напр. zlit_5_shakal" style="flex:1;min-width:180px;padding:8px 10px;border:1px solid #ccc;border-radius:8px;font-size:15px" onkeydown="if(event.key===&#39;Enter&#39;)launchByCode(this.value)">
+        <button class="btn btn-primary" onclick="launchByCode(document.getElementById(&#39;codeInput&#39;).value)">ОК</button>
+      </div>
+      <div class="error-msg" id="codeError" style="margin-top:6px"></div>
+    </div>
     <div class="catalog-or">або завантажте власний файл</div>
     <div class="upload-mini" id="uploadMiniZone">
       <label for="fileInputMini">📂 Перетягніть <strong>.xlsx / .xls</strong> або <strong>оберіть файл</strong></label>
@@ -751,6 +759,9 @@ async function loadManifest() {
     if (!r.ok) throw new Error('manifest.json not found');
     manifestTests = await r.json();
     console.log(`Manifest loaded: ${manifestTests.length} tests`);
+    // v5.1: пряме посилання — автозапуск тесту за ?code=...
+    const _codeParam = new URLSearchParams(location.search).get('code');
+    if (_codeParam) { launchByCode(_codeParam); }
     filterTests(); // одразу показати всі тести в каталозі
   } catch(e) {
     console.warn('Could not load manifest.json:', e.message);
@@ -959,6 +970,22 @@ function parseXlsxBuffer(buf) {
 
   if (!questions.length) throw new Error('Не знайдено жодного питання');
   return { meta: fileMeta, questions };
+}
+
+// ── Запуск тесту за кодом / прямим посиланням (v5.1) ───────────────
+// Шукає тест у manifestTests за полем code (якщо задане) або за id (запасний).
+function launchByCode(raw) {
+  const code = (raw || '').trim();
+  const errEl = document.getElementById('codeError');
+  if (errEl) errEl.textContent = '';
+  if (!code) { if (errEl) errEl.textContent = 'Введіть код тесту.'; return; }
+  const norm = code.toUpperCase();
+  const found = manifestTests.find(t =>
+    (t.code && String(t.code).toUpperCase() === norm) || String(t.id).toUpperCase() === norm
+  );
+  if (!found) { if (errEl) errEl.textContent = 'Тест за кодом «' + code + '» не знайдено.'; return; }
+  selectedTest = found;
+  useSelectedTest();
 }
 
 async function useSelectedTest() {
