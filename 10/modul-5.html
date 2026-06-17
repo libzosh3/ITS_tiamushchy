@@ -1,0 +1,1144 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Модуль 5. Орієнтування на місцевості та інженерна фортифікація — Захист України 10 клас</title>
+<style>
+:root {
+  --ua-blue: #003087;
+  --ua-yellow: #FFD700;
+  --olive: #4A5240;
+  --olive-light: #6B7A5A;
+  --sand: #F5F0E8;
+  --ink: #1C1C1C;
+  --white: #FFFFFF;
+  --divider: #C8C0B0;
+  --accent-red: #C0392B;
+  --accent-green: #2E7D32;
+  --card-bg: #FDFBF7;
+  --info-bg: #E8F0FE;
+  --info-border: #4A90D9;
+  --warn-bg: #FFF8E1;
+  --warn-border: #F9A825;
+  --pract-bg: #E8F5E9;
+  --pract-border: #2E7D32;
+  --tip-bg: #F3E5F5;
+  --tip-border: #7B1FA2;
+  --danger-bg: #FFEBEE;
+  --danger-border: #C62828;
+  --shadow: 0 2px 12px rgba(0,0,0,0.08);
+  --font-display: 'Georgia', 'Times New Roman', serif;
+  --font-body: 'Segoe UI', 'Arial', sans-serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: var(--font-body); background: var(--sand); color: var(--ink); line-height: 1.7; font-size: 15.5px; }
+.topbar-stripe { height: 4px; background: var(--ua-yellow); }
+.topbar { background: var(--ua-blue); color: rgba(255,255,255,0.75); font-size: 0.78rem; padding: 8px 32px; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.topbar a { color: var(--ua-yellow); text-decoration: none; }
+.module-header { background: linear-gradient(135deg, #2d2410 0%, #4a3a1a 50%, var(--olive) 100%); color: var(--white); padding: 48px 32px 40px; position: relative; overflow: hidden; }
+.module-header::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 4px; background: var(--ua-yellow); }
+.module-header-inner { max-width: 1100px; margin: 0 auto; }
+.module-eyebrow { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ua-yellow); margin-bottom: 12px; }
+.module-header h1 { font-family: var(--font-display); font-size: clamp(1.6rem, 4vw, 2.4rem); font-weight: 700; line-height: 1.2; margin-bottom: 14px; max-width: 780px; }
+.module-header-meta { display: flex; flex-wrap: wrap; gap: 20px; margin-top: 20px; }
+.meta-pill { background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2); border-radius: 20px; padding: 5px 14px; font-size: 0.8rem; display: flex; align-items: center; gap: 6px; }
+.meta-pill span { opacity: 0.7; }
+.page-layout { max-width: 1100px; margin: 0 auto; padding: 40px 32px 80px; display: grid; grid-template-columns: 260px 1fr; gap: 40px; align-items: start; }
+.sidebar { position: sticky; top: 16px; }
+.nav-block { background: var(--card-bg); border: 1px solid var(--divider); border-radius: 8px; overflow: hidden; margin-bottom: 20px; }
+.nav-block-title { background: var(--ua-blue); color: var(--ua-yellow); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.10em; text-transform: uppercase; padding: 10px 16px; }
+.nav-list { list-style: none; padding: 8px 0; }
+.nav-list li a { display: flex; align-items: flex-start; gap: 8px; padding: 7px 16px; text-decoration: none; color: var(--ink); font-size: 0.82rem; line-height: 1.4; transition: background 0.15s; }
+.nav-list li a:hover { background: #EEE8DC; color: var(--ua-blue); }
+.nav-list li a .nav-num { color: var(--olive-light); font-weight: 700; flex-shrink: 0; font-size: 0.75rem; margin-top: 1px; }
+.nav-list li a.active { background: #DDD5C5; font-weight: 600; color: var(--ua-blue); }
+.content { min-width: 0; }
+.topic-section { margin-bottom: 52px; scroll-margin-top: 20px; }
+.section-header { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 24px; padding-bottom: 14px; border-bottom: 2px solid var(--divider); }
+.section-num { background: var(--ua-blue); color: var(--ua-yellow); font-family: var(--font-display); font-size: 1rem; font-weight: 700; padding: 5px 12px; border-radius: 3px; flex-shrink: 0; margin-top: 3px; }
+.section-header h2 { font-family: var(--font-display); font-size: 1.35rem; font-weight: 700; color: var(--ua-blue); line-height: 1.25; }
+.section-header p { font-size: 0.84rem; color: #666; margin-top: 4px; }
+.prose p { margin-bottom: 14px; }
+.prose h3 { font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; color: var(--olive); margin: 24px 0 10px; }
+.prose h4 { font-size: 0.82rem; font-weight: 700; color: var(--ua-blue); margin: 18px 0 8px; text-transform: uppercase; letter-spacing: 0.04em; }
+.callout { border-left: 4px solid; border-radius: 4px; padding: 16px 20px; margin: 20px 0; }
+.callout-info { background: var(--info-bg); border-color: var(--info-border); }
+.callout-warn { background: var(--warn-bg); border-color: var(--warn-border); }
+.callout-pract { background: var(--pract-bg); border-color: var(--pract-border); }
+.callout-tip { background: var(--tip-bg); border-color: var(--tip-border); }
+.callout-danger { background: var(--danger-bg); border-color: var(--danger-border); }
+.callout-title { font-weight: 700; font-size: 0.82rem; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 8px; display: flex; align-items: center; gap: 6px; }
+.callout-info .callout-title { color: var(--info-border); }
+.callout-warn .callout-title { color: #B8860B; }
+.callout-pract .callout-title { color: var(--accent-green); }
+.callout-tip .callout-title { color: #6A0080; }
+.callout-danger .callout-title { color: var(--danger-border); }
+.callout p, .callout ul, .callout ol { font-size: 0.9rem; line-height: 1.6; }
+.callout p + p { margin-top: 8px; }
+.callout ul, .callout ol { padding-left: 18px; }
+.callout ul li, .callout ol li { margin-bottom: 4px; }
+.table-wrap { overflow-x: auto; margin: 20px 0; border-radius: 6px; border: 1px solid var(--divider); }
+.data-table { width: 100%; border-collapse: collapse; font-size: 0.87rem; background: var(--white); }
+.data-table th { background: var(--ua-blue); color: var(--white); padding: 10px 14px; text-align: left; font-weight: 600; font-size: 0.82rem; }
+.data-table td { padding: 9px 14px; border-bottom: 1px solid var(--divider); vertical-align: top; line-height: 1.5; }
+.data-table tr:last-child td { border-bottom: none; }
+.data-table tr:nth-child(even) td { background: #F7F3EC; }
+.data-table tr:hover td { background: #EDE8DC; }
+.data-table td.num { font-weight: 700; color: var(--ua-blue); text-align: center; }
+.data-table td.good { color: var(--accent-green); font-weight: 600; }
+.data-table td.bad { color: var(--accent-red); }
+.definition { background: var(--white); border: 1px solid var(--divider); border-radius: 6px; padding: 16px 20px; margin: 16px 0; position: relative; }
+.definition::before { content: '📌'; position: absolute; top: 14px; right: 16px; font-size: 1rem; }
+.definition-term { font-weight: 700; font-size: 0.95rem; color: var(--ua-blue); margin-bottom: 6px; }
+.definition p { font-size: 0.88rem; color: #444; line-height: 1.6; }
+.steps-list { list-style: none; counter-reset: step-counter; margin: 16px 0; }
+.steps-list li { counter-increment: step-counter; display: flex; gap: 14px; align-items: flex-start; margin-bottom: 12px; background: var(--white); border: 1px solid var(--divider); border-radius: 5px; padding: 12px 14px; font-size: 0.9rem; line-height: 1.5; }
+.steps-list li::before { content: counter(step-counter); background: var(--ua-blue); color: var(--ua-yellow); font-weight: 700; font-size: 0.85rem; width: 26px; height: 26px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; margin: 16px 0; }
+.info-card { background: var(--card-bg); border: 1px solid var(--divider); border-radius: 6px; padding: 18px; font-size: 0.87rem; }
+.info-card .card-title { font-weight: 700; color: var(--ua-blue); margin-bottom: 8px; font-size: 0.9rem; display: flex; align-items: center; gap: 8px; }
+.info-card ul { padding-left: 16px; line-height: 1.65; }
+.info-card ul li { margin-bottom: 3px; }
+.activity-box { background: var(--card-bg); border: 1px solid var(--divider); border-radius: 8px; padding: 24px; margin: 20px 0; }
+.activity-header { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--divider); }
+.activity-icon { font-size: 1.6rem; }
+.activity-header h4 { font-family: var(--font-display); font-size: 1rem; font-weight: 700; color: var(--ua-blue); line-height: 1.3; }
+.activity-header .activity-time { font-size: 0.78rem; color: #888; margin-top: 2px; }
+.activity-content { font-size: 0.88rem; line-height: 1.65; }
+.activity-content p { margin-bottom: 10px; }
+.activity-content ul, .activity-content ol { padding-left: 18px; }
+.activity-content li { margin-bottom: 5px; }
+.video-link { display: inline-flex; align-items: center; gap: 8px; background: #B71C1C; color: var(--white); text-decoration: none; padding: 7px 16px; border-radius: 4px; font-size: 0.83rem; font-weight: 600; margin: 4px 0; transition: background 0.15s; }
+.video-link:hover { background: #8B0000; }
+.video-link::before { content: '▶'; }
+.breadcrumb { display: flex; align-items: center; gap: 8px; font-size: 0.8rem; color: #888; margin-bottom: 28px; flex-wrap: wrap; }
+.breadcrumb a { color: var(--ua-blue); text-decoration: none; }
+.breadcrumb .sep { color: #CCC; }
+.breadcrumb .current { color: var(--ink); font-weight: 600; }
+.module-progress { display: flex; gap: 4px; margin-bottom: 28px; }
+.progress-dot { width: 28px; height: 6px; border-radius: 3px; background: var(--divider); }
+.progress-dot.done { background: var(--ua-blue); }
+.progress-dot.current { background: var(--ua-yellow); }
+.page-nav { display: flex; justify-content: space-between; gap: 16px; margin-top: 48px; padding-top: 24px; border-top: 2px solid var(--divider); flex-wrap: wrap; }
+.page-nav a { display: flex; align-items: center; gap: 8px; color: var(--ua-blue); text-decoration: none; font-weight: 600; font-size: 0.9rem; padding: 10px 16px; border: 1px solid var(--divider); border-radius: 5px; background: var(--card-bg); transition: box-shadow 0.15s; }
+.page-nav a:hover { box-shadow: var(--shadow); }
+
+/* FORMULA BOX */
+.formula-box { background: #1a1a2e; color: #fff; border-radius: 8px; padding: 20px 24px; margin: 20px 0; text-align: center; font-family: var(--font-display); }
+.formula-box .formula-label { font-size: 0.72rem; color: var(--ua-yellow); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 12px; font-family: var(--font-body); font-weight: 700; }
+.formula-box .formula-main { font-size: 1.4rem; line-height: 2; }
+.formula-frac { display: inline-block; vertical-align: middle; text-align: center; margin: 0 8px; }
+.formula-frac .num { display: block; border-bottom: 2px solid white; padding: 0 8px 4px; }
+.formula-frac .den { display: block; padding: 4px 8px 0; }
+
+/* AZIMUTH WHEEL */
+.azimuth-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; margin: 16px 0; }
+.azimuth-card { background: var(--white); border: 1px solid var(--divider); border-radius: 6px; padding: 14px; text-align: center; font-size: 0.85rem; }
+.azimuth-card .az-deg { font-size: 1.6rem; font-weight: 900; color: var(--ua-blue); }
+.azimuth-card .az-dir { font-weight: 700; color: var(--olive); margin: 4px 0; }
+
+/* TOPO SIGN GRID */
+.topo-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; margin: 16px 0; }
+.topo-card { background: var(--card-bg); border: 1px solid var(--divider); border-radius: 6px; padding: 12px 14px; font-size: 0.84rem; display: flex; gap: 10px; align-items: flex-start; }
+.topo-icon { font-size: 1.4rem; flex-shrink: 0; }
+.topo-name { font-weight: 700; color: var(--ua-blue); }
+.topo-desc { color: #555; font-size: 0.8rem; margin-top: 2px; }
+
+/* FORTIFICATION TYPES */
+.fort-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; margin: 20px 0; }
+.fort-card { background: var(--white); border: 1px solid var(--divider); border-radius: 6px; overflow: hidden; font-size: 0.86rem; }
+.fort-card-header { background: var(--olive); color: white; padding: 10px 14px; font-weight: 700; font-size: 0.9rem; }
+.fort-card-body { padding: 12px 14px; line-height: 1.6; }
+
+/* MINE CARDS */
+.mine-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 14px; margin: 16px 0; }
+.mine-card { border-radius: 6px; padding: 14px; font-size: 0.85rem; border: 1px solid rgba(0,0,0,0.1); }
+.mine-pt { background: #FFEBEE; border-color: #E57373; }
+.mine-pp { background: #FFF3E0; border-color: #FFB74D; }
+.mine-card .mine-name { font-weight: 700; margin-bottom: 6px; }
+
+/* SLOPE TYPES */
+.slope-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; margin: 16px 0; }
+.slope-card { background: var(--card-bg); border: 1px solid var(--divider); border-radius: 6px; padding: 12px 14px; font-size: 0.84rem; }
+.slope-card .slope-name { font-weight: 700; color: var(--ua-blue); margin-bottom: 4px; }
+
+@media (max-width: 860px) {
+  .page-layout { grid-template-columns: 1fr; }
+  .sidebar { position: static; }
+  .module-header { padding: 36px 16px 30px; }
+  .page-layout { padding: 24px 16px 60px; }
+}
+</style>
+</head>
+<body>
+
+<div class="topbar-stripe"></div>
+<div class="topbar">
+  <div>📘 <a href="../index.html">Довідник викладача «Захист України»</a> › 10 клас › Модуль 5</div>
+  <div>МОН 2024 · Інтегрований курс</div>
+</div>
+
+<header class="module-header">
+  <div class="module-header-inner">
+    <div class="module-eyebrow">10 клас · Модуль 5 · Тренінг №7</div>
+    <h1>Орієнтування на місцевості та інженерна фортифікація</h1>
+    <div class="module-header-meta">
+      <div class="meta-pill">📋 <span>8 уроків · ~360 хв</span></div>
+      <div class="meta-pill">🧭 <span>Компас, азимут, карта</span></div>
+      <div class="meta-pill">📐 <span>Формула тисячної</span></div>
+      <div class="meta-pill">🏗️ <span>Фортифікація, міни</span></div>
+    </div>
+  </div>
+</header>
+
+<div class="page-layout">
+  <aside class="sidebar">
+    <div class="nav-block">
+      <div class="nav-block-title">Теми модуля</div>
+      <ul class="nav-list">
+        <li><a href="#tema-5-1"><span class="nav-num">5.1</span>Місцевість та її властивості</a></li>
+        <li><a href="#tema-5-2"><span class="nav-num">5.2</span>Компас і сторони горизонту</a></li>
+        <li><a href="#tema-5-3"><span class="nav-num">5.3</span>Азимут і рух за азимутом</a></li>
+        <li><a href="#tema-5-4"><span class="nav-num">5.4</span>Визначення відстаней на місцевості</a></li>
+        <li><a href="#tema-5-5"><span class="nav-num">5.5</span>Топографічна карта і умовні знаки</a></li>
+        <li><a href="#tema-5-6"><span class="nav-num">5.6</span>Координати та рельєф</a></li>
+        <li><a href="#tema-5-7"><span class="nav-num">5.7</span>Цифрові інструменти орієнтування</a></li>
+        <li><a href="#tema-5-8"><span class="nav-num">5.8</span>Аерознімки та цілевказання</a></li>
+        <li><a href="#tema-5-9"><span class="nav-num">5.9</span>Інженерна фортифікація</a></li>
+        <li><a href="#tema-5-10"><span class="nav-num">5.10</span>Невибухові загородження</a></li>
+        <li><a href="#tema-5-11"><span class="nav-num">5.11</span>Міни та ВНП: безпека</a></li>
+        <li><a href="#metodychni"><span class="nav-num">🔧</span>Методичні поради</a></li>
+      </ul>
+    </div>
+    <div class="nav-block">
+      <div class="nav-block-title">Навігація курсу</div>
+      <ul class="nav-list">
+        <li><a href="../index.html"><span class="nav-num">🏠</span>Головна</a></li>
+        <li><a href="modul-4.html"><span class="nav-num">←</span>Модуль 4. Дії в бою</a></li>
+        <li><a href="modul-6.html"><span class="nav-num">→</span>Модуль 6. Домедична допомога</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <main class="content">
+
+    <div class="breadcrumb">
+      <a href="../index.html">Довідник</a>
+      <span class="sep">/</span>
+      <span>10 клас</span>
+      <span class="sep">/</span>
+      <span class="current">Модуль 5. Орієнтування на місцевості та інженерна фортифікація</span>
+    </div>
+
+    <div class="module-progress">
+      <div class="progress-dot done"></div>
+      <div class="progress-dot done"></div>
+      <div class="progress-dot done"></div>
+      <div class="progress-dot done"></div>
+      <div class="progress-dot current"></div>
+      <div class="progress-dot"></div>
+    </div>
+
+    <div class="callout callout-info">
+      <div class="callout-title">ℹ️ Загальний огляд модуля</div>
+      <p>Модуль 5 розвиває просторове мислення та практичні навички, що однаково корисні у війську й цивільному житті: читання місцевості, орієнтування без GPS, робота з картою та компасом, інженерний захист позицій. <strong>Ключова ідея:</strong> сучасна війна спирається на цифрові карти (MilChat, «Дельта»), але базові навички — компас, азимут, формула тисячної — залишаються фундаментом, який працює навіть коли техніка відмовляє.</p>
+      <p>Джерела: Тренінг №7 (МОН, 2025 р., гриф №БО-0550-25), Довідник з військової топографії (ПВП 10-30(245), Командування Сил Підтримки ЗСУ, січень 2023).</p>
+    </div>
+
+    <!-- ===================== 5.1 ===================== -->
+    <section class="topic-section" id="tema-5-1">
+      <div class="section-header">
+        <div class="section-num">5.1</div>
+        <div>
+          <h2>Місцевість та її тактичні властивості</h2>
+          <p>Вступна частина · Теорія</p>
+        </div>
+      </div>
+      <div class="prose">
+
+        <div class="definition">
+          <div class="definition-term">Військова топографія</div>
+          <p>Наука, що вивчає поверхню землі, її форми, особливості та об'єкти, які можуть полегшувати або ускладнювати виконання бойового завдання.</p>
+        </div>
+
+        <p>Елементи місцевості — рельєф, рослинність, водойми, дороги, будівлі — впливають на швидкість пересування, можливості маскування, спостереження та ведення вогню. Ліс приховує підрозділ, але ускладнює орієнтування. Відкрита рівнина дозволяє швидкий рух, але робить військових помітними.</p>
+
+        <h3>Чому це важливо навіть без техніки</h3>
+
+        <div class="callout callout-warn">
+          <div class="callout-title">⚠️ Коли GPS і карти не працюють</div>
+          <p>Умови бою змінюються: техніка виходить з ладу, зв'язок втрачається, мапа неповна. Тоді на перший план виходять навички оцінки місцевості неозброєним оком та базові інструменти — компас, формула тисячної, рахунок кроків.</p>
+        </div>
+
+        <h3>Типи рельєфу та їх тактичні властивості</h3>
+
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr><th>Тип місцевості</th><th>Переваги</th><th>Недоліки</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Лісиста</strong></td><td>Маскування, укриття від спостереження та вогню</td><td>Ускладнене орієнтування, обмежений огляд, повільний рух техніки</td></tr>
+              <tr><td><strong>Відкрита (степ, поле)</strong></td><td>Швидке пересування, хороший огляд для своїх</td><td>Висока видимість для ворога, відсутність укриттів</td></tr>
+              <tr><td><strong>Гірська</strong></td><td>Природні укриття, контроль висот дає тактичну перевагу</td><td>Складна логістика, повільний рух, ускладнений зв'язок</td></tr>
+              <tr><td><strong>Урбанізована (міська)</strong></td><td>Численні укриття, можливості засідок</td><td>Складна для розвідки, ризик цивільних втрат, забудова обмежує огляд</td></tr>
+              <tr><td><strong>Болотиста</strong></td><td>Природна перешкода для важкої техніки ворога</td><td>Складна для власного пересування, обмежені маршрути</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================== 5.2 ===================== -->
+    <section class="topic-section" id="tema-5-2">
+      <div class="section-header">
+        <div class="section-num">5.2</div>
+        <div>
+          <h2>Компас і визначення сторін горизонту</h2>
+          <p>Урок 4 (частина 1) · Практика з компасом</p>
+        </div>
+      </div>
+      <div class="prose">
+
+        <div class="definition">
+          <div class="definition-term">Компас Адріанова</div>
+          <p>Компас, що широко застосовується в Силах оборони України. Шкала оцифрована за ходом годинникової стрілки з ціною поділки 3°. Поділки шкали кутоміра (в тисячних) зростають ПРОТИ ходу годинникової стрілки, ціна поділки — 50 тисячних. Шкала нерухома, повертається лише візирний пристрій (цілик і мушка).</p>
+        </div>
+
+        <h3>Перевірка справності компаса</h3>
+        <ol class="steps-list">
+          <li>Встановити компас горизонтально на будь-який предмет, відпустити гальмо</li>
+          <li>Запам'ятати відлік за кінцем стрілки</li>
+          <li>Металевим предметом відвести стрілку вбік</li>
+          <li>Забрати металевий предмет — стрілка повинна вказати попередній відлік</li>
+          <li>Якщо відлік відрізняється на понад одну поділку — компас несправний (розмагнічена стрілка або затуплена голка)</li>
+        </ol>
+
+        <div class="callout callout-warn">
+          <div class="callout-title">⚠️ Де НЕ можна користуватись компасом</div>
+          <ul>
+            <li>Під час грози</li>
+            <li>Поблизу ліній електропередач високої напруги</li>
+            <li>Поруч з металевими предметами</li>
+            <li>Від автомобіля треба відходити на 10–15 м, від танка — на 30–40 м</li>
+          </ul>
+        </div>
+
+        <h3>Визначення сторін горизонту компасом</h3>
+        <ol class="steps-list">
+          <li>Мушку візирного пристрою встановити на 0° (північ)</li>
+          <li>Тримати компас горизонтально, відпустити гальмо</li>
+          <li>Повернути компас так, щоб північний кінець стрілки збігся з 0°</li>
+          <li>Не змінюючи положення компаса, через цілик і мушку (цілик до себе, мушка від себе) запам'ятати віддалений орієнтир — це напрямок на північ</li>
+          <li>Протилежний напрямок — південь (180°), праворуч — схід (90°), ліворуч — захід (270°)</li>
+        </ol>
+
+        <h3>Альтернативні способи визначення сторін горизонту (без компаса)</h3>
+
+        <div class="card-grid">
+          <div class="info-card">
+            <div class="card-title">☀️ За Сонцем і годинником</div>
+            <ul>
+              <li>Влітку Сонце о 14:00 — на півдні (взимку о 13:00)</li>
+              <li>Годинну стрілку наводять на Сонце, кут до цифри 2 (взимку 1) ділять навпіл — це південь</li>
+              <li>До полудня — ділять кут до 14:00, після — кут від 14:00</li>
+            </ul>
+          </div>
+          <div class="info-card">
+            <div class="card-title">🌙 За Місяцем</div>
+            <ul>
+              <li>Повний Місяць завжди протилежний Сонцю (різниця 12 годин)</li>
+              <li>Визначається аналогічно методу із Сонцем з корекцією на видиму частку диска</li>
+            </ul>
+          </div>
+          <div class="info-card">
+            <div class="card-title">⭐ За Полярною зіркою</div>
+            <ul>
+              <li>Знайти Велику Ведмедицю</li>
+              <li>Через дві крайні зірки ковша провести лінію, відкласти 5 відрізків (відстань між крайніми зірками)</li>
+              <li>У кінці 5-го відрізка — Полярна зірка (точно вказує північ)</li>
+              <li>Точність: 2–3°</li>
+            </ul>
+          </div>
+          <div class="info-card">
+            <div class="card-title">🌳 За місцевими ознаками</div>
+            <ul>
+              <li>Найменш надійний спосіб — лише за відсутності компаса/світил</li>
+              <li>Мох на стовбурах частіше з північної сторони</li>
+              <li>Кільця на пнях частіше вужчі з північної сторони</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================== 5.3 ===================== -->
+    <section class="topic-section" id="tema-5-3">
+      <div class="section-header">
+        <div class="section-num">5.3</div>
+        <div>
+          <h2>Азимут: прямий, зворотний, рух за азимутом</h2>
+          <p>Урок 4 (частина 2) · Практика з компасом</p>
+        </div>
+      </div>
+      <div class="prose">
+
+        <div class="definition">
+          <div class="definition-term">Азимут</div>
+          <p>Спосіб точно вказати напрямок руху, виражений у градусах від 0° до 360°. Відлік завжди починається від півночі, рухаючись за годинниковою стрілкою: північ — 0°, схід — 90°, південь — 180°, захід — 270°.</p>
+        </div>
+
+        <div class="azimuth-grid">
+          <div class="azimuth-card"><div class="az-deg">0°</div><div class="az-dir">Північ</div></div>
+          <div class="azimuth-card"><div class="az-deg">90°</div><div class="az-dir">Схід</div></div>
+          <div class="azimuth-card"><div class="az-deg">180°</div><div class="az-dir">Південь</div></div>
+          <div class="azimuth-card"><div class="az-deg">270°</div><div class="az-dir">Захід</div></div>
+        </div>
+
+        <h3>Як вимірювати азимут компасом</h3>
+        <ol class="steps-list">
+          <li>Стати обличчям до орієнтира, відпустити гальмо, тримати компас горизонтально</li>
+          <li>Поворотом корпусу компаса сумістити північний кінець стрілки з 0°</li>
+          <li>Утримуючи стрілку на нулі, повернути візирний пристрій так, щоб крізь цілик і мушку бачити орієнтир</li>
+          <li>Зняти відлік за шкалою біля мушки — це і є магнітний азимут на орієнтир</li>
+        </ol>
+
+        <h3>Зворотний азимут</h3>
+
+        <div class="formula-box">
+          <div class="formula-label">Формула зворотного азимута</div>
+          <div class="formula-main">
+            Якщо Аз ≥ 180°: Аз<sub>зворотний</sub> = Аз − 180°<br>
+            Якщо Аз &lt; 180°: Аз<sub>зворотний</sub> = Аз + 180°
+          </div>
+        </div>
+
+        <p><strong>Приклад:</strong> магнітний азимут на орієнтир — 300°. Зворотний азимут (азимут повернення) = 300° − 180° = <strong>120°</strong>.</p>
+
+        <h3>Цифрове визначення азимута (MilChat)</h3>
+        <ol class="steps-list">
+          <li>Відкрити програму MilChat на телефоні</li>
+          <li>Перейти у вкладку «Карта» (центрується за вашим розташуванням)</li>
+          <li>Натиснути інструмент «Циркуль» — з'явиться червоний маркер локації</li>
+          <li>Прокрутити карту так, щоб курсор-ціль вказував на бажаний орієнтир</li>
+          <li>У лівому верхньому куті змінити «Аі» на «магнітний»</li>
+          <li>Зчитати показання (наприклад: Ам = 38,27°)</li>
+        </ol>
+
+        <div class="callout callout-info">
+          <div class="callout-title">ℹ️ Цілевказання від орієнтира (стандартна військова фраза)</div>
+          <p>Спочатку називають найближчий до цілі орієнтир, потім кут між напрямом на орієнтир і напрямом на ціль (у тисячних), потім відстань. <em>«Орієнтир п'ятий, ліворуч двадцять, далі триста — БМП»</em>. Якщо обидва учасники мають прилади спостереження — замість відстані вказують кут: <em>«Орієнтир перший, праворуч двадцять, ближче тридцять — танк в окопі»</em>.</p>
+        </div>
+
+        <div class="callout callout-info">
+          <div class="callout-title">ℹ️ Цілевказання за азимутом і відстанню</div>
+          <p>Використовується на місцевості з малою кількістю орієнтирів. Азимут визначають компасом у градусах, відстань — приладами спостереження або окомірно. Приклад: <em>«Азимут сто тридцять два, відстань чотириста — БТР»</em>.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================== 5.4 ===================== -->
+    <section class="topic-section" id="tema-5-4">
+      <div class="section-header">
+        <div class="section-num">5.4</div>
+        <div>
+          <h2>Визначення відстаней на місцевості</h2>
+          <p>Уроки 5–7 · 3×45 хв · Теорія + практика</p>
+        </div>
+      </div>
+      <div class="prose">
+
+        <p>Навіть із сучасними засобами навігації (GPS, смартфон) ситуації, коли техніка недоступна, розряджена чи дає похибки, цілком реальні. Уміння визначати відстань — основа влучної стрільби та коригування артилерійського вогню.</p>
+
+        <h3>Спосіб 1: Лазерний далекомір та електронні карти</h3>
+        <p>Лазерний далекомір — найточніший прилад (похибка в міліметрах) за умови прямої видимості об'єкта. Електронні карти (Google Maps) дозволяють вимірювати відстань між двома точками навіть без прямої видимості.</p>
+
+        <div class="callout callout-pract">
+          <div class="callout-title">✅ Практичне завдання з Google Maps</div>
+          <p><strong>На ПК:</strong> права кнопка миші на першій точці → «Виміряти відстань» → клік на другій точці → результат знизу екрана.</p>
+          <p><strong>На телефоні:</strong> затиснути екран на першій точці → потягнути меню вгору → «Вимірювання відстані» → прокрутити карту до другої точки (вона завжди в центрі) → результат знизу.</p>
+        </div>
+
+        <h3>Спосіб 2: Формула тисячної</h3>
+
+        <div class="definition">
+          <div class="definition-term">Тисячна (мілірадіан, mil/мрад)</div>
+          <p>Одиниця вимірювання кутів, що дорівнює 0,001 радіана. Дозволяє швидко переходити від кутових величин до лінійних — основа визначення дистанції через кутомірні прилади (бінокль, приціл, бусоль).</p>
+        </div>
+
+        <div class="callout callout-warn">
+          <div class="callout-title">⚠️ Різні армії — різна кількість тисячних у колі</div>
+          <ul>
+            <li><strong>Пострадянська система:</strong> 6000 тисячних у колі</li>
+            <li><strong>NATO (mil):</strong> 6400 тисячних у колі</li>
+            <li><strong>Швеція:</strong> 6300 (найближче до математично точного 6283)</li>
+          </ul>
+          <p>Артилерист, що служив на радянській 2С1 «Гвоздика», потім на американській M109 Paladin, а потім на шведській Archer — зустрінеться з усіма трьома системами.</p>
+        </div>
+
+        <div class="formula-box">
+          <div class="formula-label">Формула тисячної</div>
+          <div class="formula-main">
+            D = <span class="formula-frac"><span class="num">В (Ш) × 1000</span><span class="den">α</span></span>
+          </div>
+        </div>
+
+        <p>де <strong>D</strong> — дистанція до предмета, <strong>В(Ш)</strong> — висота або ширина предмета (м), <strong>α</strong> — кут, під яким бачимо предмет (у тисячних).</p>
+
+        <h4>Середні розміри об'єктів для розрахунків</h4>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr><th>Об'єкт</th><th>Середня висота</th><th>Середня ширина</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Людина (стоячи)</td><td>1,7 м</td><td>0,5 м</td></tr>
+              <tr><td>Танк</td><td>2,4 м</td><td>3,2 м</td></tr>
+              <tr><td>БМП/БТР</td><td>2,0 м</td><td>2,9 м</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h4>Практичний приклад: вимірювання великим пальцем</h4>
+        <p>Ширина великого пальця — 2,4 см, відстань від ока до пальця — 50 см.</p>
+        <div class="formula-box">
+          <div class="formula-main" style="font-size:1.1rem;">
+            α = (0,024 × 1000) / 0,5 = <strong>48 тисячних</strong><br><br>
+            D = (0,5 × 1000) / 48 = <strong>≈10,4 м</strong>
+          </div>
+        </div>
+        <p><em>Домашнє завдання для учнів:</em> вимірюйте ширину власних пальців на відстані витягнутої руки, обчисліть кут за формулою — і у вас завжди буде «вимірювальний прилад» при собі.</p>
+
+        <h4>Приклад з оптичним прицілом (поділки кутоміра бінокля)</h4>
+        <p>Танк по висоті вміщується між двома центрами «плюсиків» бінокля — кут 10 тисячних. Середня висота танка — 2,4 м.</p>
+        <div class="formula-box">
+          <div class="formula-main" style="font-size:1.1rem;">
+            D = (2,4 × 1000) / 10 = <strong>240 м</strong>
+          </div>
+        </div>
+
+        <h4>Вимірювання прозорою лінійкою</h4>
+        <p>Лінійку тримають на відстані 50 см від ока (попередньо перевірити довжину руки). 1 мм на лінійці на цій відстані = 2 тисячні.</p>
+        <p><strong>Приклад:</strong> людина вкладається в 2 мм лінійки → кут 4 тисячні → D = (0,5 × 1000) / 4 = <strong>125 м</strong>.</p>
+
+        <h3>Спосіб 3: За ознаками видимості</h3>
+        <div class="callout callout-warn">
+          <div class="callout-title">⚠️ Працює тільки для людей з ідеальним зором</div>
+          <p>Якщо ви розрізняєте певні деталі (обличчя, рухи рук, форму одягу) — об'єкт не далі вказаної в довідкових таблицях відстані для цієї деталі. Метод неточний для осіб з порушеннями зору.</p>
+        </div>
+
+        <h3>Спосіб 4: За звуком (різниця швидкості світла і звуку)</h3>
+
+        <div class="callout callout-info">
+          <div class="callout-title">ℹ️ Принцип</div>
+          <p>Швидкість світла — практично моментальна, швидкість звуку — приблизно ⅓ км/с. Побачили спалах (вибух, блискавка, виcтріл) → одразу почати рахувати секунди.</p>
+        </div>
+
+        <p><strong>Правильний підрахунок секунд</strong> (звичний рахунок 1,2,3... занадто швидкий):</p>
+        <ul style="padding-left:20px;">
+          <li>«501, 502, 503...»</li>
+          <li>«1-Міссісіпі, 2-Міссісіпі...»</li>
+          <li>«1-тисяча, 2-тисяча...»</li>
+        </ul>
+
+        <p><strong>Приклад:</strong> побачили спалах, рахунок до 12 секунд → 12 / 3 = <strong>4 км</strong> до джерела.</p>
+
+        <div class="callout callout-warn">
+          <div class="callout-title">⚠️ Важлива обмовка</div>
+          <p>Якщо чуєте одиничні постріли з автомата — це означає, що джерело звуку в радіусі 2–3 км (не далі, бо інакше не було б чутно), але це може бути і 1,5 км, і 1 км, і 700 м.</p>
+        </div>
+
+        <h3>Спосіб 5: За пропорціями тіней</h3>
+
+        <div class="formula-box">
+          <div class="formula-label">Пропорція висот через тіні</div>
+          <div class="formula-main">
+            B / D = b / d
+          </div>
+        </div>
+        <p>де B — висота об'єкта (невідома), D — тінь об'єкта; b — зріст людини (відомий), d — тінь людини.</p>
+        <p><strong>Приклад:</strong> тінь дерева 17,2 м, зріст солдата 1,77 м, тінь солдата 2,25 м.</p>
+        <div class="formula-box">
+          <div class="formula-main" style="font-size:1.1rem;">
+            B = (17,2 × 1,77) / 2,25 ≈ <strong>13,53 м</strong>
+          </div>
+        </div>
+
+        <h3>Спосіб 6: Вимірювання кроками</h3>
+        <ol class="steps-list">
+          <li>Визначити середню довжину пари кроків на відомій дистанції (наприклад, стадіон 400 м)</li>
+          <li>Рахувати пари кроків: рух з лівої ноги — «і», постановка правої — «один», лівої — «і», правої — «два»...</li>
+          <li>Пройти дистанцію 2–3 рази для точності, взяти середнє значення</li>
+          <li>Приклад: 328 пар кроків на 400 м → довжина пари кроків ≈ 1,22 м</li>
+          <li>На невідомій дистанції: рахуйте пари кроків × довжину пари = відстань</li>
+        </ol>
+
+        <div class="callout callout-tip">
+          <div class="callout-title">💡 Альтернатива: крокомір</div>
+          <p>Крокомір на телефоні, смартгодиннику чи фітнес-браслеті виконує цю роботу автоматично — корисно знати, що техніка лише автоматизує метод, який можна виконати і без неї.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================== 5.5 ===================== -->
+    <section class="topic-section" id="tema-5-5">
+      <div class="section-header">
+        <div class="section-num">5.5</div>
+        <div>
+          <h2>Топографічна карта: умовні знаки та читання</h2>
+          <p>Теоретичний блок · На основі Довідника з військ. топографії ЗСУ</p>
+        </div>
+      </div>
+      <div class="prose">
+
+        <h3>Кольорова система топографічних карт</h3>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr><th>Колір</th><th>Що позначає</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>🟢 Зелений</td><td>Ліс, садова рослинність</td></tr>
+              <tr><td>🔵 Синій</td><td>Гідрографія (річки, озера, болота)</td></tr>
+              <tr><td>🟤 Коричневий</td><td>Рельєф (горизонталі), піски</td></tr>
+              <tr><td>🟠 Оранжевий</td><td>Квартали населених пунктів, автомобільні дороги з покриттям</td></tr>
+              <tr><td>⚫ Чорний</td><td>Штучні об'єкти (будівлі, штучні форми рельєфу)</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Основні умовні знаки</h3>
+
+        <div class="topo-grid">
+          <div class="topo-card"><div class="topo-icon">🛣️</div><div><div class="topo-name">Автомагістраль/дорога з покриттям</div><div class="topo-desc">Підпис: ширина проїжджої частини / ширина земляного полотна / матеріал (А-асфальт)</div></div></div>
+          <div class="topo-card"><div class="topo-icon">🛤️</div><div><div class="topo-name">Залізниця</div><div class="topo-desc">Позначаються всі — діючі, ті, що будуються, розібрані. За кількістю колій, видом тяги</div></div></div>
+          <div class="topo-card"><div class="topo-icon">🌲</div><div><div class="topo-name">Ліс (листяний/хвойний/змішаний)</div><div class="topo-desc">Підпис: середня висота дерев / товщина стовбурів / відстань між деревами</div></div></div>
+          <div class="topo-card"><div class="topo-icon">💧</div><div><div class="topo-name">Болото</div><div class="topo-desc">Синім кольором. Перервана штриховка — прохідне (до 0,6 м), суцільна — важко/непрохідне</div></div></div>
+          <div class="topo-card"><div class="topo-icon">🌉</div><div><div class="topo-name">Міст</div><div class="topo-desc">Підпис: матеріал / висота над водою / довжина / ширина / вантажопідйомність</div></div></div>
+          <div class="topo-card"><div class="topo-icon">🏘️</div><div><div class="topo-name">Населений пункт</div><div class="topo-desc">Розмір шрифту назви ∝ адміністративне значення/кількість мешканців</div></div></div>
+          <div class="topo-card"><div class="topo-icon">⛰️</div><div><div class="topo-name">Горизонталі</div><div class="topo-desc">Лінії однакової висоти. Основні, потовщені (кожна 5-та), напівгоризонталі, чверті</div></div></div>
+          <div class="topo-card"><div class="topo-icon">🕳️</div><div><div class="topo-name">Яри, обриви, скелі</div><div class="topo-desc">Об'єкти, що неможливо показати горизонталями — окремі умовні знаки</div></div></div>
+        </div>
+
+        <h3>Горизонталі: спосіб зображення рельєфу</h3>
+
+        <div class="definition">
+          <div class="definition-term">Горизонталі</div>
+          <p>Лінії на карті, що сполучають точки місцевості з однаковою абсолютною висотою. Уявіть гору, занурену у воду — кожна нова берегова лінія при підйомі рівня води на 10 м є горизонталлю.</p>
+        </div>
+
+        <h4>Як відрізнити гору від ями (ознаки зниження схилу)</h4>
+        <ul style="padding-left:20px; line-height:1.9; font-size:0.9rem;">
+          <li><strong>Бергштрих</strong> (покажчик схилу) — короткий штрих, що вказує у бік зниження</li>
+          <li><strong>Підписи висот горизонталей</strong> — верх цифр вказує у бік підняття схилу</li>
+          <li><strong>Хребет «тягнеться» до води</strong>, а лощина «біжить» від води</li>
+          <li><strong>Зубці скель, обривів, ярів</strong> вказують у бік зниження</li>
+          <li><strong>Виїмки на дорогах</strong> — у позитивних формах рельєфу (гора, хребет); <strong>насипи</strong> — у негативних (улоговина, лощина)</li>
+        </ul>
+
+        <h4>Типи схилів та їх тактичне значення</h4>
+
+        <div class="slope-grid">
+          <div class="slope-card">
+            <div class="slope-name">Рівний</div>
+            <p style="font-size:0.8rem;">Однакова стрімкість на всій довжині. Добре проглядається й прострілюється в обох напрямках</p>
+          </div>
+          <div class="slope-card">
+            <div class="slope-name">Випуклий</div>
+            <p style="font-size:0.8rem;">Пологий зверху, стрімкий до підошви. Нижня частина не проглядається з вершини — «мертва зона»</p>
+          </div>
+          <div class="slope-card">
+            <div class="slope-name">Увігнутий</div>
+            <p style="font-size:0.8rem;">Стрімкий до вершини, пологий до підошви. Добре проглядається — ідеальний для спостережних пунктів</p>
+          </div>
+          <div class="slope-card">
+            <div class="slope-name">Хвилястий</div>
+            <p style="font-size:0.8rem;">Поєднання різних схилів. Перегини ускладнюють повний огляд і ведення вогню</p>
+          </div>
+        </div>
+
+        <div class="callout callout-info">
+          <div class="callout-title">ℹ️ Тактичний і бойовий гребінь</div>
+          <p>На випуклому схилі спостережні пункти і вогневі позиції розміщують у місцях <strong>перегину</strong> схилу (бойовий гребінь) — це дозволяє проглядати і прострілювати весь схил, а не лише топографічний гребінь (найвищу точку).</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================== 5.6 ===================== -->
+    <section class="topic-section" id="tema-5-6">
+      <div class="section-header">
+        <div class="section-num">5.6</div>
+        <div>
+          <h2>Система координат та вимірювання на карті</h2>
+          <p>Теоретичний блок · Координати, відстані, площі</p>
+        </div>
+      </div>
+      <div class="prose">
+
+        <h3>Координатна (кілометрова) сітка</h3>
+        <p>На картах масштабу 1:25 000 координатна сітка проводиться через 4 см (1 км місцевості). На картах 1:50 000, 1:100 000, 1:200 000 — через 2 см (1, 2 і 4 км відповідно).</p>
+
+        <div class="callout callout-pract">
+          <div class="callout-title">✅ Приклад визначення прямокутних координат</div>
+          <p>Для об'єкта в квадраті 8008: вимірюємо відстань від нижньої горизонтальної лінії сітки до об'єкта, та від вертикальної лінії сітки. Результат: Х = 60 80 600, Y = 43 09 700 (де перші цифри — номер кілометрової лінії, останні — відстань у метрах від неї).</p>
+        </div>
+
+        <h3>Способи вимірювання відстаней на карті</h3>
+
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr><th>Метод</th><th>Застосування</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Лінійка</strong></td><td>Вимірюють відстань у см, множать на величину масштабу. Приклад: 7,5 см на карті 1:100 000 = 7500 м</td></tr>
+              <tr><td><strong>Циркуль</strong></td><td>Для коротких відстаней — ніжки на двох точках, прикласти до лінійного масштабу</td></tr>
+              <tr><td><strong>Крок циркуля</strong></td><td>Для довгих відстаней — «крокують» циркулем, рахуючи перестановки</td></tr>
+              <tr><td><strong>Курвіметр</strong></td><td>Для звивистих ліній (дороги, річки) — коліщатко проводять по лінії, зчитують відлік</td></tr>
+              <tr><td><strong>Підрахунок квадратів сітки</strong></td><td>Окомірно — для приблизного визначення та контролю</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p>Точність визначення відстаней не повинна перевищувати 0,5–1 мм у масштабі карти.</p>
+
+        <h3>Визначення площ за квадратами координатної сітки</h3>
+
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr><th>Масштаб карти</th><th>Сторона квадрата (см)</th><th>Сторона (км)</th><th>Площа квадрата</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>1:25 000</td><td>4</td><td>1</td><td>1 км² (100 га)</td></tr>
+              <tr><td>1:50 000</td><td>2</td><td>1</td><td>1 км² (100 га)</td></tr>
+              <tr><td>1:100 000</td><td>2</td><td>2</td><td>4 км² (400 га)</td></tr>
+              <tr><td>1:200 000</td><td>2</td><td>4</td><td>16 км² (1600 га)</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Визначення видимості між точками (вертикальний профіль)</h3>
+        <ol class="steps-list">
+          <li>На карті провести профільну лінію від спостережного пункту (СП) до цілі (Ц)</li>
+          <li>До лінії прикласти міліметровий папір, позначити виходи горизонталей</li>
+          <li>Визначити максимальну різницю висот, вибрати вертикальний масштаб (значно більший за горизонтальний — зазвичай у 10+ разів)</li>
+          <li>Побудувати плавну криву через позначені точки висот</li>
+          <li>Якщо лінія СП-Ц на профілі не перетинається перешкодами — точки видимі одна одній</li>
+        </ol>
+
+      </div>
+    </section>
+
+    <!-- ===================== 5.7 ===================== -->
+    <section class="topic-section" id="tema-5-7">
+      <div class="section-header">
+        <div class="section-num">5.7</div>
+        <div>
+          <h2>Цифрові інструменти орієнтування</h2>
+          <p>Урок 8 · Практика з MilChat + гра</p>
+        </div>
+      </div>
+      <div class="prose">
+
+        <div class="callout callout-info">
+          <div class="callout-title">ℹ️ Перехід до цифрових карт</div>
+          <p>Сучасна війна все частіше спирається на цифрові версії карт. Паперові поступово відходять у минуле — як астролябії в морській навігації. Важливо вміти користуватись цифровими засобами, зокрема визначати азимут і координати через них.</p>
+        </div>
+
+        <h3>MilChat: основні функції для орієнтування</h3>
+        <ul style="padding-left:20px; line-height:1.9; font-size:0.9rem;">
+          <li>Карта з автоматичним центруванням за GPS-локацією</li>
+          <li>Інструмент «Циркуль» — вимірювання азимута та відстані</li>
+          <li>Перемикання між істинним і магнітним азимутом</li>
+          <li>Нанесення позначок цілей, обмін координатами в групі</li>
+        </ul>
+
+        <!-- ACTIVITY: ГРА КОРИГУВАННЯ ВОГНЮ -->
+        <div class="activity-box">
+          <div class="activity-header">
+            <div class="activity-icon">⚽</div>
+            <div>
+              <h4>Гра на коригування «артилерійського вогню»</h4>
+              <div class="activity-time">45 хв · Стадіон/майданчик</div>
+            </div>
+          </div>
+          <div class="activity-content">
+            <p><strong>Мета:</strong> закласти розуміння найпростіших способів коригування артилерійського вогню, поглибити знання вимірювання відстаней, орієнтування та MilChat.</p>
+
+            <h4>Реквізит</h4>
+            <ul>
+              <li>Футбольний м'яч (за кількістю підгруп)</li>
+              <li>Об'ємний предмет (картонна коробка) — імітація «ворожої техніки»</li>
+              <li>Телефон з MilChat</li>
+            </ul>
+
+            <h4>Хід гри</h4>
+            <ol>
+              <li>Клас об'єднується в групи: 2 учні — «спостережний пункт» (СП), 2 учні — «артилерія»</li>
+              <li>На видимому місці — «ворожа техніка» (коробка). На відстані ~50 м — «союзна артилерія» (учень з м'ячем)</li>
+              <li>«Вогонь артилерії» імітується ударами по м'ячу ногою в напрямку «ворожої техніки» (відстань достатня, щоб влучити було непросто)</li>
+              <li>На карті MilChat позначають місце «ворожого танка»</li>
+              <li>Починається «обстріл». СП стежить, куди приземляється «м'яч-снаряд»</li>
+              <li>Для коригування: навести курсор-ціль на місце падіння м'яча → інструмент «циркуль» → навести на «танк» → зчитати параметри коригування (наприклад: ПН 11 м, ЗХ 16 м) → передати їх «артилерії»</li>
+            </ol>
+
+            <div class="callout callout-tip">
+              <div class="callout-title">💡 Порада для вчителя</div>
+              <p>Бажано, щоб саме вчитель виконував роль «артилерії» — важливо, щоб м'яч НЕ потрапляв у ціль одразу (інакше СП не матиме що коригувати). Ідеально (але не обов'язково) — останнім «пострілом» уразити ціль, підтверджуючи якість коригування.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================== 5.8 ===================== -->
+    <section class="topic-section" id="tema-5-8">
+      <div class="section-header">
+        <div class="section-num">5.8</div>
+        <div>
+          <h2>Аерознімки: відмінності від карти та цілевказання</h2>
+          <p>Теоретичний блок</p>
+        </div>
+      </div>
+      <div class="prose">
+
+        <div class="callout callout-info">
+          <div class="callout-title">ℹ️ Переваги аерознімків над картою</div>
+          <ul>
+            <li>Добре видно зміни місцевості після видання карти, особливо внаслідок бойових дій</li>
+            <li>Видно бойову техніку противника та сліди її діяльності</li>
+            <li>Видно фортифікаційні споруди, що ще не позначені на карті</li>
+          </ul>
+        </div>
+
+        <h3>Способи цілевказання за аерознімком</h3>
+
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr><th>Спосіб</th><th>Коли застосовувати</th><th>Приклад</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Від умовної лінії</strong></td>
+                <td>Коли на знімках нанесена однакова лінія «північ-південь» і лінія дії підрозділу</td>
+                <td>«Пряма АВ; сім, три; ліворуч нуль дев'ять; ціль — танк у лісосмузі»</td>
+              </tr>
+              <tr>
+                <td><strong>За полярними координатами</strong></td>
+                <td>Коли немає сітки на знімку. Полюс — чітка точка (перехрестя доріг), вісь — напрям на віддалену точку</td>
+                <td>«Аерознімок №12, праворуч 50, 154 — міномет»</td>
+              </tr>
+              <tr>
+                <td><strong>За прямокутними координатами</strong></td>
+                <td>Коли на аерознімку нанесена кілометрова сітка</td>
+                <td>Аналогічно визначенню координат за картою</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Способи цілевказання на місцевості (без аерознімка)</h3>
+
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr><th>Спосіб</th><th>Приклад фрази</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Від орієнтира</strong></td><td>«Орієнтир п'ятий, ліворуч двадцять, далі триста — БМП»</td></tr>
+              <tr><td><strong>За азимутом і відстанню</strong></td><td>«Азимут сто тридцять два, відстань чотириста — БТР»</td></tr>
+              <tr><td><strong>Наведенням гармати на ціль</strong></td><td>«Танк в окопі, п'ятсот» (коли передавач і отримувач поруч)</td></tr>
+              <tr><td><strong>Димовими снарядами/мінами</strong></td><td>Позначення цілі відносно розриву — для кількох батарей одночасно</td></tr>
+              <tr><td><strong>Трасуючими кулями / сигнальними ракетами</strong></td><td>Завчасно встановлений колір/кількість черг + призначені спостерігачі</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================== 5.9 ===================== -->
+    <section class="topic-section" id="tema-5-9">
+      <div class="section-header">
+        <div class="section-num">5.9</div>
+        <div>
+          <h2>Інженерна фортифікація: типи та призначення</h2>
+          <p>Теоретичний блок · За програмою МОН 2024</p>
+        </div>
+      </div>
+      <div class="prose">
+
+        <div class="definition">
+          <div class="definition-term">Інженерна фортифікація</div>
+          <p>Комплекс інженерних споруд і заходів для захисту особового складу, техніки та озброєння від засобів ураження противника, а також для підвищення ефективності власного вогню та маневру.</p>
+        </div>
+
+        <h3>Основні типи фортифікаційних споруд</h3>
+
+        <div class="fort-grid">
+          <div class="fort-card">
+            <div class="fort-card-header">🕳️ Одиночний окоп</div>
+            <div class="fort-card-body">Найпростіша споруда для стрільця. Окоп для стрільби лежачи → з коліна → стоячи (поглиблюється поступово в міру часу). Забезпечує захист від осколків та куль, обмежений захист від прямого попадання.</div>
+          </div>
+          <div class="fort-card">
+            <div class="fort-card-header">➰ Траншея</div>
+            <div class="fort-card-body">З'єднує окопи відділення/взводу. Дозволяє пересуватися під захистом, веде вогонь з різних точок. Має коліна (зигзаги) для обмеження поширення осколків та зменшення поразки вздовж траншеї.</div>
+          </div>
+          <div class="fort-card">
+            <div class="fort-card-header">🔗 Ходи сполучення</div>
+            <div class="fort-card-body">З'єднують окопи/траншеї з тилом — для підносу боєприпасів, евакуації поранених, маневру резервів без виходу на відкриту місцевість.</div>
+          </div>
+          <div class="fort-card">
+            <div class="fort-card-header">🏠 Бліндаж</div>
+            <div class="fort-card-body">Заглиблена в землю споруда з перекриттям для захисту особового складу від осколків, уламків та негоди під час відпочинку. Не призначений для ведення вогню.</div>
+          </div>
+          <div class="fort-card">
+            <div class="fort-card-header">🛡️ Капонір</div>
+            <div class="fort-card-body">Укриття для техніки (танк, БМП, гармата) з відкритим або частково закритим верхом. Захищає від осколків та утруднює виявлення з повітря.</div>
+          </div>
+          <div class="fort-card">
+            <div class="fort-card-header">👁️ Спостережний пункт (СП)</div>
+            <div class="fort-card-body">Замаскована позиція для спостереження за противником. Розміщується з урахуванням кругозору, маскування та зв'язку з командним пунктом.</div>
+          </div>
+        </div>
+
+        <div class="callout callout-pract">
+          <div class="callout-title">✅ Принципи інженерного обладнання позиції</div>
+          <ul>
+            <li>Першочергово — окоп для стрільби лежачи (швидкий захист), потім поглиблення</li>
+            <li>Маскування — невіддільна частина фортифікації (Модуль 4, тема 4.5)</li>
+            <li>Вийнятий ґрунт — приховати або винести, інакше демаскує позицію</li>
+            <li>Перекриття бліндажів — мінімум 2 шари брусів/брил з ґрунтовою засипкою для захисту від осколків і дрібних уламків</li>
+          </ul>
+        </div>
+
+        <div class="activity-box">
+          <div class="activity-header">
+            <div class="activity-icon">📐</div>
+            <div>
+              <h4>Практичне завдання: проєктування макета укріплення</h4>
+              <div class="activity-time">30–40 хв · Групова робота</div>
+            </div>
+          </div>
+          <div class="activity-content">
+            <p>Учні в групах проєктують і виготовляють макет фортифікаційної споруди в масштабі зменшення (з картону, піску, конструктора). Завдання: показати позицію відділення з урахуванням маскування, ходів сполучення та укриття для техніки. Презентація з поясненням тактичного розташування.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================== 5.10 ===================== -->
+    <section class="topic-section" id="tema-5-10">
+      <div class="section-header">
+        <div class="section-num">5.10</div>
+        <div>
+          <h2>Невибухові інженерні загородження</h2>
+          <p>Теоретичний блок</p>
+        </div>
+      </div>
+      <div class="prose">
+
+        <p>Невибухові загородження — штучні перешкоди, що уповільнюють або зупиняють рух противника, дозволяючи власним силам вести по ньому ефективний вогонь.</p>
+
+        <h3>Класифікація невибухових загороджень</h3>
+
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr><th>Тип</th><th>Призначення</th><th>Приклад побудови</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Дротяні загородження</strong></td><td>Уповільнення піхоти противника</td><td>Колючий дріт у кілька рядів, «спіраль Бруно», малопомітні дротяні сітки</td></tr>
+              <tr><td><strong>Протитанкові рови</strong></td><td>Зупинка бронетехніки</td><td>Глибокий і широкий рів, що унеможливлює прохід техніки без інженерного забезпечення</td></tr>
+              <tr><td><strong>Протитанкові їжаки/«зуби дракона»</strong></td><td>Перешкода для гусеничної та колісної техніки</td><td>Бетонні або металеві конструкції, встановлені рядами</td></tr>
+              <tr><td><strong>Завали</strong></td><td>Блокування дорожнього руху, вузьких проходів</td><td>Зрубані дерева, будівельний сміт, техніка</td></tr>
+              <tr><td><strong>Рогатки (МЗП)</strong></td><td>Швидко встановлювана дротяна перешкода</td><td>Малопомітна загорожа з колючого дроту на каркасі</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Принципи планування загороджень</h3>
+        <ul style="padding-left:20px; line-height:1.9; font-size:0.9rem;">
+          <li>Загородження розміщують там, де вони прикриваються вогнем — інакше противник просто їх обходить чи розбирає</li>
+          <li>Комбінація типів загороджень ефективніша за один тип (наприклад: рів + дріт + міни)</li>
+          <li>Враховувати рельєф — на природних перешкодах (річка, болото) загородження посилюють природний захист</li>
+          <li>Загородження мають власні демаскуючі ознаки — потребують маскування так само, як позиції</li>
+        </ul>
+
+        <div class="callout callout-tip">
+          <div class="callout-title">💡 Зв'язок з темою смуги перешкод (Модуль 4)</div>
+          <p>Навички подолання невибухових загороджень (Модуль 4, тема 4.2) і знання про їх побудову (ця тема) — дві сторони однієї медалі: розуміючи, як будують загородження, легше зрозуміти, як їх безпечно та ефективно подолати.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================== 5.11 ===================== -->
+    <section class="topic-section" id="tema-5-11">
+      <div class="section-header">
+        <div class="section-num">5.11</div>
+        <div>
+          <h2>Міни та ВНП: класифікація та безпека</h2>
+          <p>Теоретичний блок · Критично важлива тема безпеки</p>
+        </div>
+      </div>
+      <div class="prose">
+
+        <div class="callout callout-danger">
+          <div class="callout-title">⛔ Контекст актуальності для України</div>
+          <p>Україна — одна з найбільш замінованих країн світу внаслідок повномасштабної війни. Знання про класифікацію мін та правила поводження на потенційно замінованій території є життєво важливими для кожного громадянина, не лише військового.</p>
+        </div>
+
+        <h3>Класифікація мін</h3>
+
+        <div class="mine-grid">
+          <div class="mine-card mine-pt">
+            <div class="mine-name">💥 Протитанкові міни (ПТМ)</div>
+            <ul style="padding-left:14px; font-size:0.82rem; line-height:1.6;">
+              <li>Спрацьовують від ваги техніки (зазвичай 150+ кг)</li>
+              <li>Великий заряд — для пошкодження/знищення техніки</li>
+              <li>Встановлюються на дорогах, об'їздах, проходах</li>
+              <li>Приклади типів спрацювання: натискна, магнітна, нахилений датчик</li>
+            </ul>
+          </div>
+          <div class="mine-card mine-pp">
+            <div class="mine-name">⚠️ Протипіхотні міни (ППМ)</div>
+            <ul style="padding-left:14px; font-size:0.82rem; line-height:1.6;">
+              <li>Спрацьовують від ваги людини (значно менший тиск)</li>
+              <li>Уламкові, фугасні або спрямованого ураження</li>
+              <li>Можуть бути з мінімальним металевим вмістом (важко виявити металодетектором)</li>
+              <li>Часто встановлюються в комбінації з розтяжками</li>
+            </ul>
+          </div>
+        </div>
+
+        <h3>Демаскуючі ознаки мінних загороджень</h3>
+
+        <div class="callout callout-warn">
+          <div class="callout-title">⚠️ На що звертати увагу на місцевості</div>
+          <ul>
+            <li>Порушений ґрунт, що відрізняється кольором/текстурою від навколишнього</li>
+            <li>Дроти, шнури, нитки, що йдуть від рослин/предметів до землі (розтяжки)</li>
+            <li>Незвичні предмети на дорозі або стежці</li>
+            <li>Попереджувальні знаки (свої або противника): череп з кістками, кольорові стрічки, таблички</li>
+            <li>Зів'яла або відмінна за кольором рослинність у певному місці (порушення ґрунту)</li>
+            <li>Withered/нетипові сліди на снігу, асиметрія в природному малюнку місцевості</li>
+          </ul>
+        </div>
+
+        <h3>Алгоритм дій при виявленні мінної загрози</h3>
+
+        <ol class="steps-list">
+          <li><strong>Зупинитися негайно.</strong> Не робити жодного кроку вперед</li>
+          <li><strong>Не торкатися</strong> підозрілого предмета, дроту, розтяжки</li>
+          <li><strong>Позначити місце</strong>, якщо є можливість безпечно це зробити (яскрава стрічка, камінь, гілка хресним способом)</li>
+          <li><strong>Запам'ятати орієнтири</strong> і свій шлях підходу</li>
+          <li><strong>Відходити тим же шляхом</strong>, яким прийшли — ступаючи в ті самі сліди</li>
+          <li><strong>Повідомити</strong>: 101 (ДСНС), 102 (поліція) або найближчий військовий підрозділ</li>
+          <li><strong>Попередити інших</strong> людей у зоні, не дозволяти наближатися</li>
+        </ol>
+
+        <div class="callout callout-danger">
+          <div class="callout-title">⛔ Категоричні заборони</div>
+          <ul>
+            <li>НІКОЛИ не торкатися, не піднімати, не зрушувати підозрілі предмети</li>
+            <li>НІКОЛИ не намагатися розрядити чи розібрати міну/ВНП самостійно</li>
+            <li>НІКОЛИ не рухатися по нерозвіданій території під час або після бойових дій без необхідності</li>
+            <li>НІКОЛИ не дозволяти дітям грати на території, що могла бути замінована</li>
+          </ul>
+        </div>
+
+        <div class="callout callout-pract">
+          <div class="callout-title">✅ Правила поводження на потенційно замінованій місцевості</div>
+          <ul>
+            <li>Рухатися лише перевіреними/маркованими маршрутами</li>
+            <li>Уникати залишених позицій, бліндажів, складів боєприпасів</li>
+            <li>Не підходити до підбитої техніки — може бути заміновано</li>
+            <li>Особливо обережно — у звільнених прифронтових районах, навіть через тривалий час після боїв</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================== МЕТОДИЧНІ ===================== -->
+    <section class="topic-section" id="metodychni">
+      <div class="section-header">
+        <div class="section-num">🔧</div>
+        <div>
+          <h2>Методичні поради та підсумки модуля</h2>
+        </div>
+      </div>
+      <div class="prose">
+
+        <h3>Рекомендоване обладнання для практичних занять</h3>
+        <ul style="padding-left:20px; line-height:1.9; font-size:0.9rem;">
+          <li>Компаси Адріанова (або аналоги) — мінімум 1 на 2–3 учнів</li>
+          <li>Друковані карти місцевості (можна замінити роздруківкою з Google Maps з нанесеною сіткою)</li>
+          <li>Прозорі лінійки, рулетки</li>
+          <li>Смартфони з MilChat (попередньо встановлений і протестований)</li>
+          <li>Футбольний м'яч, картонна коробка — для гри коригування вогню</li>
+        </ul>
+
+        <h3>Зв'язок теми з безпекою цивільного населення</h3>
+        <div class="callout callout-tip">
+          <div class="callout-title">💡 Наскрізна ідея модуля</div>
+          <p>Навички орієнтування корисні не лише для військових: туризм, виживання в надзвичайних ситуаціях, допомога при евакуації. Тема мін та ВНП — критично важлива для ВСІХ громадян у країні з активною війною, незалежно від того, навчаються вони на військову спеціальність чи ні.</p>
+        </div>
+
+        <h3>Зведені відеоматеріали Модуля 5</h3>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>Відео</th><th>До теми</th></tr></thead>
+            <tbody>
+              <tr><td><a href="https://www.youtube.com/watch?v=tCLsvvaINz8" class="video-link" target="_blank" rel="noopener">Орієнтування за мапою. Дирекційний кут. Азимут</a></td><td>5.3 Азимут</td></tr>
+              <tr><td><a href="https://www.youtube.com/watch?v=hXk_qW5TS-Y" class="video-link" target="_blank" rel="noopener">Топографічна карта: умовні позначення, вимірювання</a></td><td>5.5 Топографічна карта</td></tr>
+              <tr><td><a href="https://www.youtube.com/watch?v=SX9sPXMgw2A" class="video-link" target="_blank" rel="noopener">Система цілевказання MGRS. Координати</a></td><td>5.6 Координати</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </section>
+
+    <div class="page-nav">
+      <a href="modul-4.html">← Модуль 4. Основи дій та комунікації</a>
+      <a href="modul-6.html">Модуль 6. Домедична допомога →</a>
+    </div>
+
+  </main>
+</div>
+
+<footer style="background:var(--ua-blue);color:rgba(255,255,255,0.65);text-align:center;padding:20px 32px;font-size:0.78rem;line-height:1.6;">
+  <strong style="color:var(--ua-yellow);">Захист України. Методичний довідник викладача</strong> · 10 клас, Модуль 5<br>
+  Радомишльський ліцей №3 · За програмою МОН (Наказ №1116 від 08.08.2024) · Матеріали тренінгу №7 (гриф №БО-0550-25, 30.12.2025)<br>
+  Довідник з військової топографії (ПВП 10-30(245)) · Командування Сил Підтримки ЗСУ
+</footer>
+
+<script>
+const sections = document.querySelectorAll('.topic-section');
+const navLinks = document.querySelectorAll('.nav-list li a');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const id = entry.target.getAttribute('id');
+      navLinks.forEach(link => {
+        link.classList.toggle('active', link.getAttribute('href') === '#' + id);
+      });
+    }
+  });
+}, { rootMargin: '-20% 0px -70% 0px' });
+sections.forEach(section => observer.observe(section));
+</script>
+</body>
+</html>

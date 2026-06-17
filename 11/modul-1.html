@@ -1,0 +1,1166 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Модуль 1. Військові технології: БпЛА та РЕБ — Захист України 11 клас</title>
+<style>
+:root {
+  --ua-blue: #003087;
+  --ua-yellow: #FFD700;
+  --olive: #4A5240;
+  --olive-light: #6B7A5A;
+  --sand: #F5F0E8;
+  --ink: #1C1C1C;
+  --white: #FFFFFF;
+  --divider: #C8C0B0;
+  --accent-red: #C0392B;
+  --accent-green: #2E7D32;
+  --card-bg: #FDFBF7;
+  --info-bg: #E8F0FE;
+  --info-border: #4A90D9;
+  --warn-bg: #FFF8E1;
+  --warn-border: #F9A825;
+  --pract-bg: #E8F5E9;
+  --pract-border: #2E7D32;
+  --tip-bg: #F3E5F5;
+  --tip-border: #7B1FA2;
+  --danger-bg: #FFEBEE;
+  --danger-border: #C62828;
+  --shadow: 0 2px 12px rgba(0,0,0,0.08);
+  --font-display: 'Georgia', 'Times New Roman', serif;
+  --font-body: 'Segoe UI', 'Arial', sans-serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: var(--font-body); background: var(--sand); color: var(--ink); line-height: 1.7; font-size: 15.5px; }
+.topbar-stripe { height: 4px; background: var(--ua-yellow); }
+.topbar { background: var(--ua-blue); color: rgba(255,255,255,0.75); font-size: 0.78rem; padding: 8px 32px; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.topbar a { color: var(--ua-yellow); text-decoration: none; }
+.module-header { background: linear-gradient(135deg, #0a1a2e 0%, #16324a 50%, var(--olive) 100%); color: var(--white); padding: 48px 32px 40px; position: relative; overflow: hidden; }
+.module-header::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 4px; background: var(--ua-yellow); }
+.module-header-inner { max-width: 1100px; margin: 0 auto; }
+.module-eyebrow { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ua-yellow); margin-bottom: 12px; }
+.module-header h1 { font-family: var(--font-display); font-size: clamp(1.6rem, 4vw, 2.4rem); font-weight: 700; line-height: 1.2; margin-bottom: 14px; max-width: 780px; }
+.module-header-meta { display: flex; flex-wrap: wrap; gap: 20px; margin-top: 20px; }
+.meta-pill { background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2); border-radius: 20px; padding: 5px 14px; font-size: 0.8rem; display: flex; align-items: center; gap: 6px; }
+.meta-pill span { opacity: 0.7; }
+.page-layout { max-width: 1100px; margin: 0 auto; padding: 40px 32px 80px; display: grid; grid-template-columns: 260px 1fr; gap: 40px; align-items: start; }
+.sidebar { position: sticky; top: 16px; }
+.nav-block { background: var(--card-bg); border: 1px solid var(--divider); border-radius: 8px; overflow: hidden; margin-bottom: 20px; }
+.nav-block-title { background: var(--ua-blue); color: var(--ua-yellow); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.10em; text-transform: uppercase; padding: 10px 16px; }
+.nav-list { list-style: none; padding: 8px 0; }
+.nav-list li a { display: flex; align-items: flex-start; gap: 8px; padding: 7px 16px; text-decoration: none; color: var(--ink); font-size: 0.82rem; line-height: 1.4; transition: background 0.15s; }
+.nav-list li a:hover { background: #EEE8DC; color: var(--ua-blue); }
+.nav-list li a .nav-num { color: var(--olive-light); font-weight: 700; flex-shrink: 0; font-size: 0.75rem; margin-top: 1px; }
+.nav-list li a.active { background: #DDD5C5; font-weight: 600; color: var(--ua-blue); }
+.content { min-width: 0; }
+.topic-section { margin-bottom: 52px; scroll-margin-top: 20px; }
+.section-header { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 24px; padding-bottom: 14px; border-bottom: 2px solid var(--divider); }
+.section-num { background: var(--ua-blue); color: var(--ua-yellow); font-family: var(--font-display); font-size: 1rem; font-weight: 700; padding: 5px 12px; border-radius: 3px; flex-shrink: 0; margin-top: 3px; }
+.section-header h2 { font-family: var(--font-display); font-size: 1.35rem; font-weight: 700; color: var(--ua-blue); line-height: 1.25; }
+.section-header p { font-size: 0.84rem; color: #666; margin-top: 4px; }
+.prose p { margin-bottom: 14px; }
+.prose h3 { font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; color: var(--olive); margin: 24px 0 10px; }
+.prose h4 { font-size: 0.82rem; font-weight: 700; color: var(--ua-blue); margin: 18px 0 8px; text-transform: uppercase; letter-spacing: 0.04em; }
+.callout { border-left: 4px solid; border-radius: 4px; padding: 16px 20px; margin: 20px 0; }
+.callout-info { background: var(--info-bg); border-color: var(--info-border); }
+.callout-warn { background: var(--warn-bg); border-color: var(--warn-border); }
+.callout-pract { background: var(--pract-bg); border-color: var(--pract-border); }
+.callout-tip { background: var(--tip-bg); border-color: var(--tip-border); }
+.callout-danger { background: var(--danger-bg); border-color: var(--danger-border); }
+.callout-title { font-weight: 700; font-size: 0.82rem; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 8px; display: flex; align-items: center; gap: 6px; }
+.callout-info .callout-title { color: var(--info-border); }
+.callout-warn .callout-title { color: #B8860B; }
+.callout-pract .callout-title { color: var(--accent-green); }
+.callout-tip .callout-title { color: #6A0080; }
+.callout-danger .callout-title { color: var(--danger-border); }
+.callout p, .callout ul, .callout ol { font-size: 0.9rem; line-height: 1.6; }
+.callout p + p { margin-top: 8px; }
+.callout ul, .callout ol { padding-left: 18px; }
+.callout ul li, .callout ol li { margin-bottom: 4px; }
+.table-wrap { overflow-x: auto; margin: 20px 0; border-radius: 6px; border: 1px solid var(--divider); }
+.data-table { width: 100%; border-collapse: collapse; font-size: 0.87rem; background: var(--white); }
+.data-table th { background: var(--ua-blue); color: var(--white); padding: 10px 14px; text-align: left; font-weight: 600; font-size: 0.82rem; }
+.data-table td { padding: 9px 14px; border-bottom: 1px solid var(--divider); vertical-align: top; line-height: 1.5; }
+.data-table tr:last-child td { border-bottom: none; }
+.data-table tr:nth-child(even) td { background: #F7F3EC; }
+.data-table tr:hover td { background: #EDE8DC; }
+.data-table td.num { font-weight: 700; color: var(--ua-blue); text-align: center; }
+.definition { background: var(--white); border: 1px solid var(--divider); border-radius: 6px; padding: 16px 20px; margin: 16px 0; position: relative; }
+.definition::before { content: '📌'; position: absolute; top: 14px; right: 16px; font-size: 1rem; }
+.definition-term { font-weight: 700; font-size: 0.95rem; color: var(--ua-blue); margin-bottom: 6px; }
+.definition p { font-size: 0.88rem; color: #444; line-height: 1.6; }
+.steps-list { list-style: none; counter-reset: step-counter; margin: 16px 0; }
+.steps-list li { counter-increment: step-counter; display: flex; gap: 14px; align-items: flex-start; margin-bottom: 12px; background: var(--white); border: 1px solid var(--divider); border-radius: 5px; padding: 12px 14px; font-size: 0.9rem; line-height: 1.5; }
+.steps-list li::before { content: counter(step-counter); background: var(--ua-blue); color: var(--ua-yellow); font-weight: 700; font-size: 0.85rem; width: 26px; height: 26px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; margin: 16px 0; }
+.info-card { background: var(--card-bg); border: 1px solid var(--divider); border-radius: 6px; padding: 18px; font-size: 0.87rem; }
+.info-card .card-title { font-weight: 700; color: var(--ua-blue); margin-bottom: 8px; font-size: 0.9rem; display: flex; align-items: center; gap: 8px; }
+.info-card ul { padding-left: 16px; line-height: 1.65; }
+.info-card ul li { margin-bottom: 3px; }
+.activity-box { background: var(--card-bg); border: 1px solid var(--divider); border-radius: 8px; padding: 24px; margin: 20px 0; }
+.activity-header { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--divider); }
+.activity-icon { font-size: 1.6rem; }
+.activity-header h4 { font-family: var(--font-display); font-size: 1rem; font-weight: 700; color: var(--ua-blue); line-height: 1.3; }
+.activity-header .activity-time { font-size: 0.78rem; color: #888; margin-top: 2px; }
+.activity-content { font-size: 0.88rem; line-height: 1.65; }
+.activity-content p { margin-bottom: 10px; }
+.activity-content ul, .activity-content ol { padding-left: 18px; }
+.activity-content li { margin-bottom: 5px; }
+.video-link { display: inline-flex; align-items: center; gap: 8px; background: #B71C1C; color: var(--white); text-decoration: none; padding: 7px 16px; border-radius: 4px; font-size: 0.83rem; font-weight: 600; margin: 4px 0; transition: background 0.15s; }
+.video-link:hover { background: #8B0000; }
+.video-link::before { content: '▶'; }
+.breadcrumb { display: flex; align-items: center; gap: 8px; font-size: 0.8rem; color: #888; margin-bottom: 28px; flex-wrap: wrap; }
+.breadcrumb a { color: var(--ua-blue); text-decoration: none; }
+.breadcrumb .sep { color: #CCC; }
+.breadcrumb .current { color: var(--ink); font-weight: 600; }
+.module-progress { display: flex; gap: 4px; margin-bottom: 28px; }
+.progress-dot { width: 28px; height: 6px; border-radius: 3px; background: var(--divider); }
+.progress-dot.done { background: var(--ua-blue); }
+.progress-dot.current { background: var(--ua-yellow); }
+.page-nav { display: flex; justify-content: space-between; gap: 16px; margin-top: 48px; padding-top: 24px; border-top: 2px solid var(--divider); flex-wrap: wrap; }
+.page-nav a { display: flex; align-items: center; gap: 8px; color: var(--ua-blue); text-decoration: none; font-weight: 600; font-size: 0.9rem; padding: 10px 16px; border: 1px solid var(--divider); border-radius: 5px; background: var(--card-bg); transition: box-shadow 0.15s; }
+.page-nav a:hover { box-shadow: var(--shadow); }
+
+/* DOMAIN GRID (UGV/USV/UUV/UAV) */
+.domain-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 14px; margin: 16px 0; }
+.domain-card { border-radius: 6px; padding: 16px; font-size: 0.86rem; border: 1px solid rgba(0,0,0,0.1); }
+.domain-card .domain-icon { font-size: 1.8rem; margin-bottom: 6px; }
+.domain-card .domain-name { font-weight: 700; font-size: 0.92rem; margin-bottom: 6px; }
+.domain-air { background: #E3F2FD; border-color: #64B5F6; }
+.domain-ground { background: #E8F5E9; border-color: #81C784; }
+.domain-surface { background: #FFF3E0; border-color: #FFB74D; }
+.domain-under { background: #E0F2F1; border-color: #4DB6AC; }
+
+/* DRONE MODEL CARDS */
+.drone-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; margin: 20px 0; }
+.drone-card { background: var(--white); border: 1px solid var(--divider); border-radius: 8px; overflow: hidden; font-size: 0.86rem; }
+.drone-card-header { background: var(--olive); color: white; padding: 12px 16px; }
+.drone-card-header .drone-name { font-weight: 700; font-size: 0.98rem; }
+.drone-card-header .drone-type { font-size: 0.76rem; opacity: 0.85; margin-top: 2px; }
+.drone-card-body { padding: 14px 16px; line-height: 1.6; }
+.drone-spec { display: flex; gap: 6px; margin-bottom: 5px; font-size: 0.82rem; }
+.drone-spec-label { color: #888; min-width: 130px; flex-shrink: 0; }
+.drone-spec-value { font-weight: 600; }
+
+/* COMPONENT ANATOMY */
+.anatomy-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; margin: 16px 0; }
+.anatomy-card { background: var(--card-bg); border: 1px solid var(--divider); border-radius: 6px; padding: 12px 14px; font-size: 0.84rem; }
+.anatomy-card .anatomy-analogy { font-size: 0.72rem; color: var(--olive-light); font-weight: 700; text-transform: uppercase; margin-bottom: 4px; }
+.anatomy-card .anatomy-name { font-weight: 700; color: var(--ua-blue); margin-bottom: 4px; }
+
+/* REB CARDS */
+.reb-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; margin: 20px 0; }
+.reb-card { background: var(--white); border: 1px solid var(--danger-border); border-radius: 8px; overflow: hidden; font-size: 0.85rem; }
+.reb-card-header { background: linear-gradient(135deg, #5c0a0a, #8B0000); color: white; padding: 10px 16px; font-weight: 700; }
+.reb-card-body { padding: 12px 16px; line-height: 1.6; }
+
+/* STICK MODE DIAGRAM */
+.mode2-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0; }
+.mode2-card { background: var(--white); border: 1px solid var(--divider); border-radius: 6px; padding: 14px; font-size: 0.85rem; }
+.mode2-card .mode2-stick { font-weight: 700; color: var(--ua-blue); margin-bottom: 8px; }
+.mode2-card ul { padding-left: 16px; line-height: 1.7; }
+
+/* MISSION CASE */
+.mission-case { background: var(--white); border: 1px solid var(--divider); border-radius: 6px; padding: 14px 16px; margin: 12px 0; font-size: 0.86rem; }
+.mission-case .mc-title { font-weight: 700; color: var(--ua-blue); margin-bottom: 6px; }
+
+@media (max-width: 860px) {
+  .page-layout { grid-template-columns: 1fr; }
+  .sidebar { position: static; }
+  .module-header { padding: 36px 16px 30px; }
+  .page-layout { padding: 24px 16px 60px; }
+  .mode2-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<div class="topbar-stripe"></div>
+<div class="topbar">
+  <div>📘 <a href="../index.html">Довідник викладача «Захист України»</a> › 11 клас › Модуль 1</div>
+  <div>МОН 2024 · Інтегрований курс</div>
+</div>
+
+<header class="module-header">
+  <div class="module-header-inner">
+    <div class="module-eyebrow">11 клас · Модуль 1 · Тренінги №1–3</div>
+    <h1>Військові технології: безпілотні системи та радіоелектронна боротьба</h1>
+    <div class="module-header-meta">
+      <div class="meta-pill">📋 <span>17 уроків · ~765 хв</span></div>
+      <div class="meta-pill">🛸 <span>Будова БпЛА, типи, ТТХ</span></div>
+      <div class="meta-pill">🎮 <span>Симулятори пілотування</span></div>
+      <div class="meta-pill">📡 <span>Основи РЕБ/РЕР</span></div>
+    </div>
+  </div>
+</header>
+
+<div class="page-layout">
+  <aside class="sidebar">
+    <div class="nav-block">
+      <div class="nav-block-title">Теми модуля</div>
+      <ul class="nav-list">
+        <li><a href="#tema-1-1"><span class="nav-num">1.1</span>Безпілотні системи: види та класифікація</a></li>
+        <li><a href="#tema-1-2"><span class="nav-num">1.2</span>Українські розробки БпЛА</a></li>
+        <li><a href="#tema-1-3"><span class="nav-num">1.3</span>Будова БпЛА роторного типу</a></li>
+        <li><a href="#tema-1-4"><span class="nav-num">1.4</span>Технічні характеристики (ТТХ)</a></li>
+        <li><a href="#tema-1-5"><span class="nav-num">1.5</span>Типи дронів за призначенням</a></li>
+        <li><a href="#tema-1-6"><span class="nav-num">1.6</span>Симулятори: підготовка операторів</a></li>
+        <li><a href="#tema-1-7"><span class="nav-num">1.7</span>Базові вправи пілотування</a></li>
+        <li><a href="#tema-1-8"><span class="nav-num">1.8</span>Правові та безпекові аспекти</a></li>
+        <li><a href="#tema-1-9"><span class="nav-num">1.9</span>Радіоелектронна боротьба (РЕБ/РЕР)</a></li>
+        <li><a href="#tema-1-10"><span class="nav-num">1.10</span>Військові професії технологічної сфери</a></li>
+        <li><a href="#tema-1-11"><span class="nav-num">1.11</span>Безпека зв'язку: телефон, Wi-Fi, Starlink</a></li>
+        <li><a href="#metodychni"><span class="nav-num">🔧</span>Методичні поради</a></li>
+      </ul>
+    </div>
+    <div class="nav-block">
+      <div class="nav-block-title">Навігація курсу</div>
+      <ul class="nav-list">
+        <li><a href="../index.html"><span class="nav-num">🏠</span>Головна</a></li>
+        <li><a href="../10/modul-6.html"><span class="nav-num">←</span>10 клас. Модуль 6</a></li>
+        <li><a href="modul-2.html"><span class="nav-num">→</span>Модуль 2. Стрілецька підготовка</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <main class="content">
+
+    <div class="breadcrumb">
+      <a href="../index.html">Довідник</a>
+      <span class="sep">/</span>
+      <span>11 клас</span>
+      <span class="sep">/</span>
+      <span class="current">Модуль 1. Військові технології</span>
+    </div>
+
+    <div class="module-progress">
+      <div class="progress-dot current"></div>
+      <div class="progress-dot"></div>
+      <div class="progress-dot"></div>
+      <div class="progress-dot"></div>
+      <div class="progress-dot"></div>
+      <div class="progress-dot"></div>
+    </div>
+
+    <div class="callout callout-info">
+      <div class="callout-title">ℹ️ Загальний огляд модуля</div>
+      <p>Перший модуль 11 класу присвячений найбільш стрімко змінюваній сфері сучасної війни — безпілотним системам та радіоелектронній боротьбі. Україна стала першою країною світу, що створила окремий рід військ — <strong>Сили безпілотних систем (СБС)</strong> у 2024 році. Модуль поєднує теорію (будова, типи, ТТХ дронів) з практикою на симуляторах пілотування — підхід «від простого до складного»: спочатку класифікація, потім компоненти, потім технічні характеристики, потім практичне керування.</p>
+      <p>Джерела: Тренінги №1–3 (МОН, 2025 р., гриф №БО-0550-25), Brave1.org, Ukrspecsystems, Довідник з ТТХ зразків ОіВТ РЕБ ЗСУ (Центр оперативних стандартів ЗСУ, 2025).</p>
+    </div>
+
+    <!-- ===================== 1.1 ===================== -->
+    <section class="topic-section" id="tema-1-1">
+      <div class="section-header">
+        <div class="section-num">1.1</div>
+        <div>
+          <h2>Безпілотні (роботизовані) системи: види та класифікація</h2>
+          <p>Урок 3 (тренінг 1) · Теорія + групова робота</p>
+        </div>
+      </div>
+      <div class="prose">
+
+        <div class="callout callout-tip">
+          <div class="callout-title">💡 Питання для відкриття теми</div>
+          <p>«Як ви думаєте, чому сьогодні дрони називають очима та руками сучасної армії?» «Де ви зустрічали дрони в цивільному житті?»</p>
+        </div>
+
+        <div class="definition">
+          <div class="definition-term">Безпілотна (роботизована) система</div>
+          <p>Комплекс, що включає безпілотний апарат (повітряний, наземний, морський) та супутню наземну станцію керування, яка дозволяє здійснювати керування ним дистанційно або автономно без наявності людини на борту. Безпілотні засоби можуть мати дистанційне керування або бути автономними — здатними аналізувати оточення сенсорами і навігувати самостійно.</p>
+        </div>
+
+        <h3>Чотири середовища застосування</h3>
+
+        <div class="domain-grid">
+          <div class="domain-card domain-air">
+            <div class="domain-icon">🛸</div>
+            <div class="domain-name">Повітряні (БпЛА / UAV)</div>
+            <p>Найпоширеніший тип. Розвідка, коригування вогню, спостереження, доставка, удари.</p>
+          </div>
+          <div class="domain-card domain-ground">
+            <div class="domain-icon">🤖</div>
+            <div class="domain-name">Наземні (UGV)</div>
+            <p>Unmanned Ground Vehicles. Евакуація поранених, розмінування, доставка боєприпасів.</p>
+          </div>
+          <div class="domain-card domain-surface">
+            <div class="domain-icon">🚤</div>
+            <div class="domain-name">Надводні (USV)</div>
+            <p>Unmanned Surface Vehicles. Керовані дистанційно катери/човни для морської розвідки та атак.</p>
+          </div>
+          <div class="domain-card domain-under">
+            <div class="domain-icon">🐠</div>
+            <div class="domain-name">Підводні (UUV)</div>
+            <p>Unmanned Underwater Vehicles. Підводна розвідка та спецоперації.</p>
+          </div>
+        </div>
+
+        <h3>Українські приклади за категоріями</h3>
+
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>Категорія</th><th>Назва</th><th>Призначення</th></tr></thead>
+            <tbody>
+              <tr><td>UAV</td><td><strong>Leleka-100</strong></td><td>Аеророзвідка, патрулювання, картографування</td></tr>
+              <tr><td>UGV</td><td><strong>TerMIT</strong></td><td>Гусеничний наземний роботизований комплекс: перевезення до 300 кг, евакуація поранених, доставка боєприпасів, дистанційне мінування. Starlink-зв'язок</td></tr>
+              <tr><td>USV</td><td><strong>Sea Baby</strong></td><td>Багатоцільовий безпілотний надводний апарат (розробка СБУ)</td></tr>
+              <tr><td>USV</td><td><strong>Magura V5</strong></td><td>Багатоцільовий надводний човен (розробка для ГУР МО)</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Історична довідка</h3>
+        <p>Ідея безпілотних літальних апаратів виникла ще в Першу світову війну. В Україні розвиток пройшов шлях від розрізнених розробок до створення окремого роду військ ЗСУ — <strong>Сил безпілотних систем (СБС)</strong> у 2024 році. Інтерес значно зріс після 2014 року, пік розвитку — 2022–2024 роки, що призвело до системної інтеграції дронів у повітряні, морські та наземні операції.</p>
+
+        <div class="callout callout-info">
+          <div class="callout-title">ℹ️ Україна — першість у світі</div>
+          <p>Україна стала першою країною світу, що створила окремий рід військ, системно інтегруючий повітряні, наземні та морські дрони в одну структуру.</p>
+        </div>
+
+        <h3>Класифікація БпЛА за призначенням</h3>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>Військове застосування</th><th>Цивільне застосування</th></tr></thead>
+            <tbody>
+              <tr><td>Розвідка, спостереження, цілевказання</td><td>Аерозйомка, відеозйомка, журналістика</td></tr>
+              <tr><td>Ударні операції</td><td>Логістика, доставка товарів і медикаментів</td></tr>
+              <tr><td>Коригування артилерії</td><td>Сільське господарство (моніторинг полів)</td></tr>
+              <tr><td>Радіоелектронна боротьба</td><td>Пошук і порятунок людей</td></tr>
+              <tr><td>Розмінування</td><td>Моніторинг екології, інфраструктури</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout callout-tip">
+          <div class="callout-title">💡 Ключова теза</div>
+          <p>Більшість технологій спочатку створювались для військових цілей, але тепер широко використовуються і в цивільній сфері — і навпаки, цивільні дрони (Mavic) стали ключовим елементом військової розвідки.</p>
+        </div>
+
+        <div class="activity-box">
+          <div class="activity-header">
+            <div class="activity-icon">🎴</div>
+            <div>
+              <h4>Інтерактивна вправа: «Впізнай тип дрона»</h4>
+              <div class="activity-time">5 хв · Групи 3–4 особи</div>
+            </div>
+          </div>
+          <div class="activity-content">
+            <p>Демонстрація зображень різних безпілотників, учні визначають: 1) тип системи (повітряна/наземна/надводна/підводна), 2) основне призначення. Після обговорення — коротке узагальнення вчителем.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================== 1.2 ===================== -->
+    <section class="topic-section" id="tema-1-2">
+      <div class="section-header">
+        <div class="section-num">1.2</div>
+        <div>
+          <h2>Українські розробки: від «Лелеки» до FPV-камікадзе</h2>
+          <p>Урок 5 (тренінг 1) · Теорія + практична вправа</p>
+        </div>
+      </div>
+      <div class="prose">
+
+        <div class="callout callout-info">
+          <div class="callout-title">ℹ️ Мотиваційна теза для уроку</div>
+          <p>«На полі бою ми не просто використовуємо «дрон», ми використовуємо конкретний інструмент під конкретне завдання: іноді це снайперська гвинтівка, іноді — артилерія, а іноді — швидкий кур'єр». Ви не відправите квадрокоптер на розвідку цілі за 70 км — це завдання для дрона-літака.</p>
+        </div>
+
+        <div class="drone-grid">
+          <div class="drone-card">
+            <div class="drone-card-header">
+              <div class="drone-name">🛩️ Vampire (Баба Яга)</div>
+              <div class="drone-type">Класичний важкий мультиротор-бомбер</div>
+            </div>
+            <div class="drone-card-body">
+              <div class="drone-spec"><span class="drone-spec-label">Тип:</span><span class="drone-spec-value">Гексакоптер (6 роторів)</span></div>
+              <div class="drone-spec"><span class="drone-spec-label">Макс. швидкість:</span><span class="drone-spec-value">до 100 км/год</span></div>
+              <div class="drone-spec"><span class="drone-spec-label">Швидкість з вантажем:</span><span class="drone-spec-value">до 60 км/год</span></div>
+              <div class="drone-spec"><span class="drone-spec-label">Висота польоту:</span><span class="drone-spec-value">до 500 м</span></div>
+              <div class="drone-spec"><span class="drone-spec-label">Навчання:</span><span class="drone-spec-value">базові навички — 3 години</span></div>
+              <p style="margin-top:8px; font-size:0.82rem;">Понад 1 млн бойових місій. Знищення техніки і укріплень, дистанційне мінування, гуманітарні місії (доставка води, їжі, медикаментів після теракту на Каховській ГЕС).</p>
+            </div>
+          </div>
+          <div class="drone-card">
+            <div class="drone-card-header">
+              <div class="drone-name">⚡ Vyriy 10"</div>
+              <div class="drone-type">FPV-дрон-камікадзе</div>
+            </div>
+            <div class="drone-card-body">
+              <div class="drone-spec"><span class="drone-spec-label">Рама:</span><span class="drone-spec-value">10" карбон</span></div>
+              <div class="drone-spec"><span class="drone-spec-label">Керування:</span><span class="drone-spec-value">ручне</span></div>
+              <div class="drone-spec"><span class="drone-spec-label">Камера:</span><span class="drone-spec-value">аналог 1200 TVL</span></div>
+              <div class="drone-spec"><span class="drone-spec-label">Корисне навантаження:</span><span class="drone-spec-value">до 4 кг</span></div>
+              <div class="drone-spec"><span class="drone-spec-label">Дальність зв'язку:</span><span class="drone-spec-value">до 25 км</span></div>
+              <div class="drone-spec"><span class="drone-spec-label">Бойовий радіус:</span><span class="drone-spec-value">19 км</span></div>
+            </div>
+          </div>
+          <div class="drone-card">
+            <div class="drone-card-header">
+              <div class="drone-name">✈️ Leleka-100</div>
+              <div class="drone-type">Розвідувальний дрон-літак (фікс-вінг)</div>
+            </div>
+            <div class="drone-card-body">
+              <div class="drone-spec"><span class="drone-spec-label">Розміри:</span><span class="drone-spec-value">1980 × 1135 мм</span></div>
+              <div class="drone-spec"><span class="drone-spec-label">Злітна маса:</span><span class="drone-spec-value">5 ± 0,5 кг</span></div>
+              <div class="drone-spec"><span class="drone-spec-label">Крейсерська швидкість:</span><span class="drone-spec-value">60–70 км/год</span></div>
+              <div class="drone-spec"><span class="drone-spec-label">Маршрут:</span><span class="drone-spec-value">100 км</span></div>
+              <div class="drone-spec"><span class="drone-spec-label">Час у повітрі:</span><span class="drone-spec-value">до 4 годин</span></div>
+              <div class="drone-spec"><span class="drone-spec-label">Захист від РЕБ:</span><span class="drone-spec-value">анти-РЕБ система DeViRo</span></div>
+              <p style="margin-top:8px; font-size:0.82rem;">Запуск ручний/з катапульти. Посадка парашутна або на «живіт».</p>
+            </div>
+          </div>
+        </div>
+
+        <h3>Системи донаведення: перехід до автономності</h3>
+
+        <div class="definition">
+          <div class="definition-term">Система донаведення</div>
+          <p>Програмно-апаратний комплекс, який дозволяє БпЛА після «захоплення» цілі автоматично довести ударну частину до точки ураження навіть у разі втрати зв'язку з оператором. Оператору достатньо вивести дрон у зону, показати ціль на екрані і натиснути кнопку — далі ШІ виконує фінальну фазу наведення.</p>
+        </div>
+
+        <p>Це перехід від повністю ручного керування до гібридного режиму: ручний підхід + автоматичне завершення атаки. Лідери українського виробництва FPV-дронів — компанії Vyriy Drone та «Генерал Черешня».</p>
+
+        <div class="activity-box">
+          <div class="activity-header">
+            <div class="activity-icon">🎯</div>
+            <div>
+              <h4>Групова робота: «Обери дрон для місії»</h4>
+              <div class="activity-time">10 хв</div>
+            </div>
+          </div>
+          <div class="activity-content">
+            <div class="mission-case">
+              <div class="mc-title">Кейс 1: Глибока розвідка</div>
+              Провести тривале спостереження (2 год) і коригування вогню на лінії фронту 50 км від точки зльоту.<br>
+              <strong>Відповідь:</strong> дрон літакового типу — велика дальність зв'язку, тривалість польоту (аеродинаміка крила), висока крейсерська швидкість.
+            </div>
+            <div class="mission-case">
+              <div class="mc-title">Кейс 2: Знищення ДЗОТу</div>
+              Уразити замаскований опорний пункт ворога за 3 км. Потрібна висока точність і мінімальний час підльоту.<br>
+              <strong>Відповідь:</strong> FPV-дрон — маневреність, швидкість, низька вартість (одноразове застосування).
+            </div>
+          </div>
+        </div>
+
+        <div class="callout callout-pract">
+          <div class="callout-title">✅ Ключові твердження для запам'ятовування</div>
+          <ul>
+            <li>«Мультиротор підходить для оперативної розвідки та коригування, бо може висіти на місці»</li>
+            <li>«FPV-дрон дає високу швидкість і маневреність, але має короткий час польоту й уразливий до РЕБ»</li>
+            <li>«Фікс-вінг забезпечує далекі рейси та тривалість польоту, але потребує запуску й має меншу маневреність на малій висоті»</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================== 1.3 ===================== -->
+    <section class="topic-section" id="tema-1-3">
+      <div class="section-header">
+        <div class="section-num">1.3</div>
+        <div>
+          <h2>Будова БпЛА роторного типу: анатомія дрона</h2>
+          <p>Урок 4 (тренінг 1) · Теорія + практична демонстрація</p>
+        </div>
+      </div>
+      <div class="prose">
+
+        <div class="callout callout-tip">
+          <div class="callout-title">💡 Методичний прийом для запам'ятовування</div>
+          <p>Під час демонстрації будови квадрокоптера робіть акценти: «Рама — скелет», «Контролер — мозок», «ESC — нервова система», «Мотори — м'язи».</p>
+        </div>
+
+        <h3>Класифікація БпЛА за конструкцією</h3>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>Тип</th><th>Підтипи</th><th>Принцип</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Літаки (Fixed-Wing)</strong></td><td>Моноплани, біплани, триплани, дельтоподібні</td><td>Аеродинамічний профіль крила створює різницю тисків — підйомну силу. Тривалі польоти на великі відстані</td></tr>
+              <tr><td><strong>Мультироторні</strong></td><td>Квадрокоптери (4), гексакоптери (6), октокоптери (8)</td><td>Ротори створюють підйомну силу. Пари пропелерів обертаються в протилежних напрямках для управління без хвостового гвинта</td></tr>
+              <tr><td><strong>Гібридні</strong></td><td>Тейлсіттери</td><td>Поєднують переваги літаків і мультироторів: ротори для вертикального зльоту, крила для горизонтального польоту</td></tr>
+              <tr><td><strong>VTOL</strong></td><td>Vertical Take-Off and Landing</td><td>Можуть злітати та сідати вертикально</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Основні компоненти конструкції (з аналогіями)</h3>
+
+        <div class="anatomy-grid">
+          <div class="anatomy-card"><div class="anatomy-analogy">Скелет</div><div class="anatomy-name">Рама (Frame)</div><p style="font-size:0.8rem;">Основа, до якої кріпляться всі елементи. Матеріал (карбон, пластик) впливає на вагу та міцність</p></div>
+          <div class="anatomy-card"><div class="anatomy-analogy">Кінцівки</div><div class="anatomy-name">Пропелери</div><p style="font-size:0.8rem;">Маркування та напрямок обертання критично важливі для балансу</p></div>
+          <div class="anatomy-card"><div class="anatomy-analogy">М'язи</div><div class="anatomy-name">Двигуни / Мотори</div><p style="font-size:0.8rem;">Силова установка, створює підйомну силу через обертання пропелерів</p></div>
+          <div class="anatomy-card"><div class="anatomy-analogy">Нервова система</div><div class="anatomy-name">ESC (Electronic Speed Controller)</div><p style="font-size:0.8rem;">Контролює оберти двигуна. Зв'язок між «мозком» і «м'язами»</p></div>
+          <div class="anatomy-card"><div class="anatomy-analogy">Мозок</div><div class="anatomy-name">Польотний контролер (FC)</div><p style="font-size:0.8rem;">Отримує дані від оператора, сенсорів, GPS і відповідно надсилає команди на ESC</p></div>
+          <div class="anatomy-card"><div class="anatomy-analogy">Очі (передача)</div><div class="anatomy-name">Відеопередавач (VTX)</div><p style="font-size:0.8rem;">Транслює відеосигнал з камери дрона</p></div>
+          <div class="anatomy-card"><div class="anatomy-analogy">Вуха</div><div class="anatomy-name">Радіоприймач (RX)</div><p style="font-size:0.8rem;">Приймає сигнали з пульта керування, передає на FC</p></div>
+          <div class="anatomy-card"><div class="anatomy-analogy">Серце</div><div class="anatomy-name">Акумулятор</div><p style="font-size:0.8rem;">Тип (Li-Po, Li-Ion), ємність (mAh), напруга (S — кількість комірок)</p></div>
+        </div>
+
+        <div class="callout callout-danger">
+          <div class="callout-title">⛔ Безпека роботи з Li-Po батареями</div>
+          <p>Li-Po батареї небезпечні через ризик загоряння, вибуху та витоку електроліту внаслідок перезарядження, фізичного пошкодження, перегріву або короткого замикання.</p>
+          <ul>
+            <li>Ніколи не заряджати та не використовувати батареї з пошкодженнями</li>
+            <li>Заряджати у спеціальному захисному пакеті, далі від легкозаймистих матеріалів</li>
+            <li>Завжди перевіряти максимальну напругу для кожної банки</li>
+            <li>Припиняти зарядку при перегріві</li>
+            <li>Ніколи не залишати акумулятор без нагляду під час зарядки чи підключеним після повної зарядки</li>
+          </ul>
+        </div>
+
+        <h3>Принцип керування квадрокоптером</h3>
+        <p>Для управління польотом і рухом передбачено механізм: перша пара пропелерів обертається в одному напрямку, інша — у протилежному. Змінюючи відносну швидкість діаметрально розташованих гвинтів, досягається керування без хвостового гвинта (на відміну від гелікоптерів).</p>
+
+      </div>
+    </section>
+
+    <!-- ===================== 1.4 ===================== -->
+    <section class="topic-section" id="tema-1-4">
+      <div class="section-header">
+        <div class="section-num">1.4</div>
+        <div>
+          <h2>Технічні характеристики (ТТХ) БпЛА</h2>
+          <p>Урок 4 (тренінг 1), продовження · Практична вправа «Аналіз місії»</p>
+        </div>
+      </div>
+      <div class="prose">
+
+        <h3>Критичні ТТХ дронів роторного типу</h3>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>Параметр</th><th>Одиниця</th><th>Що визначає</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Максимальна дальність зв'язку (Range)</strong></td><td>км/м</td><td>Найбільша відстань, на якій підтримується стабільний зв'язок з пультом</td></tr>
+              <tr><td><strong>Максимальна швидкість</strong></td><td>км/год</td><td>Дозволяє виконувати місію швидко та уникати зон ураження</td></tr>
+              <tr><td><strong>Ємність акумулятора</strong></td><td>мА·год (mAh)</td><td>Кількість енергії, що визначає час польоту</td></tr>
+              <tr><td><strong>Напруга акумулятора (S)</strong></td><td>S (cell)</td><td>Кількість комірок — визначає потужність (наприклад, 6S)</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Приклад: Tiny Hawk (Emax)</h3>
+        <div class="card-grid">
+          <div class="info-card">
+            <div class="card-title">📊 Технічні дані</div>
+            <ul>
+              <li>Дальність зв'язку: до 200 м</li>
+              <li>Час польоту: до 4 хвилин</li>
+              <li>Корисне навантаження: до 500 г</li>
+              <li>Максимальна швидкість: до 56 км/год</li>
+              <li>Ємність акумулятора: 450 мАг (1S, 3,7В)</li>
+            </ul>
+          </div>
+        </div>
+        <p><strong>Висновок:</strong> компактний FPV-квадрокоптер, призначений для тренувань і гонок.</p>
+
+        <div class="activity-box">
+          <div class="activity-header">
+            <div class="activity-icon">🧮</div>
+            <div>
+              <h4>Практична вправа «Аналіз місії»</h4>
+              <div class="activity-time">10 хв · Групова робота</div>
+            </div>
+          </div>
+          <div class="activity-content">
+            <p><strong>Кейс:</strong> «Необхідно провести розвідку на відстань 15 км і повернутися. Місія має бути виконана за 25 хвилин. Які ТТХ (дальність, час польоту) мають бути мінімально необхідними для дрона?»</p>
+            <p>Учні називають параметри і пояснюють, який компонент відповідає за досягнення цих параметрів (дальність — модуль зв'язку, час — акумулятор).</p>
+          </div>
+        </div>
+
+        <div class="callout callout-info">
+          <div class="callout-title">ℹ️ Роль оператора БпЛА</div>
+          <p>Оператор БпЛА — це інженер-аналітик, який планує місію, ґрунтуючись виключно на технічних параметрах апарату. Технічна грамотність — не лише вміння керувати, а й розуміння обмежень системи.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================== 1.5 ===================== -->
+    <section class="topic-section" id="tema-1-5">
+      <div class="section-header">
+        <div class="section-num">1.5</div>
+        <div>
+          <h2>Типи дронів за призначенням: порівняльний аналіз</h2>
+          <p>Урок 5 (тренінг 1), продовження · Поглиблене порівняння</p>
+        </div>
+      </div>
+      <div class="prose">
+
+        <h3>Класичний мультиротор vs FPV vs фікс-вінг</h3>
+
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>Параметр</th><th>Класичний мультиротор</th><th>FPV-дрон</th><th>Фікс-вінг (літак)</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Конструкція</strong></td><td>Складна рама, GPS-стабілізація, гімбал для камери</td><td>Легка мінімалістична рама (карбон), потужні мотори, часто без GPS</td><td>Аеродинамічний профіль крила</td></tr>
+              <tr><td><strong>Переваги</strong></td><td>Простота керування, висока стабілізація, «висіння» на місці</td><td>Висока швидкість і маневреність, низька вартість, значне навантаження</td><td>Тривалі польоти на великі відстані, висока крейсерська швидкість</td></tr>
+              <tr><td><strong>Типове застосування</strong></td><td>Розвідка поля бою, коригування вогню, картографування, пошук/порятунок</td><td>Дрон-камікадзе, ударні операції на близьких/середніх дистанціях</td><td>Глибока розвідка, патрулювання великих територій</td></tr>
+              <tr><td><strong>Уразливість до РЕБ</strong></td><td>Середня (залежить від GPS)</td><td>Висока (без автономного наведення)</td><td>Може мати спеціальний захист (як DeViRo у Leleka)</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout callout-pract">
+          <div class="callout-title">✅ Підсумкове правило вибору</div>
+          <p>Правильний вибір моделі залежить від мети місії, потрібного часу у повітрі, дальності та вантажопідйомності. «Знання переваг моделі = правильний вибір інструменту = успіх місії».</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================== 1.6 ===================== -->
+    <section class="topic-section" id="tema-1-6">
+      <div class="section-header">
+        <div class="section-num">1.6</div>
+        <div>
+          <h2>Симулятори та тренажери для підготовки операторів</h2>
+          <p>Урок 6 (тренінг 1) · Теорія + практична демонстрація</p>
+        </div>
+      </div>
+      <div class="prose">
+
+        <div class="callout callout-info">
+          <div class="callout-title">ℹ️ Чому навчання починається з симулятора</div>
+          <p>Справжній FPV-дрон, особливо ударний, може коштувати тисячі доларів. Кожна невдала спроба пілотування в реальності — втрата грошей, часу, можливо невиконане завдання. Симулятор дає: <strong>безпеку</strong> (нульовий ризик пошкодження обладнання), <strong>економію</strong> (десятки годин практики без витрат), <strong>швидкість</strong> (можна розбиватись і миттєво перезапускатись).</p>
+        </div>
+
+        <h3>Огляд доступних симуляторів</h3>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>Симулятор</th><th>Призначення</th><th>Особливість</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Velocidrone</strong></td><td>FPV-перегони та військовий пілотаж</td><td>Найбільш реалістичний, точна фізика, багато моделей</td></tr>
+              <tr><td><strong>Liftoff</strong></td><td>Баланс реалізму і зручності для початківців</td><td>Красива графіка, багато віртуальних карт</td></tr>
+              <tr><td><strong>DRL Sim</strong></td><td>Спортивні перегони</td><td>Висока швидкість, екстремальні маневри</td></tr>
+              <tr><td><strong>Симулятори DJI</strong></td><td>Класичні коптери</td><td>Фокус на стабільності й простоті (GPS-режим, Attitude Mode)</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Режим Mode 2 — світовий стандарт керування</h3>
+
+        <div class="mode2-grid">
+          <div class="mode2-card">
+            <div class="mode2-stick">⬅️ Лівий стік</div>
+            <ul>
+              <li><strong>Throttle</strong> (вгору-вниз) — газ, висота</li>
+              <li><strong>Yaw</strong> (вліво-вправо) — розвертання навколо своєї осі</li>
+            </ul>
+          </div>
+          <div class="mode2-card">
+            <div class="mode2-stick">➡️ Правий стік</div>
+            <ul>
+              <li><strong>Pitch</strong> (вгору-вниз) — тангаж, рух вперед/назад</li>
+              <li><strong>Roll</strong> (вліво-вправо) — крен, рух вліво/вправо</li>
+            </ul>
+          </div>
+        </div>
+
+        <h3>Підключення пульта до ПК (покроково)</h3>
+        <ol class="steps-list">
+          <li>Підключити пульт дистанційного керування до комп'ютера через USB-кабель</li>
+          <li>Дочекатись, доки комп'ютер розпізнає пристрій</li>
+          <li>Запустити симулятор, знайти меню налаштувань («Controls»/«Settings»/«Controller»)</li>
+          <li>Вибрати пульт зі списку доступних пристроїв</li>
+          <li>Виконати калібрування — перемістити всі стіки й тригери в повний діапазон руху</li>
+          <li>Призначити канали керування: Pitch, Roll, Yaw, Throttle</li>
+          <li>Протестувати відповідність рухів пульта і відображення на екрані</li>
+          <li>Зберегти конфігурацію</li>
+        </ol>
+
+        <h3>Інтерфейс OSD (On Screen Display)</h3>
+        <p>Ключові елементи, які пілот бачить на екрані: напруга батареї, час польоту, кут нахилу, <strong>RSSI</strong> (якість зв'язку). Налаштування камери (кут нахилу) впливає на швидкість польоту — чим більший кут, тим швидше політ.</p>
+
+        <div class="callout callout-pract">
+          <div class="callout-title">✅ Ключове твердження</div>
+          <p>Симулятор — це ваш полігон, де помилка не коштує нічого. Потрібно зробити тут сотні «крашів», щоб не допустити жодного в реальному польоті. Мета — сформувати «м'язову пам'ять».</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================== 1.7 ===================== -->
+    <section class="topic-section" id="tema-1-7">
+      <div class="section-header">
+        <div class="section-num">1.7</div>
+        <div>
+          <h2>Базові вправи пілотування на симуляторі</h2>
+          <p>Уроки 7–8 (тренінг 1) · 90 хв · Практика</p>
+        </div>
+      </div>
+      <div class="prose">
+
+        <h3>Режими стабілізації</h3>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>Режим</th><th>Принцип</th><th>Коли застосовується</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Angle Mode (Stabilized)</strong></td><td>Автоматичне вирівнювання дрона після відпускання стіків</td><td>Навчання починається саме з цього режиму</td></tr>
+              <tr><td><strong>Horizon Mode</strong></td><td>Часткове вирівнювання, дозволяє невеликі перевороти</td><td>Перехідний етап</td></tr>
+              <tr><td><strong>Acro Mode</strong></td><td>Повністю ручний режим без автоматичного вирівнювання</td><td>Після кількох годин практики в Angle Mode</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Три базові вправи</h3>
+
+        <div class="card-grid">
+          <div class="info-card">
+            <div class="card-title">⬆️ Вправа 1: Зліт і посадка</div>
+            <ul>
+              <li><strong>Мета:</strong> освоїти Throttle (газ)</li>
+              <li>Плавно піднятися на 2–3 м і м'яко опуститися</li>
+              <li>Ключ: плавний рух лівим стіком, знайти «точку відриву» (тяга = вага)</li>
+              <li><strong>Типова помилка:</strong> різкі рухи газом — коливання або «зрив» з висоти</li>
+            </ul>
+          </div>
+          <div class="info-card">
+            <div class="card-title">🎯 Вправа 2: Ховерінг</div>
+            <ul>
+              <li><strong>Мета:</strong> стабільно тримати дрон у повітрі без зміщення</li>
+              <li>Утримувати в межах віртуального квадрата 1×1 м протягом 10 секунд</li>
+              <li>Ключ: робота правого стіка (Pitch/Roll), мікрокорекції, а не різкі рухи</li>
+            </ul>
+          </div>
+          <div class="info-card">
+            <div class="card-title">⬜ Вправа 3: Прямокутник</div>
+            <ul>
+              <li><strong>Мета:</strong> розвиток просторової орієнтації та координації Throttle/Yaw/Pitch</li>
+              <li>Відпрацювати рухи вперед, вліво, назад, вправо, зберігаючи висоту</li>
+              <li>Ключ: тримати сталу висоту; в кутах — Yaw (розвертання), на прямих — Pitch/Roll</li>
+              <li><strong>Типові помилки:</strong> зміщення висоти, занос по інерції, невчасне гальмування</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="callout callout-warn">
+          <div class="callout-title">⚠️ Головна порада інструктора</div>
+          <p>«Завжди корегуйте рух до того, як дрон почне падати або сильно відхилиться. Реагуйте на намір дрона, а не на його наслідок».</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================== 1.8 ===================== -->
+    <section class="topic-section" id="tema-1-8">
+      <div class="section-header">
+        <div class="section-num">1.8</div>
+        <div>
+          <h2>Правила польоту, заборонені зони, юридичні та безпекові аспекти</h2>
+          <p>Уроки 5–6 (тренінг 2) · Теорія + практика</p>
+        </div>
+      </div>
+      <div class="prose">
+
+        <div class="callout callout-warn">
+          <div class="callout-title">⚠️ Юридична відповідальність</div>
+          <p>Експлуатація БпЛА в Україні регулюється законодавством про використання повітряного простору. Польоти поблизу аеропортів, військових об'єктів, у заборонених зонах та без належної реєстрації можуть призвести до адміністративної чи кримінальної відповідальності, особливо в умовах воєнного стану.</p>
+        </div>
+
+        <h3>Метеорологічні фактори, що впливають на політ</h3>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>Фактор</th><th>Вплив на БпЛА</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Вітер</strong></td><td>Боковий вітер зносить дрон з курсу, зустрічний зменшує дальність і збільшує витрату заряду, попутний — навпаки</td></tr>
+              <tr><td><strong>Температура</strong></td><td>Низькі температури знижують ємність Li-Po акумуляторів — менший час польоту. Висока вологість і дощ небезпечні для електроніки</td></tr>
+              <tr><td><strong>Видимість</strong></td><td>Туман, дим обмежують роботу оптичних камер; FPV-пілотування потребує хорошої видимості або тепловізора</td></tr>
+              <tr><td><strong>Опади</strong></td><td>Більшість цивільних і бюджетних військових дронів не мають захисту від води — короткі замикання, втрата керування</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Безпека експлуатації та екстрені ситуації</h3>
+        <ul style="padding-left:20px; line-height:1.9; font-size:0.9rem;">
+          <li><strong>Failsafe (аварійний протокол):</strong> при втраті сигналу дрон повинен автоматично повертатись на точку запуску (Return to Home) або плавно сідати — налаштовується заздалегідь</li>
+          <li><strong>Втрата GPS-сигналу:</strong> перехід в Attitude/Acro режим, потреба ручного контролю</li>
+          <li><strong>Низький заряд батареї:</strong> попередження по OSD — негайна посадка, а не спроба завершити місію</li>
+          <li><strong>Зіткнення/аварія:</strong> негайне знеструмлення (Disarm) для уникнення травм від обертових пропелерів</li>
+        </ul>
+
+        <div class="callout callout-pract">
+          <div class="callout-title">✅ Кваліфікаційний забіг (підсумкова перевірка)</div>
+          <p>Наприкінці тренінгу 2 учні проходять кваліфікаційний забіг на симуляторі — комплексну перевірку навичок пілотування FPV-дронів, що поєднує всі відпрацьовані вправи (зліт/посадка, ховерінг, прямокутник, повороти) на час і точність.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================== 1.9 ===================== -->
+    <section class="topic-section" id="tema-1-9">
+      <div class="section-header">
+        <div class="section-num">1.9</div>
+        <div>
+          <h2>Радіоелектронна боротьба (РЕБ) та радіоелектронна розвідка (РЕР)</h2>
+          <p>Теоретичний блок · Довідник з ТТХ зразків ОіВТ РЕБ ЗСУ</p>
+        </div>
+      </div>
+      <div class="prose">
+
+        <div class="definition">
+          <div class="definition-term">Радіоелектронна боротьба (РЕБ)</div>
+          <p>Комплекс заходів і технічних засобів, спрямованих на виявлення та придушення (подавлення) радіоелектронних систем противника — каналів керування дронами, навігації (GPS/GLONASS), зв'язку, радіодетонаторів. Тісно пов'язана з <strong>радіоелектронною розвідкою (РЕР)</strong> — виявленням і аналізом радіосигналів протилежної сторони.</p>
+        </div>
+
+        <h3>Принцип роботи комплексів РЕБ проти БпЛА</h3>
+        <p>Комплекс РЕБ виявляє сигнал керування дроном за спектральною маскою або аналізом даних, після чого випромінює на цій частоті потужнішу радіоперешкоду (прицільну або широкосмугову), що «забиває» канал керування або навігації — оператор втрачає картинку і контроль над дроном.</p>
+
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>Тип перешкоди</th><th>Принцип</th><th>Дальність придушення</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Прицільна</strong></td><td>Випромінюється точно на частоту виявленого сигналу керування</td><td>Типово 50–60% відстані між наземним пунктом управління дрона та комплексом РЕБ</td></tr>
+              <tr><td><strong>Широкосмугова</strong></td><td>«Забиває» широкий діапазон частот одночасно — менш точна, але універсальна</td><td>Типово 25–30% тієї ж відстані (менша ефективність через розподіл потужності)</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout callout-info">
+          <div class="callout-title">ℹ️ Чому потужність впливає на дальність обмежено</div>
+          <p>Сумарна потужність передавача розподіляється по широкому спектру частот — на кожну окрему ділянку дістаються лише міліватти. Тому широкосмугові системи мають меншу ефективну дальність, ніж прицільні, незалежно від загальної заявленої потужності.</p>
+        </div>
+
+        <h3>Приклади комплексів РЕБ (ознайомчий рівень)</h3>
+
+        <div class="reb-grid">
+          <div class="reb-card">
+            <div class="reb-card-header">🇺🇦 «Каскад-П» (ЗСУ)</div>
+            <div class="reb-card-body">
+              Виявлення та подавлення каналів керування, телеметрії та передачі даних БпЛА. Робочі діапазони 20–6000 МГц (виявлення), 400–6000 МГц (подавлення). Ефективна дальність виявлення — 15 км. Має «білий список» — не ідентифікує дрони і пункти керування своїх військ як загрозу.
+            </div>
+          </div>
+          <div class="reb-card">
+            <div class="reb-card-header">🇷🇺 «Стриж-3» (РФ)</div>
+            <div class="reb-card-body">
+              Підпускає дрон ближче, потім пригнічує канал керування та навігації. Ознака роботи: оператор раптом втрачає картинку. База розпізнавання 81 типу БПЛА. 6 спрямованих антен по колу + 3 кругові під сферою.
+            </div>
+          </div>
+          <div class="reb-card">
+            <div class="reb-card-header">🇷🇺 «Лісочок» РП-377 (РФ)</div>
+            <div class="reb-card-body">
+              Встановлюється на танки, БТР, вантажівки. Придушує дистанційні радіодетонатори, прикриває колону машин. Дальність проти БПЛА лише 100–200 м через розподіл потужності по широкому спектру.
+            </div>
+          </div>
+          <div class="reb-card">
+            <div class="reb-card-header">🇷🇺 «Силок» (РФ)</div>
+            <div class="reb-card-body">
+              Купольний комплекс, прикриває позиції по колу. Вертикальні антени на хрестовині — легко розпізнається аеророзвідкою. Споживання ~600 Вт (мережа 220В). Перекриває діапазони супутникової навігації та частоти БПЛА.
+            </div>
+          </div>
+        </div>
+
+        <div class="callout callout-warn">
+          <div class="callout-title">⚠️ Як розпізнати ворожі позиції РЕБ/РЕР візуально</div>
+          <p>Майже всі комплекси РЕБ поєднані з РЕР (розвідкою). Складно ідентифікувати та можна успішно маскувати, КРІМ однієї ознаки: <strong>антени пеленгатора РЕР зовні нагадують «люстру» з вертикальними сегментами по колу</strong> — характерна демаскуюча ознака для аеророзвідки.</p>
+        </div>
+
+        <h3>Зв'язок з темою маскування (10 клас, Модуль 4)</h3>
+        <div class="callout callout-tip">
+          <div class="callout-title">💡 Повторення матеріалу</div>
+          <p>У 10 класі вивчався радіочастотний спектр як один з 4 спектрів сучасної розвідки. РЕБ — це активна протидія в цьому спектрі: не просто прихованість (маскування), а цілеспрямоване придушення сигналів ворога. Антена Starlink без належного маскування — одна з найвищих сигнатурних цілей саме для систем типу РЕР.</p>
+        </div>
+
+        <h3>Як українські оператори БпЛА протидіють РЕБ</h3>
+        <ul style="padding-left:20px; line-height:1.9; font-size:0.9rem;">
+          <li><strong>Керування по оптоволокну:</strong> фізичний кабель замість радіоканалу — повна імунність до РЕБ, але обмежена дальність і мобільність</li>
+          <li><strong>Анти-РЕБ системи (як DeViRo на Leleka-100):</strong> автоматичне розпізнавання спроб блокування GPS/GLONASS і підміни навігаційного поля</li>
+          <li><strong>Зміна робочих частот (frequency hopping):</strong> швидке перемикання між частотами ускладнює прицільне придушення</li>
+          <li><strong>Автономні системи донаведення:</strong> завершення атаки навіть при втраті зв'язку з оператором</li>
+        </ul>
+
+      </div>
+    </section>
+
+    <!-- ===================== 1.10 ===================== -->
+    <section class="topic-section" id="tema-1-10">
+      <div class="section-header">
+        <div class="section-num">1.10</div>
+        <div>
+          <h2>Військові професії технологічної сфери</h2>
+          <p>Урок 8 (тренінг 3) · Профорієнтація</p>
+        </div>
+      </div>
+      <div class="prose">
+
+        <p>Технологічна революція у війні створила попит на нові спеціальності, що поєднують технічні навички з військовою службою.</p>
+
+        <div class="card-grid">
+          <div class="info-card">
+            <div class="card-title">🛸 Оператор/операторка БпЛА</div>
+            <ul>
+              <li>Пілотування розвідувальних та ударних дронів</li>
+              <li>Планування місій на основі ТТХ техніки</li>
+              <li>Швидке прийняття рішень в умовах стресу та обмеженого часу</li>
+            </ul>
+          </div>
+          <div class="info-card">
+            <div class="card-title">🔧 Інженер/інженерка-розробник БпЛА</div>
+            <ul>
+              <li>Конструювання та модифікація апаратів</li>
+              <li>Інтеграція нових компонентів (камери, системи донаведення)</li>
+              <li>Робота з Brave1 та оборонними стартапами</li>
+            </ul>
+          </div>
+          <div class="info-card">
+            <div class="card-title">📡 Фахівець/фахівчиня РЕБ/РЕР</div>
+            <ul>
+              <li>Виявлення та аналіз радіосигналів противника</li>
+              <li>Експлуатація комплексів радіоподавлення</li>
+              <li>Постійне навчання — технології змінюються щомісяця</li>
+            </ul>
+          </div>
+          <div class="info-card">
+            <div class="card-title">📊 Аналітик/аналітикиня інформації</div>
+            <ul>
+              <li>Обробка розвідувальних даних з дронів та інших джерел</li>
+              <li>Робота з військовими інформаційними системами (Кропива, Дельта)</li>
+              <li>Цілевказання на основі аналізу аерозйомки</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="callout callout-info">
+          <div class="callout-title">ℹ️ Військові інформаційні системи та платформи</div>
+          <p>Сучасний військовослужбовець технологічної спеціальності працює з цифровими платформами ситуаційної обізнаності (детальніше — система «Дельта»/«Кропива» розглядалась у 10 класі, Модуль 2), системами зв'язку (MilChat), а також спеціалізованим програмним забезпеченням для аналізу даних з БпЛА.</p>
+        </div>
+
+        <div class="callout callout-pract">
+          <div class="callout-title">✅ Шляхи здобуття цих спеціальностей</div>
+          <ul>
+            <li>Профільні курси при військових частинах та навчальних центрах ЗСУ</li>
+            <li>Цивільні інженерні курси (Prometheus «Народний FPV», Victory Drones)</li>
+            <li>Технічні спеціальності у ВВНЗ з подальшою службою в СБС, військах зв'язку та кібербезпеки</li>
+            <li>Volунтерські та громадські ініціативи з виробництва дронів (Brave1 кластер)</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================== 1.11 ===================== -->
+    <section class="topic-section" id="tema-1-11">
+      <div class="section-header">
+        <div class="section-num">1.11</div>
+        <div>
+          <h2>Подвійне застосування та безпека зв'язку: телефон, Wi-Fi, Starlink</h2>
+          <p>Додатковий урок · 40 хв · Теорія + аналіз кейсів</p>
+        </div>
+      </div>
+      <div class="prose">
+
+        <div class="key-questions">
+          <h4>Ключові питання уроку</h4>
+          <ul>
+            <li>Чому звичайний смартфон у прифронтовій зоні — це не просто засіб зв'язку, а потенційна загроза?</li>
+            <li>Що означає «подвійне застосування» технології зв'язку?</li>
+            <li>Чим Starlink відрізняється від звичайного інтернету з точки зору безпеки використання?</li>
+          </ul>
+        </div>
+
+        <p><strong>Подвійне застосування</strong> — це коли той самий засіб зв'язку одночасно корисний і небезпечний: смартфон, Wi-Fi-роутер чи термінал Starlink дають зв'язок, необхідний для координації дій, але водночас можуть видати позицію, стати каналом витоку інформації або ціллю для засобів радіоелектронної розвідки (РЕР) противника.</p>
+
+        <h3>Телефон і Wi-Fi: ризики цивільних засобів зв'язку</h3>
+
+        <div class="card-grid">
+          <div class="info-card">
+            <div class="card-title">📍 Геолокація</div>
+            <ul>
+              <li>Увімкнений GPS, геотеги у фото, чек-іни в застосунках — точна прив'язка пристрою до місцевості</li>
+              <li>Аналогічно стосується й Wi-Fi-точок доступу: їхні координати фіксуються глобальними базами геолокації</li>
+            </ul>
+          </div>
+          <div class="info-card">
+            <div class="card-title">📡 Радіовипромінювання як демаскуюча ознака</div>
+            <ul>
+              <li>Активний телефон чи Wi-Fi-роутер — це джерело сигналу, яке можна виявити засобами РЕР (зв'язок з темою маскування, 10 клас, Модуль 4)</li>
+              <li>Скупчення активних пристроїв у одній точці — непрямий показник присутності особового складу</li>
+            </ul>
+          </div>
+          <div class="info-card">
+            <div class="card-title">🔓 Витік даних</div>
+            <ul>
+              <li>Фото й відео з геометаданими, опубліковані в соцмережах — класичний канал OSINT-розвідки противника (детальніше — Модуль 3 цього курсу)</li>
+              <li>Незахищені Wi-Fi-мережі — потенційна точка входу для перехоплення трафіку</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="callout callout-danger">
+          <div class="callout-title">⛔ Базові правила цифрової гігієни в зоні бойових дій</div>
+          <ul>
+            <li>Вимикати геолокацію та автоматичне підключення до невідомих Wi-Fi-мереж</li>
+            <li>Не публікувати фото/відео з прив'язкою до місцевості до завершення завдання</li>
+            <li>Використовувати окремий, заздалегідь перевірений Wi-Fi-пароль; уникати фабричних паролів за замовчуванням</li>
+            <li>Розуміти: «вимкнений екран» ≠ «вимкнений радіомодуль» — за потреби повного режиму мовчання вимикати безпровідні модулі повністю</li>
+          </ul>
+        </div>
+
+        <h3>Starlink: можливості та специфічні ризики</h3>
+
+        <p>Термінал Starlink став одним із ключових рішень зв'язку для Сил оборони України саме завдяки своїй стійкості до глушіння — низькоорбітальні супутники (~550 км) і фазована антена терміналу роблять традиційні засоби РЕБ значно менш ефективними проти нього, ніж проти звичних радіостанцій. Але це не означає «абсолютної невидимості» — у термінала є власні специфічні вразливості.</p>
+
+        <div class="card-grid">
+          <div class="info-card">
+            <div class="card-title">📦 Безпечне транспортування й фізичний захист</div>
+            <ul>
+              <li>Антена — найбільш вразлива до пошкоджень частина комплекту; потребує захищеного кейса при перевезенні</li>
+              <li>Фізичний захист позиції розгортання терміналу — як і для будь-якого обладнання зв'язку на позиції</li>
+            </ul>
+          </div>
+          <div class="info-card">
+            <div class="card-title">🎨 Маскування (оптичне та інфрачервоне)</div>
+            <ul>
+              <li>Біла «тарілка» добре видима оптично — потребує маскувальної сітки чи фарбування в захисний колір</li>
+              <li>Термінал розігрівається під час роботи — демаскує себе в інфрачервоному діапазоні, що важливо враховувати при виборі позиції й часу розгортання</li>
+            </ul>
+          </div>
+          <div class="info-card">
+            <div class="card-title">📶 РЕБ, РЕР і радіогігієна</div>
+            <ul>
+              <li>Хоча Starlink стійкий до більшості наявних засобів РЕБ, сам факт радіообміну терміналу можна виявити засобами РЕР — тому позиціонування й тривалість роботи в одній точці мають значення</li>
+              <li>«Радіогігієна» — мінімізація часу роботи в активному режимі там, де це не критично для виконання завдання</li>
+            </ul>
+          </div>
+          <div class="info-card">
+            <div class="card-title">🔐 Кібербезпека терміналу</div>
+            <ul>
+              <li>Зміна заводських паролів облікового запису та Wi-Fi-роутера терміналу</li>
+              <li>Контроль оновлень прошивки тільки з офіційного джерела</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="callout callout-tip">
+          <div class="callout-title">💡 Для поглибленої підготовки вчителя</div>
+          <p>Розгорнутий і регулярно оновлюваний матеріал з усіх аспектів використання терміналів Starlink військовими користувачами — «Курс військового користувача» Володимира Степанця (засновник ком'юніті «Народний Starlink», радник Командувача Військ Зв'язку та Кібербезпеки ЗСУ), модуль «Безпека використання терміналів Starlink». Курс поширюється безкоштовно для некомерційного навчання захисників України.</p>
+        </div>
+
+        <div class="activity-box">
+          <div class="activity-header">
+            <div class="activity-icon">🧩</div>
+            <div>
+              <h4>Практична активність: «Знайди демаскуючу ознаку»</h4>
+              <div class="activity-time">15 хв · Аналіз кейсів у малих групах</div>
+            </div>
+          </div>
+          <div class="activity-content">
+            <p>Викладач описує 3–4 короткі ситуації (наприклад: «Боєць опублікував у Stories фото на позиції з увімкненою геолокацією»; «Підрозділ розгорнув Starlink посеред відкритого поля вдень без маскувальної сітки»). Групи визначають конкретну демаскуючу ознаку в кожній ситуації та пропонують, як її усунути. Обговорення завершується спільним переліком правил цифрової гігієни для підрозділу.</p>
+          </div>
+        </div>
+
+        <div class="callout callout-pract">
+          <div class="callout-title">✅ Контрольні запитання</div>
+          <ul style="font-size:0.88rem; line-height:1.8;">
+            <li>Що означає «подвійне застосування» стосовно засобів зв'язку?</li>
+            <li>Чому Starlink стійкіший до РЕБ, ніж звичайні радіостанції, і що з цього не випливає?</li>
+            <li>Які прості звички цифрової гігієни знижують ризик демаскування підрозділу?</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================== МЕТОДИЧНІ ===================== -->
+    <section class="topic-section" id="metodychni">
+      <div class="section-header">
+        <div class="section-num">🔧</div>
+        <div>
+          <h2>Методичні поради та підсумки модуля</h2>
+        </div>
+      </div>
+      <div class="prose">
+
+        <h3>Технічне забезпечення модуля</h3>
+        <ul style="padding-left:20px; line-height:1.9; font-size:0.9rem;">
+          <li>Комп'ютери/ноутбуки з встановленим симулятором (Velocidrone або Liftoff)</li>
+          <li>Пульти керування (радіоконтролери) — мінімум 1 на 2–3 учні</li>
+          <li>USB-кабелі для підключення пультів</li>
+          <li>Стабільне інтернет-з'єднання для відеоматеріалів (резерв — локальні копії на флешці)</li>
+          <li>За наявності — навчальний дрон/макет без боєприпасів для демонстрації будови</li>
+        </ul>
+
+        <h3>Зведений словник абревіатур модуля</h3>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>Абревіатура</th><th>Розшифрування</th></tr></thead>
+            <tbody>
+              <tr><td><strong>БпЛА / UAV</strong></td><td>Безпілотний літальний апарат / Unmanned Aerial Vehicle</td></tr>
+              <tr><td><strong>UGV</strong></td><td>Unmanned Ground Vehicle — наземний роботизований комплекс</td></tr>
+              <tr><td><strong>USV</strong></td><td>Unmanned Surface Vehicle — безпілотний надводний апарат</td></tr>
+              <tr><td><strong>UUV</strong></td><td>Unmanned Underwater Vehicle — безпілотний підводний апарат</td></tr>
+              <tr><td><strong>СБС</strong></td><td>Сили безпілотних систем — окремий рід військ ЗСУ (з 2024 р.)</td></tr>
+              <tr><td><strong>FPV</strong></td><td>First Person View — керування дроном від першої особи</td></tr>
+              <tr><td><strong>FC</strong></td><td>Flight Controller — польотний контролер («мозок» дрона)</td></tr>
+              <tr><td><strong>ESC</strong></td><td>Electronic Speed Controller — електронний регулятор швидкості</td></tr>
+              <tr><td><strong>VTX</strong></td><td>Video Transmitter — відеопередавач</td></tr>
+              <tr><td><strong>RX</strong></td><td>Receiver — радіоприймач сигналу з пульта</td></tr>
+              <tr><td><strong>OSD</strong></td><td>On Screen Display — інформація на екрані пілота</td></tr>
+              <tr><td><strong>RSSI</strong></td><td>Receive Signal Strength Indicator — індикатор якості зв'язку</td></tr>
+              <tr><td><strong>ТТХ</strong></td><td>Тактико-технічні характеристики</td></tr>
+              <tr><td><strong>РЕБ</strong></td><td>Радіоелектронна боротьба</td></tr>
+              <tr><td><strong>РЕР</strong></td><td>Радіоелектронна розвідка</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Домашні завдання до модуля (зведено)</h3>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>Завдання</th><th>Тип</th></tr></thead>
+            <tbody>
+              <tr><td>Коротка довідка про один тип безпілотної системи (5–6 речень)</td><td>Дослідження</td></tr>
+              <tr><td>Інфографіка/схема «Будова дрона» з поясненням компонентів</td><td>Творче</td></tr>
+              <tr><td>Порівняльна таблиця «Переваги та недоліки FPV-дрона»</td><td>Аналітичне</td></tr>
+              <tr><td>Схема пульта керування з позначеними функціями Mode 2</td><td>Технічне</td></tr>
+              <tr><td>Знайти приклад українського стартапу у сфері БпЛА (Brave1)</td><td>Дослідження</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Рекомендовані ресурси для поглибленої підготовки вчителя</h3>
+        <ul style="padding-left:20px; line-height:1.9; font-size:0.9rem;">
+          <li>Brave1.org — кластер оборонних технологій України</li>
+          <li>Ukrspecsystems — офіційний виробник «Shark» та інших БпЛА</li>
+          <li>Prometheus — «Інженерний курс «Народний FPV»</li>
+          <li>Victory Drones — навчальні матеріали з конструкції FPV</li>
+          <li>VelociDrone — офіційна інструкція з використання симулятора</li>
+          <li>Sprotyv G7 — навчальна програма для інструкторів пілотів БпЛА</li>
+        </ul>
+
+      </div>
+    </section>
+
+    <div class="page-nav">
+      <a href="../10/modul-6.html">← 10 клас, Модуль 6. Домедична допомога</a>
+      <a href="modul-2.html">Модуль 2. Стрілецька підготовка та дії в бою →</a>
+    </div>
+
+  </main>
+</div>
+
+<footer style="background:var(--ua-blue);color:rgba(255,255,255,0.65);text-align:center;padding:20px 32px;font-size:0.78rem;line-height:1.6;">
+  <strong style="color:var(--ua-yellow);">Захист України. Методичний довідник викладача</strong> · 11 клас, Модуль 1<br>
+  Радомишльський ліцей №3 · За програмою МОН (Наказ №1116 від 08.08.2024) · Матеріали тренінгів №1–3 (гриф №БО-0550-25, 30.12.2025)<br>
+  Довідник з ТТХ зразків ОіВТ РЕБ ЗСУ · Центр оперативних стандартів ЗСУ
+</footer>
+
+<script>
+const sections = document.querySelectorAll('.topic-section');
+const navLinks = document.querySelectorAll('.nav-list li a');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const id = entry.target.getAttribute('id');
+      navLinks.forEach(link => {
+        link.classList.toggle('active', link.getAttribute('href') === '#' + id);
+      });
+    }
+  });
+}, { rootMargin: '-20% 0px -70% 0px' });
+sections.forEach(section => observer.observe(section));
+</script>
+</body>
+</html>

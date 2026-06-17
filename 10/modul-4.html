@@ -1,0 +1,1297 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Модуль 4. Основи дій, комунікації та взаємодії в бою — Захист України 10 клас</title>
+<style>
+:root {
+  --ua-blue: #003087;
+  --ua-yellow: #FFD700;
+  --olive: #4A5240;
+  --olive-light: #6B7A5A;
+  --sand: #F5F0E8;
+  --ink: #1C1C1C;
+  --white: #FFFFFF;
+  --divider: #C8C0B0;
+  --accent-red: #C0392B;
+  --accent-green: #2E7D32;
+  --card-bg: #FDFBF7;
+  --info-bg: #E8F0FE;
+  --info-border: #4A90D9;
+  --warn-bg: #FFF8E1;
+  --warn-border: #F9A825;
+  --pract-bg: #E8F5E9;
+  --pract-border: #2E7D32;
+  --tip-bg: #F3E5F5;
+  --tip-border: #7B1FA2;
+  --danger-bg: #FFEBEE;
+  --danger-border: #C62828;
+  --shadow: 0 2px 12px rgba(0,0,0,0.08);
+  --font-display: 'Georgia', 'Times New Roman', serif;
+  --font-body: 'Segoe UI', 'Arial', sans-serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: var(--font-body); background: var(--sand); color: var(--ink); line-height: 1.7; font-size: 15.5px; }
+.topbar-stripe { height: 4px; background: var(--ua-yellow); }
+.topbar { background: var(--ua-blue); color: rgba(255,255,255,0.75); font-size: 0.78rem; padding: 8px 32px; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.topbar a { color: var(--ua-yellow); text-decoration: none; }
+.module-header { background: linear-gradient(135deg, #1a2410 0%, var(--olive) 50%, #2d3a1a 100%); color: var(--white); padding: 48px 32px 40px; position: relative; overflow: hidden; }
+.module-header::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 4px; background: var(--ua-yellow); }
+.module-header-inner { max-width: 1100px; margin: 0 auto; }
+.module-eyebrow { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ua-yellow); margin-bottom: 12px; }
+.module-header h1 { font-family: var(--font-display); font-size: clamp(1.6rem, 4vw, 2.4rem); font-weight: 700; line-height: 1.2; margin-bottom: 14px; max-width: 780px; }
+.module-header-meta { display: flex; flex-wrap: wrap; gap: 20px; margin-top: 20px; }
+.meta-pill { background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2); border-radius: 20px; padding: 5px 14px; font-size: 0.8rem; display: flex; align-items: center; gap: 6px; }
+.meta-pill span { opacity: 0.7; }
+.page-layout { max-width: 1100px; margin: 0 auto; padding: 40px 32px 80px; display: grid; grid-template-columns: 260px 1fr; gap: 40px; align-items: start; }
+.sidebar { position: sticky; top: 16px; }
+.nav-block { background: var(--card-bg); border: 1px solid var(--divider); border-radius: 8px; overflow: hidden; margin-bottom: 20px; }
+.nav-block-title { background: var(--ua-blue); color: var(--ua-yellow); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.10em; text-transform: uppercase; padding: 10px 16px; }
+.nav-list { list-style: none; padding: 8px 0; }
+.nav-list li a { display: flex; align-items: flex-start; gap: 8px; padding: 7px 16px; text-decoration: none; color: var(--ink); font-size: 0.82rem; line-height: 1.4; transition: background 0.15s; }
+.nav-list li a:hover { background: #EEE8DC; color: var(--ua-blue); }
+.nav-list li a .nav-num { color: var(--olive-light); font-weight: 700; flex-shrink: 0; font-size: 0.75rem; margin-top: 1px; }
+.nav-list li a.active { background: #DDD5C5; font-weight: 600; color: var(--ua-blue); }
+.content { min-width: 0; }
+.topic-section { margin-bottom: 52px; scroll-margin-top: 20px; }
+.section-header { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 24px; padding-bottom: 14px; border-bottom: 2px solid var(--divider); }
+.section-num { background: var(--ua-blue); color: var(--ua-yellow); font-family: var(--font-display); font-size: 1rem; font-weight: 700; padding: 5px 12px; border-radius: 3px; flex-shrink: 0; margin-top: 3px; }
+.section-header h2 { font-family: var(--font-display); font-size: 1.35rem; font-weight: 700; color: var(--ua-blue); line-height: 1.25; }
+.section-header p { font-size: 0.84rem; color: #666; margin-top: 4px; }
+.prose p { margin-bottom: 14px; }
+.prose h3 { font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; color: var(--olive); margin: 24px 0 10px; }
+.prose h4 { font-size: 0.82rem; font-weight: 700; color: var(--ua-blue); margin: 18px 0 8px; text-transform: uppercase; letter-spacing: 0.04em; }
+.callout { border-left: 4px solid; border-radius: 4px; padding: 16px 20px; margin: 20px 0; }
+.callout-info { background: var(--info-bg); border-color: var(--info-border); }
+.callout-warn { background: var(--warn-bg); border-color: var(--warn-border); }
+.callout-pract { background: var(--pract-bg); border-color: var(--pract-border); }
+.callout-tip { background: var(--tip-bg); border-color: var(--tip-border); }
+.callout-danger { background: var(--danger-bg); border-color: var(--danger-border); }
+.callout-title { font-weight: 700; font-size: 0.82rem; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 8px; display: flex; align-items: center; gap: 6px; }
+.callout-info .callout-title { color: var(--info-border); }
+.callout-warn .callout-title { color: #B8860B; }
+.callout-pract .callout-title { color: var(--accent-green); }
+.callout-tip .callout-title { color: #6A0080; }
+.callout-danger .callout-title { color: var(--danger-border); }
+.callout p, .callout ul, .callout ol { font-size: 0.9rem; line-height: 1.6; }
+.callout p + p { margin-top: 8px; }
+.callout ul, .callout ol { padding-left: 18px; }
+.callout ul li, .callout ol li { margin-bottom: 4px; }
+.table-wrap { overflow-x: auto; margin: 20px 0; border-radius: 6px; border: 1px solid var(--divider); }
+.data-table { width: 100%; border-collapse: collapse; font-size: 0.87rem; background: var(--white); }
+.data-table th { background: var(--ua-blue); color: var(--white); padding: 10px 14px; text-align: left; font-weight: 600; font-size: 0.82rem; }
+.data-table td { padding: 9px 14px; border-bottom: 1px solid var(--divider); vertical-align: top; line-height: 1.5; }
+.data-table tr:last-child td { border-bottom: none; }
+.data-table tr:nth-child(even) td { background: #F7F3EC; }
+.data-table tr:hover td { background: #EDE8DC; }
+.data-table td.num { font-weight: 700; color: var(--ua-blue); text-align: center; }
+.data-table td.good { color: var(--accent-green); font-weight: 600; }
+.data-table td.bad { color: var(--accent-red); }
+.definition { background: var(--white); border: 1px solid var(--divider); border-radius: 6px; padding: 16px 20px; margin: 16px 0; position: relative; }
+.definition::before { content: '📌'; position: absolute; top: 14px; right: 16px; font-size: 1rem; }
+.definition-term { font-weight: 700; font-size: 0.95rem; color: var(--ua-blue); margin-bottom: 6px; }
+.definition p { font-size: 0.88rem; color: #444; line-height: 1.6; }
+.steps-list { list-style: none; counter-reset: step-counter; margin: 16px 0; }
+.steps-list li { counter-increment: step-counter; display: flex; gap: 14px; align-items: flex-start; margin-bottom: 12px; background: var(--white); border: 1px solid var(--divider); border-radius: 5px; padding: 12px 14px; font-size: 0.9rem; line-height: 1.5; }
+.steps-list li::before { content: counter(step-counter); background: var(--ua-blue); color: var(--ua-yellow); font-weight: 700; font-size: 0.85rem; width: 26px; height: 26px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; margin: 16px 0; }
+.info-card { background: var(--card-bg); border: 1px solid var(--divider); border-radius: 6px; padding: 18px; font-size: 0.87rem; }
+.info-card .card-title { font-weight: 700; color: var(--ua-blue); margin-bottom: 8px; font-size: 0.9rem; display: flex; align-items: center; gap: 8px; }
+.info-card ul { padding-left: 16px; line-height: 1.65; }
+.info-card ul li { margin-bottom: 3px; }
+.activity-box { background: var(--card-bg); border: 1px solid var(--divider); border-radius: 8px; padding: 24px; margin: 20px 0; }
+.activity-header { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--divider); }
+.activity-icon { font-size: 1.6rem; }
+.activity-header h4 { font-family: var(--font-display); font-size: 1rem; font-weight: 700; color: var(--ua-blue); line-height: 1.3; }
+.activity-header .activity-time { font-size: 0.78rem; color: #888; margin-top: 2px; }
+.activity-content { font-size: 0.88rem; line-height: 1.65; }
+.activity-content p { margin-bottom: 10px; }
+.activity-content ul, .activity-content ol { padding-left: 18px; }
+.activity-content li { margin-bottom: 5px; }
+.video-link { display: inline-flex; align-items: center; gap: 8px; background: #B71C1C; color: var(--white); text-decoration: none; padding: 7px 16px; border-radius: 4px; font-size: 0.83rem; font-weight: 600; margin: 4px 0; transition: background 0.15s; }
+.video-link:hover { background: #8B0000; }
+.video-link::before { content: '▶'; }
+.breadcrumb { display: flex; align-items: center; gap: 8px; font-size: 0.8rem; color: #888; margin-bottom: 28px; flex-wrap: wrap; }
+.breadcrumb a { color: var(--ua-blue); text-decoration: none; }
+.breadcrumb .sep { color: #CCC; }
+.breadcrumb .current { color: var(--ink); font-weight: 600; }
+.module-progress { display: flex; gap: 4px; margin-bottom: 28px; }
+.progress-dot { width: 28px; height: 6px; border-radius: 3px; background: var(--divider); }
+.progress-dot.done { background: var(--ua-blue); }
+.progress-dot.current { background: var(--ua-yellow); }
+.page-nav { display: flex; justify-content: space-between; gap: 16px; margin-top: 48px; padding-top: 24px; border-top: 2px solid var(--divider); flex-wrap: wrap; }
+.page-nav a { display: flex; align-items: center; gap: 8px; color: var(--ua-blue); text-decoration: none; font-weight: 600; font-size: 0.9rem; padding: 10px 16px; border: 1px solid var(--divider); border-radius: 5px; background: var(--card-bg); transition: box-shadow 0.15s; }
+.page-nav a:hover { box-shadow: var(--shadow); }
+
+/* DOMAIN OF BATTLE COMPONENTS */
+.battle-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 14px; margin: 16px 0; }
+.battle-card { border-radius: 6px; padding: 16px; font-size: 0.85rem; border: 1px solid rgba(0,0,0,0.1); }
+.battle-card .battle-icon { font-size: 1.8rem; margin-bottom: 6px; }
+.battle-card .battle-name { font-weight: 700; font-size: 0.92rem; margin-bottom: 6px; }
+.battle-fire { background: #FFEBEE; border-color: #E57373; }
+.battle-strike { background: #FFF3E0; border-color: #FFB74D; }
+.battle-maneuver { background: #E3F2FD; border-color: #64B5F6; }
+.battle-rep { background: #F3E5F5; border-color: #BA68C8; }
+
+/* MANEUVER FORMS */
+.maneuver-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; margin: 20px 0; }
+.maneuver-card { background: var(--white); border: 1px solid var(--divider); border-radius: 6px; padding: 16px; font-size: 0.86rem; }
+.maneuver-card .maneuver-num { display: inline-block; background: var(--ua-blue); color: var(--ua-yellow); width: 24px; height: 24px; border-radius: 50%; text-align: center; line-height: 24px; font-weight: 700; font-size: 0.8rem; margin-right: 8px; }
+.maneuver-card .maneuver-name { font-weight: 700; color: var(--ua-blue); font-size: 0.92rem; }
+.maneuver-card p { margin-top: 8px; line-height: 1.6; color: #444; }
+.maneuver-card .m-pro { color: var(--accent-green); font-size: 0.82rem; margin-top: 6px; }
+.maneuver-card .m-con { color: var(--accent-red); font-size: 0.82rem; }
+
+/* MOVEMENT TYPES */
+.movement-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 14px; margin: 16px 0; }
+.movement-card { background: var(--card-bg); border: 1px solid var(--divider); border-radius: 6px; padding: 14px; font-size: 0.85rem; }
+.movement-card .movement-icon { font-size: 1.6rem; }
+.movement-card .movement-name { font-weight: 700; color: var(--ua-blue); margin: 6px 0; }
+
+/* MASKING SPECTRUM */
+.spectrum-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 14px; margin: 16px 0; }
+.spectrum-card { border-radius: 6px; padding: 16px; font-size: 0.85rem; border: 1px solid rgba(0,0,0,0.1); }
+.spectrum-optical { background: #E8F5E9; border-color: #66BB6A; }
+.spectrum-thermal { background: #FFF3E0; border-color: #FFA726; }
+.spectrum-rf { background: #E3F2FD; border-color: #42A5F5; }
+.spectrum-ai { background: #F3E5F5; border-color: #AB47BC; }
+.spectrum-card .spectrum-icon { font-size: 1.8rem; margin-bottom: 6px; }
+.spectrum-card .spectrum-name { font-weight: 700; font-size: 0.92rem; margin-bottom: 6px; }
+.spectrum-card ul { padding-left: 14px; line-height: 1.6; font-size: 0.82rem; }
+
+/* RADIO CODE EXAMPLE */
+.radio-example { background: #1a1a2e; color: #00ff88; font-family: 'Courier New', monospace; border-radius: 8px; padding: 20px; margin: 16px 0; font-size: 0.9rem; line-height: 1.8; }
+.radio-example .radio-label { color: #888; font-size: 0.75rem; text-transform: uppercase; margin-bottom: 8px; }
+
+/* OPSEC STEPS */
+.opsec-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; margin: 16px 0; }
+.opsec-card { background: var(--white); border: 2px solid var(--ua-blue); border-radius: 6px; padding: 14px; font-size: 0.84rem; }
+.opsec-card .opsec-num { font-size: 1.6rem; font-weight: 900; color: var(--ua-blue); opacity: 0.25; }
+.opsec-card .opsec-name { font-weight: 700; color: var(--ua-blue); margin: 4px 0; font-size: 0.88rem; }
+
+/* COMM MODELS */
+.comm-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin: 16px 0; }
+.comm-card { background: var(--white); border: 1px solid var(--divider); border-radius: 6px; padding: 16px; font-size: 0.85rem; }
+.comm-card .comm-title { font-weight: 700; color: var(--ua-blue); margin-bottom: 8px; }
+.comm-card .comm-chain { font-family: monospace; background: #F0EDE5; padding: 6px 10px; border-radius: 4px; font-size: 0.8rem; margin: 8px 0; }
+
+@media (max-width: 860px) {
+  .page-layout { grid-template-columns: 1fr; }
+  .sidebar { position: static; }
+  .module-header { padding: 36px 16px 30px; }
+  .page-layout { padding: 24px 16px 60px; }
+}
+</style>
+</head>
+<body>
+
+<div class="topbar-stripe"></div>
+<div class="topbar">
+  <div>📘 <a href="../index.html">Довідник викладача «Захист України»</a> › 10 клас › Модуль 4</div>
+  <div>МОН 2024 · Інтегрований курс</div>
+</div>
+
+<header class="module-header">
+  <div class="module-header-inner">
+    <div class="module-eyebrow">10 клас · Модуль 4 · Тренінг №6</div>
+    <h1>Основи дій, комунікації та взаємодії в бою</h1>
+    <div class="module-header-meta">
+      <div class="meta-pill">📋 <span>8 уроків · ~360 хв</span></div>
+      <div class="meta-pill">🎯 <span>Тактика, маскування, зв'язок</span></div>
+      <div class="meta-pill">📡 <span>Радіозв'язок, OPSEC</span></div>
+      <div class="meta-pill">🏃 <span>Практичні пересування</span></div>
+    </div>
+  </div>
+</header>
+
+<div class="page-layout">
+  <aside class="sidebar">
+    <div class="nav-block">
+      <div class="nav-block-title">Теми модуля</div>
+      <ul class="nav-list">
+        <li><a href="#tema-4-1"><span class="nav-num">4.1</span>Практика метання гранат</a></li>
+        <li><a href="#tema-4-2"><span class="nav-num">4.2</span>Подолання загороджень. Смуга перешкод</a></li>
+        <li><a href="#tema-4-3"><span class="nav-num">4.3</span>Основи тактики та види бою</a></li>
+        <li><a href="#tema-4-4"><span class="nav-num">4.4</span>Форми маневру та маневрена війна</a></li>
+        <li><a href="#tema-4-5"><span class="nav-num">4.5</span>Основи маскування</a></li>
+        <li><a href="#tema-4-6"><span class="nav-num">4.6</span>Передача інформації в бою</a></li>
+        <li><a href="#tema-4-7"><span class="nav-num">4.7</span>Радіозв'язок: коди та переговори</a></li>
+        <li><a href="#tema-4-8"><span class="nav-num">4.8</span>Способи пересування в бою</a></li>
+        <li><a href="#tema-4-9"><span class="nav-num">4.9</span>Патрулювання, чергування на посту</a></li>
+        <li><a href="#metodychni"><span class="nav-num">🔧</span>Методичні поради</a></li>
+      </ul>
+    </div>
+    <div class="nav-block">
+      <div class="nav-block-title">Навігація курсу</div>
+      <ul class="nav-list">
+        <li><a href="../index.html"><span class="nav-num">🏠</span>Головна</a></li>
+        <li><a href="modul-3.html"><span class="nav-num">←</span>Модуль 3. Зброя</a></li>
+        <li><a href="modul-5.html"><span class="nav-num">→</span>Модуль 5. Орієнтування</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <main class="content">
+
+    <div class="breadcrumb">
+      <a href="../index.html">Довідник</a>
+      <span class="sep">/</span>
+      <span>10 клас</span>
+      <span class="sep">/</span>
+      <span class="current">Модуль 4. Основи дій, комунікації та взаємодії в бою</span>
+    </div>
+
+    <div class="module-progress">
+      <div class="progress-dot done"></div>
+      <div class="progress-dot done"></div>
+      <div class="progress-dot done"></div>
+      <div class="progress-dot current"></div>
+      <div class="progress-dot"></div>
+      <div class="progress-dot"></div>
+    </div>
+
+    <div class="callout callout-info">
+      <div class="callout-title">ℹ️ Загальний огляд модуля</div>
+      <p>Модуль 4 переходить від індивідуальної стрілецької підготовки до <strong>тактики груп</strong>: як рухатись, маскуватись, спілкуватись і взаємодіяти в умовах бою. Учні дізнаються, що сучасний бій — мультидоменний і мультиспектральний: ворог шукає тебе не лише очима, а тепловізором, радіоелектронною розвідкою та штучним інтелектом.</p>
+      <p>Джерела: Тренінг №6 (МОН, 2025 р., гриф №БО-0550-25), матеріали 12-ї бригади «Азов» НГУ, OSINT-агенції Molfar.</p>
+    </div>
+
+    <!-- ===================== 4.1 ===================== -->
+    <section class="topic-section" id="tema-4-1">
+      <div class="section-header">
+        <div class="section-num">4.1</div>
+        <div>
+          <h2>Практика поводження з гранатами: метання та тактика</h2>
+          <p>Урок 1 · 45 хв · Повністю практичне заняття</p>
+        </div>
+      </div>
+      <div class="prose">
+
+        <div class="callout callout-warn">
+          <div class="callout-title">⚠️ Підготовка вчителя: ключові вимоги</div>
+          <ul>
+            <li>Практикувати метання гранат мінімум 1 раз на 4 тижні (особиста підготовка)</li>
+            <li>Реквізит: тренувальні гранати — гумові (імітація наступальних) мінімум 6 шт, металеві (імітація оборонних, Ф-1) мінімум 6 шт. Пофарбувати яскравим кольором/скотчем для швидкого пошуку</li>
+            <li>ЗІЗ: шоломи, бронежилети, РПС з підсумками для гранат — 2–3 комплекти</li>
+            <li>Місце: ізольоване подвір'я, шкільний стадіон, окоп/щілина або спеціальна будівля</li>
+            <li>Якщо повітряна тривога — заняття переноситься в укриття</li>
+          </ul>
+        </div>
+
+        <h3>Правила безпеки (повідомити на початку)</h3>
+        <ol class="steps-list">
+          <li>Перш ніж метнути гранату — обрати укриття для себе</li>
+          <li>Головна мета — влучно метати гранату</li>
+          <li>При вигуку «Граната!» — негайно впасти, притиснутися до землі, схрестити ноги (захист стегнових артерій)</li>
+          <li>При виявленні предмета, схожого на гранату/запал — НЕ торкатися, повідомити правоохоронців</li>
+          <li>Усі учасники практики метання — у шоломах, бронежилетах, РПС</li>
+        </ol>
+
+        <h3>Тактичні варіанти застосування гранат бойовою двійкою</h3>
+
+        <div class="card-grid">
+          <div class="info-card">
+            <div class="card-title">🎯 Варіант 1: Подавлення + захід</div>
+            <ul>
+              <li>Один з двійки придушує ворожу позицію/нору вогнем (з макета автомата або страйкболу)</li>
+              <li>Другий заходить з боку, щоб не потрапити в зону ураження</li>
+              <li>Кут між «вершинами» (ворожий стрілець — гранатометник) — не більше 60°</li>
+              <li>Метає гранати в позицію</li>
+            </ul>
+          </div>
+          <div class="info-card">
+            <div class="card-title">🎯 Варіант 2: Рух по траншеї</div>
+            <ul>
+              <li>Двійка йде по траншеї один за одним</li>
+              <li>Перший несе у сумці скидання 4–6 гранат, веде «вогонь» з макета</li>
+              <li>Другий готує і подає гранати при потребі</li>
+              <li>Узгоджена робота під час зачистки</li>
+            </ul>
+          </div>
+        </div>
+
+        <h3>Як обрати укриття для метання</h3>
+
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr><th>Тип укриття</th><th>Придатність</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Окопи, вирви</strong></td><td>Найкраще укриття — повний захист від осколків</td></tr>
+              <tr><td><strong>Стіни з цегли</strong></td><td>Мінімум 380 мм товщини — достатньо для захисту</td></tr>
+              <tr><td><strong>Бетонні стіни</strong></td><td>Надійний захист незалежно від товщини (в межах розумного)</td></tr>
+              <tr><td><strong>Обладнання позиції для утримання</strong></td><td>Затягнути сітками вікна та отвори будівель, сітки над окопами, норами, ходами — захист від закидання гранат всередину</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout callout-pract">
+          <div class="callout-title">✅ Методи зниження ефективності ворожих гранат</div>
+          <p>Обладнання позиції повинно включати елементи, що перешкоджають закиданню гранат всередину: сітки на вікнах, дверях, входах в укриття. Граната, що влучила в сітку, не долетить до особового складу.</p>
+        </div>
+
+        <div class="callout callout-tip">
+          <div class="callout-title">💡 Рекомендація для занять</div>
+          <p>Запишіть заняття з квадрокоптера або камер над навчальним місцем — для подальшого аналізу учнями власної роботи. Обов'язково попередьте про запис заздалегідь; ті, хто не бажає — працюють після вимкнення.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================== 4.2 ===================== -->
+    <section class="topic-section" id="tema-4-2">
+      <div class="section-header">
+        <div class="section-num">4.2</div>
+        <div>
+          <h2>Подолання інженерних загороджень. Смуга перешкод</h2>
+          <p>Урок 2 · 45 хв · Практичне відпрацювання</p>
+        </div>
+      </div>
+      <div class="prose">
+
+        <h3>Типи невибухових загороджень та їх функція</h3>
+
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr><th>Тип загородження</th><th>Функція</th><th>Спосіб подолання</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Дротяні перепони</strong></td><td>Уповільнення руху, затримка для ведення вогню</td><td>Різання, переповзання під/через, використання підручних засобів</td></tr>
+              <tr><td><strong>Рови, окопи</strong></td><td>Зупинка техніки, ускладнення піхотного руху</td><td>Перестрибування, обхід, спеціальне обладнання</td></tr>
+              <tr><td><strong>Комбіновані загородження</strong></td><td>Найефективніші — поєднання кількох типів</td><td>Потребує командної роботи та розвідки маршруту</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Методи виявлення загороджень</h3>
+        <ul style="padding-left:20px; line-height:1.9; font-size:0.9rem;">
+          <li><strong>Візуальний пошук:</strong> уважний огляд місцевості, особливо нетипових об'єктів і слідів земляних робіт</li>
+          <li><strong>Зондування:</strong> обережна перевірка ґрунту довгим предметом перед рухом по підозрілій ділянці</li>
+        </ul>
+
+        <!-- ACTIVITY: СМУГА ПЕРЕШКОД -->
+        <div class="activity-box">
+          <div class="activity-header">
+            <div class="activity-icon">🏃‍♂️</div>
+            <div>
+              <h4>Практична активність: Подолання смуги перешкод</h4>
+              <div class="activity-time">25 хв · Групи 6–7 учнів з гендерним балансом</div>
+            </div>
+          </div>
+          <div class="activity-content">
+            <p>Групи виходять на дистанцію почергово. Вчитель фіксує час подолання. <strong>Команда, яка подолала за найкоротший час БЕЗ ВТРАТ (забезпечувала вогневе прикриття), отримує найвищий бал.</strong></p>
+
+            <h4>Два підходи до облаштування смуги перешкод</h4>
+            <div class="table-wrap">
+              <table class="data-table">
+                <thead>
+                  <tr><th>Підхід</th><th>Опис</th><th>Недоліки</th></tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Єдина загальновійськова смуга перешкод (ЗСП)</strong></td>
+                    <td>Стандартизований комплекс: високі стіни, зруйновані мости, вертикальні сітки, траншеї, лабіринти</td>
+                    <td>Велика площа, капітальне будівництво, високі витрати</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Самостійно обладнана (імпровізована)</strong></td>
+                    <td>Імітація ключових перешкод доступними засобами — підходить для шкіл і осередків</td>
+                    <td>Менш реалістична, але достатня для базової практики</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="callout callout-tip">
+              <div class="callout-title">💡 Приклад розробленої смуги</div>
+              <p>Зразок смуги перешкод для «Захист України» розробив Комунальний заклад позашкільної освіти «ПАДІЮН». Звертайтеся до методичних матеріалів освітнього центру за подробицями розмітки та елементів.</p>
+            </div>
+
+            <p><strong>Рефлексія наприкінці (5 хв):</strong> обговорення найшвидшого та найбезпечнішого методу подолання. Чому команда з прикриттям виграла навіть якщо була не найшвидшою?</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================== 4.3 ===================== -->
+    <section class="topic-section" id="tema-4-3">
+      <div class="section-header">
+        <div class="section-num">4.3</div>
+        <div>
+          <h2>Основи тактики та види бою</h2>
+          <p>Уроки 3–4 · 90 хв · Теорія + інтерактивна вправа</p>
+        </div>
+      </div>
+      <div class="prose">
+
+        <h3>Три рівні воєнного мистецтва</h3>
+
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr><th>Рівень</th><th>Що вирішує</th><th>Приклад</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Стратегія</strong></td><td>Рішення держави та найвищого командування — що робити у війні в цілому</td><td>Загальний план відсічі агресії, мобілізаційна політика</td></tr>
+              <tr><td><strong>Оперативне мистецтво</strong></td><td>Планування великих операцій</td><td>Операція зі звільнення області, Харківський контрнаступ</td></tr>
+              <tr><td><strong>Тактика</strong></td><td>Дії невеликих підрозділів у конкретному бою — найнижчий, але дуже важливий рівень</td><td>Як відділення штурмує позицію, як двійка пересувається</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="definition">
+          <div class="definition-term">Бій</div>
+          <p>Організоване зіткнення між підрозділами, яке має конкретну мету, час і місце.</p>
+        </div>
+
+        <div class="definition">
+          <div class="definition-term">Загальновійськовий бій</div>
+          <p>Коли різні роди військ (піхота, артилерія, танки, авіація) діють разом: узгоджують удари, ведуть вогонь, виконують маневри для спільної мети.</p>
+        </div>
+
+        <h3>Складові частини бою</h3>
+
+        <div class="battle-grid">
+          <div class="battle-card battle-fire">
+            <div class="battle-icon">🔥</div>
+            <div class="battle-name">Вогонь</div>
+            <p>Ураження противника засобами поразки: артилерія, БПЛА-камікадзе, стрілецька зброя</p>
+          </div>
+          <div class="battle-card battle-strike">
+            <div class="battle-icon">💥</div>
+            <div class="battle-name">Удар</div>
+            <p>Концентроване застосування сили в певній точці для досягнення вирішального ефекту</p>
+          </div>
+          <div class="battle-card battle-maneuver">
+            <div class="battle-icon">🚀</div>
+            <div class="battle-name">Маневр</div>
+            <p>Рух підрозділів для зайняття вигідного положення: піхота, техніка, охоплення</p>
+          </div>
+          <div class="battle-card battle-rep">
+            <div class="battle-icon">📡</div>
+            <div class="battle-name">РЕП (придушення)</div>
+            <p>Радіоелектронне придушення — «глушилки», протидія зв'язку та навігації ворога</p>
+          </div>
+        </div>
+
+        <div class="callout callout-info">
+          <div class="callout-title">ℹ️ Чому сучасний бій «наземно-повітряний» і мультидоменний</div>
+          <p>Традиційний бій на суші тепер невіддільний від інших доменів: <strong>Starlink</strong> забезпечує зв'язок, <strong>GPS</strong> — навігацію, <strong>кібератаки</strong> можуть паралізувати системи зв'язку та навігації ворога ще до початку наземної операції. БПЛА (повітря) і кіберпростір інтегровані в кожен загальновійськовий бій.</p>
+        </div>
+
+        <h3>Оборона: коли вона переможна</h3>
+
+        <div class="definition">
+          <div class="definition-term">Оборона</div>
+          <p>Підрозділ заздалегідь займає вигідні позиції, готується до бою і чекає наступу противника, щоб зупинити його, завдати максимальних втрат, виграти час, зберегти важливу місцевість.</p>
+        </div>
+
+        <p><strong>Чому оборона сильна:</strong> оборонці приходять на місце раніше і встигають окопатися, замаскуватися, поставити загородження, продумати вогонь.</p>
+
+        <h4>Риси успішної оборони</h4>
+
+        <div class="card-grid">
+          <div class="info-card">
+            <div class="card-title">🎯 Порушення планів противника</div>
+            <ul>
+              <li>Виявлення і знищення розвідки ворога</li>
+              <li>Розбиття колон</li>
+              <li>Атака зв'язку, штабів, техніки</li>
+            </ul>
+          </div>
+          <div class="info-card">
+            <div class="card-title">🔄 Гнучкість</div>
+            <ul>
+              <li>Резерв, готовий до перекидання</li>
+              <li>Запасні позиції</li>
+              <li>Готовність змінити напрямок зусиль</li>
+            </ul>
+          </div>
+          <div class="info-card">
+            <div class="card-title">🏃 Маневр навіть в обороні</div>
+            <ul>
+              <li>Зміна позицій</li>
+              <li>Висування для контратак</li>
+            </ul>
+          </div>
+          <div class="info-card">
+            <div class="card-title">⏱️ Підготовка</div>
+            <ul>
+              <li>Кращі окопи та бліндажі</li>
+              <li>Точніше продуманий вогонь</li>
+              <li>Сильніша оборона при більшому часі</li>
+            </ul>
+          </div>
+        </div>
+
+        <h4>Три типи оборони</h4>
+
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr><th>Тип</th><th>Принцип</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Позиційна оборона</strong></td><td>Головне — утримати конкретну місцевість («Це село/висоту/міст ми не віддамо»)</td></tr>
+              <tr><td><strong>Рухома оборона</strong></td><td>Керувати рухом противника, вимотувати і нищити на вигідних рубежах. Більше маневру й контратак</td></tr>
+              <tr><td><strong>Організований відхід</strong></td><td>Виграти час, виманити ворога в невигідне місце, зберегти особовий склад</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Наступ: чотири ключові риси</h3>
+
+        <div class="definition">
+          <div class="definition-term">Наступ</div>
+          <p>Підрозділи активно рухаються вперед, щоб перемогти противника, захопити вигідну територію і не дати ворогу діяти за своїм планом.</p>
+        </div>
+
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr><th>Риса</th><th>Зміст</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Рішучість</strong></td><td>Сміливість діяти, брати відповідальність, не вагатися. Командир бачить можливість — використовує її навіть з обмеженою інформацією</td></tr>
+              <tr><td><strong>Концентрація</strong></td><td>Сили зібрані в потрібному місці й час — там, де треба завдати вирішального удару</td></tr>
+              <tr><td><strong>Темп</strong></td><td>Ритм і швидкість операції. Постійний тиск на ворога, не даючи йому відпочити чи зібратися</td></tr>
+              <tr><td><strong>Несподіванка</strong></td><td>Дія там, де і коли ворог не очікує</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h4>Чотири кроки наступальної операції</h4>
+        <ol class="steps-list">
+          <li><strong>Знайти противника</strong> — розвідка та виявлення позицій</li>
+          <li><strong>Скувати його</strong> — позбавити свободи маневру, прив'язати вогнем</li>
+          <li><strong>Знищити</strong> — прорвати оборонні позиції</li>
+          <li><strong>Закріпитися</strong> — перевірити район, відновити боєздатність, перейти до наступного етапу</li>
+        </ol>
+
+        <div class="callout callout-tip">
+          <div class="callout-title">💡 Відеоматеріали для уроку</div>
+          <ul style="font-size:0.88rem; line-height:1.8;">
+            <li><a href="https://www.youtube.com/watch?v=WmbCTAttK1c" class="video-link" target="_blank" rel="noopener">«Секрети стратегії і тактики. Військові хитрощі. Наступ та контрнаступ. Від Канн до Ізюма» (WAS, на швидкості х2)</a></li>
+            <li><a href="https://www.youtube.com/watch?v=WFVt0RaI_r4" class="video-link" target="_blank" rel="noopener">«Харківський контрнаступ. Земля»</a></li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================== 4.4 ===================== -->
+    <section class="topic-section" id="tema-4-4">
+      <div class="section-header">
+        <div class="section-num">4.4</div>
+        <div>
+          <h2>Форми маневру та маневрена війна</h2>
+          <p>Продовження уроків 3–4 · Теорія з прикладами</p>
+        </div>
+      </div>
+      <div class="prose">
+
+        <p>Військові не просто «йдуть вперед». Вони рухаються різними способами, щоб обійти противника, знайти слабкі місця і перемогти з мінімальними втратами.</p>
+
+        <h3>П'ять основних форм маневру</h3>
+
+        <div class="maneuver-grid">
+          <div class="maneuver-card">
+            <span class="maneuver-num">1</span><span class="maneuver-name">Фронтальна атака</span>
+            <p>Підрозділ наступає прямо вперед, на позиції ворога.</p>
+            <div class="m-pro">+ Просто і швидко</div>
+            <div class="m-con">− Небезпечно: ворог добре бачить і б'є по тих, хто наступає. Застосовується, коли час критичний або противник слабший</div>
+          </div>
+          <div class="maneuver-card">
+            <span class="maneuver-num">2</span><span class="maneuver-name">Охоплення (атака з флангу)</span>
+            <p>Замість «лоб у лоб» — обхід ворога збоку і удар по флангу.</p>
+            <div class="m-pro">+ Зазвичай краще за фронтальну атаку: менші втрати, більше можливостей знищити противника</div>
+            <div class="m-con">− Якщо вразливого флангу немає — його створюють штучно</div>
+          </div>
+          <div class="maneuver-card">
+            <span class="maneuver-num">3</span><span class="maneuver-name">Обхідний маневр</span>
+            <p>Підрозділ обходить ворога так далеко, що б'є прямо в тил і змушує покинути позиції.</p>
+            <div class="m-pro">+ Відмінність від охоплення: ворог змушений ПЕРЕМІСТИТИСЯ, а не лишається на місці</div>
+            <div class="m-con">− Притаманний великим силам. Піхотний взвод — лише допоміжний елемент</div>
+          </div>
+          <div class="maneuver-card">
+            <span class="maneuver-num">4</span><span class="maneuver-name">Проникнення</span>
+            <p>Тихий, непомітний рух через райони, де є ворог — підійти з тилу, зайняти важливу позицію, атакувати несподівано.</p>
+            <div class="m-pro">+ Зазвичай вночі або в обмеженій видимості</div>
+            <div class="m-con">− Високий ризик виявлення, потребує дисципліни</div>
+          </div>
+          <div class="maneuver-card">
+            <span class="maneuver-num">5</span><span class="maneuver-name">Прорив (penetration)</span>
+            <p>Атака в дуже конкретну, вузьку точку оборони, де вона слабка — «розрізати» лінію та знищувати по частинах.</p>
+            <div class="m-pro">+ Застосовується, коли немає можливості обійти, виявлено слабкі місця, треба діяти швидко</div>
+          </div>
+          <div class="maneuver-card">
+            <span class="maneuver-num">6</span><span class="maneuver-name">Відхід</span>
+            <p>Маневр для виходу з-під ударів переважаючих сил противника, недопущення оточення, зайняття вигіднішого рубежу.</p>
+            <div class="m-con">− Проводиться ТІЛЬКИ з дозволу або за наказом старшого командира</div>
+          </div>
+        </div>
+
+        <h3>Маневрена війна vs. війна на виснаження</h3>
+
+        <div class="definition">
+          <div class="definition-term">Маневрена війна</div>
+          <p>Підхід до війни, де головна мета — не просто знищити максимум сил противника, а позбавити його можливості ефективно діяти. Швидкість, гнучкість, обхід, хитрість, вибір слабких місць — не лобові атаки.</p>
+        </div>
+
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr><th>Маневрена війна</th><th>Війна на виснаження</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Швидкість і рух</td><td>Лобові зіткнення</td></tr>
+              <tr><td>Удари по слабких місцях</td><td>Постійні втрати з обох сторін</td></tr>
+              <tr><td>Гнучкість і несподіваність</td><td>Повільний тиск «лоб у лоб»</td></tr>
+              <tr><td>Мета: зламати систему ворога</td><td>Мета: «перебити» сили ворога</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout callout-info">
+          <div class="callout-title">ℹ️ Асиметричні дії — приклад України</div>
+          <p>Слабша сторона компенсує меншу кількість сил/техніки нестандартними способами: бити по логістиці замість танків, застосовувати дрони проти значно більшої сили, уникати лобових атак, використовувати технічні та інформаційні переваги. <strong>Морські дрони</strong> — яскравий приклад: без власного потужного флоту Україна змусила кораблі Чорноморського флоту РФ покинути Крим.</p>
+        </div>
+
+        <div class="callout callout-pract">
+          <div class="callout-title">✅ Домашнє завдання</div>
+          <p>Підготувати коротку презентацію про одну з операцій України, яка є прикладом асиметричних дій у війні проти Росії.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================== 4.5 ===================== -->
+    <section class="topic-section" id="tema-4-5">
+      <div class="section-header">
+        <div class="section-num">4.5</div>
+        <div>
+          <h2>Основи маскування: мультиспектральна війна</h2>
+          <p>Урок 5 · 45 хв · Теорія + аналіз кейсів</p>
+        </div>
+      </div>
+      <div class="prose">
+
+        <div class="definition">
+          <div class="definition-term">Маскування vs. укриття</div>
+          <p><strong>Маскування</strong> — комплекс заходів для запобігання виявленню об'єкта засобами розвідки (приховування). <strong>Укриття</strong> — інженерні споруди чи природні бар'єри для фізичного захисту від ураження (уламки, кулі). <strong>Маскування завжди має пріоритет: якщо об'єкт не виявлено — його не уражено.</strong> Укриття без якісного маскування — лише добре укріплена, але виявлена мішень.</p>
+        </div>
+
+        <h3>Чотири спектри сучасної розвідки</h3>
+
+        <div class="spectrum-grid">
+          <div class="spectrum-card spectrum-optical">
+            <div class="spectrum-icon">👁️</div>
+            <div class="spectrum-name">Оптичний (видимий)</div>
+            <ul>
+              <li>Розбиття контурів — головний принцип</li>
+              <li>Приховування тіні</li>
+              <li>Найбільш видимі ознаки: сліди руху техніки, вийнятий ґрунт</li>
+              <li>Дисципліна: роботи в темний час доби, мінімізація часу зведення споруд</li>
+            </ul>
+          </div>
+          <div class="spectrum-card spectrum-thermal">
+            <div class="spectrum-icon">🌡️</div>
+            <div class="spectrum-name">Тепловізійний (ІЧ)</div>
+            <ul>
+              <li>Тепловізор фіксує випромінювання ПОВЕРХНІ об'єкта</li>
+              <li>Взимку: будь-яке тепло на холодному фоні дуже видиме</li>
+              <li>Звичайні матеріали НЕ ефективні — потрібні спеціалізовані</li>
+              <li>Принцип бар'єра: поглинальний шар + вентиляція + розсіювання сигнатури</li>
+            </ul>
+          </div>
+          <div class="spectrum-card spectrum-rf">
+            <div class="spectrum-icon">📡</div>
+            <div class="spectrum-name">Радіочастотний (РЧ)</div>
+            <ul>
+              <li>Будь-який активний зв'язок створює сигнатуру</li>
+              <li><strong>Starlink — найвища сигнатурна ціль</strong> (постійна активність)</li>
+              <li>Аналізатори спектра (Tiny SA) виявляють джерела</li>
+              <li>Радіодисципліна: мінімізація часу в ефірі, фізичне приховування антен</li>
+            </ul>
+          </div>
+          <div class="spectrum-card spectrum-ai">
+            <div class="spectrum-icon">🤖</div>
+            <div class="spectrum-name">Штучний інтелект / машинний зір</div>
+            <ul>
+              <li>Найновіший виклик — алгоритми виявляють те, що людина не помітить</li>
+              <li>Алгоритми мають свої «вразливості» (відрізняються від людського зору)</li>
+              <li>Приклад логіки: натренований на темний обрис техніки можна «обманути» стробоскопом або димом</li>
+            </ul>
+          </div>
+        </div>
+
+        <h3>Демаскуючі ознаки: на що звертати увагу</h3>
+
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr><th>Ознака</th><th>Чому критична</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Сліди руху</strong></td><td>Видимі колії техніки чи сліди особового складу, що ведуть до позицій</td></tr>
+              <tr><td><strong>Вийнятий ґрунт</strong></td><td>Свіжий ґрунт від фортифікаційних робіт відрізняється кольором/фактурою від фону. Має бути вивезений або розкиданий і замаскований</td></tr>
+              <tr><td><strong>Теплові плями (взимку)</strong></td><td>Нагріті труби буржуйок, теплі будинки на тлі холодних покинутих будівель — критично видимі вночі</td></tr>
+              <tr><td><strong>Тепло рослинності (влітку)</strong></td><td>Рослинність накопичує і випромінює тепло — потребує додаткового термомаскування</td></tr>
+              <tr><td><strong>Антени Starlink</strong></td><td>Без чохлів і вентиляції «світиться як маяк» в РЧ і ІЧ-спектрі одночасно</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="activity-box">
+          <div class="activity-header">
+            <div class="activity-icon">🔍</div>
+            <div>
+              <h4>Практична активність: Аналіз кейсів аеророзвідки</h4>
+              <div class="activity-time">10 хв · Аналіз 4–5 фото/відео</div>
+            </div>
+          </div>
+          <div class="activity-content">
+            <p>Покажіть фотографії/відео з аеророзвідки (джерела: 46 ОАБр ДШВ, «Повернись Живим», Армія TV, «Азов»). Завдання учнів: розпізнати позиції, техніку та демаскуючі ознаки. Обговорити: сліди заїзду техніки, вдале/невдале маскування броньованої та автомобільної техніки, артилерії.</p>
+            <p><strong>Приклад для обговорення:</strong> розвідка 12-ї бригади спецназу НГУ «Азов» за допомогою розвідувального безпілотника виявила незвичайну позицію мінометного розрахунку — обговорити, чим маскування цієї позиції було особливим (і чому все ж не спрацювало).</p>
+          </div>
+        </div>
+
+        <div class="callout callout-pract">
+          <div class="callout-title">✅ Домашнє завдання (варіант на вибір)</div>
+          <p><strong>Варіант 1:</strong> Скласти список 5 найпоширеніших помилок маскування (блиск металу, темні плями, неправильний рельєф, шум тощо) і пояснити, як їх уникнути.</p>
+          <p><strong>Варіант 2:</strong> «Знайди 5 природних укриттів» — обрати ділянку біля дому/школи, знайти 5 об'єктів для маскування/укриття (кущі, дерева, підвищення, ями, тіні), пояснити, як кожен допомагає залишатися непомітним.</p>
+        </div>
+
+        <div class="callout callout-tip">
+          <div class="callout-title">💡 Відеоматеріали для уроку</div>
+          <ul style="font-size:0.88rem; line-height:1.8;">
+            <li><a href="https://www.youtube.com/watch?v=cGYF1rfOCqM" class="video-link" target="_blank" rel="noopener">Армія TV: «Стати невидимим для тепловізора і нічника» (експеримент)</a></li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================== 4.6 ===================== -->
+    <section class="topic-section" id="tema-4-6">
+      <div class="section-header">
+        <div class="section-num">4.6</div>
+        <div>
+          <h2>Передача інформації в умовах бойових дій</h2>
+          <p>Урок 6 · 45 хв · Теорія + Milchat демонстрація</p>
+        </div>
+      </div>
+      <div class="prose">
+
+        <div class="definition">
+          <div class="definition-term">«Туман війни» (Fog of war)</div>
+          <p>Військовий термін, що означає неповну, неточну, нечітку та мінливу інформацію про становище театру воєнних дій.</p>
+        </div>
+
+        <h3>Що створює «туман війни»</h3>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr><th>Фактор</th><th>Опис</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Відсутність/неточність даних</strong></td><td>Інформація фізично недоступна, застаріла або помилкова (людський фактор, технічна помилка)</td></tr>
+              <tr><td><strong>Протидія противника (РЕБ)</strong></td><td>Ворог застосовує радіоелектронну боротьбу або маскування</td></tr>
+              <tr><td><strong>Стрес та втома</strong></td><td>Рішення під тиском і страхом підвищують ймовірність помилок</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout callout-info">
+          <div class="callout-title">ℹ️ Як зменшити «туман війни»</div>
+          <p>Військова розвідка + сучасні системи ситуаційної обізнаності. <strong>«Дельта»</strong> — українська система, побудована за стандартами НАТО. <strong>Milchat</strong> — доступний цивільним додаток для агрегації даних на цифровій карті в реальному часі.</p>
+        </div>
+
+        <h3>Три моделі передачі інформації</h3>
+
+        <div class="comm-grid">
+          <div class="comm-card">
+            <div class="comm-title">🤖 Машина → Машина</div>
+            <div class="comm-chain">БПЛА → СУАВ → САУ</div>
+            <p>БПЛА виявляє ціль і автоматично передає координати → СУАВ розраховує балістику → команда йде безпосередньо на гармату без участі людини.</p>
+            <p style="margin-top:8px;"><strong>Перевага:</strong> мінімальний час від виявлення до ураження, відсутність людської помилки на етапі розрахунків.</p>
+          </div>
+          <div class="comm-card">
+            <div class="comm-title">🤖➡️🧑 Машина → Людина</div>
+            <div class="comm-chain">БПЛА → Оператор → Розрахунок</div>
+            <p>БПЛА передає картинку оператору (через Starlink або радіоміст) → оператор аналізує і наносить координати на Milchat/«Дельту» → передає артилерійському розрахунку.</p>
+          </div>
+          <div class="comm-card">
+            <div class="comm-title">🧑➡️🧑 Людина → Людина</div>
+            <div class="comm-chain">Розвідник → Командир</div>
+            <p>Людина веде спостереження (бачить, чує, нюхає) → доповідає голосом або текстом командиру на ПКП.</p>
+            <p style="margin-top:8px;"><strong>Особливість:</strong> найбільша залежність від людського фактора — точність опису, дотримання радіодисципліни критичні.</p>
+          </div>
+        </div>
+
+        <h3>Канали зв'язку та їхня вразливість</h3>
+
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr><th>Канал</th><th>Переваги</th><th>Недоліки / Перехоплення</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Аналоговий радіозв'язок</strong></td>
+                <td>Простота, доступність</td>
+                <td>Легко сканується і перехоплюється будь-яким приймачем</td>
+              </tr>
+              <tr>
+                <td><strong>Цифровий (захищений)</strong></td>
+                <td>Складніше перехопити</td>
+                <td>Можливе дешифрування при захопленні трофейних рацій (ключ шифрування)</td>
+              </tr>
+              <tr>
+                <td><strong>Starlink</strong></td>
+                <td>Найшвидший для відео, висока пропускна здатність, працює віддалено</td>
+                <td>Залежність від іноземного провайдера. Термінал виявляється засобами РТР (радіотехнічної розвідки)</td>
+              </tr>
+              <tr>
+                <td><strong>Альтернативи Starlink (UASAT та ін.)</strong></td>
+                <td>Національна інфраструктура, менша залежність</td>
+                <td>У розробці, поки менш поширені</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>OPSEC: Операційна безпека</h3>
+
+        <div class="definition">
+          <div class="definition-term">OPSEC (Operational Security)</div>
+          <p>П'ятикроковий процес захисту критичної інформації, яка, потрапивши до ворожої розвідки, може бути агрегована (зібрана з різних джерел) і використана проти нас.</p>
+        </div>
+
+        <div class="opsec-grid">
+          <div class="opsec-card">
+            <div class="opsec-num">1</div>
+            <div class="opsec-name">Ідентифікація критичної інформації</div>
+            <p style="font-size:0.8rem;">Що ворог хоче дізнатися: плани, маршрути, чисельність, розташування, час операцій</p>
+          </div>
+          <div class="opsec-card">
+            <div class="opsec-num">2</div>
+            <div class="opsec-name">Аналіз загроз</div>
+            <p style="font-size:0.8rem;">Хто є ворогом і які його спроможності розвідки (РЕБ, РТР, агентура, OSINT)</p>
+          </div>
+          <div class="opsec-card">
+            <div class="opsec-num">3</div>
+            <div class="opsec-name">Аналіз вразливостей</div>
+            <p style="font-size:0.8rem;">Як ми можемо випадково видати інформацію (соцмережі, відкритий зв'язок, витік даних)</p>
+          </div>
+          <div class="opsec-card">
+            <div class="opsec-num">4</div>
+            <div class="opsec-name">Оцінка ризиків</div>
+            <p style="font-size:0.8rem;">Визначення рівня ризику для кожної вразливості</p>
+          </div>
+          <div class="opsec-card">
+            <div class="opsec-num">5</div>
+            <div class="opsec-name">Контрзаходи</div>
+            <p style="font-size:0.8rem;">Технічні (шифрування, VPN) і нетехнічні (радіодисципліна, заборона фото позицій)</p>
+          </div>
+        </div>
+
+        <div class="callout callout-warn">
+          <div class="callout-title">⚠️ Особиста недбалість — подарунок ворожій розвідці</div>
+          <p>Фото в соцмережах з геолокацією, обговорення позицій у відкритих чатах, фотографування військової техніки — все це OSINT-матеріал для ворога. Наголосіть учням: навіть невинне на перший погляд фото може видати позицію через тіні, орієнтири на фоні, метадані.</p>
+        </div>
+
+        <div class="callout callout-tip">
+          <div class="callout-title">💡 Відеоматеріали для уроку</div>
+          <ul style="font-size:0.88rem; line-height:1.8;">
+            <li><a href="https://www.youtube.com/watch?v=ED9nH-Ubkcg" class="video-link" target="_blank" rel="noopener">IskanderTeamUa: «Інтерактивна мапа Кропива чи Міл чат?» (таймкод 1:32)</a></li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================== 4.7 ===================== -->
+    <section class="topic-section" id="tema-4-7">
+      <div class="section-header">
+        <div class="section-num">4.7</div>
+        <div>
+          <h2>Радіозв'язок на полі бою: кодифікація та переговори</h2>
+          <p>Урок 7 · 45 хв · Теорія + рольова гра</p>
+        </div>
+      </div>
+      <div class="prose">
+
+        <div class="callout callout-warn">
+          <div class="callout-title">⚠️ Чому відкритий радіоефір — найбільша вразливість</div>
+          <p>Будь-хто з відповідним обладнанням може прослуховувати незахищений радіоефір. Без кодифікації ворог отримує точну інформацію про наміри, координати, чисельність — у реальному часі.</p>
+        </div>
+
+        <h3>Структура радіопереговорів (приклад)</h3>
+
+        <div class="radio-example">
+          <div class="radio-label">Зразок передачі повідомлення</div>
+          Говерла, Говерла,<br>
+          Я — Канада,<br>
+          Прийом.<br>
+          <br>
+          <span style="color:#fff;">— Відповідь —</span><br>
+          Канада, Канада,<br>
+          Я — Говерла,<br>
+          Прийом.<br>
+          <br>
+          <span style="color:#fff;">— Передача наказу (кодифікована) —</span><br>
+          Говерла, Говерла,<br>
+          Лама 340 10-50 ґазда-11,<br>
+          Прийом.
+        </div>
+
+        <p>Розшифрування (за таблицею кодів команди): «Лама» = брати, «340» = олівець, «10-50» = носити, «ґазда-11» = дошка. Повне повідомлення: «Взяти олівець, принести до дошки».</p>
+
+        <div class="callout callout-info">
+          <div class="callout-title">ℹ️ Обов'язкові елементи радіообміну</div>
+          <ul>
+            <li><strong>Позивний отримувача</strong> (повторюється двічі для чіткості)</li>
+            <li><strong>«Я — [позивний відправника]»</strong> — самоідентифікація</li>
+            <li><strong>«Прийом»</strong> — сигнал передачі слова</li>
+            <li><strong>Підтвердження отримання</strong> другою стороною</li>
+          </ul>
+        </div>
+
+        <!-- ACTIVITY: ГРА ВІДКРИТИЙ РАДІОЕФІР -->
+        <div class="activity-box">
+          <div class="activity-header">
+            <div class="activity-icon">📻</div>
+            <div>
+              <h4>Гра «Відкритий радіоефір»</h4>
+              <div class="activity-time">28 хв · Команди по 2–4 учня</div>
+            </div>
+          </div>
+          <div class="activity-content">
+            <p><strong>Мета:</strong> продемонструвати важливість збереження інформації в таємниці при веденні радіообміну через незахищені канали. Не потребує жодного спеціального реквізиту.</p>
+
+            <h4>Етапи гри</h4>
+            <ol>
+              <li><strong>Пояснення правил (3 хв):</strong> формування команд 2–4 особи</li>
+              <li><strong>Створення «Таблиць кодів» (10 хв):</strong> кожна команда розробляє позивні, коди об'єктів, місць, дій з оточуючого середовища (наприклад: «олівець» = 340, «брати» = лама, «дошка» = ґазда-11)</li>
+              <li><strong>Радіообмін (15 хв):</strong> Команда 1 отримує таємне завдання від вчителя на листку (наприклад: «Марія має взяти олівець та принести до дошки») і передає кодифіковано усно своєму партнеру. Інші команди виконують роль <strong>ворожої РЕР</strong> — фіксують коди і намагаються розшифрувати їх, зіставляючи з видимими діями</li>
+              <li><strong>Зміна ролей</strong> для інших команд (за можливості)</li>
+              <li><strong>Підсумки (2 хв):</strong> доповідь «РЕР» про розгадані коди</li>
+            </ol>
+
+            <div class="callout callout-warn">
+              <div class="callout-title">⚠️ Ключовий висновок гри</div>
+              <p>Таблиця кодів — це <strong>ідеальний стан речей</strong>, і на фронті далеко не завжди є можливість і час її складати. Якщо «РЕР» (інші команди) успішно розгадали коди — це доказ того, що <strong>будь-який код можна зламати</strong>. Тому радіопозивні і коди мають змінюватись з розумною періодичністю.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================== 4.8 ===================== -->
+    <section class="topic-section" id="tema-4-8">
+      <div class="section-header">
+        <div class="section-num">4.8</div>
+        <div>
+          <h2>Способи і умови пересування військовослужбовців в бою</h2>
+          <p>Урок 8 · 45 хв · Теорія + 3 практичні вправи</p>
+        </div>
+      </div>
+      <div class="prose">
+
+        <div class="callout callout-info">
+          <div class="callout-title">ℹ️ Ключовий принцип</div>
+          <p>Будь-яке переміщення — це <strong>компроміс між швидкістю та непомітністю</strong>. Неправильний спосіб руху може призвести до втрат. У всіх видах боїв пересування є основою бойових дій.</p>
+        </div>
+
+        <h3>Способи переміщення</h3>
+
+        <div class="movement-grid">
+          <div class="movement-card">
+            <div class="movement-icon">🚶</div>
+            <div class="movement-name">Кроком / бігом</div>
+            <p style="font-size:0.84rem;">Прискорений крок або біг (на повний зріст або пригинаючись). Для подолання ділянок, недоступних для спостереження і вогню ворога</p>
+          </div>
+          <div class="movement-card">
+            <div class="movement-icon">🏃</div>
+            <div class="movement-name">Перебіганням</div>
+            <p style="font-size:0.84rem;">Швидке зближення з противником на відкритій місцевості. Довжина: 20–40 кроків. Чим відкритіша місцевість і сильніший вогонь — тим коротше перебігання</p>
+          </div>
+          <div class="movement-card">
+            <div class="movement-icon">🐍</div>
+            <div class="movement-name">По-пластунськи</div>
+            <p style="font-size:0.84rem;">Дуже низький профіль. Максимальна непомітність, мінімальна швидкість</p>
+          </div>
+          <div class="movement-card">
+            <div class="movement-icon">🤲</div>
+            <div class="movement-name">На напівкарачки</div>
+            <p style="font-size:0.84rem;">Швидше, але вищий силует. На місцевості з невеликими укриттями</p>
+          </div>
+          <div class="movement-card">
+            <div class="movement-icon">↪️</div>
+            <div class="movement-name">На боці</div>
+            <p style="font-size:0.84rem;">Застосовується на будь-якій місцевості. Найвигідніший спосіб переповзання при наявності вантажу</p>
+          </div>
+        </div>
+
+        <!-- ACTIVITIES -->
+        <div class="activity-box">
+          <div class="activity-header">
+            <div class="activity-icon">🏃‍♀️</div>
+            <div>
+              <h4>Вправа 1: «Швидкий перехід на пригнутому кроці»</h4>
+              <div class="activity-time">Локація: спортзал/подвір'я</div>
+            </div>
+          </div>
+          <div class="activity-content">
+            <p><strong>Мета:</strong> навчити рухатись прискореним кроком із пригинанням (низький силует).</p>
+            <ol>
+              <li>Вчитель показує правильне положення: корпус нахилений вперед, руки вільні, голова низько</li>
+              <li>Учні проходять маршрут (10–12 м) у трьох режимах: звичайний темп → прискорений крок → прискорений крок у пригинанні</li>
+              <li>Контроль рівня шуму — чим тихіше, тим краще</li>
+            </ol>
+          </div>
+        </div>
+
+        <div class="activity-box">
+          <div class="activity-header">
+            <div class="activity-icon">🐛</div>
+            <div>
+              <h4>Вправа 2: Переповзання</h4>
+              <div class="activity-time">Локація: спортзал/подвір'я</div>
+            </div>
+          </div>
+          <div class="activity-content">
+            <p><strong>Мета:</strong> навчити приймати правильні позиції для трьох видів переповзання: по-пластунськи, на напівкарачки, на боці (лікоть + коліно збоку).</p>
+            <p>Вчитель демонструє кожну позицію → учні повторюють на місці.</p>
+          </div>
+        </div>
+
+        <div class="activity-box">
+          <div class="activity-header">
+            <div class="activity-icon">⚡</div>
+            <div>
+              <h4>Вправа 3: Перебігання</h4>
+              <div class="activity-time">Локація: спортзал/подвір'я</div>
+            </div>
+          </div>
+          <div class="activity-content">
+            <p><strong>Мета:</strong> показати довжину правильного перебігання та його логіку.</p>
+            <ol>
+              <li>Вчитель позначає старт і дві лінії на відстані ~20 і ~40 кроків</li>
+              <li>Учні виконують перебігання у двох варіантах: до 40 кроків («вогонь слабкий»), до 20 кроків («вогонь сильний»)</li>
+              <li>Після ривка — обов'язково понизити силует (присісти)</li>
+            </ol>
+          </div>
+        </div>
+
+        <div class="callout callout-tip">
+          <div class="callout-title">💡 Чому це важливо знати цивільним</div>
+          <p>Завершіть урок обговоренням: ці принципи — не лише для військових. Розуміння того, як правильно рухатись в умовах загрози (обстріл, активний бойовий контакт поблизу), може врятувати життя цивільного населення в прифронтових районах.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================== 4.9 ===================== -->
+    <section class="topic-section" id="tema-4-9">
+      <div class="section-header">
+        <div class="section-num">4.9</div>
+        <div>
+          <h2>Патрулювання, чергування на посту</h2>
+          <p>Додатковий урок · 45 хв · Теорія + моделювання ситуацій</p>
+        </div>
+      </div>
+      <div class="prose">
+
+        <div class="key-questions">
+          <h4>Ключові питання уроку</h4>
+          <ul>
+            <li>Чим відрізняється завдання спостережного посту від завдання рухомого патруля?</li>
+            <li>Навіщо потрібні пропуск і відгук, якщо всі свої?</li>
+            <li>Чому на посту не можна слухати музику чи гортати телефон?</li>
+          </ul>
+        </div>
+
+        <p>Охорона важливого об'єкта (складу, мосту, штабу, блокпосту) будується на поєднанні кількох елементів: спостережних постів, секретів, рухомих патрулів і контрольно-перепускних пунктів. Кожен з них виконує свою частину завдання — недопущення раптового нападу, своєчасне виявлення противника й диверсійно-розвідувальних груп, контроль за пересуванням людей і транспорту.</p>
+
+        <div class="card-grid">
+          <div class="info-card">
+            <div class="card-title">👁️ Спостережний пост (СП)</div>
+            <ul>
+              <li>Стаціонарна чи тимчасова позиція для контролю території; зазвичай 2 військовослужбовці</li>
+              <li>Сектор поділяється на ділянки, спостереження ведеться зліва праворуч, углиб місцевості</li>
+              <li>Тривалість зміни — не більш як 4 години, у напруженій обстановці — до 8</li>
+              <li>Виявивши ціль: визначити її положення відносно орієнтирів → доповісти старшому СП → нанести на карту, записати в журнал</li>
+            </ul>
+          </div>
+          <div class="info-card">
+            <div class="card-title">🤫 Секрет</div>
+            <ul>
+              <li>Та ж функція, що й СП, але виставляється приховано, зазвичай уночі, до 400 м від району розташування</li>
+              <li>Склад — 2–3 особи, мінімум обладнання (зв'язок, журнал спостереження)</li>
+              <li>Нікого не затримує й не опитує — лише спостерігає і доповідає</li>
+              <li>Під час нападу — відкриває вогонь і відходить, продовжуючи спостереження</li>
+            </ul>
+          </div>
+          <div class="info-card">
+            <div class="card-title">🚶 Рухомий патруль</div>
+            <ul>
+              <li>Піший (2 військовослужбовці) або на техніці (2–3) — у межах периметра об'єкта</li>
+              <li>За межами периметра — до механізованого взводу зі штатним озброєнням</li>
+              <li>Рухається фіксованим маршрутом між постами, підтримує з ними зв'язок</li>
+            </ul>
+          </div>
+          <div class="info-card">
+            <div class="card-title">🚧 КПП (блокпост)</div>
+            <ul>
+              <li>Контроль і огляд людей і транспорту на в'їзді/виїзді — від відділення до взводу</li>
+              <li>Зміни чергування — зазвичай по 4 години, у загрозливій обстановці — до 8</li>
+              <li>Завдання: блокування проникнення зброї та порушників, демонстрація військової присутності</li>
+            </ul>
+          </div>
+        </div>
+
+        <h3>Пропуск і відгук</h3>
+
+        <p>Для розпізнавання своїх військовослужбовців уночі та на рубежах охорони щодоби встановлюються <strong>пропуск</strong> (найменування озброєння чи техніки, наприклад «Кулемет») і <strong>відгук</strong> (назва населеного пункту на ту саму літеру, наприклад «Ковель»). Пропуск повідомляється усно всьому особовому складу, який іде в охорону чи розвідку; відгук — лише командирам цих підрозділів. Обидва слова вимовляються тихо; той, хто пропуску не знає, затримується.</p>
+
+        <div class="callout callout-danger">
+          <div class="callout-title">⛔ Базові правила несення служби на посту</div>
+          <ul>
+            <li>Особисті речі (телефон, навушники, журнали) на посту суворо заборонені — відволікають від спостереження</li>
+            <li>Заступник прибуває за 20–30 хв до зміни, щоб очі встигли адаптуватися в темряві</li>
+            <li>Прилади нічного бачення — не більш як 3–5 хв поспіль, потім відпочинок очей 10–15 хв</li>
+            <li>Принцип доповіді: шукати та бачити → слухати та чути → оцінювати → доповідати</li>
+          </ul>
+        </div>
+
+        <div class="activity-box">
+          <div class="activity-header">
+            <div class="activity-icon">🗺️</div>
+            <div>
+              <h4>Практична активність: «Організуй охорону об'єкта»</h4>
+              <div class="activity-time">20 хв · Групова робота зі схемою місцевості</div>
+            </div>
+          </div>
+          <div class="activity-content">
+            <p>Групам видається спрощена схема умовного об'єкта (склад, міст). Завдання — розставити на схемі СП, секрет, маршрут рухомого патруля і КПП так, щоб не лишилось «мертвих зон» спостереження, і пояснити вибір розташування кожного елемента. Презентація рішення — 2 хв на групу.</p>
+          </div>
+        </div>
+
+        <div class="callout callout-pract">
+          <div class="callout-title">✅ Контрольні запитання</div>
+          <ul style="font-size:0.88rem; line-height:1.8;">
+            <li>Чим відрізняється секрет від спостережного посту?</li>
+            <li>Які дії старшого СП у разі виявлення цілі?</li>
+            <li>Чому особисті речі заборонені на посту?</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================== МЕТОДИЧНІ ===================== -->
+    <section class="topic-section" id="metodychni">
+      <div class="section-header">
+        <div class="section-num">🔧</div>
+        <div>
+          <h2>Методичні поради та підсумки модуля</h2>
+          <p>Практична організація Модуля 4</p>
+        </div>
+      </div>
+      <div class="prose">
+
+        <h3>Принципи безпеки при практичних заняттях модуля</h3>
+
+        <div class="callout callout-danger">
+          <div class="callout-title">⛔ Обов'язкові заходи безпеки для всіх практичних занять</div>
+          <ul>
+            <li>Метання гранат — тільки в ЗІЗ (шолом, бронежилет, РПС)</li>
+            <li>Подолання смуги перешкод — контроль приземлення після стрибків, плавні рухи з імітованим дротом</li>
+            <li>Будь-яке практичне заняття переривається при сигналі повітряної тривоги — переміщення в укриття</li>
+            <li>Перед кожним практичним блоком — повторення відповідних правил безпеки</li>
+          </ul>
+        </div>
+
+        <h3>Англійські військові терміни (для розуміння джерел НАТО)</h3>
+
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr><th>Термін</th><th>Переклад</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Assembly area</td><td>Місце збору</td></tr>
+              <tr><td>Block</td><td>Блокада</td></tr>
+              <tr><td>Checkpoint</td><td>Пункт пропуску</td></tr>
+              <tr><td>Destroy</td><td>Знищити</td></tr>
+              <tr><td>Infiltrate</td><td>Проникати</td></tr>
+              <tr><td>Line of departure</td><td>Вихідний рубіж</td></tr>
+              <tr><td>Phase line</td><td>Рубіж регулювання</td></tr>
+              <tr><td>Release point</td><td>Вихідне положення</td></tr>
+              <tr><td>Start point</td><td>Відправна точка</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Зведені відеоматеріали Модуля 4</h3>
+
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr><th>Відео</th><th>До теми</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><a href="https://www.youtube.com/watch?v=WFVt0RaI_r4" class="video-link" target="_blank" rel="noopener">Харківський контрнаступ. Земля</a></td><td>4.3 Тактика та види бою</td></tr>
+              <tr><td><a href="https://www.youtube.com/watch?v=WmbCTAttK1c" class="video-link" target="_blank" rel="noopener">Секрети стратегії і тактики (WAS)</a></td><td>4.3–4.4 Тактика, маневр</td></tr>
+              <tr><td><a href="https://www.youtube.com/watch?v=cGYF1rfOCqM" class="video-link" target="_blank" rel="noopener">Армія TV: експеримент з маскуванням від дронів</a></td><td>4.5 Маскування</td></tr>
+              <tr><td><a href="https://www.youtube.com/watch?v=ED9nH-Ubkcg" class="video-link" target="_blank" rel="noopener">IskanderTeamUa: Кропива чи Мілчат</a></td><td>4.6 Ситуаційна обізнаність</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout callout-pract">
+          <div class="callout-title">✅ Зв'язок модуля з профорієнтацією</div>
+          <p>Теми модуля напряму пов'язані з військовими спеціальностями: тактика — піхотні підрозділи та офіцерський склад; маскування — інженерні війська та розвідка; радіозв'язок та OPSEC — війська зв'язку та кібербезпеки, аналітики розвідки. Згадайте про це наприкінці модуля, пов'язуючи теорію з реальними кар'єрними шляхами.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <div class="page-nav">
+      <a href="modul-3.html">← Модуль 3. Озброєння та стрілецька підготовка</a>
+      <a href="modul-5.html">Модуль 5. Орієнтування та фортифікація →</a>
+    </div>
+
+  </main>
+</div>
+
+<footer style="background:var(--ua-blue);color:rgba(255,255,255,0.65);text-align:center;padding:20px 32px;font-size:0.78rem;line-height:1.6;">
+  <strong style="color:var(--ua-yellow);">Захист України. Методичний довідник викладача</strong> · 10 клас, Модуль 4<br>
+  Радомишльський ліцей №3 · За програмою МОН (Наказ №1116 від 08.08.2024) · Матеріали тренінгу №6 (гриф №БО-0550-25, 30.12.2025)<br>
+  Рецензія: 12-та бригада «Азов» НГУ · OSINT-агенція Molfar
+</footer>
+
+<script>
+const sections = document.querySelectorAll('.topic-section');
+const navLinks = document.querySelectorAll('.nav-list li a');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const id = entry.target.getAttribute('id');
+      navLinks.forEach(link => {
+        link.classList.toggle('active', link.getAttribute('href') === '#' + id);
+      });
+    }
+  });
+}, { rootMargin: '-20% 0px -70% 0px' });
+sections.forEach(section => observer.observe(section));
+</script>
+</body>
+</html>

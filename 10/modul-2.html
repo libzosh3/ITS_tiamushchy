@@ -1,0 +1,1633 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Модуль 2. Основи управління та планування — Захист України 10 клас</title>
+<style>
+:root {
+  --ua-blue: #003087;
+  --ua-yellow: #FFD700;
+  --olive: #4A5240;
+  --olive-light: #6B7A5A;
+  --sand: #F5F0E8;
+  --ink: #1C1C1C;
+  --white: #FFFFFF;
+  --divider: #C8C0B0;
+  --accent-red: #C0392B;
+  --accent-green: #2E7D32;
+  --card-bg: #FDFBF7;
+  --info-bg: #E8F0FE;
+  --info-border: #4A90D9;
+  --warn-bg: #FFF8E1;
+  --warn-border: #F9A825;
+  --pract-bg: #E8F5E9;
+  --pract-border: #2E7D32;
+  --tip-bg: #F3E5F5;
+  --tip-border: #7B1FA2;
+  --shadow: 0 2px 12px rgba(0,0,0,0.08);
+  --font-display: 'Georgia', 'Times New Roman', serif;
+  --font-body: 'Segoe UI', 'Arial', sans-serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: var(--font-body); background: var(--sand); color: var(--ink); line-height: 1.7; font-size: 15.5px; }
+.topbar-stripe { height: 4px; background: var(--ua-yellow); }
+.topbar { background: var(--ua-blue); color: rgba(255,255,255,0.75); font-size: 0.78rem; padding: 8px 32px; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.topbar a { color: var(--ua-yellow); text-decoration: none; }
+.topbar a:hover { text-decoration: underline; }
+.module-header { background: linear-gradient(135deg, #001a52 0%, var(--ua-blue) 50%, var(--olive) 100%); color: var(--white); padding: 48px 32px 40px; position: relative; overflow: hidden; }
+.module-header::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 4px; background: var(--ua-yellow); }
+.module-header-inner { max-width: 1100px; margin: 0 auto; }
+.module-eyebrow { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ua-yellow); margin-bottom: 12px; }
+.module-header h1 { font-family: var(--font-display); font-size: clamp(1.6rem, 4vw, 2.4rem); font-weight: 700; line-height: 1.2; margin-bottom: 14px; max-width: 780px; }
+.module-header-meta { display: flex; flex-wrap: wrap; gap: 20px; margin-top: 20px; }
+.meta-pill { background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2); border-radius: 20px; padding: 5px 14px; font-size: 0.8rem; display: flex; align-items: center; gap: 6px; }
+.meta-pill span { opacity: 0.7; }
+.page-layout { max-width: 1100px; margin: 0 auto; padding: 40px 32px 80px; display: grid; grid-template-columns: 260px 1fr; gap: 40px; align-items: start; }
+.sidebar { position: sticky; top: 16px; }
+.nav-block { background: var(--card-bg); border: 1px solid var(--divider); border-radius: 8px; overflow: hidden; margin-bottom: 20px; }
+.nav-block-title { background: var(--ua-blue); color: var(--ua-yellow); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.10em; text-transform: uppercase; padding: 10px 16px; }
+.nav-list { list-style: none; padding: 8px 0; }
+.nav-list li a { display: flex; align-items: flex-start; gap: 8px; padding: 7px 16px; text-decoration: none; color: var(--ink); font-size: 0.82rem; line-height: 1.4; transition: background 0.15s; }
+.nav-list li a:hover { background: #EEE8DC; color: var(--ua-blue); }
+.nav-list li a .nav-num { color: var(--olive-light); font-weight: 700; flex-shrink: 0; font-size: 0.75rem; margin-top: 1px; }
+.nav-list li a.active { background: #DDD5C5; font-weight: 600; color: var(--ua-blue); }
+.content { min-width: 0; }
+.topic-section { margin-bottom: 52px; scroll-margin-top: 20px; }
+.section-header { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 24px; padding-bottom: 14px; border-bottom: 2px solid var(--divider); }
+.section-num { background: var(--ua-blue); color: var(--ua-yellow); font-family: var(--font-display); font-size: 1rem; font-weight: 700; padding: 5px 12px; border-radius: 3px; flex-shrink: 0; margin-top: 3px; }
+.section-header h2 { font-family: var(--font-display); font-size: 1.35rem; font-weight: 700; color: var(--ua-blue); line-height: 1.25; }
+.section-header p { font-size: 0.84rem; color: #666; margin-top: 4px; }
+.prose p { margin-bottom: 14px; }
+.prose p:last-child { margin-bottom: 0; }
+.prose h3 { font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; color: var(--olive); margin: 24px 0 10px; }
+.prose h4 { font-size: 0.82rem; font-weight: 700; color: var(--ua-blue); margin: 18px 0 8px; text-transform: uppercase; letter-spacing: 0.04em; }
+.callout { border-left: 4px solid; border-radius: 4px; padding: 16px 20px; margin: 20px 0; }
+.callout-info { background: var(--info-bg); border-color: var(--info-border); }
+.callout-warn { background: var(--warn-bg); border-color: var(--warn-border); }
+.callout-pract { background: var(--pract-bg); border-color: var(--pract-border); }
+.callout-tip { background: var(--tip-bg); border-color: var(--tip-border); }
+.callout-title { font-weight: 700; font-size: 0.82rem; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 8px; display: flex; align-items: center; gap: 6px; }
+.callout-info .callout-title { color: var(--info-border); }
+.callout-warn .callout-title { color: #B8860B; }
+.callout-pract .callout-title { color: var(--accent-green); }
+.callout-tip .callout-title { color: #6A0080; }
+.callout p, .callout ul { font-size: 0.9rem; line-height: 1.6; }
+.callout p + p { margin-top: 8px; }
+.callout ul { padding-left: 18px; }
+.callout ul li { margin-bottom: 4px; }
+.table-wrap { overflow-x: auto; margin: 20px 0; border-radius: 6px; border: 1px solid var(--divider); }
+.data-table { width: 100%; border-collapse: collapse; font-size: 0.87rem; background: var(--white); }
+.data-table th { background: var(--ua-blue); color: var(--white); padding: 10px 14px; text-align: left; font-weight: 600; font-size: 0.82rem; }
+.data-table td { padding: 9px 14px; border-bottom: 1px solid var(--divider); vertical-align: top; line-height: 1.5; }
+.data-table tr:last-child td { border-bottom: none; }
+.data-table tr:nth-child(even) td { background: #F7F3EC; }
+.data-table tr:hover td { background: #EDE8DC; }
+.data-table td.num { font-weight: 700; color: var(--ua-blue); text-align: center; white-space: nowrap; }
+.data-table td.code { font-family: monospace; font-size: 1rem; font-weight: 700; color: var(--olive); letter-spacing: 0.05em; }
+.definition { background: var(--white); border: 1px solid var(--divider); border-radius: 6px; padding: 16px 20px; margin: 16px 0; position: relative; }
+.definition::before { content: '📌'; position: absolute; top: 14px; right: 16px; font-size: 1rem; }
+.definition-term { font-weight: 700; font-size: 0.95rem; color: var(--ua-blue); margin-bottom: 6px; }
+.definition p { font-size: 0.88rem; color: #444; line-height: 1.6; }
+.steps-list { list-style: none; counter-reset: step-counter; margin: 16px 0; }
+.steps-list li { counter-increment: step-counter; display: flex; gap: 14px; align-items: flex-start; margin-bottom: 12px; background: var(--white); border: 1px solid var(--divider); border-radius: 5px; padding: 12px 14px; font-size: 0.9rem; line-height: 1.5; }
+.steps-list li::before { content: counter(step-counter); background: var(--ua-blue); color: var(--ua-yellow); font-weight: 700; font-size: 0.85rem; width: 26px; height: 26px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; margin: 16px 0; }
+.info-card { background: var(--card-bg); border: 1px solid var(--divider); border-radius: 6px; padding: 18px; font-size: 0.87rem; }
+.info-card .card-title { font-weight: 700; color: var(--ua-blue); margin-bottom: 8px; font-size: 0.9rem; display: flex; align-items: center; gap: 8px; }
+.info-card ul { padding-left: 16px; line-height: 1.65; }
+.info-card ul li { margin-bottom: 3px; }
+.activity-box { background: var(--card-bg); border: 1px solid var(--divider); border-radius: 8px; padding: 24px; margin: 20px 0; }
+.activity-header { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--divider); }
+.activity-icon { font-size: 1.6rem; }
+.activity-header h4 { font-family: var(--font-display); font-size: 1rem; font-weight: 700; color: var(--ua-blue); line-height: 1.3; }
+.activity-header .activity-time { font-size: 0.78rem; color: #888; margin-top: 2px; }
+.activity-box .activity-content { font-size: 0.88rem; line-height: 1.65; }
+.activity-box .activity-content p { margin-bottom: 10px; }
+.activity-box .activity-content ul { padding-left: 18px; }
+.activity-box .activity-content li { margin-bottom: 5px; }
+.video-link { display: inline-flex; align-items: center; gap: 8px; background: #B71C1C; color: var(--white); text-decoration: none; padding: 7px 16px; border-radius: 4px; font-size: 0.83rem; font-weight: 600; margin: 8px 0; transition: background 0.15s; }
+.video-link:hover { background: #8B0000; }
+.video-link::before { content: '▶'; }
+.legal-quote { border-left: 4px solid var(--ua-blue); padding: 14px 18px; background: #EEF2FF; margin: 16px 0; border-radius: 0 5px 5px 0; font-size: 0.88rem; line-height: 1.65; }
+.legal-quote cite { display: block; font-size: 0.78rem; color: #666; margin-top: 8px; font-style: normal; }
+.breadcrumb { display: flex; align-items: center; gap: 8px; font-size: 0.8rem; color: #888; margin-bottom: 28px; flex-wrap: wrap; }
+.breadcrumb a { color: var(--ua-blue); text-decoration: none; }
+.breadcrumb a:hover { text-decoration: underline; }
+.breadcrumb .sep { color: #CCC; }
+.breadcrumb .current { color: var(--ink); font-weight: 600; }
+.module-progress { display: flex; gap: 4px; margin-bottom: 28px; flex-wrap: wrap; }
+.progress-dot { width: 28px; height: 6px; border-radius: 3px; background: var(--divider); }
+.progress-dot.done { background: var(--ua-blue); }
+.progress-dot.current { background: var(--ua-yellow); }
+
+/* HIERARCHY PYRAMID */
+.hierarchy-table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 0.86rem; }
+.hierarchy-table td { padding: 8px 12px; border: 1px solid var(--divider); }
+.hierarchy-table td:first-child { font-weight: 700; color: var(--ua-blue); white-space: nowrap; background: #F0EDE5; }
+.hierarchy-table td:nth-child(2) { color: #555; text-align: right; white-space: nowrap; }
+.hierarchy-table td:nth-child(3) { font-family: monospace; font-size: 1rem; font-weight: 700; color: var(--olive); letter-spacing: 0.08em; }
+.hierarchy-table td:nth-child(4) { color: #444; }
+.hierarchy-table tr:nth-child(1) td { background: #1a3a6b; color: white; }
+.hierarchy-table tr:nth-child(1) td:first-child { background: #1a3a6b; color: var(--ua-yellow); }
+.hierarchy-table tr:nth-child(2) td { background: #1e4d8c; color: white; }
+.hierarchy-table tr:nth-child(2) td:first-child { background: #1e4d8c; color: var(--ua-yellow); }
+.hierarchy-table tr:nth-child(3) td { background: #2563ae; color: white; }
+.hierarchy-table tr:nth-child(3) td:first-child { background: #2563ae; color: var(--ua-yellow); }
+.hierarchy-table tr:nth-child(4) td { background: #3171c0; color: white; }
+.hierarchy-table tr:nth-child(4) td:first-child { background: #3171c0; color: var(--ua-yellow); }
+.hierarchy-table tr:nth-child(5) td { background: #4a87d4; color: white; }
+.hierarchy-table tr:nth-child(5) td:first-child { background: #4a87d4; color: var(--ua-yellow); }
+.hierarchy-table tr:nth-child(6) td { background: #5e95d8; color: white; }
+.hierarchy-table tr:nth-child(6) td:first-child { background: #5e95d8; color: white; }
+.hierarchy-table tr:nth-child(7) td { background: #7aa8de; color: var(--ink); }
+.hierarchy-table tr:nth-child(8) td { background: #95bee7; color: var(--ink); }
+.hierarchy-table tr:nth-child(9) td { background: #aecdef; color: var(--ink); }
+.hierarchy-table tr:nth-child(10) td { background: #c7dcf5; color: var(--ink); }
+.hierarchy-table tr:nth-child(11) td { background: #deeaf9; color: var(--ink); }
+.hierarchy-table tr:nth-child(12) td { background: #edf4fc; color: var(--ink); }
+.hierarchy-table tr:nth-child(13) td { background: #f5f9fe; color: var(--ink); }
+
+/* RANK GRID */
+.rank-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; margin: 16px 0; }
+.rank-card { background: var(--white); border: 1px solid var(--divider); border-radius: 5px; padding: 12px 14px; font-size: 0.84rem; }
+.rank-card .rank-group { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--olive-light); margin-bottom: 6px; }
+.rank-card .rank-name { font-weight: 700; color: var(--ua-blue); margin-bottom: 2px; }
+.rank-card .rank-sub { color: #666; font-size: 0.8rem; }
+
+/* DOMAIN CARDS */
+.domain-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 14px; margin: 16px 0; }
+.domain-card { border-radius: 6px; padding: 16px; font-size: 0.86rem; border: 1px solid rgba(0,0,0,0.1); }
+.domain-card .domain-icon { font-size: 2rem; margin-bottom: 8px; }
+.domain-card .domain-name { font-weight: 700; font-size: 0.95rem; margin-bottom: 6px; }
+.domain-card ul { padding-left: 14px; line-height: 1.6; font-size: 0.82rem; }
+.domain-card ul li { margin-bottom: 3px; }
+.domain-land { background: #E8F5E9; border-color: #4CAF50; }
+.domain-sea { background: #E3F2FD; border-color: #2196F3; }
+.domain-air { background: #FFF8E1; border-color: #FFC107; }
+.domain-space { background: #F3E5F5; border-color: #9C27B0; }
+.domain-cyber { background: #FCE4EC; border-color: #E91E63; }
+
+/* KEY QUESTION */
+.key-questions { background: var(--white); border: 1px solid var(--divider); border-radius: 6px; padding: 16px 20px; margin: 16px 0; }
+.key-questions h4 { font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--olive); margin-bottom: 12px; }
+.key-questions ul { list-style: none; padding: 0; }
+.key-questions ul li { padding: 6px 0 6px 22px; position: relative; font-size: 0.9rem; border-bottom: 1px dashed #DDD; line-height: 1.5; }
+.key-questions ul li:last-child { border-bottom: none; }
+.key-questions ul li::before { content: '?'; position: absolute; left: 0; color: var(--ua-blue); font-weight: 700; }
+
+/* LEADERSHIP COMPARE */
+.compare-box { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 20px 0; }
+.compare-col { background: var(--white); border: 1px solid var(--divider); border-radius: 6px; overflow: hidden; }
+.compare-col-header { padding: 10px 16px; font-weight: 700; font-size: 0.88rem; }
+.compare-col-header.soviet { background: #8B0000; color: white; }
+.compare-col-header.nato { background: #003087; color: var(--ua-yellow); }
+.compare-col-body { padding: 14px 16px; font-size: 0.85rem; line-height: 1.65; }
+.compare-col-body ul { padding-left: 16px; }
+.compare-col-body li { margin-bottom: 5px; }
+
+/* CASE CARD */
+.case-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; margin: 20px 0; }
+.case-card { background: var(--white); border: 1px solid var(--divider); border-radius: 8px; overflow: hidden; font-size: 0.87rem; }
+.case-card-header { background: var(--olive); color: var(--white); padding: 12px 16px; }
+.case-card-header .case-name { font-weight: 700; font-size: 0.95rem; }
+.case-card-header .case-sub { font-size: 0.78rem; opacity: 0.8; margin-top: 3px; }
+.case-card-body { padding: 14px 16px; line-height: 1.6; }
+.case-card-body .case-field { margin-bottom: 8px; }
+.case-card-body .case-label { font-weight: 700; color: var(--ua-blue); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.04em; }
+
+/* PAGE NAV */
+.page-nav { display: flex; justify-content: space-between; gap: 16px; margin-top: 48px; padding-top: 24px; border-top: 2px solid var(--divider); flex-wrap: wrap; }
+.page-nav a { display: flex; align-items: center; gap: 8px; color: var(--ua-blue); text-decoration: none; font-weight: 600; font-size: 0.9rem; padding: 10px 16px; border: 1px solid var(--divider); border-radius: 5px; background: var(--card-bg); transition: box-shadow 0.15s; }
+.page-nav a:hover { box-shadow: var(--shadow); }
+
+/* MNEMONIC */
+.mnemonic { background: linear-gradient(135deg, var(--ua-blue), var(--olive)); color: white; border-radius: 8px; padding: 20px 24px; margin: 20px 0; text-align: center; }
+.mnemonic-title { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ua-yellow); margin-bottom: 10px; }
+.mnemonic-text { font-family: var(--font-display); font-size: 1.1rem; line-height: 1.8; }
+.mnemonic-decode { margin-top: 12px; font-size: 0.8rem; opacity: 0.8; line-height: 1.7; }
+
+@media (max-width: 860px) {
+  .page-layout { grid-template-columns: 1fr; }
+  .sidebar { position: static; }
+  .module-header { padding: 36px 16px 30px; }
+  .page-layout { padding: 24px 16px 60px; }
+  .compare-box { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<div class="topbar-stripe"></div>
+<div class="topbar">
+  <div>📘 <a href="../index.html">Довідник викладача «Захист України»</a> › 10 клас › Модуль 2</div>
+  <div>МОН 2024 · Інтегрований курс</div>
+</div>
+
+<header class="module-header">
+  <div class="module-header-inner">
+    <div class="module-eyebrow">10 клас · Модуль 2 · Тренінги №2–3</div>
+    <h1>Основи управління та планування</h1>
+    <div class="module-header-meta">
+      <div class="meta-pill">📋 <span>8 уроків · ~360 хв</span></div>
+      <div class="meta-pill">📄 <span>~80 сторінок</span></div>
+      <div class="meta-pill">🎯 <span>Воргейм, кейси, ігри</span></div>
+      <div class="meta-pill">🗺️ <span>Тактичні карти, ієрархія</span></div>
+    </div>
+  </div>
+</header>
+
+<div class="page-layout">
+
+  <aside class="sidebar">
+    <div class="nav-block">
+      <div class="nav-block-title">Теми модуля</div>
+      <ul class="nav-list">
+        <li><a href="#tema-2-1"><span class="nav-num">2.1</span>5 доменів ведення бойових дій</a></li>
+        <li><a href="#tema-2-2"><span class="nav-num">2.2</span>Сили оборони України: структура</a></li>
+        <li><a href="#tema-2-3"><span class="nav-num">2.3</span>Роди військ і нарукавні знаки</a></li>
+        <li><a href="#tema-2-4"><span class="nav-num">2.4</span>Ієрархія: від відділення до корпусу</a></li>
+        <li><a href="#tema-2-5"><span class="nav-num">2.5</span>Тактичні карти та умовні знаки</a></li>
+        <li><a href="#tema-2-6"><span class="nav-num">2.6</span>Військові звання та знаки розрізнення</a></li>
+        <li><a href="#tema-2-7"><span class="nav-num">2.7</span>Військове лідерство</a></li>
+        <li><a href="#tema-2-8"><span class="nav-num">2.8</span>Воргейм та АПД</a></li>
+        <li><a href="#metodychni"><span class="nav-num">🔧</span>Методичні поради</a></li>
+      </ul>
+    </div>
+    <div class="nav-block">
+      <div class="nav-block-title">Навігація курсу</div>
+      <ul class="nav-list">
+        <li><a href="../index.html"><span class="nav-num">🏠</span>Головна</a></li>
+        <li><a href="modul-1.html"><span class="nav-num">←</span>Модуль 1. Нац. безпека</a></li>
+        <li><a href="modul-3.html"><span class="nav-num">→</span>Модуль 3. Зброя та стрільба</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <main class="content">
+
+    <div class="breadcrumb">
+      <a href="../index.html">Довідник</a>
+      <span class="sep">/</span>
+      <span>10 клас</span>
+      <span class="sep">/</span>
+      <span class="current">Модуль 2. Основи управління та планування</span>
+    </div>
+
+    <div class="module-progress">
+      <div class="progress-dot done" title="Модуль 1"></div>
+      <div class="progress-dot current" title="Модуль 2"></div>
+      <div class="progress-dot" title="Модуль 3"></div>
+      <div class="progress-dot" title="Модуль 4"></div>
+      <div class="progress-dot" title="Модуль 5"></div>
+      <div class="progress-dot" title="Модуль 6"></div>
+    </div>
+
+    <div class="callout callout-info">
+      <div class="callout-title">ℹ️ Загальний огляд модуля</div>
+      <p>Модуль 2 показує учням, що <strong>Сили оборони України — це складна ієрархічна система</strong>, де взаємодіють десятки різних структур і спеціальностей. Мета — дати розуміння: <em>військо — це величезна кількість різноманітних спеціальностей, які захищають Україну</em>. Від доменів ведення бойових дій до читання тактичних карт і воргейму — поступове занурення від широкої картини до конкретних навичок.</p>
+      <p>Джерела: Тренінги №2 та №3 (МОН, 2025 р., гриф №БО-0550-25), програма МОН 2024 (Наказ №1116).</p>
+    </div>
+
+    <!-- ===================== 2.1 ===================== -->
+    <section class="topic-section" id="tema-2-1">
+      <div class="section-header">
+        <div class="section-num">2.1</div>
+        <div>
+          <h2>П'ять доменів ведення бойових дій</h2>
+          <p>Урок 1 · 45 хв · Обговорення + теорія</p>
+        </div>
+      </div>
+      <div class="prose">
+
+        <div class="key-questions">
+          <h4>Ключові питання уроку</h4>
+          <ul>
+            <li>В яких середовищах людство може вести бойові дії?</li>
+            <li>Яка техніка та тактика характерна для кожного домену?</li>
+            <li>Чому в сучасній війні всі п'ять доменів взаємопов'язані?</li>
+            <li>Де Україна виявила нові можливості (морські дрони, кіберфронт)?</li>
+          </ul>
+        </div>
+
+        <div class="definition">
+          <div class="definition-term">Домен ведення бойових дій</div>
+          <p>Узагальнений простір або середовище, де можна вести бойові дії, який характеризується специфічними умовами, способами та засобами ведення бойових дій (набором техніки, тактиками, ресурсами, взаємодією тощо). Сучасна військова наука виділяє <strong>5 доменів</strong>.</p>
+        </div>
+
+        <div class="domain-grid">
+          <div class="domain-card domain-land">
+            <div class="domain-icon">🏔️</div>
+            <div class="domain-name">Суша</div>
+            <ul>
+              <li>Найдавніший домен (від початку воєн)</li>
+              <li>Мета: контроль територій, ресурсів, населення</li>
+              <li>Ключова техніка: піхота, танки, БМП, БТР, артилерія, інженери</li>
+              <li>Новий вектор: наземні роботизовані комплекси (НРК)</li>
+              <li>Особливість України: протяжний фронт 1200+ км</li>
+            </ul>
+          </div>
+          <div class="domain-card domain-sea">
+            <div class="domain-icon">⚓</div>
+            <div class="domain-name">Море</div>
+            <ul>
+              <li>Контроль морських шляхів, торгівлі, ресурсів</li>
+              <li>Ключова техніка: кораблі, підводні човни, морська авіація</li>
+              <li>Інновація: морські безпілотники (МБПЛА — «морські дрони»)</li>
+              <li>Приклад: українські морські дрони знищили кораблі Чорноморського флоту</li>
+              <li>Морська блокада → деблокада Чорного моря 2023</li>
+            </ul>
+          </div>
+          <div class="domain-card domain-air">
+            <div class="domain-icon">✈️</div>
+            <div class="domain-name">Повітря</div>
+            <ul>
+              <li>Контроль повітряного простору, ударні можливості</li>
+              <li>Ключова техніка: літаки, гелікоптери, ракети, дрони</li>
+              <li>ППО: С-300, Patriot, NASAMS, IRIS-T, Gepard</li>
+              <li>Асиметрія: Україна виробляє дрони-камікадзе на тисячі км</li>
+            </ul>
+          </div>
+          <div class="domain-card domain-space">
+            <div class="domain-icon">🛸</div>
+            <div class="domain-name">Космос</div>
+            <ul>
+              <li>Став доменом у XX ст. (Холодна війна)</li>
+              <li>Заборонено (ООН): ядерна зброя, військові бази</li>
+              <li>Ключові активи: супутники зв'язку, навігації (GPS), розвідки</li>
+              <li>Starlink: революція в тактичному управлінні</li>
+              <li>Розробляється: протисупутникова зброя</li>
+            </ul>
+          </div>
+          <div class="domain-card domain-cyber">
+            <div class="domain-icon">💻</div>
+            <div class="domain-name">Кіберпростір</div>
+            <ul>
+              <li>Невидимий і абстрактний домен (XXI ст.)</li>
+              <li>Складається з дата-центрів, серверів, кабелів, пристроїв</li>
+              <li>Зброя: хакерські атаки, шкідливе ПЗ</li>
+              <li>Приклади: атаки на енергосистеми, держоргани, банки</li>
+              <li>IT Army of Ukraine: добровільні кібероперації</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="callout callout-pract">
+          <div class="callout-title">✅ Методика проведення уроку (не лекція!)</div>
+          <p><strong>Крок 1 (10 хв):</strong> запитайте учнів: «Де можна вести бойові дії?» — нехай самі називають. Підказки: суша → вода → небо → вище... Записуйте відповіді на фліпчарті. <strong>Крок 2 (15 хв):</strong> після відповідей учнів систематизуйте поняттям «домен» та доповніть те, що не назвали. <strong>Крок 3 (10 хв):</strong> обговорення: яка техніка та які цілі в кожному домені. <strong>Крок 4 (10 хв):</strong> перехід до структури ЗСУ — яким доменам відповідають які види ЗСУ?</p>
+        </div>
+
+        <div class="callout callout-tip">
+          <div class="callout-title">💡 Питання для дискусії</div>
+          <ul>
+            <li>Чому Росія у 2022 р. мала перевагу в повітрі, але Україна її компенсувала?</li>
+            <li>Як морські безпілотники змінили баланс сил у Чорному морі?</li>
+            <li>Що означає «кібератака» на атомну станцію? Чим це небезпечно?</li>
+            <li>Чому Starlink став настільки важливим для ЗСУ?</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================== 2.2 ===================== -->
+    <section class="topic-section" id="tema-2-2">
+      <div class="section-header">
+        <div class="section-num">2.2</div>
+        <div>
+          <h2>Сили оборони України: хто захищає державу</h2>
+          <p>Урок 4 · 45 хв · Мінігра + аналіз</p>
+        </div>
+      </div>
+      <div class="prose">
+
+        <div class="callout callout-warn">
+          <div class="callout-title">⚠️ Важливе розрізнення</div>
+          <p><strong>ЗСУ (Збройні Сили України) ≠ Сили оборони України.</strong> «Сили оборони» — ширше поняття, що охоплює ЗСУ та інші структури. Багато хто каже «Слава ЗСУ!», але забуває про НГУ, СБУ, ГУР, ДСНС та інших.</p>
+        </div>
+
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr><th>Складник</th><th>Підпорядкування</th><th>Ключові завдання</th><th>Відомі операції/підрозділи</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>ЗСУ</strong><br>Збройні Сили України</td>
+                <td>Президент → МО → ГШ</td>
+                <td>Збройна оборона держави, відсіч агресії, участь у міжнародних операціях</td>
+                <td>Усі бойові операції на фронті</td>
+              </tr>
+              <tr>
+                <td><strong>НГУ</strong><br>Нац. гвардія</td>
+                <td>МВС</td>
+                <td>Охорона порядку, стратегічних об'єктів, бойові дії</td>
+                <td>«Азов», «Хартія», оборона Маріуполя, Серебрянський ліс</td>
+              </tr>
+              <tr>
+                <td><strong>СБУ</strong><br>Служба безпеки</td>
+                <td>Президент</td>
+                <td>Контррозвідка, антитероризм, глибинні операції</td>
+                <td>Операція «Павутина», підрив Кримського мосту, ліквідація генералів РФ</td>
+              </tr>
+              <tr>
+                <td><strong>ГУР МО</strong><br>Воєнна розвідка</td>
+                <td>МО</td>
+                <td>Зовнішня розвідка, операції на території РФ</td>
+                <td>Операції в Курській обл., удари по нафтопереробних заводах</td>
+              </tr>
+              <tr>
+                <td><strong>ДПС</strong><br>Прикордонна служба</td>
+                <td>МВС</td>
+                <td>Охорона держкордону, контроль переміщення</td>
+                <td>Оборона кордону з перших годин 24.02.2022</td>
+              </tr>
+              <tr>
+                <td><strong>НПУ</strong><br>Нац. поліція</td>
+                <td>МВС</td>
+                <td>Правопорядок, евакуація, документування злочинів</td>
+                <td>Бригади «Лють», «Хижак», «Воля», «Скеля»</td>
+              </tr>
+              <tr>
+                <td><strong>ДСНС</strong><br>Держ. служба НС</td>
+                <td>КМУ</td>
+                <td>Рятувальні операції, пожежогасіння, розбір завалів</td>
+                <td>Щоденна робота після ракетних ударів</td>
+              </tr>
+              <tr>
+                <td><strong>ДССТ</strong><br>Спецслужба транспорту</td>
+                <td>КМУ</td>
+                <td>Відновлення доріг, мостів, залізниць</td>
+                <td>Є власні бойові підрозділи</td>
+              </tr>
+              <tr>
+                <td><strong>ВСП</strong><br>Військова служба правопорядку</td>
+                <td>МО</td>
+                <td>Патрулювання, правопорядок серед військових</td>
+                <td>—</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="activity-box">
+          <div class="activity-header">
+            <div class="activity-icon">🎲</div>
+            <div>
+              <h4>Мінігра: «Хто реагує?»</h4>
+              <div class="activity-time">15 хв · Групи по 2–3 учні</div>
+            </div>
+          </div>
+          <div class="activity-content">
+            <p><strong>Завдання:</strong> групи отримують ситуацію — нічна повітряна тривога з ударом по місту. Кожна група є певною складовою Сил оборони. Треба сформулювати, яку конкретну користь вони дають у цій ситуації.</p>
+
+            <div class="table-wrap">
+              <table class="data-table">
+                <thead>
+                  <tr><th>Структура</th><th>Дії при нічному авіаударі</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td><strong>Радіотехнічні війська ПС</strong></td><td>Фіксують загрозу на радарах → передають координати ракет і «шахедів» до зенітних підрозділів</td></tr>
+                  <tr><td><strong>Зенітні ракетні війська (ЗРВ)</strong></td><td>Застосовують С-300, Patriot, NASAMS, IRIS-T → перехоплюють цілі</td></tr>
+                  <tr><td><strong>Авіація ПС / армійська авіація</strong></td><td>Знищують «шахеди» та ракети з літаків і гелікоптерів</td></tr>
+                  <tr><td><strong>Мобільні вогневі групи (зенітні кулемети)</strong></td><td>Збивають «шахеди» з кулеметів на пікапах</td></tr>
+                  <tr><td><strong>ДСНС</strong></td><td>Гасять пожежі, розбирають завали, рятують людей, надають домедичну допомогу, взимку — пункти обігріву</td></tr>
+                  <tr><td><strong>Нац. поліція</strong></td><td>Оточують місце прильоту, допомагають евакуюватись, документують злочин, забезпечують безпеку</td></tr>
+                  <tr><td><strong>НГУ</strong></td><td>Охорона критичних об'єктів, підтримка порядку</td></tr>
+                  <tr><td><strong>IT Army / кіберзахист</strong></td><td>Моніторинг загроз у кіберпросторі під час атаки</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="callout callout-tip">
+              <div class="callout-title">💡 Підсумок дискусії</div>
+              <p>«Слава ЗСУ» — правильно. Але за нашою безпекою стоять <strong>десятки різних структур</strong>, кожна з яких критична. Якби зникла хоча б одна — система б дала збій. Ціните всіх.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================== 2.3 ===================== -->
+    <section class="topic-section" id="tema-2-3">
+      <div class="section-header">
+        <div class="section-num">2.3</div>
+        <div>
+          <h2>Роди військ ЗСУ та нарукавні знаки</h2>
+          <p>Уроки 2–3 · 90 хв · Теорія + мінігра «Ланцюжок постачання»</p>
+        </div>
+      </div>
+      <div class="prose">
+
+        <h3>Структурна логіка ЗСУ</h3>
+
+        <div class="callout callout-info">
+          <div class="callout-title">ℹ️ Аналогія для пояснення</div>
+          <p>Збройні сили — як університет. <strong>Вид збройних сил</strong> — як факультет. <strong>Рід військ</strong> — як кафедра на факультеті. Кафедри можуть бути всередині факультету (лінійні роди) або незалежними (окремі роди).</p>
+        </div>
+
+        <h3>Три види Збройних Сил та їхні символи</h3>
+
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr><th>Вид ЗСУ</th><th>Домен</th><th>Як запам'ятати нарукавний знак</th><th>Колір форми</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Сухопутні війська (СВ)</strong></td>
+                <td>Суша</td>
+                <td>Зелений щит, вістря донизу — бо суша знизу</td>
+                <td>Зелений</td>
+              </tr>
+              <tr>
+                <td><strong>Повітряні Сили (ПС)</strong></td>
+                <td>Повітря</td>
+                <td>Синій щит, вістря догори — бо небо зверху</td>
+                <td>Синій</td>
+              </tr>
+              <tr>
+                <td><strong>Військово-Морські Сили (ВМС)</strong></td>
+                <td>Море</td>
+                <td>Якір корабля на нарукавному знаку</td>
+                <td>Чорний (традиційний морський)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Окремі роди військ (сил): не входять до жодного виду ЗСУ</h3>
+
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr><th>Рід / сила</th><th>Абр.</th><th>Завдання</th><th>Знак / запам'ятайка</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Десантно-штурмові війська</strong></td>
+                <td>ДШВ</td>
+                <td>Найбільш мобільний рід. Штурми, десанти, постійна бойова готовність</td>
+                <td>Щит-парашут, маруновий колір ДШВ</td>
+              </tr>
+              <tr>
+                <td><strong>Сили спеціальних операцій</strong></td>
+                <td>ССО</td>
+                <td>Елітні спецпризначенці. Глибока розвідка, диверсії, антитероризм, ІПСО</td>
+                <td>Діамантовий щит + двозуб Святослава. Сірий колір форми (вовки)</td>
+              </tr>
+              <tr>
+                <td><strong>Сили безпілотних систем</strong></td>
+                <td>СБС</td>
+                <td>«Армія дронів». Ударні, розвідувальні та інші безпілотні системи</td>
+                <td>Наймолодший рід, новітнє позначення</td>
+              </tr>
+              <tr>
+                <td><strong>Сили територіальної оборони</strong></td>
+                <td>ТрО</td>
+                <td>Захист своєї громади та регіону. Нині — легка піхота</td>
+                <td>Мур фортечної стіни зверху — захист своєї «фортеці»</td>
+              </tr>
+              <tr>
+                <td><strong>Сили логістики</strong></td>
+                <td>СЛ</td>
+                <td>Постачання пального, боєприпасів, харчування, техніки</td>
+                <td>Подібний до знаку мех. військ — часта плутанина</td>
+              </tr>
+              <tr>
+                <td><strong>Сили підтримки</strong></td>
+                <td>СП</td>
+                <td>Інженерне забезпечення, понтони, РХБЗ, ремонт техніки</td>
+                <td>—</td>
+              </tr>
+              <tr>
+                <td><strong>Медичні сили</strong></td>
+                <td>МС</td>
+                <td>Медичне забезпечення військ, евакуація поранених</td>
+                <td>Медичний хрест</td>
+              </tr>
+              <tr>
+                <td><strong>Війська зв'язку та кібербезпеки</strong></td>
+                <td>ВЗтаКБ</td>
+                <td>Захищений зв'язок, кіберзахист комунікацій</td>
+                <td>Чорний тризуб — антена радіостанції</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout callout-tip">
+          <div class="callout-title">💡 Термінологічна довідка</div>
+          <p><strong>Нарукавний знак</strong> — офіційне поняття (Наказ МО №606). Неофіційно кажуть «шеврон», але це неточно: шеврон — кутова геральдична фігура, у наказі №606 шеврони — знаки розрізнення на погонах, а не нарукавні знаки. «Патч» — розмовна назва. Вчіть учнів правильній термінології.</p>
+        </div>
+
+        <h3>Чому логістика важливіша, ніж здається?</h3>
+
+        <p>Обговоріть з учнями: чому танк — «цар поля бою» — нічого не вартий без підтримки?</p>
+
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr><th>Якщо відсутній підрозділ</th><th>Наслідок для танку</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Логістика (пальне)</td><td>Танк не може завестись → порожній металобрухт</td></tr>
+              <tr><td>Логістика (боєприпаси)</td><td>Танк не може стріляти → безсила машина</td></tr>
+              <tr><td>Логістика (харчування, вода)</td><td>Екіпаж голодний і виснажений → знижена боєздатність</td></tr>
+              <tr><td>Логістика (форма, спорядження)</td><td>Екіпаж не захищений → підвищені втрати</td></tr>
+              <tr><td>Інженери (укриття, маскування)</td><td>Танк видно ворожим дронам → легка ціль</td></tr>
+              <tr><td>Сапери (розмінування)</td><td>Танк підривається на мінах → знищений до бою</td></tr>
+              <tr><td>РЕБ (прикриття від дронів)</td><td>Ворожі FPV знищать танк → втрата дорогої машини</td></tr>
+              <tr><td>Зв'язківці</td><td>Екіпаж не отримує накази → діє хаотично, б'є своїх</td></tr>
+              <tr><td>Медики</td><td>Поранених не евакуюють → загибель лікованих</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- ACTIVITY: ЛАНЦЮЖОК ПОСТАЧАННЯ -->
+        <div class="activity-box">
+          <div class="activity-header">
+            <div class="activity-icon">🏃</div>
+            <div>
+              <h4>Мінігра: «Ланцюжок постачання»</h4>
+              <div class="activity-time">15 хв · Рухлива гра · Весь клас</div>
+            </div>
+          </div>
+          <div class="activity-content">
+            <p><strong>Мета:</strong> відчути на собі, наскільки важлива і складна логістика.</p>
+
+            <h4>Ролі</h4>
+            <ul>
+              <li><strong>«Логісти/логістки»</strong> — несуть «боєприпаси» (маркери/ручки) до «бойових підрозділів». За раз — лише 1 боєприпас. Рухаються лише по визначених маршрутах (2–4 шляхи, визначає вчитель)</li>
+              <li><strong>«Бойові підрозділи»</strong> — отримавши боєприпас, «відстрілюються» (закреслюють 1 одиницю ворожої техніки на аркуші), відкладають боєприпас</li>
+              <li><strong>«Ворожі дрони»</strong> — намагаються зірвати прапорець у «логістів». Зірвали — «ПРАПОР!» — логіст вибуває (знищений). Дрон повертає трофей на свою позицію</li>
+            </ul>
+
+            <h4>Правила</h4>
+            <ul>
+              <li>Бігати ЗАБОРОНЕНО. Тільки ходьба (швидка ходьба та увертання — дозволені)</li>
+              <li>Кількість одиниць ворожої техніки = кількості потрібних боєприпасів</li>
+              <li>Гра закінчується або коли всі «ворожі одиниці» знищені, або коли не залишилось логістів</li>
+            </ul>
+
+            <h4>Ускладнення (за часом)</h4>
+            <ul>
+              <li>Кожен підрозділ потребує свого кольору боєприпасу (реальна логістика!)</li>
+              <li>Гравець-РЕБ може вести одного логіста в «захищеній зоні» — дрони не атакують</li>
+            </ul>
+
+            <div class="callout callout-pract">
+              <div class="callout-title">✅ Підсумок гри</div>
+              <p>«Ви щойно зрозуміли, чому Генеральний штаб каже: «Перемога куується не лише на полі бою, а й у тилу». Логістика — це не нудна адмінробота. Це кров армії.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================== 2.4 ===================== -->
+    <section class="topic-section" id="tema-2-4">
+      <div class="section-header">
+        <div class="section-num">2.4</div>
+        <div>
+          <h2>Ієрархія військових формувань: від відділення до корпусу</h2>
+          <p>Урок 5 · 45 хв · LEGO-аналогія + мнемоніка</p>
+        </div>
+      </div>
+      <div class="prose">
+
+        <div class="callout callout-info">
+          <div class="callout-title">ℹ️ LEGO-аналогія</div>
+          <p>Кожен підрозділ — як блок LEGO. Відділення об'єднуються у взводи, взводи — у роти, роти — у батальйони, батальйони — у бригади (або полки), бригади — у корпуси. Разом вони складають потужну конструкцію — армію.</p>
+        </div>
+
+        <h3>Таблиця військових формувань (NATO + ЗСУ)</h3>
+        <p><em>Курсивом — формування, що в ЗСУ наразі не застосовуються або є рідкісними</em></p>
+
+        <table class="hierarchy-table">
+          <tr>
+            <td>Театр воєнних дій (ТВД)</td>
+            <td>сотні тисяч — мільйони</td>
+            <td>ХХХХ ХХ</td>
+            <td>Найвищий рівень координації сил — напр., весь Східний фронт</td>
+          </tr>
+          <tr>
+            <td><em>Група армій</em></td>
+            <td><em>100–500+ тис.</em></td>
+            <td><em>ХХХХХ</em></td>
+            <td><em>В ЗСУ не використовується</em></td>
+          </tr>
+          <tr>
+            <td><em>Польова армія</em></td>
+            <td><em>50–100 тис.</em></td>
+            <td><em>ХХХХ</em></td>
+            <td><em>В ЗСУ не використовується</em></td>
+          </tr>
+          <tr>
+            <td>Корпус</td>
+            <td>30+ тис.</td>
+            <td>ХХХ</td>
+            <td>Вищий рівень в ЗСУ. Об'єднує кілька бригад</td>
+          </tr>
+          <tr>
+            <td><em>Дивізія</em></td>
+            <td><em>10–25 тис.</em></td>
+            <td><em>ХХ</em></td>
+            <td><em>В Україні не передбачена</em></td>
+          </tr>
+          <tr>
+            <td><strong>Бригада</strong></td>
+            <td>2–5 тис.</td>
+            <td><strong>Х</strong></td>
+            <td>Основна самостійна тактична одиниця ЗСУ</td>
+          </tr>
+          <tr>
+            <td>Полк / Центр (ССО)</td>
+            <td>1–2,5 тис.</td>
+            <td>ІІІ</td>
+            <td>ППО, Сили підтримки, логістика, ССО</td>
+          </tr>
+          <tr>
+            <td><strong>Батальйон / Дивізіон</strong></td>
+            <td>300–800 (≈500)</td>
+            <td><strong>ІІ</strong></td>
+            <td>Батальйон — піхота. Дивізіон — артилерія, ракети, ППО</td>
+          </tr>
+          <tr>
+            <td>Рота / Батарея</td>
+            <td>60–250 (≈100)</td>
+            <td>І</td>
+            <td>Рота — піхота. Батарея — артилерія (аналог роти)</td>
+          </tr>
+          <tr>
+            <td>Взвод</td>
+            <td>15–45 (≈30)</td>
+            <td>●●●</td>
+            <td>Командир — лейтенант (або старший сержант у бойових умовах)</td>
+          </tr>
+          <tr>
+            <td>Секція</td>
+            <td>6–20 (≈13)</td>
+            <td>●●</td>
+            <td>Дві вогневі групи або два відділення</td>
+          </tr>
+          <tr>
+            <td><strong>Відділення</strong></td>
+            <td>5–15 (≈10)</td>
+            <td><strong>●</strong></td>
+            <td>Командир — молодший сержант. Базова тактична одиниця</td>
+          </tr>
+          <tr>
+            <td>Вогнева група / Розрахунок / Екіпаж</td>
+            <td>2–4 (≈3)</td>
+            <td>Ø</td>
+            <td>Двійка, трійка, екіпаж танка/БМП, розрахунок гармати</td>
+          </tr>
+        </table>
+
+        <div class="mnemonic">
+          <div class="mnemonic-title">🧠 Мнемоніка для запам'ятовування ієрархії</div>
+          <div class="mnemonic-text">
+            «Від сірого вовка<br>
+            рудий бігав павич,<br>
+            брикався, драконив,<br>
+            кричав: «Абордаж!»»
+          </div>
+          <div class="mnemonic-decode">
+            <strong>В</strong>ідділення → <strong>С</strong>екція → <strong>В</strong>звод → <strong>Р</strong>ота / батарея → <strong>Б</strong>атальйон / дивізіон → <strong>П</strong>олк → <strong>Б</strong>ригада → <strong>К</strong>орпус → <strong>А</strong>рмія
+          </div>
+        </div>
+
+        <h3>Спеціалізовані назви підрозділів в артилерії та ВМС</h3>
+
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr><th>Піхота / загальна</th><th>Артилерія / ППО</th><th>Пояснення</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Рота</td><td><strong>Батарея</strong></td><td>В артилерії рота = батарея (зазвичай 4–6 гармат або ракетних установок)</td></tr>
+              <tr><td>Батальйон</td><td><strong>Дивізіон</strong></td><td>В артилерії батальйон = дивізіон (3 батареї)</td></tr>
+              <tr><td>Полковник</td><td>Полковник</td><td>—</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout callout-info">
+          <div class="callout-title">ℹ️ Чому «батальйонна» і «корпусна» системи</div>
+          <p>ЗСУ використовує дві паралельні системи. <strong>Батальйонно-бригадна</strong>: батальйони → напряму в бригади (найпоширеніша). <strong>Корпусна</strong>: бригади → корпуси. Полки зустрічаються як перехідна форма «масштабування» — коли кращий батальйон розширюють до повноцінної бригади (приклад: «Птахи Мадяра», «Азов», бригади СБС).</p>
+        </div>
+
+        <h3>Склад типової механізованої бригади</h3>
+
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr><th>Підрозділ</th><th>Кількість</th><th>Роль</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Механізовані батальйони</td><td>3+</td><td>Основна ударна сила піхоти</td></tr>
+              <tr><td>Танковий батальйон</td><td>1</td><td>Прорив ворожих позицій, вогнева підтримка</td></tr>
+              <tr><td>Бригадна артилерійська група (БрАГ)</td><td>1</td><td>Артилерійська підтримка дій бригади</td></tr>
+              <tr><td>Дивізіон ППО</td><td>1</td><td>Захист від ударів з повітря</td></tr>
+              <tr><td>Розвідувальна рота</td><td>1</td><td>Збір даних про ворога, цілевказання</td></tr>
+              <tr><td>Батальйон інженерного забезпечення</td><td>1</td><td>Зміцнення позицій, розмінування, понтони</td></tr>
+              <tr><td>Батальйон матеріального забезпечення</td><td>1</td><td>Постачання пального, боєприпасів, харчування</td></tr>
+              <tr><td>Ремонтно-відновлювальний батальйон</td><td>1</td><td>Ремонт техніки в польових умовах</td></tr>
+              <tr><td>Медична рота</td><td>1</td><td>Домедична допомога, евакуація поранених</td></tr>
+              <tr><td>Рота РЕБ (EW)</td><td>1</td><td>Радіоелектронна боротьба</td></tr>
+              <tr><td>Рота РХБЗ</td><td>1</td><td>Захист від радіаційних, хімічних та біологічних загроз</td></tr>
+              <tr><td>Взвод/рота БпЛА</td><td>1</td><td>Розвідка, коригування вогню, ударні дрони</td></tr>
+              <tr><td>Снайперський підрозділ</td><td>1</td><td>Ураження командирів, кулеметників, операторів</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout callout-pract">
+          <div class="callout-title">✅ Практичне завдання: намалюй структуру бригади</div>
+          <p>Учні в групах малюють схему бригади на ватмані, використовуючи тактичні позначення з наступної теми. Потім доповідають: «Наша бригада — механізована. Вона складається з...». Вчитель ставить провокаційні питання: «Чому не можна обійтись без медичної роти? Яку роль відіграє рота РХБЗ?»</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================== 2.5 ===================== -->
+    <section class="topic-section" id="tema-2-5">
+      <div class="section-header">
+        <div class="section-num">2.5</div>
+        <div>
+          <h2>Тактичні карти: умовні знаки та читання</h2>
+          <p>Уроки 6–7 · 90 хв · Теорія + воргейм</p>
+        </div>
+      </div>
+      <div class="prose">
+
+        <p>Без карти неможливе жодне бойове планування. Стандартна система тактичних знаків — мова армій НАТО і ЗСУ. Всі знаки мають логіку, яку можна запам'ятати.</p>
+
+        <h3>Принципи читання тактичних знаків</h3>
+
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr><th>Параметр</th><th>Як позначається</th><th>Кольори на карті</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Приналежність</strong></td>
+                <td>Форма рамки символу</td>
+                <td>Сині — свої (NATO, ЗСУ). Червоні — ворог. Жовті — невстановлена приналежність. Зелені — нейтральні</td>
+              </tr>
+              <tr>
+                <td><strong>Розмір формування</strong></td>
+                <td>Знаки над рамкою (Х, ІІ, ●●●)</td>
+                <td>Від Ø (вогнева група) до ХХХХ (армія)</td>
+              </tr>
+              <tr>
+                <td><strong>Рід / функція</strong></td>
+                <td>Символ всередині рамки</td>
+                <td>18 основних символів родів</td>
+              </tr>
+              <tr>
+                <td><strong>Штаб</strong></td>
+                <td>Прапорець — «держак» вказує на місце розташування</td>
+                <td>—</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>18 основних тактичних знаків (логіка запам'ятовування)</h3>
+
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr><th>#</th><th>Рід / функція</th><th>Символ</th><th>Логіка запам'ятовування</th></tr>
+            </thead>
+            <tbody>
+              <tr><td class="num">1</td><td>Піхота</td><td class="code">✕</td><td>Перехрещені ремені-патронташі на грудях</td></tr>
+              <tr><td class="num">2</td><td>Бронетехніка / Танки</td><td class="code">⌒</td><td>Нагадує гусеницю танка</td></tr>
+              <tr><td class="num">3</td><td>Артилерія</td><td class="code">●</td><td>Артилерійське ядро або профіль гарматного дула</td></tr>
+              <tr><td class="num">4</td><td>Розвідка / Кавалерія</td><td class="code">⌒/</td><td>Старий ремінь кавалериста з шаблею</td></tr>
+              <tr><td class="num">5</td><td>Інженери / Сапери</td><td class="code">E</td><td>Блоки блокпоста або перша буква «Engineer»</td></tr>
+              <tr><td class="num">6</td><td>Зв'язок</td><td class="code">⚡</td><td>Блискавка або електричний дріт</td></tr>
+              <tr><td class="num">7</td><td>Протитанкові</td><td class="code">∇</td><td>Кумулятивна воронка</td></tr>
+              <tr><td class="num">8</td><td>Ракетні</td><td class="code">↑</td><td>Боєголовка ракети</td></tr>
+              <tr><td class="num">9</td><td>Міномети</td><td class="code">↑↑</td><td>Міномети стріляють майже вертикально — до 85°</td></tr>
+              <tr><td class="num">10</td><td>Гелікоптери</td><td class="code">⊕</td><td>Вид гелікоптера зверху</td></tr>
+              <tr><td class="num">11</td><td>Літаки</td><td class="code">✈</td><td>Профіль гвинтового літака</td></tr>
+              <tr><td class="num">12</td><td>Безпілотники</td><td class="code">○</td><td>Схема БпЛА (позначаються всі, не лише повітряні)</td></tr>
+              <tr><td class="num">13</td><td>ППО</td><td class="code">☂</td><td>Парасолька — ППО захищає від ударів з неба</td></tr>
+              <tr><td class="num">14</td><td>Постачання / Логістика</td><td class="code">═</td><td>Полиця на складі</td></tr>
+              <tr><td class="num">15</td><td>Автомобільні</td><td class="code">○</td><td>Колесо автомобіля</td></tr>
+              <tr><td class="num">16</td><td>Ремонтно-відновлювальні</td><td class="code">🔧</td><td>Гайковий ключ</td></tr>
+              <tr><td class="num">17</td><td>РХБЗ</td><td class="code">⚗⚗</td><td>Перехрещені реторти — хімічний посуд</td></tr>
+              <tr><td class="num">18</td><td>Медичні</td><td class="code">✚</td><td>Медичний хрест</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Ідентифікація сторін на полі бою</h3>
+
+        <div class="callout callout-warn">
+          <div class="callout-title">⚠️ Проблема ідентифікації — не як у грі!</div>
+          <p>У комп'ютерних іграх «свої» та «чужі» підсвічені різними кольорами. У реальному бою — ні. Обидві сторони часто використовують однакову техніку (радянську) або форму (мультикам). Додаткові засоби ідентифікації: <strong>жовтий/синій/зелений скотч</strong> на рукавах, <strong>смуги або хрести/трикутники</strong> на техніці. Відсутність цього — причина трагічного «дружнього вогню» (friendly fire).</p>
+        </div>
+
+        <div class="callout callout-tip">
+          <div class="callout-title">💡 Цифрові карти в ЗСУ</div>
+          <p><strong>«Кропива» (DELTA)</strong> — бойова система управління тактичної ланки ЗСУ. Дозволяє всім офіцерам і сержантам бачити на планшеті бойову обстановку в реальному часі: свої підрозділи (синій) та ворожі цілі (червоний). Уникається «дружній вогонь», покращується координація. <strong>MilChat</strong> — система зв'язку і передачі даних. <strong>Delta</strong> — загальна назва тактичної системи управління (аналог голдівської «Кропиви»).</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================== 2.6 ===================== -->
+    <section class="topic-section" id="tema-2-6">
+      <div class="section-header">
+        <div class="section-num">2.6</div>
+        <div>
+          <h2>Військові звання та знаки розрізнення ЗСУ</h2>
+          <p>Урок 8 · 45 хв · Таблиці + зведена схема</p>
+        </div>
+      </div>
+      <div class="prose">
+
+        <div class="callout callout-info">
+          <div class="callout-title">ℹ️ Система звань ЗСУ</div>
+          <p>ЗСУ мають <strong>44 звання</strong> (22 армійських + 22 корабельних). Сучасна система діє з 2020 р. Виключено звання «генерал-полковник» (ті, хто мав — зберегли його). Логіка погонів: <strong>більше зірок = вище звання</strong>. Вищий офіцерський склад впізнається за <strong>схрещеними булавами</strong> на погонах — давній символ козацьких гетьманів і отаманів.</p>
+        </div>
+
+        <h3>Рядовий та старшинський склад</h3>
+        <div class="rank-grid">
+          <div class="rank-card">
+            <div class="rank-group">Початкове</div>
+            <div class="rank-name">Рекрут</div>
+            <div class="rank-sub">До складання присяги. Без знаків розрізнення</div>
+          </div>
+          <div class="rank-card">
+            <div class="rank-group">Рядовий</div>
+            <div class="rank-name">Солдат</div>
+            <div class="rank-sub">Пустий погон або мінімальний знак</div>
+          </div>
+          <div class="rank-card">
+            <div class="rank-group">Рядовий</div>
+            <div class="rank-name">Старший солдат</div>
+            <div class="rank-sub">1 шеврон</div>
+          </div>
+        </div>
+
+        <h3>Сержантський склад (8 звань)</h3>
+        <div class="rank-grid">
+          <div class="rank-card">
+            <div class="rank-group">Молодший сержантський</div>
+            <div class="rank-name">Молодший сержант</div>
+            <div class="rank-sub">Командир відділення, мінометного розрахунку</div>
+          </div>
+          <div class="rank-card">
+            <div class="rank-group">Молодший сержантський</div>
+            <div class="rank-name">Сержант</div>
+            <div class="rank-sub">Командир БМП, танка, SAU</div>
+          </div>
+          <div class="rank-card">
+            <div class="rank-group">Старший сержантський</div>
+            <div class="rank-name">Старший сержант</div>
+            <div class="rank-sub">Головний сержант взводу</div>
+          </div>
+          <div class="rank-card">
+            <div class="rank-group">Старший сержантський</div>
+            <div class="rank-name">Головний сержант</div>
+            <div class="rank-sub">Гол. сержант роти / батареї</div>
+          </div>
+          <div class="rank-card">
+            <div class="rank-group">Старший сержантський</div>
+            <div class="rank-name">Штаб-сержант</div>
+            <div class="rank-sub">Гол. сержант батальйону / дивізіону</div>
+          </div>
+          <div class="rank-card">
+            <div class="rank-group">Вищий сержантський</div>
+            <div class="rank-name">Майстер-сержант</div>
+            <div class="rank-sub">Гол. сержант полку / бригади</div>
+          </div>
+          <div class="rank-card">
+            <div class="rank-group">Вищий сержантський</div>
+            <div class="rank-name">Старший майстер-сержант</div>
+            <div class="rank-sub">Гол. сержант роду військ / оперативного командування</div>
+          </div>
+          <div class="rank-card">
+            <div class="rank-group">Вищий сержантський</div>
+            <div class="rank-name">Головний майстер-сержант</div>
+            <div class="rank-sub">Гол. сержант ЗСУ / виду / Генштабу</div>
+          </div>
+        </div>
+
+        <h3>Офіцерський склад</h3>
+        <div class="rank-grid">
+          <div class="rank-card">
+            <div class="rank-group">Молодший офіцерський</div>
+            <div class="rank-name">Молодший лейтенант</div>
+            <div class="rank-sub">1 зірка. Командир взводу (початковий)</div>
+          </div>
+          <div class="rank-card">
+            <div class="rank-group">Молодший офіцерський</div>
+            <div class="rank-name">Лейтенант</div>
+            <div class="rank-sub">2 зірки. Командир взводу</div>
+          </div>
+          <div class="rank-card">
+            <div class="rank-group">Молодший офіцерський</div>
+            <div class="rank-name">Старший лейтенант</div>
+            <div class="rank-sub">3 зірки. Заст. командира роти</div>
+          </div>
+          <div class="rank-card">
+            <div class="rank-group">Молодший офіцерський</div>
+            <div class="rank-name">Капітан</div>
+            <div class="rank-sub">4 зірки. Командир роти / батареї</div>
+          </div>
+          <div class="rank-card">
+            <div class="rank-group">Старший офіцерський</div>
+            <div class="rank-name">Майор</div>
+            <div class="rank-sub">1 зірка + просвіт. Заст. командира батальйону</div>
+          </div>
+          <div class="rank-card">
+            <div class="rank-group">Старший офіцерський</div>
+            <div class="rank-name">Підполковник</div>
+            <div class="rank-sub">2 зірки + просвіт. Командир батальйону</div>
+          </div>
+          <div class="rank-card">
+            <div class="rank-group">Старший офіцерський</div>
+            <div class="rank-name">Полковник</div>
+            <div class="rank-sub">3 зірки + просвіт. Командир полку / бригади</div>
+          </div>
+          <div class="rank-card">
+            <div class="rank-group">Вищий офіцерський</div>
+            <div class="rank-name">Бригадний генерал</div>
+            <div class="rank-sub">1 зірка + булави. Заст. командира корпусу</div>
+          </div>
+          <div class="rank-card">
+            <div class="rank-group">Вищий офіцерський</div>
+            <div class="rank-name">Генерал-майор</div>
+            <div class="rank-sub">2 зірки + булави. Командир корпусу</div>
+          </div>
+          <div class="rank-card">
+            <div class="rank-group">Вищий офіцерський</div>
+            <div class="rank-name">Генерал-лейтенант</div>
+            <div class="rank-sub">3 зірки + булави. Командувач оперативного командування</div>
+          </div>
+          <div class="rank-card">
+            <div class="rank-group">Вищий офіцерський</div>
+            <div class="rank-name">Генерал</div>
+            <div class="rank-sub">4 зірки + булави. Найвище армійське звання (з 2020)</div>
+          </div>
+        </div>
+
+        <div class="callout callout-tip">
+          <div class="callout-title">💡 Чому генерали носять польову форму?</div>
+          <p>Запитайте учнів: «Чому навіть у глибокому тилу генерали ЗСУ носять польову форму, а не парадну?» Тема для дискусії: сигнал єдності з солдатами; відсутність зайвого виділення для снайперів ворога; демонстрація серйозності ситуації; традиція воюючої армії. Пов'яжіть з кейсом в Овальному кабінеті (лютий 2025: Зеленський vs Трамп).</p>
+        </div>
+
+        <h3>Роль сержантського складу: чому так важливо</h3>
+
+        <p>У НАТО-системі (яку переймають ЗСУ) сержанти — <strong>хребет армії</strong>, а не просто «старший рядовий». Вони є містком між рядовими та офіцерами, відповідають за:</p>
+
+        <div class="card-grid">
+          <div class="info-card">
+            <div class="card-title">⚔️ Бойова підготовка</div>
+            <ul>
+              <li>Навчання особового складу тактиці</li>
+              <li>Відпрацювання нормативів</li>
+              <li>Оцінка готовності підрозділу</li>
+            </ul>
+          </div>
+          <div class="info-card">
+            <div class="card-title">🔧 Техніка та озброєння</div>
+            <ul>
+              <li>Збереження та технічний стан зброї</li>
+              <li>Контроль боєприпасів</li>
+              <li>Підготовка техніки до виходу</li>
+            </ul>
+          </div>
+          <div class="info-card">
+            <div class="card-title">🤝 Особовий склад</div>
+            <ul>
+              <li>Дисципліна та моральний дух</li>
+              <li>Побут і щоденне життя</li>
+              <li>Представлення інтересів рядових перед офіцерами</li>
+            </ul>
+          </div>
+          <div class="info-card">
+            <div class="card-title">📋 Виконання наказів</div>
+            <ul>
+              <li>Безпосередній контроль виконання</li>
+              <li>Командування взводом / ротою при відсутності офіцера</li>
+              <li>Організація взаємодії між підрозділами</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================== 2.7 ===================== -->
+    <section class="topic-section" id="tema-2-7">
+      <div class="section-header">
+        <div class="section-num">2.7</div>
+        <div>
+          <h2>Військове лідерство: від кейсів до доктрини</h2>
+          <p>Уроки 1–2 тренінгу №3 · 90 хв · Дилеми + кейс-аналіз</p>
+        </div>
+      </div>
+      <div class="prose">
+
+        <div class="key-questions">
+          <h4>Ключові питання уроку</h4>
+          <ul>
+            <li>Що робить людину лідером у критичній ситуації?</li>
+            <li>Як рішення лідера впливають на долі інших — і яку ціну він за це платить?</li>
+            <li>Які спільні риси об'єднують українських військових лідерів різних епох?</li>
+            <li>Чи є лідерство суто військовою якістю, чи воно потрібне в повсякденному житті?</li>
+          </ul>
+        </div>
+
+        <h3>Два підходи до командування: радянський vs NATO</h3>
+
+        <div class="compare-box">
+          <div class="compare-col">
+            <div class="compare-col-header soviet">Радянська система (top-down)</div>
+            <div class="compare-col-body">
+              <ul>
+                <li>Суворе виконання наказів зверху</li>
+                <li>Ініціатива «знизу» не заохочується</li>
+                <li>Командир вирішує ВСЕ</li>
+                <li>Рядовий і сержант — виконавці</li>
+                <li>Повільна реакція на змінні умови</li>
+                <li>Страх помилки паралізує дії</li>
+                <li>Результат: РФ у 2022–2024 — застряглі колони, загибель генералів на передовій через брак ініціативи у підлеглих</li>
+              </ul>
+            </div>
+          </div>
+          <div class="compare-col">
+            <div class="compare-col-header nato">NATO / Mission Command (bottom-up)</div>
+            <div class="compare-col-body">
+              <ul>
+                <li>Командир пояснює <em>мету</em>, а не лише <em>спосіб</em></li>
+                <li>Ініціатива на всіх рівнях — від сержанта</li>
+                <li>Децентралізоване ухвалення рішень</li>
+                <li>Кожен солдат знає: «Якщо командир вибуває — я продовжую місію»</li>
+                <li>Швидка адаптація до змін на полі бою</li>
+                <li>Результат: ЗСУ — прориви, оточення, ефективні контрнаступи</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <h3>Доктрина військового лідерства ЗСУ</h3>
+
+        <p>«Доктрина розвитку військового лідерства ЗСУ» визначає 5 ключових компетенцій лідера:</p>
+
+        <div class="card-grid">
+          <div class="info-card">
+            <div class="card-title">💡 Ухвалення рішень</div>
+            <ul>
+              <li>В умовах неповної інформації</li>
+              <li>Під тиском часу</li>
+              <li>З відповідальністю за інших</li>
+            </ul>
+          </div>
+          <div class="info-card">
+            <div class="card-title">🚀 Ініціативність</div>
+            <ul>
+              <li>Діяти без прямого наказу при зміні ситуації</li>
+              <li>Пропонувати рішення, а не чекати</li>
+            </ul>
+          </div>
+          <div class="info-card">
+            <div class="card-title">🗣️ Комунікація</div>
+            <ul>
+              <li>Чіткі накази та завдання</li>
+              <li>Зворотний зв'язок з підлеглими</li>
+              <li>Відкритість до інформації знизу</li>
+            </ul>
+          </div>
+          <div class="info-card">
+            <div class="card-title">⚖️ Етика</div>
+            <ul>
+              <li>МГП — навіть у бою</li>
+              <li>Відповідальність за збитки для цивільних</li>
+              <li>Відмова від злочинних наказів</li>
+            </ul>
+          </div>
+          <div class="info-card">
+            <div class="card-title">💪 Стресостійкість</div>
+            <ul>
+              <li>Збереження функціональності під вогнем</li>
+              <li>Управління страхом</li>
+              <li>Підтримка морального духу підрозділу</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- КЕЙСИ ДЛЯ АНАЛІЗУ -->
+        <h3>Три кейси: дилеми реального лідерства</h3>
+
+        <div class="callout callout-tip">
+          <div class="callout-title">💡 Методика кейс-аналізу</div>
+          <p>Не розкривайте відразу, хто реальна постать. Дайте учням анонімний кейс (ситуацію + дилему), нехай обговорять і вирішать, що б вони зробили. Лише потім відкрийте: хто це був, що він вирішив насправді, які були наслідки. Потім порівняйте рішення учнів з реальним.</p>
+        </div>
+
+        <div class="case-grid">
+          <div class="case-card">
+            <div class="case-card-header">
+              <div class="case-name">Кейс 1: «Миротворча місія під вогнем»</div>
+              <div class="case-sub">Боснія, анклав Жепа, 1995 р.</div>
+            </div>
+            <div class="case-card-body">
+              <div class="case-field">
+                <div class="case-label">Анонімна ситуація</div>
+                Командир невеликого підрозділу ООН в гарячій точці. Завдання: захистити цивільних між двома ворогуючими угрупуваннями. Немає води та електрики. Часті перестрілки. Отримано наказ провести переговори з лідерами обох сторін. Ризик захоплення.
+              </div>
+              <div class="case-field">
+                <div class="case-label">Дилема</div>
+                Йти на переговори особисто і ризикнути собою → або чекати підкріплення у безпечній зоні, поки гинуть цивільні?
+              </div>
+              <div class="case-field">
+                <div class="case-label">Реальна постать</div>
+                Полковник Микола Верхогляд
+              </div>
+              <div class="case-field">
+                <div class="case-label">Рішення та результат</div>
+                Верхогляд особисто пішов на переговори, взяв відповідальність. Зупинив конфлікт ціною власної безпеки. Ключова лідерська якість: відповідальність і сміливість.
+              </div>
+            </div>
+          </div>
+
+          <div class="case-card">
+            <div class="case-card-header">
+              <div class="case-name">Кейс 2: «Оборона без шляху відступу»</div>
+              <div class="case-sub">«Азовсталь», Маріуполь, 2022 р.</div>
+            </div>
+            <div class="case-card-body">
+              <div class="case-field">
+                <div class="case-label">Анонімна ситуація</div>
+                Командир підрозділу в оточеному місті. Ресурси вичерпані. Цивільні ховаються на заводі. Виходу немає. Капітуляція або зберегти символ опору?
+              </div>
+              <div class="case-field">
+                <div class="case-label">Дилема</div>
+                Капітулювати і врятувати людей зараз → або тримати оборону, надихаючи країну, але ціною життів і полону?
+              </div>
+              <div class="case-field">
+                <div class="case-label">Реальна постать</div>
+                Денис «Редіс» Прокопенко, командир «Азову»
+              </div>
+              <div class="case-field">
+                <div class="case-label">Рішення та результат</div>
+                Тримав оборону до наказу президента про евакуацію цивільних → потім організований вихід і полон. Повернувся в обміні. Ключова якість: стійкість і підпорядкування вищому командуванню попри тиск.
+              </div>
+            </div>
+          </div>
+
+          <div class="case-card">
+            <div class="case-card-header">
+              <div class="case-name">Кейс 3: «Підпільна боротьба в мирний час»</div>
+              <div class="case-sub">Міжвоєнний період, УВО / ОУН, 1920–1930-ті</div>
+            </div>
+            <div class="case-card-body">
+              <div class="case-field">
+                <div class="case-label">Анонімна ситуація</div>
+                Командир підпільної організації у окупованій країні. Немає армії, немає держави. Але є ціль: зберегти рух опору, готуватись до майбутнього визволення.
+              </div>
+              <div class="case-field">
+                <div class="case-label">Дилема</div>
+                Збройні акції зараз (ризик репресій проти мирного населення) → або тривала тихаа підготовка і організація без видимого результату?
+              </div>
+              <div class="case-field">
+                <div class="case-label">Реальна постать</div>
+                Євген Коновалець
+              </div>
+              <div class="case-field">
+                <div class="case-label">Рішення та результат</div>
+                Організував УВО/ОУН, зберіг організаційну мережу, виховав нове покоління борців. Загинув від радянської агентури у 1938 р. Ключова якість: стратегічне мислення та ініціативне лідерство без зовнішньої підтримки.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="activity-box">
+          <div class="activity-header">
+            <div class="activity-icon">📊</div>
+            <div>
+              <h4>Підсумкова таблиця: порівняння з доктриною</h4>
+              <div class="activity-time">25 хв · Групова робота</div>
+            </div>
+          </div>
+          <div class="activity-content">
+            <p>Після кейсів учні заповнюють спільну таблицю на фліпчарті або Miro:</p>
+            <div class="table-wrap">
+              <table class="data-table">
+                <thead>
+                  <tr><th>Компетенція</th><th>Верхогляд</th><th>Прокопенко</th><th>Коновалець</th><th>Доктрина ЗСУ</th><th>Mission Command</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>Ухвалення рішень</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td></tr>
+                  <tr><td>Ініціативність</td><td>✅</td><td>—</td><td>✅✅</td><td>✅</td><td>✅✅</td></tr>
+                  <tr><td>Комунікація</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td></tr>
+                  <tr><td>Етика</td><td>✅✅</td><td>✅</td><td>⚠️</td><td>✅</td><td>✅</td></tr>
+                  <tr><td>Стресостійкість</td><td>✅</td><td>✅✅</td><td>✅</td><td>✅</td><td>✅</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p><em>Рефлексія:</em> «Яка лідерська якість виявилася найключовішою у кожному кейсі? Чи можна ці якості розвинути? Де вони потрібні у вашому щоденному житті — не лише у армії?»</p>
+          </div>
+        </div>
+
+        <h3>Невизначений контекст війни: лідерство в умовах дефіциту інформації</h3>
+
+        <p>Усі три кейси вище мають спільний знаменник — рішення ухвалювались без повної картини ситуації. Це не виняток, а постійна умова сучасного бою. <strong>Невизначеність</strong> — це ситуація, коли важливої інформації бракує або вона неповна, а плани противника, зміна обставин і його несподівані дії роблять поле бою принципово непередбачуваним. Лідерство, побудоване на чітких інструкціях «на всі випадки», у такому середовищі не працює — потрібен інший підхід.</p>
+
+        <div class="card-grid">
+          <div class="info-card">
+            <div class="card-title">🔄 Адаптивність і гнучкість</div>
+            <ul>
+              <li>Швидке перепланування дій без втрати мети</li>
+              <li>Готовність до сценаріїв, яких не було на брифінгу</li>
+            </ul>
+          </div>
+          <div class="info-card">
+            <div class="card-title">🎯 Ухвалення рішень за дефіциту даних</div>
+            <ul>
+              <li>Рішення приймається не «коли все відомо», а коли час спливає</li>
+              <li>Оцінка ризиків і ймовірних наслідків замість очікування повної ясності</li>
+            </ul>
+          </div>
+          <div class="info-card">
+            <div class="card-title">🧭 Стратегічне бачення попри хаос</div>
+            <ul>
+              <li>Кінцева мета залишається орієнтиром навіть коли план «1» вже не працює</li>
+              <li>Бачення скеровує дії підлеглих, коли єдиного командування немає</li>
+            </ul>
+          </div>
+          <div class="info-card">
+            <div class="card-title">🌱 Лідерство в кожному підлеглому</div>
+            <ul>
+              <li>Якщо зв'язок з командиром втрачено — рішення ухвалює той, хто на місці</li>
+              <li>Це й логіка Mission Command із порівняння вище (п. 2.7)</li>
+            </ul>
+          </div>
+        </div>
+
+        <p>Конкретний стиль лідерства теж залежить від ситуації, а не обирається раз і назавжди:</p>
+
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr><th>Стиль</th><th>Коли працює найкраще</th><th>Ризик</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Ситуаційний</strong></td><td>Лідер свідомо змінює підхід залежно від групи й обставин</td><td>Потребує досвіду й самоконтролю, щоб не виглядати непослідовним</td></tr>
+              <tr><td><strong>Трансформаційний</strong></td><td>Тривала, виснажлива операція — потрібно надихати й мобілізувати</td><td>Повільніший за директивний у миттєвій кризі</td></tr>
+              <tr><td><strong>Авторитарний</strong></td><td>Критична небезпека, рішення «зараз і без обговорень»</td><td>Пригнічує ініціативу підлеглих у довгостроковій перспективі</td></tr>
+              <tr><td><strong>Демократичний</strong></td><td>Є час, і підлеглі краще бачать деталі на місцях</td><td>Не годиться, коли рахунок іде на секунди</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout callout-tip">
+          <div class="callout-title">💡 Звідки ця ідея в доктринах</div>
+          <p>Доктрина розвитку військового лідерства ЗСУ (грудень 2020 р.) визначає <strong>вплив</strong> як ключову компетенцію лідера на всіх трьох рівнях — особистісному, організаційному та стратегічному, і пов'язує його з ефективними внутрішніми комунікаціями. Подібний підхід є й в американській доктрині Army Leadership (ADP 6-22): лідер впливає не статусом, а здатністю формулювати мету та вести за собою через комунікацію — особливо коли формальної ієрархії в моменті бою недостатньо.</p>
+        </div>
+
+        <div class="activity-box">
+          <div class="activity-header">
+            <div class="activity-icon">🗳️</div>
+            <div>
+              <h4>Міні-вправа: «Втрачений зв'язок»</h4>
+              <div class="activity-time">10 хв · Робота в малих групах</div>
+            </div>
+          </div>
+          <div class="activity-content">
+            <p>Вступні дані: під час навчального воргейму (п. 2.8) у групи раптово «зникає зв'язок» з командиром на 5 хвилин активної фази. Завдання групи: визначити, хто й на основі чого ухвалює рішення замість командира, і яким буде це рішення з урахуванням раніше озвученої мети операції. Після вправи — коротке обговорення: що допомогло ухвалити рішення без вказівок зверху, а що заважало?</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================== 2.8 ===================== -->
+    <section class="topic-section" id="tema-2-8">
+      <div class="section-header">
+        <div class="section-num">2.8</div>
+        <div>
+          <h2>Воргейм та Аналіз проведених дій (АПД / AAR)</h2>
+          <p>Уроки 6–7 + опційний урок · 90–135 хв</p>
+        </div>
+      </div>
+      <div class="prose">
+
+        <h3>Воргейм: навчальна гра-симуляція</h3>
+
+        <p>Воргейм (wargame) — настільна або цифрова симуляція бойових дій, де команди планують і «проводять» операції, використовуючи тактичні знаки та правила, що імітують реальні бойові характеристики техніки і підрозділів.</p>
+
+        <div class="callout callout-info">
+          <div class="callout-title">ℹ️ Чому воргейм — не просто гра</div>
+          <p>Воргейми використовуються в арміях НАТО для навчання планування на всіх рівнях — від взводу до штабу армії. Вони розвивають: розуміння взаємодії підрозділів, навичку швидкого прийняття рішень, розуміння наслідків тактичних рішень, вміння читати карту та ставити завдання.</p>
+        </div>
+
+        <h4>Підготовка воргейму (для вчителя)</h4>
+        <ol class="steps-list">
+          <li>Роздрукувати правила гри та фішки підрозділів (синіх і червоних)</li>
+          <li>Знайти кубики 1d6 та 1d8 (або завантажити в мобільному додатку)</li>
+          <li>Роздрукувати мапу бойових дій (або намалювати самостійно ~180×120 см)</li>
+          <li>Підготувати аркуші А4 для «наказів» — половина синя, половина червона</li>
+          <li>Поділити клас на 2 команди: «сині» (ЗСУ) і «червоні» (умовний противник)</li>
+          <li>Призначити «командувачів» та пояснити цілі кожної сторони</li>
+        </ol>
+
+        <div class="callout callout-pract">
+          <div class="callout-title">✅ Цілі воргейму для учнів</div>
+          <ul>
+            <li>Зрозуміти, чому планування важливіше, ніж просто «атакувати»</li>
+            <li>Відчути, як взаємодія підрозділів (піхота + артилерія + дрони) дає синергію</li>
+            <li>Побачити наслідки поганої логістики або відкритого флангу</li>
+            <li>Навчитись читати тактичну карту в динаміці</li>
+          </ul>
+        </div>
+
+        <h3>After Action Review (AAR) / Аналіз Проведених Дій (АПД)</h3>
+
+        <div class="definition">
+          <div class="definition-term">АПД (Аналіз Проведених Дій / After Action Review)</div>
+          <p>Структурований метод аналізу будь-якої завершеної дії або операції з метою виявлення того, що пройшло добре, що пішло не так і як поліпшити результат у майбутньому. Розроблено армією США. Є фундаментальним стандартом НАТО і використовується в ЗСУ на всіх рівнях — від відділення до штабу ЗСУ.</p>
+        </div>
+
+        <h3>Чотири ключові питання АПД</h3>
+
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr><th>#</th><th>Питання</th><th>Мета</th></tr>
+            </thead>
+            <tbody>
+              <tr><td class="num">1</td><td><strong>Що планувалось?</strong></td><td>Зафіксувати вихідний план — без прикрас</td></tr>
+              <tr><td class="num">2</td><td><strong>Що відбулось насправді?</strong></td><td>Об'єктивно описати факти без звинувачень</td></tr>
+              <tr><td class="num">3</td><td><strong>Чому є різниця?</strong></td>   <td>Аналіз причин розбіжності між планом і реальністю</td></tr>
+              <tr><td class="num">4</td><td><strong>Що можна покращити?</strong></td><td>Конкретні дії для наступного разу</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout callout-tip">
+          <div class="callout-title">💡 Чому АПД формує здорову культуру взаємодії</div>
+          <p>АПД — це <strong>не пошук винних</strong>. Це аналіз системи. Ніхто не звинувачує, не принижує. Вчаться всі — і рядові, і командири. Ця культура є причиною, чому армії НАТО вчаться набагато швидше від своїх помилок, ніж армії з вертикальним командуванням. Після воргейму — завжди проведіть АПД з учнями.</p>
+        </div>
+
+        <div class="activity-box">
+          <div class="activity-header">
+            <div class="activity-icon">🔍</div>
+            <div>
+              <h4>АПД після воргейму</h4>
+              <div class="activity-time">15 хв · Весь клас</div>
+            </div>
+          </div>
+          <div class="activity-content">
+            <p>Після завершення воргейму ведіть АПД разом з усіма:</p>
+            <ol>
+              <li><strong>Що планувалось</strong> — кожна команда по 2 хв: ваш план на початку</li>
+              <li><strong>Що відбулось</strong> — спільно відновити хронологію гри</li>
+              <li><strong>Чому є різниця</strong> — чому план не спрацював або спрацював? Чия помилка? Чия удача?</li>
+              <li><strong>Що покращимо</strong> — кожна команда: 2–3 конкретних висновки для наступного разу</li>
+            </ol>
+            <p>Зафіксуйте висновки на фліпчарті. Нехай учні самі їх сформулюють.</p>
+          </div>
+        </div>
+
+        <h3>Масштабування позитивного досвіду: приклади з ЗСУ</h3>
+
+        <p>Дискусія: що ефективніше — створити бригаду з нуля або розширити успішний підрозділ?</p>
+
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr><th>Підрозділ</th><th>Командир</th><th>Шлях</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>«Птахи Мадяра»</strong></td><td>Роберт «Мадяр» Бровді</td><td>Взвод FPV → рота → батальйон → бригада. Піонери тактики дронів</td></tr>
+              <tr><td><strong>Бригада «Азов»</strong></td><td>Денис Прокопенко та ін.</td><td>Батальйон → бригада. Один з найбільш підготовлених підрозділів</td></tr>
+              <tr><td><strong>Бригади СБС</strong></td><td>Верес, Федоренко, Олексюк, Гуйт</td><td>Від невеликих підрозділів дронів до цілих бригад у складі нового роду військ</td></tr>
+              <tr><td><strong>Штурмові полки</strong></td><td>Різні</td><td>225-й, 425-й та ін. Масштабування успішних штурмових практик</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================== МЕТОДИЧНІ ===================== -->
+    <section class="topic-section" id="metodychni">
+      <div class="section-header">
+        <div class="section-num">🔧</div>
+        <div>
+          <h2>Методичні поради та домашні завдання</h2>
+          <p>Практична організація Модуля 2</p>
+        </div>
+      </div>
+      <div class="prose">
+
+        <h3>Словник абревіатур Модуля 2</h3>
+
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr><th>Абревіатура</th><th>Розшифрування</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>АГС</strong></td><td>Автоматичний станковий гранатомет</td></tr>
+              <tr><td><strong>АПД / AAR</strong></td><td>Аналіз Проведених Дій / After Action Review</td></tr>
+              <tr><td><strong>БМП</strong></td><td>Бойова машина піхоти</td></tr>
+              <tr><td><strong>БпЛА</strong></td><td>Безпілотний літальний апарат</td></tr>
+              <tr><td><strong>БрАГ</strong></td><td>Бригадна артилерійська група</td></tr>
+              <tr><td><strong>БТР</strong></td><td>Бронетранспортер</td></tr>
+              <tr><td><strong>ВЗтаКБ</strong></td><td>Війська зв'язку та кібербезпеки</td></tr>
+              <tr><td><strong>ГУР МО</strong></td><td>Головне управління розвідки Міністерства оборони</td></tr>
+              <tr><td><strong>ДШВ</strong></td><td>Десантно-штурмові війська</td></tr>
+              <tr><td><strong>ДСНС</strong></td><td>Державна служба з надзвичайних ситуацій</td></tr>
+              <tr><td><strong>ДССТ</strong></td><td>Державна спеціальна служба транспорту</td></tr>
+              <tr><td><strong>ІПСО</strong></td><td>Інформаційно-психологічні спеціальні операції</td></tr>
+              <tr><td><strong>НГУ</strong></td><td>Національна гвардія України</td></tr>
+              <tr><td><strong>НРК</strong></td><td>Наземні роботизовані комплекси</td></tr>
+              <tr><td><strong>ПС</strong></td><td>Повітряні Сили ЗСУ</td></tr>
+              <tr><td><strong>ПТРК</strong></td><td>Протитанковий ракетний комплекс</td></tr>
+              <tr><td><strong>РЕБ (EW)</strong></td><td>Радіоелектронна боротьба (Electronic Warfare)</td></tr>
+              <tr><td><strong>РСЗВ</strong></td><td>Реактивна система залпового вогню (HIMARS, BM-21 та ін.)</td></tr>
+              <tr><td><strong>РХБЗ</strong></td><td>Радіаційний, хімічний та біологічний захист</td></tr>
+              <tr><td><strong>СБС</strong></td><td>Сили безпілотних систем</td></tr>
+              <tr><td><strong>ССО</strong></td><td>Сили спеціальних операцій</td></tr>
+              <tr><td><strong>СВ</strong></td><td>Сухопутні війська</td></tr>
+              <tr><td><strong>ТВД</strong></td><td>Театр воєнних дій</td></tr>
+              <tr><td><strong>ТрО</strong></td><td>Сили Територіальної Оборони</td></tr>
+              <tr><td><strong>ВМС</strong></td><td>Військово-Морські Сили</td></tr>
+              <tr><td><strong>ВОС</strong></td><td>Військово-облікова спеціальність</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Домашні завдання до Модуля 2</h3>
+
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr><th>Завдання</th><th>Тип</th><th>Термін</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>ВОС-дослідження:</strong> зайдіть на платформу LobbyX. Знайдіть 3–5 незвичних вакансій у Силах оборони (не стрілець, а фотограф, психолог, програміст, кухар, графічний дизайнер). Підготуйте короткий опис кожної</td><td>Дослідження онлайн</td><td>До наступного тренінгу</td></tr>
+              <tr><td><strong>Персоналія:</strong> оберіть одного українського військового лідера (будь-якої епохи від Київської Русі до сьогодення). Підготуйте коротку довідку: ім'я, роки, ключова подія, яке лідерське рішення вирізняє цю людину</td><td>Дослідження + есе 1 стор.</td><td>До уроку лідерства</td></tr>
+              <tr><td><strong>Новини фронту:</strong> оберіть одне повідомлення про бойові дії за тиждень. Визначте: які структури Сил оборони брали участь? Який домен задіяний? Чи є взаємодія кількох структур?</td><td>Аналіз медіа</td><td>Щотижнево (опційно)</td></tr>
+              <tr><td><strong>Намалюй бригаду:</strong> намалюй схему механізованої бригади з тактичними знаками. Познач кожен підрозділ, його чисельність і роль</td><td>Творче завдання</td><td>До уроку карт</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout callout-pract">
+          <div class="callout-title">✅ Рекомендовані відео для Модуля 2</div>
+          <ul>
+            <li><a href="https://www.youtube.com/watch?v=ySQ0K1kFZ6U" class="video-link" target="_blank" rel="noopener">АПД — відео з YouTube-каналу ТрО ЗСУ</a></li>
+            <li><a href="https://www.youtube.com/watch?v=rUN2MNhEA4c" class="video-link" target="_blank" rel="noopener">«Птахи Мадяра»: від взводу до бригади (інтерв'ю)</a></li>
+            <li><a href="https://www.youtube.com/watch?v=4EFbyPcNV3s" class="video-link" target="_blank" rel="noopener">Як «Азов» утримував Маріуполь (документалка)</a></li>
+            <li><a href="https://www.youtube.com/watch?v=bf7C0IiyoGw" class="video-link" target="_blank" rel="noopener">Система Кропива: як ЗСУ управляють боєм в реальному часі</a></li>
+            <li><a href="https://www.youtube.com/watch?v=qUxjEb_WdfU" class="video-link" target="_blank" rel="noopener">Морські дрони: як Україна змінила правила морської війни</a></li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <div class="page-nav">
+      <a href="modul-1.html">← Модуль 1. Основи нац. безпеки</a>
+      <a href="modul-3.html">Модуль 3. Озброєння та стрілецька підготовка →</a>
+    </div>
+
+  </main>
+</div>
+
+<footer style="background:var(--ua-blue);color:rgba(255,255,255,0.65);text-align:center;padding:20px 32px;font-size:0.78rem;line-height:1.6;">
+  <strong style="color:var(--ua-yellow);">Захист України. Методичний довідник викладача</strong> · 10 клас, Модуль 2<br>
+  Радомишльський ліцей №3 · За програмою МОН (Наказ №1116 від 08.08.2024) · Матеріали тренінгів №2–3 (гриф №БО-0550-25, 30.12.2025)
+</footer>
+
+<script>
+const sections = document.querySelectorAll('.topic-section');
+const navLinks = document.querySelectorAll('.nav-list li a');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const id = entry.target.getAttribute('id');
+      navLinks.forEach(link => {
+        link.classList.toggle('active', link.getAttribute('href') === '#' + id);
+      });
+    }
+  });
+}, { rootMargin: '-20% 0px -70% 0px' });
+sections.forEach(section => observer.observe(section));
+</script>
+
+</body>
+</html>

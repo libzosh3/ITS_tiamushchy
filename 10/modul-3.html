@@ -1,0 +1,1851 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Модуль 3. Озброєння та стрілецька підготовка — Захист України 10 клас</title>
+<style>
+:root {
+  --ua-blue: #003087;
+  --ua-yellow: #FFD700;
+  --olive: #4A5240;
+  --olive-light: #6B7A5A;
+  --sand: #F5F0E8;
+  --ink: #1C1C1C;
+  --white: #FFFFFF;
+  --divider: #C8C0B0;
+  --accent-red: #C0392B;
+  --accent-green: #2E7D32;
+  --card-bg: #FDFBF7;
+  --info-bg: #E8F0FE;
+  --info-border: #4A90D9;
+  --warn-bg: #FFF8E1;
+  --warn-border: #F9A825;
+  --pract-bg: #E8F5E9;
+  --pract-border: #2E7D32;
+  --tip-bg: #F3E5F5;
+  --tip-border: #7B1FA2;
+  --danger-bg: #FFEBEE;
+  --danger-border: #C62828;
+  --shadow: 0 2px 12px rgba(0,0,0,0.08);
+  --font-display: 'Georgia', 'Times New Roman', serif;
+  --font-body: 'Segoe UI', 'Arial', sans-serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: var(--font-body); background: var(--sand); color: var(--ink); line-height: 1.7; font-size: 15.5px; }
+.topbar-stripe { height: 4px; background: var(--ua-yellow); }
+.topbar { background: var(--ua-blue); color: rgba(255,255,255,0.75); font-size: 0.78rem; padding: 8px 32px; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.topbar a { color: var(--ua-yellow); text-decoration: none; }
+.module-header { background: linear-gradient(135deg, #1a0a00 0%, #3d1a00 40%, var(--olive) 100%); color: var(--white); padding: 48px 32px 40px; position: relative; overflow: hidden; }
+.module-header::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 4px; background: var(--ua-yellow); }
+.module-header-inner { max-width: 1100px; margin: 0 auto; }
+.module-eyebrow { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ua-yellow); margin-bottom: 12px; }
+.module-header h1 { font-family: var(--font-display); font-size: clamp(1.6rem, 4vw, 2.4rem); font-weight: 700; line-height: 1.2; margin-bottom: 14px; max-width: 780px; }
+.module-header-meta { display: flex; flex-wrap: wrap; gap: 20px; margin-top: 20px; }
+.meta-pill { background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2); border-radius: 20px; padding: 5px 14px; font-size: 0.8rem; display: flex; align-items: center; gap: 6px; }
+.meta-pill span { opacity: 0.7; }
+.page-layout { max-width: 1100px; margin: 0 auto; padding: 40px 32px 80px; display: grid; grid-template-columns: 260px 1fr; gap: 40px; align-items: start; }
+.sidebar { position: sticky; top: 16px; }
+.nav-block { background: var(--card-bg); border: 1px solid var(--divider); border-radius: 8px; overflow: hidden; margin-bottom: 20px; }
+.nav-block-title { background: var(--ua-blue); color: var(--ua-yellow); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.10em; text-transform: uppercase; padding: 10px 16px; }
+.nav-list { list-style: none; padding: 8px 0; }
+.nav-list li a { display: flex; align-items: flex-start; gap: 8px; padding: 7px 16px; text-decoration: none; color: var(--ink); font-size: 0.82rem; line-height: 1.4; transition: background 0.15s; }
+.nav-list li a:hover { background: #EEE8DC; color: var(--ua-blue); }
+.nav-list li a .nav-num { color: var(--olive-light); font-weight: 700; flex-shrink: 0; font-size: 0.75rem; margin-top: 1px; }
+.nav-list li a.active { background: #DDD5C5; font-weight: 600; color: var(--ua-blue); }
+.content { min-width: 0; }
+.topic-section { margin-bottom: 52px; scroll-margin-top: 20px; }
+.section-header { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 24px; padding-bottom: 14px; border-bottom: 2px solid var(--divider); }
+.section-num { background: var(--ua-blue); color: var(--ua-yellow); font-family: var(--font-display); font-size: 1rem; font-weight: 700; padding: 5px 12px; border-radius: 3px; flex-shrink: 0; margin-top: 3px; }
+.section-header h2 { font-family: var(--font-display); font-size: 1.35rem; font-weight: 700; color: var(--ua-blue); line-height: 1.25; }
+.section-header p { font-size: 0.84rem; color: #666; margin-top: 4px; }
+.prose p { margin-bottom: 14px; }
+.prose h3 { font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; color: var(--olive); margin: 24px 0 10px; }
+.prose h4 { font-size: 0.82rem; font-weight: 700; color: var(--ua-blue); margin: 18px 0 8px; text-transform: uppercase; letter-spacing: 0.04em; }
+.callout { border-left: 4px solid; border-radius: 4px; padding: 16px 20px; margin: 20px 0; }
+.callout-info { background: var(--info-bg); border-color: var(--info-border); }
+.callout-warn { background: var(--warn-bg); border-color: var(--warn-border); }
+.callout-pract { background: var(--pract-bg); border-color: var(--pract-border); }
+.callout-tip { background: var(--tip-bg); border-color: var(--tip-border); }
+.callout-danger { background: var(--danger-bg); border-color: var(--danger-border); }
+.callout-title { font-weight: 700; font-size: 0.82rem; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 8px; display: flex; align-items: center; gap: 6px; }
+.callout-info .callout-title { color: var(--info-border); }
+.callout-warn .callout-title { color: #B8860B; }
+.callout-pract .callout-title { color: var(--accent-green); }
+.callout-tip .callout-title { color: #6A0080; }
+.callout-danger .callout-title { color: var(--danger-border); }
+.callout p, .callout ul, .callout ol { font-size: 0.9rem; line-height: 1.6; }
+.callout p + p { margin-top: 8px; }
+.callout ul, .callout ol { padding-left: 18px; }
+.callout ul li, .callout ol li { margin-bottom: 4px; }
+.table-wrap { overflow-x: auto; margin: 20px 0; border-radius: 6px; border: 1px solid var(--divider); }
+.data-table { width: 100%; border-collapse: collapse; font-size: 0.87rem; background: var(--white); }
+.data-table th { background: var(--ua-blue); color: var(--white); padding: 10px 14px; text-align: left; font-weight: 600; font-size: 0.82rem; }
+.data-table td { padding: 9px 14px; border-bottom: 1px solid var(--divider); vertical-align: top; line-height: 1.5; }
+.data-table tr:last-child td { border-bottom: none; }
+.data-table tr:nth-child(even) td { background: #F7F3EC; }
+.data-table tr:hover td { background: #EDE8DC; }
+.data-table td.num { font-weight: 700; color: var(--ua-blue); text-align: center; }
+.data-table td.good { color: var(--accent-green); font-weight: 600; }
+.data-table td.bad { color: var(--accent-red); }
+.definition { background: var(--white); border: 1px solid var(--divider); border-radius: 6px; padding: 16px 20px; margin: 16px 0; position: relative; }
+.definition::before { content: '📌'; position: absolute; top: 14px; right: 16px; font-size: 1rem; }
+.definition-term { font-weight: 700; font-size: 0.95rem; color: var(--ua-blue); margin-bottom: 6px; }
+.definition p { font-size: 0.88rem; color: #444; line-height: 1.6; }
+.steps-list { list-style: none; counter-reset: step-counter; margin: 16px 0; }
+.steps-list li { counter-increment: step-counter; display: flex; gap: 14px; align-items: flex-start; margin-bottom: 12px; background: var(--white); border: 1px solid var(--divider); border-radius: 5px; padding: 12px 14px; font-size: 0.9rem; line-height: 1.5; }
+.steps-list li::before { content: counter(step-counter); background: var(--ua-blue); color: var(--ua-yellow); font-weight: 700; font-size: 0.85rem; width: 26px; height: 26px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; margin: 16px 0; }
+.info-card { background: var(--card-bg); border: 1px solid var(--divider); border-radius: 6px; padding: 18px; font-size: 0.87rem; }
+.info-card .card-title { font-weight: 700; color: var(--ua-blue); margin-bottom: 8px; font-size: 0.9rem; display: flex; align-items: center; gap: 8px; }
+.info-card ul { padding-left: 16px; line-height: 1.65; }
+.info-card ul li { margin-bottom: 3px; }
+.activity-box { background: var(--card-bg); border: 1px solid var(--divider); border-radius: 8px; padding: 24px; margin: 20px 0; }
+.activity-header { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--divider); }
+.activity-icon { font-size: 1.6rem; }
+.activity-header h4 { font-family: var(--font-display); font-size: 1rem; font-weight: 700; color: var(--ua-blue); line-height: 1.3; }
+.activity-header .activity-time { font-size: 0.78rem; color: #888; margin-top: 2px; }
+.activity-content { font-size: 0.88rem; line-height: 1.65; }
+.activity-content p { margin-bottom: 10px; }
+.activity-content ul, .activity-content ol { padding-left: 18px; }
+.activity-content li { margin-bottom: 5px; }
+.video-link { display: inline-flex; align-items: center; gap: 8px; background: #B71C1C; color: var(--white); text-decoration: none; padding: 7px 16px; border-radius: 4px; font-size: 0.83rem; font-weight: 600; margin: 4px 0; transition: background 0.15s; }
+.video-link:hover { background: #8B0000; }
+.video-link::before { content: '▶'; }
+.breadcrumb { display: flex; align-items: center; gap: 8px; font-size: 0.8rem; color: #888; margin-bottom: 28px; flex-wrap: wrap; }
+.breadcrumb a { color: var(--ua-blue); text-decoration: none; }
+.breadcrumb .sep { color: #CCC; }
+.breadcrumb .current { color: var(--ink); font-weight: 600; }
+.module-progress { display: flex; gap: 4px; margin-bottom: 28px; }
+.progress-dot { width: 28px; height: 6px; border-radius: 3px; background: var(--divider); }
+.progress-dot.done { background: var(--ua-blue); }
+.progress-dot.current { background: var(--ua-yellow); }
+
+/* WEAPON COMPARE */
+.weapon-compare { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 20px 0; }
+.weapon-col { background: var(--white); border: 1px solid var(--divider); border-radius: 6px; overflow: hidden; }
+.weapon-col-header { padding: 10px 16px; font-weight: 700; font-size: 0.9rem; display: flex; align-items: center; gap: 8px; }
+.weapon-ak { background: #2E4A1E; color: white; }
+.weapon-ar { background: #1A3A5C; color: white; }
+.weapon-col-body { padding: 14px 16px; font-size: 0.85rem; }
+.weapon-col-body .w-good { color: var(--accent-green); font-weight: 600; margin-bottom: 4px; }
+.weapon-col-body .w-bad { color: var(--accent-red); margin-bottom: 4px; }
+.weapon-col-body ul { padding-left: 16px; line-height: 1.7; }
+
+/* POSTURE STEPS */
+.posture-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; margin: 16px 0; }
+.posture-card { background: var(--white); border: 1px solid var(--divider); border-radius: 6px; padding: 14px; font-size: 0.85rem; }
+.posture-card .posture-num { font-size: 1.4rem; font-weight: 900; color: var(--ua-blue); opacity: 0.2; margin-bottom: 4px; }
+.posture-card .posture-name { font-weight: 700; color: var(--ua-blue); margin-bottom: 6px; font-size: 0.88rem; }
+.posture-card .posture-pro { color: var(--accent-green); font-size: 0.8rem; margin-top: 4px; }
+.posture-card .posture-con { color: var(--accent-red); font-size: 0.8rem; }
+
+/* GRENADE TABLE */
+.grenade-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; margin: 20px 0; }
+.grenade-card { background: var(--white); border: 1px solid var(--divider); border-radius: 6px; overflow: hidden; font-size: 0.85rem; }
+.grenade-card-header { padding: 10px 14px; color: white; font-weight: 700; font-size: 0.9rem; }
+.grenade-f1 { background: #5C3317; }
+.grenade-rgd { background: #3A5C17; }
+.grenade-rgn { background: #17395C; }
+.grenade-rgo { background: #5C1744; }
+.grenade-m67 { background: #3A3A5C; }
+.grenade-dm51 { background: #17535C; }
+.grenade-card-body { padding: 12px 14px; line-height: 1.6; }
+.grenade-field { display: flex; gap: 6px; margin-bottom: 5px; font-size: 0.82rem; }
+.grenade-label { color: #888; min-width: 100px; flex-shrink: 0; }
+.grenade-value { font-weight: 600; }
+
+/* SCOPE TABLE */
+.scope-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 14px; margin: 16px 0; }
+.scope-card { background: var(--card-bg); border: 1px solid var(--divider); border-radius: 6px; padding: 14px; font-size: 0.85rem; }
+.scope-card .scope-name { font-weight: 700; color: var(--ua-blue); margin-bottom: 6px; }
+.scope-card .scope-range { font-size: 0.8rem; color: var(--olive); margin-bottom: 8px; font-weight: 600; }
+.scope-card ul { padding-left: 14px; font-size: 0.82rem; line-height: 1.6; }
+.scope-card li.good { color: var(--accent-green); }
+.scope-card li.bad { color: var(--accent-red); }
+
+/* KОДЕКС */
+.codex-block { background: #1a2a0a; color: white; border-radius: 8px; padding: 24px; margin: 20px 0; }
+.codex-title { font-family: var(--font-display); font-size: 1rem; font-weight: 700; color: var(--ua-yellow); margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.08em; }
+.codex-rules { list-style: none; padding: 0; }
+.codex-rules li { padding: 8px 0 8px 28px; position: relative; border-bottom: 1px solid rgba(255,255,255,0.1); font-size: 0.9rem; line-height: 1.5; }
+.codex-rules li:last-child { border-bottom: none; }
+.codex-rules li::before { content: '🔒'; position: absolute; left: 0; top: 8px; font-size: 0.9rem; }
+
+/* НОРМАТИВ */
+.norm-box { background: var(--white); border: 2px solid var(--ua-blue); border-radius: 6px; padding: 16px 20px; margin: 16px 0; }
+.norm-box-title { font-weight: 700; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ua-blue); margin-bottom: 12px; display: flex; gap: 8px; align-items: center; }
+.norm-row { display: grid; grid-template-columns: 1fr repeat(4, auto); gap: 0; border-radius: 4px; overflow: hidden; font-size: 0.82rem; margin-bottom: 4px; }
+.norm-row.header { background: var(--ua-blue); color: white; font-weight: 700; }
+.norm-row.header > div { padding: 6px 10px; }
+.norm-row > div { padding: 6px 10px; background: #F7F3EC; border-right: 1px solid var(--divider); border-bottom: 1px solid var(--divider); }
+.norm-row > div:last-child { border-right: none; }
+.norm-row > div:first-child { background: #F0EDE5; }
+.norm-val { text-align: center; font-weight: 600; }
+.norm-val.v12 { color: #155724; }
+.norm-val.v10 { color: #0a4a6e; }
+.norm-val.v7 { color: #856404; }
+.norm-val.v4 { color: #721c24; }
+
+/* PAGE NAV */
+.page-nav { display: flex; justify-content: space-between; gap: 16px; margin-top: 48px; padding-top: 24px; border-top: 2px solid var(--divider); flex-wrap: wrap; }
+.page-nav a { display: flex; align-items: center; gap: 8px; color: var(--ua-blue); text-decoration: none; font-weight: 600; font-size: 0.9rem; padding: 10px 16px; border: 1px solid var(--divider); border-radius: 5px; background: var(--card-bg); transition: box-shadow 0.15s; }
+.page-nav a:hover { box-shadow: var(--shadow); }
+
+/* SECTOR CLOCK */
+.clock-diagram { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0; }
+.clock-card { background: var(--white); border: 1px solid var(--divider); border-radius: 6px; padding: 14px; font-size: 0.85rem; }
+.clock-card .clock-num { font-size: 1.6rem; font-weight: 900; color: var(--ua-blue); opacity: 0.3; float: right; }
+.clock-card .clock-name { font-weight: 700; color: var(--ua-blue); margin-bottom: 6px; }
+.clock-card p { font-size: 0.83rem; line-height: 1.6; color: #444; }
+
+@media (max-width: 860px) {
+  .page-layout { grid-template-columns: 1fr; }
+  .sidebar { position: static; }
+  .module-header { padding: 36px 16px 30px; }
+  .page-layout { padding: 24px 16px 60px; }
+  .weapon-compare { grid-template-columns: 1fr; }
+  .clock-diagram { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<div class="topbar-stripe"></div>
+<div class="topbar">
+  <div>📘 <a href="../index.html">Довідник викладача «Захист України»</a> › 10 клас › Модуль 3</div>
+  <div>МОН 2024 · Інтегрований курс</div>
+</div>
+
+<header class="module-header">
+  <div class="module-header-inner">
+    <div class="module-eyebrow">10 клас · Модуль 3 · Тренінги №3–5</div>
+    <h1>Озброєння та військова техніка.<br>Стрілецька підготовка</h1>
+    <div class="module-header-meta">
+      <div class="meta-pill">📋 <span>17 уроків · ~765 хв</span></div>
+      <div class="meta-pill">🔫 <span>Практичні стрільби</span></div>
+      <div class="meta-pill">🧩 <span>Розбирання/складання АК та AR</span></div>
+      <div class="meta-pill">💣 <span>Гранати та гранатомети</span></div>
+    </div>
+  </div>
+</header>
+
+<div class="page-layout">
+  <aside class="sidebar">
+    <div class="nav-block">
+      <div class="nav-block-title">Теми модуля</div>
+      <ul class="nav-list">
+        <li><a href="#tema-3-1"><span class="nav-num">3.1</span>Класифікація зброї та техніки</a></li>
+        <li><a href="#tema-3-2"><span class="nav-num">3.2</span>Зберігання зброї та боєприпасів</a></li>
+        <li><a href="#tema-3-3"><span class="nav-num">3.3</span>Кодекс стрільця: 12 правил безпеки</a></li>
+        <li><a href="#tema-3-4"><span class="nav-num">3.4</span>Будова АК-74 та AR-15</a></li>
+        <li><a href="#tema-3-5"><span class="nav-num">3.5</span>Розбирання, складання, чищення</a></li>
+        <li><a href="#tema-3-6"><span class="nav-num">3.6</span>Прицільні пристосування</a></li>
+        <li><a href="#tema-3-7"><span class="nav-num">3.7</span>Балістика та фактори влучності</a></li>
+        <li><a href="#tema-3-8"><span class="nav-num">3.8</span>Стійки та положення для стрільби</a></li>
+        <li><a href="#tema-3-9"><span class="nav-num">3.9</span>Сектори і реагування на контакт</a></li>
+        <li><a href="#tema-3-10"><span class="nav-num">3.10</span>Маніпуляції: запобіжник, магазин</a></li>
+        <li><a href="#tema-3-11"><span class="nav-num">3.11</span>Стрільба з пневматики</a></li>
+        <li><a href="#tema-3-12"><span class="nav-num">3.12</span>Ручні гранати: будова та безпека</a></li>
+        <li><a href="#tema-3-13"><span class="nav-num">3.13</span>Гранатомети та безпека</a></li>
+        <li><a href="#normatyvy"><span class="nav-num">📋</span>Нормативи вогневої підготовки</a></li>
+        <li><a href="#tema-3-14"><span class="nav-num">3.14</span>Способи носіння зброї</a></li>
+        <li><a href="#tema-3-15"><span class="nav-num">3.15</span>Бойовий стрес</a></li>
+      </ul>
+    </div>
+    <div class="nav-block">
+      <div class="nav-block-title">Навігація курсу</div>
+      <ul class="nav-list">
+        <li><a href="../index.html"><span class="nav-num">🏠</span>Головна</a></li>
+        <li><a href="modul-2.html"><span class="nav-num">←</span>Модуль 2. Управління</a></li>
+        <li><a href="modul-4.html"><span class="nav-num">→</span>Модуль 4. Дії в бою</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <main class="content">
+
+    <div class="breadcrumb">
+      <a href="../index.html">Довідник</a>
+      <span class="sep">/</span>
+      <span>10 клас</span>
+      <span class="sep">/</span>
+      <span class="current">Модуль 3. Озброєння та стрілецька підготовка</span>
+    </div>
+
+    <div class="module-progress">
+      <div class="progress-dot done"></div>
+      <div class="progress-dot done"></div>
+      <div class="progress-dot current"></div>
+      <div class="progress-dot"></div>
+      <div class="progress-dot"></div>
+      <div class="progress-dot"></div>
+    </div>
+
+    <div class="callout callout-info">
+      <div class="callout-title">ℹ️ Загальний огляд модуля</div>
+      <p>Модуль 3 — найбільш практичний у 10 класі. Три тренінги (№3–5) дають повний цикл від теорії озброєння до практичних стрільб і роботи з гранатами. <strong>Принцип навчання:</strong> теорія (будова) → наочність (плакат/відео) → практика (розбирання/складання/стрільба). Зброя — це інструмент, і головна мета — навчитися ним ВЛУЧНО і БЕЗПЕЧНО користуватися.</p>
+      <p>Джерела: Тренінги №3–5 (МОН, 2025 р., гриф №БО-0550-25), Керівництво зі стрілецької справи ЗСУ, Методика підготовки та проведення занять з вогневої підготовки (Центр оперативних стандартів ЗСУ).</p>
+    </div>
+
+    <!-- ===================== 3.1 ===================== -->
+    <section class="topic-section" id="tema-3-1">
+      <div class="section-header">
+        <div class="section-num">3.1</div>
+        <div>
+          <h2>Класифікація зброї та військової техніки</h2>
+          <p>Уроки 3–4 тренінгу №3 · 90 хв · Лекція з обговоренням</p>
+        </div>
+      </div>
+      <div class="prose">
+
+        <h3>Основні класи стрілецької зброї</h3>
+
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr><th>Клас зброї</th><th>Призначення</th><th>Основні зразки в ЗСУ</th><th>Особливості застосування</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Пістолети (короткоствольна)</strong></td>
+                <td>Самозахист, ближній бій, приховане носіння</td>
+                <td>ПМ, ТТ (рідко), ФОРТ-12/17/14, Glock 17/19</td>
+                <td>Ефективна дистанція до 30 м. Необхідна механікам-водіям, операторам БПЛА, командирам</td>
+              </tr>
+              <tr>
+                <td><strong>Автомати / штурмові гвинтівки</strong></td>
+                <td>Основна піхотна зброя. Ближній і середній бій</td>
+                <td>АК-74, АКСУ-74, UAR-15, M4A1, Grot</td>
+                <td>Ефективна дистанція 300–600 м. Основна зброя піхоти</td>
+              </tr>
+              <tr>
+                <td><strong>Кулемети</strong></td>
+                <td>Вогнева підтримка, придушення ворога</td>
+                <td>РПК-74, ПКМ, M249 SAW, M60, MG-3</td>
+                <td>Найкраща зброя проти живої сили. Вимагає фізичної витривалості</td>
+              </tr>
+              <tr>
+                <td><strong>Снайперські гвинтівки</strong></td>
+                <td>Прицільна стрільба на великих дистанціях</td>
+                <td>СВД, Barrett M82, УБАС, Accuracy International</td>
+                <td>500–2000+ м. «Болтова» або напівавтоматична система</td>
+              </tr>
+              <tr>
+                <td><strong>Гладкоствольна зброя</strong></td>
+                <td>Спеціальні завдання: знищення БПЛА, CQB</td>
+                <td>Remington 870, Mossberg 500, KSG</td>
+                <td>Ефективна на дистанції 40–70 м. Дробовий або картечний набій збиває FPV-дрони</td>
+              </tr>
+              <tr>
+                <td><strong>Ручні гранатомети</strong></td>
+                <td>Ураження бронетехніки, укріплень, живої сили</td>
+                <td>РПГ-7, AT4, RPG-75, NLAW, Javelin, M72 LAW</td>
+                <td>Одноразові (AT4, RPG-75) або багаторазові (РПГ-7). Ефект реактивного струменя позаду</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Зброя для різних бойових спеціальностей</h3>
+
+        <div class="card-grid">
+          <div class="info-card">
+            <div class="card-title">👮 Піхотинець</div>
+            <ul>
+              <li>Основна: автомат АК-74 або UAR-15/M4</li>
+              <li>Можливо: гранатомет РПГ або AT4</li>
+              <li>Тактичний обвіс: коліматор, підствольник, ліхтар</li>
+            </ul>
+          </div>
+          <div class="info-card">
+            <div class="card-title">🚗 Механік-водій / Оператор БПЛА</div>
+            <ul>
+              <li>Короткий автомат АКСУ-74 або пістолет</li>
+              <li>Зручний для роботи в тісному просторі</li>
+              <li>Не передбачає прямого вогневого контакту</li>
+            </ul>
+          </div>
+          <div class="info-card">
+            <div class="card-title">🔭 Снайпер</div>
+            <ul>
+              <li>Снайперська гвинтівка з «болтовим» затвором</li>
+              <li>Другорядно: пістолет для самооборони</li>
+              <li>Оптичний приціл 6–25× кратність</li>
+            </ul>
+          </div>
+          <div class="info-card">
+            <div class="card-title">🛸 ППО проти БПЛА</div>
+            <ul>
+              <li>Гладкоствольна рушниця з картечшу</li>
+              <li>Зенітний кулемет на пікапі</li>
+              <li>Щоільність дробу збільшує шанс влучити</li>
+            </ul>
+          </div>
+          <div class="info-card">
+            <div class="card-title">🕵️ Розвідник / ССО</div>
+            <ul>
+              <li>Зброя зі звукоглушником (саундмодератором)</li>
+              <li>Компактна і прихована</li>
+              <li>Зменшення демаскування критичне</li>
+            </ul>
+          </div>
+          <div class="info-card">
+            <div class="card-title">🏥 Медик</div>
+            <ul>
+              <li>Пістолет або компактний автомат</li>
+              <li>Руки мають бути вільні для допомоги</li>
+              <li>Приоритет: медичне спорядження, не вогонь</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="callout callout-tip">
+          <div class="callout-title">💡 Головний висновок для учнів</div>
+          <p>Не існує «найкращої зброї для всього». Є зброя для конкретної задачі. FPV-дрон за 500 м — кулемет або гладкоствол. Штурм будівлі — короткий автомат. Снайпінг на 1 км — снайперська гвинтівка. Правильний вибір і підготовка — ось що вирішує.</p>
+        </div>
+
+        <h3>Тюнінг зброї: що можна і що небезпечно</h3>
+
+        <div class="callout callout-warn">
+          <div class="callout-title">⚠️ Важливо знати про модернізацію</div>
+          <ul>
+            <li>Тюнінг доцільний ЛИШЕ тоді, коли стрілець повністю розуміє, що і навіщо робить</li>
+            <li><strong>АК-74:</strong> безпечно встановити гумовий буфер віддачі (без втручання в конструкцію). Заміна приклада, рукоятки, встановлення планок Пікатіні — послаблюють конструкцію. В умовах інтенсивних боїв автомат після непрофесійного тюнінгу може розвалитись</li>
+            <li><strong>AR-15:</strong> більш модульна система, але якісний коліматор і правильне кріплення — критично важливі</li>
+            <li>Слабкі імпортні деталі + важкий бій = відмова зброї у найнепотрібніший момент</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================== 3.2 ===================== -->
+    <section class="topic-section" id="tema-3-2">
+      <div class="section-header">
+        <div class="section-num">3.2</div>
+        <div>
+          <h2>Порядок зберігання зброї та боєприпасів</h2>
+          <p>Урок 5 тренінгу №3 · 45 хв · Ситуаційні завдання</p>
+        </div>
+      </div>
+      <div class="prose">
+
+        <h3>П'ять принципів зберігання</h3>
+
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr><th>#</th><th>Принцип</th><th>Практична реалізація</th></tr>
+            </thead>
+            <tbody>
+              <tr><td class="num">1</td><td><strong>Спеціально обладнане місце</strong></td><td>Металевий сейф або кімната з обмеженим доступом, замок мінімум на два замки</td></tr>
+              <tr><td class="num">2</td><td><strong>Облік кожної одиниці</strong></td><td>Журнал обліку з номером зброї. Підписи отримувача і відповідального. Регулярна інвентаризація</td></tr>
+              <tr><td class="num">3</td><td><strong>Окреме зберігання зброї та боєприпасів</strong></td><td>У різних відділеннях сейфа або різних кімнатах. Патрони ніколи не лежать разом зі зброєю</td></tr>
+              <tr><td class="num">4</td><td><strong>Доступ тільки відповідальних</strong></td><td>Ключ — у однієї-двох визначених осіб. Ніколи не залишати «на всякий випадок» в шухляді</td></tr>
+              <tr><td class="num">5</td><td><strong>Контроль при будь-якому відлученні</strong></td><td>Навіть на 5 хвилин — замкнути кімнату. Не делегувати нагляд старості класу</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout callout-danger">
+          <div class="callout-title">⛔ Наслідки порушення правил зберігання</div>
+          <ul>
+            <li>Випадкові постріли (включно з летальними)</li>
+            <li>Крадіжка зброї — кримінальна відповідальність</li>
+            <li>Стаття 263 ККУ (ч.1): незаконне зберігання/носіння вогнепальної зброї — від 3 до 7 років позбавлення волі</li>
+            <li>Дисциплінарна відповідальність педагогічного працівника</li>
+          </ul>
+        </div>
+
+        <!-- ACTIVITY: СИТУАЦІЙНІ КАРТКИ -->
+        <div class="activity-box">
+          <div class="activity-header">
+            <div class="activity-icon">🃏</div>
+            <div>
+              <h4>Практична активність: «Правильно чи неправильно?»</h4>
+              <div class="activity-time">20 хв · 2–3 команди · Аналіз ситуацій</div>
+            </div>
+          </div>
+          <div class="activity-content">
+            <p>Кожна команда отримує картку з ситуацією. Завдання: визначити, чи правильно організовано зберігання → які наслідки можуть бути → як виправити.</p>
+            <div class="table-wrap">
+              <table class="data-table">
+                <thead>
+                  <tr><th>Ситуація</th><th>Оцінка</th><th>Пояснення</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>Автомати в металевій шафі, сейф замкнений на два замки, ключі у відповідальної особи</td><td class="good">✅ Правильно</td><td>Усі 5 принципів дотримані</td></tr>
+                  <tr><td>Вчитель/ка відійшов/ла на 5 хв, контроль залишив/ла старості класу</td><td class="bad">❌ Неправильно</td><td>Доступ отримала неповноважна особа. Ризик несанкціонованого поводження</td></tr>
+                  <tr><td>Кожна одиниця має номер у журналі, записи підписані отримувачем і черговим</td><td class="good">✅ Правильно</td><td>Повноцінний облік. Можна відстежити кожну одиницю</td></tr>
+                  <tr><td>Учень залишив автомат на парті і пішов пити воду</td><td class="bad">❌ Критично</td><td>Зброя без нагляду. Навіть ММГ — потенційно небезпечний предмет</td></tr>
+                  <tr><td>Ключ від сейфа «на всякий випадок» залишили у шухляді</td><td class="bad">❌ Неправильно</td><td>Доступ фактично відкритий для будь-кого. Принцип контролю порушено</td></tr>
+                  <tr><td>Набої зберігаються в тій же кімнаті, що й зброя, але в окремій шухляді</td><td class="bad">❌ Ризик</td><td>Мають зберігатись у різних відділеннях/кімнатах. Разом — небезпечно</td></tr>
+                  <tr><td>Учень/учениця забрали навчальні патрони додому</td><td class="bad">❌ Заборонено</td><td>Ст. 263 ККУ. Навчальні патрони також підлягають обліку і зберіганню</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================== 3.3 ===================== -->
+    <section class="topic-section" id="tema-3-3">
+      <div class="section-header">
+        <div class="section-num">3.3</div>
+        <div>
+          <h2>Кодекс стрільця: 12 правил безпеки</h2>
+          <p>Урок 6 тренінгу №3 · 45 хв · Відео + тестування</p>
+        </div>
+      </div>
+      <div class="prose">
+
+        <div class="codex-block">
+          <div class="codex-title">⚠️ Кодекс стрільця — 12 правил (запам'ятати та виконувати завжди)</div>
+          <ol class="codex-rules">
+            <li><strong>Завжди поводься зі зброєю так, ніби вона заряджена</strong> — навіть якщо ти «точно знаєш», що вона порожня</li>
+            <li><strong>Не направляй зброю на людей або предмети, у які не збираєшся стріляти</strong> — ствол дивиться або на мішень, або вниз/вгору</li>
+            <li><strong>Тримай палець поза спусковим гачком, доки не готовий стріляти</strong> — уздовж рамки зброї, не на гачку</li>
+            <li><strong>Завжди знай, що є перед ціллю і що за нею</strong> — куля пробиває не лише ціль</li>
+            <li><strong>Не залишай зброю без нагляду</strong> — навіть на одну хвилину</li>
+            <li><strong>Не жартуй зі зброєю</strong> — без виключень</li>
+            <li><strong>Передаючи зброю, завжди перевір: розряджена, затвор відкритий, магазин від'єднаний</strong></li>
+            <li><strong>Патрон у патроннику — тільки за командою або при реальній потребі</strong></li>
+            <li><strong>Боєприпаси зберігай окремо від зброї</strong></li>
+            <li><strong>При осічці або затримці: ствол на мішень, виконай стандартну процедуру усунення несправності</strong></li>
+            <li><strong>Використовуй лише справні патрони та зброю</strong></li>
+            <li><strong>Відповідальність за безпеку завжди несе стрілець</strong></li>
+          </ol>
+        </div>
+
+        <div class="callout callout-pract">
+          <div class="callout-title">✅ Чотири ЗОЛОТІ правила (основа — запам'ятати першими)</div>
+          <p>Правила 1, 2, 3, 4 є фундаментальними. Якщо дотримано всіх чотирьох одночасно — випадкова смерть практично неможлива. Нехай учні запишуть їх на форзаці зошита і повторюють на початку кожного заняття.</p>
+        </div>
+
+        <!-- ТЕСТ -->
+        <div class="activity-box">
+          <div class="activity-header">
+            <div class="activity-icon">📝</div>
+            <div>
+              <h4>Тест: «Правила безпеки — що порушено?»</h4>
+              <div class="activity-time">15 хв · Індивідуально або в парах</div>
+            </div>
+          </div>
+          <div class="activity-content">
+            <div class="table-wrap">
+              <table class="data-table">
+                <thead>
+                  <tr><th>Ситуація</th><th>Яке правило порушено?</th><th>Правильна відповідь</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>Учень тримає макет автомата, палець лежить на спусковому гачку, хоча стріляти не збирається</td><td>?</td><td>Правило 3: палець поза гачком, доки не готовий стріляти</td></tr>
+                  <tr><td>Після заняття зброю залишили на парті, бо вчитель вийшов на 5 хв</td><td>?</td><td>Правило 5: зброю не залишають без нагляду</td></tr>
+                  <tr><td>Під час передачі учениця відкрила затвор і показала, що магазин від'єднаний</td><td>?</td><td>Це ПРАВИЛЬНО — відповідає правилу 7</td></tr>
+                  <tr><td>Учень навів зброю в бік однокласниці, щоб «показати, як тримати»</td><td>?</td><td>Правило 2: ніколи не направляти на людей</td></tr>
+                  <tr><td>На занятті один учень пожартував, навівши автомат: «Бах!»</td><td>?</td><td>Правило 6: не жартуй зі зброєю (плюс правила 1 і 2)</td></tr>
+                  <tr><td>Після тренування учениця вирішила взяти кілька навчальних патронів додому</td><td>?</td><td>Правило 9 + Ст. 263 ККУ — незаконне зберігання боєприпасів</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <div class="callout callout-pract">
+          <div class="callout-title">✅ Рекомендовані відеоматеріали</div>
+          <p><a href="https://www.youtube.com/watch?v=jAugana12P4" class="video-link" target="_blank" rel="noopener">Кодекс стрільця: Правила поводження зі зброєю</a> — переглянути і зупиняти для обговорення кожного правила.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================== 3.4 ===================== -->
+    <section class="topic-section" id="tema-3-4">
+      <div class="section-header">
+        <div class="section-num">3.4</div>
+        <div>
+          <h2>Будова АК-74 та AR-15 (UAR-15): порівняння</h2>
+          <p>Уроки 7–8 тренінгу №3 · 90 хв · Теорія + практика розбирання</p>
+        </div>
+      </div>
+      <div class="prose">
+
+        <h3>Основні частини автомата (спільні для обох систем)</h3>
+
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr><th>Частина/механізм</th><th>Призначення</th><th>Де АК відрізняється від AR</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Ствол</strong></td><td>Напрямлює кулю. Нарізи надають обертання для стабільності</td><td>АК: 7.62мм або 5.45мм. AR: зазвичай 5.56 NATO. Довжина різна</td></tr>
+              <tr><td><strong>Ствольна коробка</strong></td><td>Основа конструкції. Розміщує решту механізмів</td><td>АК: цільна фрезерована або штампована. AR: верхній та нижній ресивери (split)</td></tr>
+              <tr><td><strong>Затвор і затворна рама</strong></td><td>Досилання патрону, закриття казенника, вилучення гільзи</td><td>АК: довгий газовий поршень. AR: пряма подача газу в затворну групу</td></tr>
+              <tr><td><strong>Газовідвідна система</strong></td><td>Відбирає порохові гази для перезарядження</td><td>АК: поршень. AR: Stoner DI (прямий газовідвід). Впливає на надійність</td></tr>
+              <tr><td><strong>Спусковий механізм</strong></td><td>Регулює режими стрільби (одиночний, черга)</td><td>АК: перекидний важіль. AR: окремий запобіжник-перемикач</td></tr>
+              <tr><td><strong>Магазин</strong></td><td>Зберігання патронів і подача у ствольну коробку</td><td>АК: характерний вигнутий «банан». AR: прямий, зазвичай пластиковий</td></tr>
+              <tr><td><strong>Приклад</strong></td><td>Упор у плече для стійкості</td><td>АК: зазвичай нерегульований (окрім АКСУ). AR: регульований (телескопічний)</td></tr>
+              <tr><td><strong>Прицільні пристосування</strong></td><td>Наведення зброї на ціль</td><td>АК: відкритий нерегульований/регульований. AR: зазвичай діоптричний плюс кронштейн Пікатіні</td></tr>
+              <tr><td><strong>Цівка</strong></td><td>Утримання зброї передньою рукою</td><td>АК: дерев'яна або пластикова. AR: алюмінієвий рейл-хендгард (Пікатіні)</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Порівняння АК-74 та AR-15/UAR-15</h3>
+
+        <div class="weapon-compare">
+          <div class="weapon-col">
+            <div class="weapon-col-header weapon-ak">🔫 АК-74 (автомат Калашникова)</div>
+            <div class="weapon-col-body">
+              <p><strong>Калібр:</strong> 5,45×39 мм | <strong>Місткість:</strong> 30 патр. | <strong>Ефективна дистанція:</strong> до 500 м</p>
+              <p class="w-good" style="margin-top:10px;">✅ Переваги:</p>
+              <ul>
+                <li>Висока надійність у бруді, запилюванні, морозі — критично на полі бою</li>
+                <li>Можна встановити підствольний гранатомет ГП-25/ГП-30</li>
+                <li>Прості і надійні механізми — легко навчати</li>
+                <li>Дешевше обслуговування та патрони 5.45×39</li>
+              </ul>
+              <p class="w-bad" style="margin-top:10px;">❌ Недоліки:</p>
+              <ul>
+                <li>Важко встановити тепловізор без втручання в конструкцію</li>
+                <li>Будь-яке втручання в конструкцію знижує надійність</li>
+                <li>Відчутне підкидання дула при автоматичній стрільбі</li>
+                <li>Нерегульований приклад — менш ергономічний</li>
+              </ul>
+            </div>
+          </div>
+          <div class="weapon-col">
+            <div class="weapon-col-header weapon-ar">🔫 AR-15 / UAR-15 / M4</div>
+            <div class="weapon-col-body">
+              <p><strong>Калібр:</strong> 5,56×45 NATO | <strong>Місткість:</strong> 30 патр. | <strong>Ефективна дистанція:</strong> до 600 м</p>
+              <p class="w-good" style="margin-top:10px;">✅ Переваги:</p>
+              <ul>
+                <li>Модульна система — тепловізор, ПНВ, оптика встановлюються без втручання в конструкцію</li>
+                <li>Висока точність і купчастість бою (можна ефективно працювати на 300+ м)</li>
+                <li>Регульований приклад — підлаштовується під будь-який зріст і броню</li>
+                <li>Мінімальне підкидання дула — кращий контроль при серії пострілів</li>
+              </ul>
+              <p class="w-bad" style="margin-top:10px;">❌ Недоліки:</p>
+              <ul>
+                <li>При потраплянні бруду в патронник може заклинити — необхідне регулярне чищення спеціальним йоржиком</li>
+                <li>Дорожче обслуговування. Патрони 5,56 NATO дорожчі</li>
+                <li>Не встановлюється підствольний гранатомет радянського типу</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="callout callout-tip">
+          <div class="callout-title">💡 Відеоматеріали для уроку</div>
+          <ul style="font-size:0.88rem; line-height:1.8;">
+            <li><a href="https://www.youtube.com/watch?v=_eQLFVpOYm4" class="video-link" target="_blank" rel="noopener">How an AK-47 Works (з укр. субтитрами)</a></li>
+            <li><a href="https://www.youtube.com/watch?v=omv85cLfmxU" class="video-link" target="_blank" rel="noopener">How an AR-15 Works (з укр. субтитрами)</a></li>
+            <li><a href="https://www.youtube.com/watch?v=kVFxra0Gy6E" class="video-link" target="_blank" rel="noopener">Все, що треба знати про АК-74 (частина про будову з 2:34)</a></li>
+            <li><a href="https://www.youtube.com/watch?v=f-pFITv1EMM" class="video-link" target="_blank" rel="noopener">Все, що треба знати про UAR-15 (будова з 1:23)</a></li>
+            <li><a href="https://www.youtube.com/watch?v=NIr8O4e8wtQ" class="video-link" target="_blank" rel="noopener">CZ BREN 2 · UAR 15 · АК-74 — чесне порівняння (10 гірсько-штурмова бригада «Едельвейс»)</a></li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================== 3.5 ===================== -->
+    <section class="topic-section" id="tema-3-5">
+      <div class="section-header">
+        <div class="section-num">3.5</div>
+        <div>
+          <h2>Розбирання, складання та догляд за зброєю</h2>
+          <p>Урок 8 тренінгу №3 · 45 хв · Практика на ММГ</p>
+        </div>
+      </div>
+      <div class="prose">
+
+        <h3>Порядок неповного розбирання АК-74</h3>
+
+        <ol class="steps-list">
+          <li>Перевірити розрядженість: вийняти магазин, відтягнути затвор, перевірити патронник, закрити затвор, поставити на запобіжник</li>
+          <li>Від'єднати магазин (натиснути засувку та вийняти)</li>
+          <li>Зняти кришку ствольної коробки (натиснути кнопку в задній частині і зняти)</li>
+          <li>Вийняти зворотній механізм (натиснути передній кінець та підняти)</li>
+          <li>Вийняти затворну раму з затвором (відтягнути назад та підняти)</li>
+          <li>Вийняти затвор з рами (повернути та вийняти)</li>
+          <li>Від'єднати газову трубку з накривкою (натиснути важіль та зняти)</li>
+        </ol>
+
+        <p><strong>Складання</strong> — у зворотному порядку (кроки 7→1).</p>
+
+        <div class="callout callout-warn">
+          <div class="callout-title">⚠️ На що звертати особливу увагу</div>
+          <ul>
+            <li>Акуратне чищення ствола в районі дульного зрізу — не зіпсувати нарізи (вони впливають на купчастість)</li>
+            <li>Не загубити дрібні деталі (пружини, штифти)</li>
+            <li>Контроль розрядженості ОБОВ'ЯЗКОВИЙ перед будь-яким розбиранням</li>
+            <li>Учні під час демонстрації мають коментувати кожну дію вголос</li>
+          </ul>
+        </div>
+
+        <h3>Нормативи розбирання та складання</h3>
+
+        <div class="norm-box">
+          <div class="norm-box-title">📋 Норматив №2: неповне розбирання АК</div>
+          <div class="norm-row header">
+            <div>Завдання</div>
+            <div class="norm-val">12 балів</div>
+            <div class="norm-val">9 балів</div>
+            <div class="norm-val">7 балів</div>
+            <div class="norm-val">4 бали</div>
+          </div>
+          <div class="norm-row">
+            <div>Неповне розбирання (без помилок)</div>
+            <div class="norm-val v12">13 с</div>
+            <div class="norm-val v10">18 с</div>
+            <div class="norm-val v7">22 с</div>
+            <div class="norm-val v4">31 с</div>
+          </div>
+        </div>
+
+        <div class="norm-box">
+          <div class="norm-box-title">📋 Норматив №3: складання після неповного розбирання</div>
+          <div class="norm-row header">
+            <div>Завдання</div>
+            <div class="norm-val">12 балів</div>
+            <div class="norm-val">9 балів</div>
+            <div class="norm-val">7 балів</div>
+            <div class="norm-val">4 бали</div>
+          </div>
+          <div class="norm-row">
+            <div>Складання (без помилок)</div>
+            <div class="norm-val v12">23 с</div>
+            <div class="norm-val v10">28 с</div>
+            <div class="norm-val v7">33 с</div>
+            <div class="norm-val v4">41 с</div>
+          </div>
+        </div>
+
+        <h3>Догляд за зброєю: чищення та змащення</h3>
+
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr><th>Що чистити</th><th>Чим</th><th>Як часто</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Канал ствола</strong></td><td>Шомпол + клаптик тканини + рушничне мастило. Піна для зняття мідного нальоту</td><td>Після кожного стрілецького заняття. Уважно біля дульного зрізу — не пошкодити нарізи</td></tr>
+              <tr><td><strong>Затвор і затворна рама</strong></td><td>Щітка, сухий клаптик, протяжка</td><td>Після кожного забруднення та після стрільби</td></tr>
+              <tr><td><strong>Газовідвідна система</strong></td><td>Йоржик (особливо для AR-15), щітка</td><td>Після стрільби. AR-15 забруднюється сильніше — важливіше</td></tr>
+              <tr><td><strong>Зовнішні металеві частини</strong></td><td>Суха ганчірка, потім мастильна ганчірка</td><td>Регулярно, особливо в умовах вологості</td></tr>
+              <tr><td><strong>Магазин</strong></td><td>Суха ганчірка, перевірити пружину</td><td>Регулярно, особливо при попаданні бруду</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout callout-pract">
+          <div class="callout-title">✅ Змагальний елемент наприкінці</div>
+          <p>Після того, як усі спокійно відпрацювали алгоритм — короткий змагальний елемент: «Хто швидше і без помилок збере автомат?» Але ТІЛЬКИ після того, як кожен засвоїв алгоритм. Не поспішати з конкуренцією — спочатку якість, потім швидкість.</p>
+        </div>
+
+        <div class="callout callout-pract">
+          <div class="callout-title">✅ Відеоматеріали для підготовки</div>
+          <ul style="font-size:0.88rem; line-height:1.8;">
+            <li><a href="https://www.youtube.com/watch?v=ky-xhWUNVkM" class="video-link" target="_blank" rel="noopener">«Єдина процедура заряджання АК» (канал «Рекрут 4308»)</a></li>
+            <li><a href="https://www.youtube.com/watch?v=0rJKXHmIF20" class="video-link" target="_blank" rel="noopener">«Процедура Заряджання-Розряджання зброї системи AR»</a></li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================== 3.6 ===================== -->
+    <section class="topic-section" id="tema-3-6">
+      <div class="section-header">
+        <div class="section-num">3.6</div>
+        <div>
+          <h2>Прицільні пристосування: типи та застосування</h2>
+          <p>Урок 1 тренінгу №5 · 45 хв · Теорія + демонстрація</p>
+        </div>
+      </div>
+      <div class="prose">
+
+        <div class="scope-grid">
+          <div class="scope-card">
+            <div class="scope-name">🎯 Відкриті прицільні</div>
+            <div class="scope-range">Дистанція: до 300 м</div>
+            <p>Мушка + цілик. Найпоширеніший тип на АК-74 та пістолетах.</p>
+            <ul>
+              <li class="good">✅ Надійні в будь-яких умовах</li>
+              <li class="good">✅ Не потребують батарейок</li>
+              <li class="good">✅ Можливість регулювання</li>
+              <li class="bad">❌ Повільніше прицілювання</li>
+              <li class="bad">❌ Менш точні вдалечині</li>
+            </ul>
+          </div>
+          <div class="scope-card">
+            <div class="scope-name">🔴 Коліматорні</div>
+            <div class="scope-range">Дистанція: до 300 м</div>
+            <p>Відображена червона або зелена точка. Голова + ціль + точка прицілювання.</p>
+            <ul>
+              <li class="good">✅ Швидке і інтуїтивне прицілювання</li>
+              <li class="good">✅ Широке поле зору</li>
+              <li class="good">✅ Регульована яскравість</li>
+              <li class="bad">❌ Забруднюється під дощем/снігом</li>
+              <li class="bad">❌ Потребує батарейок</li>
+              <li class="bad">❌ Неякісні моделі не витримують віддачу</li>
+            </ul>
+          </div>
+          <div class="scope-card">
+            <div class="scope-name">🔭 Оптичні</div>
+            <div class="scope-range">Дистанція: 300–2000+ м</div>
+            <p>Збільшення від 4× до 25×. Встановлюються на снайперські гвинтівки та AR-15.</p>
+            <ul>
+              <li class="good">✅ Висока точність на дальніх дистанціях</li>
+              <li class="good">✅ Можна вимірювати відстань через сітку</li>
+              <li class="bad">❌ Вузьке поле зору</li>
+              <li class="bad">❌ Ускладнене прицілювання на близько (до 50 м)</li>
+              <li class="bad">❌ Важчий і крупніший</li>
+            </ul>
+          </div>
+          <div class="scope-card">
+            <div class="scope-name">🌡️ Тепловізійні</div>
+            <div class="scope-range">Нічні умови, дим, маскування</div>
+            <p>Виявляють цілі за тепловим сигнатурою. Базова матриця: від 640×480. Об'єктив: від 50 мм.</p>
+            <ul>
+              <li class="good">✅ Виявлення добре замаскованих цілей</li>
+              <li class="good">✅ Робота в повній темряві</li>
+              <li class="good">✅ Помічають малі БПЛА вночі</li>
+              <li class="bad">❌ Дуже висока вартість</li>
+              <li class="bad">❌ На АК — лише через перехідник</li>
+            </ul>
+          </div>
+          <div class="scope-card">
+            <div class="scope-name">🔆 Лазерний цілевказівник</div>
+            <div class="scope-range">Близькі дистанції</div>
+            <p>Видимий або ІЧ (невидимий) лазер. Швидке наведення, особливо вночі з ПНВ.</p>
+            <ul>
+              <li class="good">✅ Дуже швидке наведення</li>
+              <li class="bad">❌ Демаскує стрільця</li>
+              <li class="bad">❌ В яскравих умовах не видно</li>
+              <li class="bad">❌ Потребує живлення</li>
+            </ul>
+          </div>
+          <div class="scope-card">
+            <div class="scope-name">🔀 Комбінація</div>
+            <div class="scope-range">Оптимальне рішення</div>
+            <p>Коліматор 3–4× + відкритий «рамковий» для ближнього бою.</p>
+            <ul>
+              <li class="good">✅ Гнучкість — ближній і середній бій</li>
+              <li class="good">✅ Швидке перемикання</li>
+              <li class="good">✅ Найпоширеніше в ЗСУ 2022–2024</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="callout callout-info">
+          <div class="callout-title">ℹ️ Практичний висновок</div>
+          <p>Вибір прицілу — не питання «що краще», а питання «для яких завдань». Далекобійник обере оптику. Штурмовик — коліматор. Нічна операція — тепловізор або ПНВ. Поєднання коліматора 3× з відкритим рамковим — оптимальне рішення для більшості піхотних завдань.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================== 3.7 ===================== -->
+    <section class="topic-section" id="tema-3-7">
+      <div class="section-header">
+        <div class="section-num">3.7</div>
+        <div>
+          <h2>Основи балістики: фактори влучності</h2>
+          <p>Урок 1 тренінгу №5 · 45 хв · Теорія</p>
+        </div>
+      </div>
+      <div class="prose">
+
+        <div class="definition">
+          <div class="definition-term">Зовнішня балістика</div>
+          <p>Розділ науки, що вивчає рух кулі (снаряду, гранати) після вильоту зі ствола. Траєкторія польоту залежить від багатьох факторів, які необхідно враховувати для влучності.</p>
+        </div>
+
+        <h3>Фактори, що впливають на влучність</h3>
+
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr><th>Фактор</th><th>Вплив на кулю</th><th>Як враховувати</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Вітер (боковий)</strong></td><td>Відхиляє кулю у напрямку вітру. Боковий вітер — найбільший вплив</td><td>Вносити поправку в протилежний від вітру бік. Орієнтир: дим, трава, гілки</td></tr>
+              <tr><td><strong>Вітер (зустрічний/попутний)</strong></td><td>Зустрічний — зменшує дальність. Попутний — збільшує</td><td>При слабкому та помірному — поправки не вносяться. При сильному — брати поправку по вертикалі</td></tr>
+              <tr><td><strong>Відстань до цілі</strong></td><td>Сила тяжіння постійно тягне кулю вниз. Чим далі — тим більше падіння траєкторії</td><td>Правильно вибрати приціл. Для АК: до 300 м без поправки, далі — підвищувати приціл</td></tr>
+              <tr><td><strong>Сила тяжіння</strong></td><td>Постійно діє. При горизонтальній стрільбі траєкторія — парабола</td><td>Врахована в балістичних таблицях і сітках прицілів</td></tr>
+              <tr><td><strong>Деривація</strong></td><td>Відхилення кулі у сторону обертання (для стандартних куль — вправо)</td><td>Важлива на дистанціях 600+ м. Снайпери вносять поправку</td></tr>
+              <tr><td><strong>Температура повітря</strong></td><td>Холодне повітря щільніше → більший опір → менша дальність. Тепле → навпаки</td><td>Критично для гранатометів. Для куль — на коротких дистанціях несуттєво</td></tr>
+              <tr><td><strong>Висота над рівнем моря</strong></td><td>Розріджене повітря → менший опір → більша дальність</td><td>Враховується при роботі в горах</td></tr>
+              <tr><td><strong>Освітлення</strong></td><td>Ослеплення сонцем ускладнює прицілювання</td><td>Правильне положення. Наосілок та антибліковий козирок прицілу</td></tr>
+              <tr><td><strong>Кут місця цілі</strong></td><td>Стрільба вгору або вниз змінює балістику</td><td>Зазвичай — прицілюватись під ціль (куля летить «вище» ніж здається)</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Лінія прицілювання vs траєкторія польоту</h3>
+
+        <div class="callout callout-info">
+          <div class="callout-title">ℹ️ Ключовий принцип</div>
+          <p><strong>Лінія прицілювання</strong> — пряма від ока через мушку на ціль. <strong>Траєкторія кулі</strong> — парабола. Спочатку куля летить вище лінії прицілювання (перетинає її на близькій дистанції), потім падає нижче. Тому зброя <strong>пристрілюється</strong> на певну дистанцію — на ній обидві лінії збігаються. Правильне прицілювання означає знання того, де саме проходить ваша пристрілка.</p>
+        </div>
+
+        <h3>Комплекс «стрілець — зброя — куля»</h3>
+
+        <p>Влучний постріл — результат правильної роботи всіх трьох компонентів одночасно:</p>
+        <ol class="steps-list">
+          <li><strong>Стрілець:</strong> правильна стійка, дихання, фокус на мушці, плавний спуск без ривка</li>
+          <li><strong>Зброя:</strong> справна, чиста, пристрілена, з якісними прицільними пристосуваннями</li>
+          <li><strong>Куля:</strong> правильний калібр, якісний набій, відповідний для дистанції та цілі</li>
+        </ol>
+
+        <div class="callout callout-pract">
+          <div class="callout-title">✅ Головна мета навчання стрільбі</div>
+          <p><strong>Спочатку влучність → потім швидкість → потім стресові фактори.</strong> Не намагайтесь відразу навчити швидкій стрільбі. Спершу — одноманітне прицілювання і плавний спуск. Потім — швидкість. Потім — стрільба в русі, під тиском.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================== 3.8 ===================== -->
+    <section class="topic-section" id="tema-3-8">
+      <div class="section-header">
+        <div class="section-num">3.8</div>
+        <div>
+          <h2>Стійки та положення для стрільби</h2>
+          <p>Тренінг №4, етапи 1–3 · 3×45 хв · Повністю практичний</p>
+        </div>
+      </div>
+      <div class="prose">
+
+        <div class="callout callout-info">
+          <div class="callout-title">ℹ️ Методика проведення практичних уроків</div>
+          <p>Алгоритм кожного практичного заняття: <strong>1)</strong> Демонстрація від вчителя з коментуванням → <strong>2)</strong> Демонстрація від вчителя, учні коментують → <strong>3)</strong> Практичне відпрацювання учнями індивідуально та в парах (один виконує — другий контролює безпеку і алгоритм).</p>
+        </div>
+
+        <h3>Тактична стійка (основа всього)</h3>
+
+        <p>Не «як стояти», а базове положення, від якого залежить точність, швидкість реакції та безпека.</p>
+
+        <ol class="steps-list">
+          <li><strong>Стопи:</strong> паралельно, носки спрямовані в бік цілі</li>
+          <li><strong>Ноги:</strong> ліва попереду, права трохи позаду. Одна лінія від п'ятки передньої до носка задньої ноги</li>
+          <li><strong>Ширина:</strong> ноги на ширині плечей — стабільність і свобода руху</li>
+          <li><strong>Коліна:</strong> злегка зігнуті, «пружні» — готові до руху</li>
+          <li><strong>Корпус:</strong> злегка нахилений уперед, центр ваги над передньою ногою</li>
+          <li><strong>Зброя:</strong> приклад щільно в плечі. Ліктівважельно притиснуті до тулуба</li>
+          <li><strong>Голова:</strong> природне положення, щока на прикладі</li>
+        </ol>
+
+        <div class="callout callout-pract">
+          <div class="callout-title">✅ Перевірка стійки</div>
+          <p>Вчитель проходить і легенько штовхає ствол або плечо учня — якщо стійка правильна, учень не зсувається і утримує положення. Добрий спосіб виявити помилки без зайвих слів.</p>
+        </div>
+
+        <h3>Положення для стрільби з коліна</h3>
+
+        <div class="posture-grid">
+          <div class="posture-card">
+            <div class="posture-num">1</div>
+            <div class="posture-name">Високе коліно</div>
+            <p>Одне коліно на землі, інша нога — опора</p>
+            <div class="posture-pro">+ Швидко зайняти, легко змінити позицію, знижує силует</div>
+            <div class="posture-con">− Нестабільне для стрільби</div>
+          </div>
+          <div class="posture-card">
+            <div class="posture-num">2</div>
+            <div class="posture-name">Навпочіпки</div>
+            <p>Обидві ноги зігнуті, на носках</p>
+            <div class="posture-pro">+ Швидкий перехід, легкість у рухах</div>
+            <div class="posture-con">− Погано компенсує віддачу</div>
+          </div>
+          <div class="posture-card">
+            <div class="posture-num">3</div>
+            <div class="posture-name">На два коліна</div>
+            <p>Обидва коліна на землі</p>
+            <div class="posture-pro">+ Швидко сісти, суттєво знижує силует</div>
+            <div class="posture-con">− Важко піднятися в броні</div>
+          </div>
+          <div class="posture-card">
+            <div class="posture-num">4</div>
+            <div class="posture-name">Класичне середнє коліно ⭐</div>
+            <p>Три точки опори: нога + коліно + стопа. Кут між стегнами 90°. Рука спирається на ногу ПЕРЕД коліном</p>
+            <div class="posture-pro">+ НАЙСТАБІЛЬНІШЕ при збереженій мобільності</div>
+            <div class="posture-con">− Потребує тренування</div>
+          </div>
+          <div class="posture-card">
+            <div class="posture-num">5</div>
+            <div class="posture-name">Низьке коліно</div>
+            <p>Максимальне зниження силуету, майже як лежачи</p>
+            <div class="posture-pro">+ Мінімальна видимість для ворога</div>
+            <div class="posture-con">− Складно змінювати позицію швидко</div>
+          </div>
+        </div>
+
+        <h3>Положення для стрільби лежачи</h3>
+
+        <ol class="steps-list">
+          <li>Зброя, корпус і опорна нога — на одній лінії</li>
+          <li>Лікті впираються в землю, розводяться в сторони для стабільності</li>
+          <li>Ліва нога злегка відведена вбік, стопи притиснуті до землі</li>
+          <li><strong>НІКОЛИ не ставити магазин на землю</strong> — пошкоджується та потрапляє бруд</li>
+          <li>Зайняти положення: приклад під руку → навпочіпки → спертися на коліна → ліва рука вперед → корпус вниз</li>
+        </ol>
+
+        <h3>Положення зброї при пересуванні</h3>
+
+        <div class="card-grid">
+          <div class="info-card">
+            <div class="card-title">⬆️ Ствол вгору</div>
+            <ul>
+              <li>Зброя під кутом догори і вбік від тіла</li>
+              <li><strong>Коли:</strong> у тісних приміщеннях, в колоні, де є люди попереду</li>
+              <li>Ствол не зачіпає людей перед собою</li>
+              <li>Обережно: може зачіпати гілки та балки</li>
+            </ul>
+          </div>
+          <div class="info-card">
+            <div class="card-title">⬇️ Ствол вниз</div>
+            <ul>
+              <li>Ствол перпендикулярний до землі, коло діаметром ≤1 м</li>
+              <li>При перебіжках: зброя злегка підводиться, прикриває шию</li>
+              <li><strong>Переваги:</strong> не б'є людей поруч, не потрапляє бруд у ствол при падінні</li>
+            </ul>
+          </div>
+          <div class="info-card">
+            <div class="card-title">↔️ Неробоче плече</div>
+            <ul>
+              <li>Перекладання для стрільби з-за укриття зліва</li>
+              <li>Неповне: тільки приклад до лівого плеча</li>
+              <li>Повне: повна зміна хвату обох рук</li>
+              <li>Нога позаду — залишається опорною</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================== 3.9 ===================== -->
+    <section class="topic-section" id="tema-3-9">
+      <div class="section-header">
+        <div class="section-num">3.9</div>
+        <div>
+          <h2>Сектори «годинника» та реагування на контакт</h2>
+          <p>Тренінг №4, етапи 4–7 · 4×45 хв · Практика</p>
+        </div>
+      </div>
+      <div class="prose">
+
+        <div class="callout callout-info">
+          <div class="callout-title">ℹ️ Що таке сектори «годинника»</div>
+          <p>Стрілець у центрі уявного циферблата. <strong>12 годин</strong> — прямо перед ним. <strong>3 години</strong> — праворуч. <strong>6 годин</strong> — за спиною. <strong>9 годин</strong> — ліворуч. Ця система дозволяє чітко передавати напрямок загрози: «Контакт! 3 години!» означає небезпека праворуч.</p>
+          <p>⚠️ Важливо: сучасне покоління майже не орієнтується за механічними годинниками — поясніть систему максимально детально, використовуйте фото циферблата.</p>
+        </div>
+
+        <h3>Базовий алгоритм реагування з місця</h3>
+
+        <ol class="steps-list">
+          <li>Понизити силует — присісти, вкластися</li>
+          <li>Опустити зброю вниз (безпека)</li>
+          <li>Повернути голову — ідентифікувати ціль / джерело загрози</li>
+          <li>Провернути стопу у бік сектору</li>
+          <li>Підставити іншу ногу (не «переступати»!)</li>
+          <li>Виконати вкладання і винесення зброї в класичне положення</li>
+        </ol>
+
+        <h3>Деталізація реагування по секторах (праворукий стрілець)</h3>
+
+        <div class="clock-diagram">
+          <div class="clock-card">
+            <span class="clock-num">12</span>
+            <div class="clock-name">12 годин (прямо)</div>
+            <p>Найпростіший. Зброя вже орієнтована вперед. Понизити силует, вкластися в тактичну стійку або впасти. Дозволено зміщення і вліво, і вправо.</p>
+          </div>
+          <div class="clock-card">
+            <span class="clock-num">9</span>
+            <div class="clock-name">9 годин (ліворуч)</div>
+            <p>«Проступ» лівою ногою вперед → підставити праву. Для правші це відносно природній рух. Результат: класична стійка лівим боком до сектору 9.</p>
+          </div>
+          <div class="clock-card">
+            <span class="clock-num">3</span>
+            <div class="clock-name">3 години (праворуч)</div>
+            <p>Ліве коліно підставити до правого → підняти праву ногу → не підіймаючи силует, виставити ліву вперед → класичне положення правим боком до сектору 3.</p>
+          </div>
+          <div class="clock-card">
+            <span class="clock-num">6</span>
+            <div class="clock-name">6 годин (за спиною)</div>
+            <p>Як на 3-й годині: підставити ліве коліно → підняти праву ногу → виставити ліву вперед. Або через праве плече — залежно від тактичної ситуації. Дозволено вліво або вправо.</p>
+          </div>
+        </div>
+
+        <h3>Типові помилки при реагуванні</h3>
+
+        <div class="callout callout-warn">
+          <div class="callout-title">⚠️ Найчастіші помилки, що виявляє вчитель</div>
+          <ul>
+            <li>«Переступання» замість підставлення коліна — незграбні й повільні рухи</li>
+            <li>Підняття силуету при розвороті — стрілець стає видимішим для ворога</li>
+            <li>Ствол спрямований на небезпечний напрямок під час маневру</li>
+            <li>Заплутані кроки — не знають порядку ніг</li>
+            <li>Неправильно поданий корпус — нестабільне положення для стрільби</li>
+          </ul>
+        </div>
+
+        <h3>Зміщення під час бою</h3>
+
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr><th>Тип зміщення</th><th>Коли застосовувати</th><th>Техніка</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Однокрокове</strong></td>
+                <td>Зійти з «лінії вогню» або звільнити простір для заміни магазина</td>
+                <td>Провернути стегна → крок → підставити іншу ногу → класичне положення. По 12 — вліво або вправо на вибір</td>
+              </tr>
+              <tr>
+                <td><strong>Багатокрокове</strong></td>
+                <td>Подолати більшу відстань, зайняти укриття, змінити рубіж</td>
+                <td>При русі вперед: плавний крок з п'ятки на носок. При русі назад: спочатку носок, потім п'ятка. Зброя постійно орієнтована в бік загрози</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================== 3.10 ===================== -->
+    <section class="topic-section" id="tema-3-10">
+      <div class="section-header">
+        <div class="section-num">3.10</div>
+        <div>
+          <h2>Маніпуляції зі зброєю: запобіжник, заряджання, заміна магазина</h2>
+          <p>Тренінг №4, етап 9 · 45 хв · Практика</p>
+        </div>
+      </div>
+      <div class="prose">
+
+        <h3>Запобіжник і досилання в трьох положеннях</h3>
+
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr><th>Дія</th><th>АК-74</th><th>AR-15/UAR-15</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Зняти з запобіжника</strong></td>
+                <td>Перекинути важіль донизу правою рукою (або лівою через корпус зброї)</td>
+                <td>Перемикач з «SAFE» на «SEMI» або «AUTO»</td>
+              </tr>
+              <tr>
+                <td><strong>Дослати патрон (зарядити)</strong></td>
+                <td>Відтягнути затворну раму назад і відпустити (енергійно). Перевірити патронник</td>
+                <td>Відтягнути рукоять затвора назад (або кнопку forward assist). Відпустити</td>
+              </tr>
+              <tr>
+                <td><strong>Поставити на запобіжник</strong></td>
+                <td>Підняти важіль угору</td>
+                <td>Перемикач на «SAFE»</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Заміна магазина</h3>
+
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr><th>Спосіб</th><th>Коли</th><th>Алгоритм</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Тактична заміна (зі збереженням)</strong></td>
+                <td>Є час, частково витрачений магазин</td>
+                <td>Від'єднати магазин → покласти в сумку → дістати новий → підключити → досілати → до бою</td>
+              </tr>
+              <tr>
+                <td><strong>Бойова заміна (без збереження)</strong></td>
+                <td>Магазин порожній, під вогнем</td>
+                <td>Скинути порожній магазин → новий без затримки → підключити → досілати. Швидкість — головне</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Базові затримки при стрільбі та їх усунення</h3>
+
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr><th>Затримка</th><th>Ознака</th><th>Дія</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Осічка</strong></td>
+                <td>Натискання спускового гачка → тиша (без пострілу)</td>
+                <td>Ствол на мішень → виждати 1–2 сек (затримане запалення?) → перезарядити → продовжити</td>
+              </tr>
+              <tr>
+                <td><strong>Затвор не закрився</strong></td>
+                <td>Зброя не готова до пострілу, затвор відкрито</td>
+                <td>Перевірити патронник → енергійно відпустити затвор (не «допомагати» повільно)</td>
+              </tr>
+              <tr>
+                <td><strong>Подвійне заряджання</strong></td>
+                <td>Два патрони в патроннику — затвор не повністю закривається</td>
+                <td>Зняти магазин → відтягнути затвор → вийняти обидва патрони → зарядити знову</td>
+              </tr>
+              <tr>
+                <td><strong>Гільза не вийшла</strong></td>
+                <td>Гільза залишилась у патроннику або застрягла в затворі</td>
+                <td>Відтягнути затвор → вийняти гільзу → зарядити → продовжити</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout callout-pract">
+          <div class="callout-title">✅ Підсумкове контрольне коло</div>
+          <p>Наприкінці заняття учні озвучують команди вголос («Запобіжник! Досилання! Заміна!»), а вчитель відтворює дії за ними. Рольова інверсія — ефективний метод закріплення.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================== 3.11 ===================== -->
+    <section class="topic-section" id="tema-3-11">
+      <div class="section-header">
+        <div class="section-num">3.11</div>
+        <div>
+          <h2>Стрільба з пневматики: практичні заняття</h2>
+          <p>Тренінг №5, уроки 2–6 · 5×45 хв · Практика стрільб</p>
+        </div>
+      </div>
+      <div class="prose">
+
+        <div class="callout callout-warn">
+          <div class="callout-title">⚠️ Підготовка вчителя/вчительки</div>
+          <ul>
+            <li><strong>Займатися стрільбою мінімум 1 раз на 1–2 тижні</strong> — особиста підготовка обов'язкова</li>
+            <li>Перевірити справність усього реквізиту перед уроком</li>
+            <li>Провітрити кімнату. Підготувати аварійне освітлення</li>
+            <li>Обладнати навчальне місце: ізоляція, огорожа, перешкоди для рикошетів</li>
+            <li>Приміщення — мінімум 10–12 м АБО спеціально обладнане огороджене подвір'я</li>
+            <li>Рекомендовано: стрілецькі окуляри для учнів</li>
+          </ul>
+        </div>
+
+        <h3>Правила прицілювання</h3>
+
+        <ol class="steps-list">
+          <li><strong>Рівність мушки та цілика:</strong> мушка посередині цілика, верхня частина мушки — на одному рівні з краями цілика</li>
+          <li><strong>Фокус на мушці:</strong> ціль і цілик — злегка розмиті. Мушка — чітка. Це — головна технічна помилка початківців (фокусують на цілі)</li>
+          <li><strong>Контроль дихання:</strong> постріл на короткій затримці після видиху (повного або на 1/3). Не стріляти при вдиху — тіло рухається</li>
+          <li><strong>Стабільне положення зброї:</strong> міцне, але без напруги. Напруга викликає тремтіння</li>
+          <li><strong>Плавний спуск:</strong> без ривка! Спуск ривком «зносить» ціль</li>
+        </ol>
+
+        <h3>Визначення «робочого ока»</h3>
+
+        <p>Перед першим заняттям зі стрільбою кожен учень визначає своє «робоче» (провідне) око:</p>
+
+        <ol class="steps-list">
+          <li>Стоячи або сидячи, витягнути руку вперед і «прицілитись» великим пальцем на точку</li>
+          <li>Почергово заплющити кожне око</li>
+          <li>«Робоче» — те, при відкритті якого палець не зміщується з точки</li>
+          <li>Для правшів — зазвичай праве, але не завжди. Ліворукі і ліво-оке поєднання — вимагає корекції положення</li>
+        </ol>
+
+        <h3>Типові помилки при стрільбі</h3>
+
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr><th>Помилка</th><th>Ознака (де падають кулі)</th><th>Виправлення</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Фокус на цілі, а не на мушці</td><td>Розкид навколо центру, непередбачуваний</td><td>Перефокусувати. Вправа з паперовою мушкою</td></tr>
+              <tr><td>Ривок спускового гачка</td><td>Кулі нижче і ліворуч від центру (для правші)</td><td>Плавний безперервний натиск «до відказу»</td></tr>
+              <tr><td>Затримка дихання не при видиху</td><td>Нерівномірний вертикальний розкид</td><td>Вдих → видих → пауза → постріл</td></tr>
+              <tr><td>Зміщення таза після пострілу</td><td>Куля «з'їхала» → не відповідає наміченій точці</td><td>Вправа: закрити очі після прицілювання → перевірити куди дивиться зброя</td></tr>
+              <tr><td>Магазин на землі</td><td>Пошкодження і забруднення</td><td>Карємат під зброю, магазин ніколи не торкається землі</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Нормативи стрільб із малокаліберної / пневматичної гвинтівки (за програмою МОН 2023)</h3>
+
+        <div class="norm-box">
+          <div class="norm-box-title">📋 Вправа №1: стрільба лежачи з упору · 3 постріли · мішень №4 (25 м / 5 м пневматика)</div>
+          <div class="norm-row header">
+            <div>Оцінка</div>
+            <div class="norm-val">12</div>
+            <div class="norm-val">9</div>
+            <div class="norm-val">7</div>
+            <div class="norm-val">4</div>
+          </div>
+          <div class="norm-row">
+            <div>Вибито очок</div>
+            <div class="norm-val v12">25</div>
+            <div class="norm-val v10">22</div>
+            <div class="norm-val v7">19</div>
+            <div class="norm-val v4">15</div>
+          </div>
+        </div>
+
+        <div class="norm-box">
+          <div class="norm-box-title">📋 Вправа №2: мішень №8 (ростова фігура) · 3 постріли · 3 зони (верхня / середня / нижня)</div>
+          <div class="norm-row header">
+            <div>Оцінка</div>
+            <div class="norm-val">12</div>
+            <div class="norm-val">9</div>
+            <div class="norm-val">7</div>
+            <div class="norm-val">4</div>
+          </div>
+          <div class="norm-row">
+            <div>Результат</div>
+            <div class="norm-val v12">3 у верхню</div>
+            <div class="norm-val v10">3 у середню</div>
+            <div class="norm-val v7">2 у нижню</div>
+            <div class="norm-val v4">1 влучання</div>
+          </div>
+        </div>
+
+        <div class="callout callout-pract">
+          <div class="callout-title">✅ Домашнє завдання для тих, хто хоче покращити результат</div>
+          <p>З дозволу батьків і під кваліфікованим наглядом — займатися стрільбою в тирі. Мінімум 300–400 вдумливих пострілів (1 пачка кульок). Мета: одноманітність прицілювання. Зберігати мішені і аналізувати прогрес.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================== 3.12 ===================== -->
+    <section class="topic-section" id="tema-3-12">
+      <div class="section-header">
+        <div class="section-num">3.12</div>
+        <div>
+          <h2>Ручні гранати: будова, типи, заходи безпеки</h2>
+          <p>Тренінг №5, урок 7 · 45 хв · Теорія + демонстрація</p>
+        </div>
+      </div>
+      <div class="prose">
+
+        <h3>Типи гранат в ЗСУ</h3>
+
+        <div class="grenade-grid">
+          <div class="grenade-card">
+            <div class="grenade-card-header grenade-f1">Ф-1 «Лимонка» (радянська)</div>
+            <div class="grenade-card-body">
+              <div class="grenade-field"><span class="grenade-label">Тип:</span><span class="grenade-value">Оборонна протипіхотна</span></div>
+              <div class="grenade-field"><span class="grenade-label">Маса:</span><span class="grenade-value">600 г / ВР 60 г</span></div>
+              <div class="grenade-field"><span class="grenade-label">Ефект. радіус:</span><span class="grenade-value">7 м</span></div>
+              <div class="grenade-field"><span class="grenade-label">Розліт осколків:</span><span class="grenade-value">до 200 м</span></div>
+              <div class="grenade-field"><span class="grenade-label">Особливості:</span><span class="grenade-value">Важкі нерівномірні уламки. Кидати ТІЛЬКИ з укриття</span></div>
+            </div>
+          </div>
+          <div class="grenade-card">
+            <div class="grenade-card-header grenade-rgd">РГД-5 (радянська)</div>
+            <div class="grenade-card-body">
+              <div class="grenade-field"><span class="grenade-label">Тип:</span><span class="grenade-value">Наступальна протипіхотна</span></div>
+              <div class="grenade-field"><span class="grenade-label">Маса:</span><span class="grenade-value">310 г / ВР 110 г</span></div>
+              <div class="grenade-field"><span class="grenade-label">Ефект. радіус:</span><span class="grenade-value">5 м (розліт до 25 м)</span></div>
+              <div class="grenade-field"><span class="grenade-label">Особливості:</span><span class="grenade-value">Легкі уламки. Можна кидати на ходу (в наступі)</span></div>
+            </div>
+          </div>
+          <div class="grenade-card">
+            <div class="grenade-card-header grenade-rgn">РГН (радянська)</div>
+            <div class="grenade-card-body">
+              <div class="grenade-field"><span class="grenade-label">Тип:</span><span class="grenade-value">Наступальна</span></div>
+              <div class="grenade-field"><span class="grenade-label">Маса:</span><span class="grenade-value">310 г / ВР 114 г</span></div>
+              <div class="grenade-field"><span class="grenade-label">Ефект. радіус:</span><span class="grenade-value">8 м (розліт до 24 м)</span></div>
+              <div class="grenade-field"><span class="grenade-label">Запал:</span><span class="grenade-value">Ударно-дистанційний УДЗ (вибух при ударі або через 3.2–4.2 с)</span></div>
+            </div>
+          </div>
+          <div class="grenade-card">
+            <div class="grenade-card-header grenade-rgo">РГО (радянська)</div>
+            <div class="grenade-card-body">
+              <div class="grenade-field"><span class="grenade-label">Тип:</span><span class="grenade-value">Оборонна</span></div>
+              <div class="grenade-field"><span class="grenade-label">Маса:</span><span class="grenade-value">530 г / ВР 92 г</span></div>
+              <div class="grenade-field"><span class="grenade-label">Ефект. радіус:</span><span class="grenade-value">12 м (розліт до 120 м)</span></div>
+              <div class="grenade-field"><span class="grenade-label">Запал:</span><span class="grenade-value">Ударно-дистанційний УДЗ</span></div>
+            </div>
+          </div>
+          <div class="grenade-card">
+            <div class="grenade-card-header grenade-m67">M67 (США)</div>
+            <div class="grenade-card-body">
+              <div class="grenade-field"><span class="grenade-label">Тип:</span><span class="grenade-value">Протипіхотна наступальна</span></div>
+              <div class="grenade-field"><span class="grenade-label">Маса:</span><span class="grenade-value">400 г / ВР 185 г</span></div>
+              <div class="grenade-field"><span class="grenade-label">Ефект. радіус:</span><span class="grenade-value">5 м (окремі осколки до 250 м)</span></div>
+              <div class="grenade-field"><span class="grenade-label">Особливості:</span><span class="grenade-value">Сферична форма. Запобіжна скоба. Дедалі більше в ЗСУ</span></div>
+            </div>
+          </div>
+          <div class="grenade-card">
+            <div class="grenade-card-header grenade-dm51">DM51 (Німеччина)</div>
+            <div class="grenade-card-body">
+              <div class="grenade-field"><span class="grenade-label">Тип:</span><span class="grenade-value">Універсальна (модульна)</span></div>
+              <div class="grenade-field"><span class="grenade-label">Маса наступ./оборон.:</span><span class="grenade-value">154 г / 430 г</span></div>
+              <div class="grenade-field"><span class="grenade-label">Особливості:</span><span class="grenade-value">Унікальна! Додатковий елемент корпусу перетворює наступальну на оборонну</span></div>
+            </div>
+          </div>
+        </div>
+
+        <h3>Золоте правило поводження з гранатами</h3>
+
+        <div class="callout callout-danger">
+          <div class="callout-title">⛔ ЗОЛОТЕ ПРАВИЛО: ГРАНАТА ОКРЕМО — ЗАПАЛ ОКРЕМО</div>
+          <p>Запал вкручується у корпус гранати <strong>виключно безпосередньо перед метанням або перед бойовим виходом</strong>. Зберігати запали та гранати в окремих відділеннях підсумків та сумок.</p>
+        </div>
+
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr><th>Правило</th><th>Деталь</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Перенесення</strong></td><td>Тільки у спеціальних сумках/підсумках. Кільце чеки НЕ виступає назовні. ЗАБОРОНЕНО носити, тримаючи за кільце або поза сумкою</td></tr>
+              <tr><td><strong>Огляд</strong></td><td>При виявленні іржі, тріщин, вм'ятин або зеленого нальоту на запалі — НЕ ВИКОРИСТОВУВАТИ. Здати для знищення</td></tr>
+              <tr><td><strong>Захист</strong></td><td>Оберігати від ударів, вологи, вогню, бруду, прямих сонячних променів</td></tr>
+              <tr><td><strong>Перед кидком</strong></td><td>ТІЛЬКИ з-за надійного укриття. Гучно попередити: «Граната!» / «Осколки!»</td></tr>
+              <tr><td><strong>Після кидку</strong></td><td>Негайно впасти на дно окопу або сховатися. Не виходити до вибуху</td></tr>
+              <tr><td><strong>Нерозірвана граната</strong></td><td>КАТЕГОРИЧНО не підходити! Не торкатися! Позначити зону. Доповісти керівнику / саперам</td></tr>
+              <tr><td><strong>Критична ситуація</strong></td><td>Якщо чека висмикнута і скоба відпущена — КИДОК НЕГАЙНИЙ і одразу в укриття</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout callout-pract">
+          <div class="callout-title">✅ Відеоматеріали для уроку (показувати БЕЗ ЗВУКУ, з попередженням)</div>
+          <ul style="font-size:0.88rem; line-height:1.8;">
+            <li><a href="https://www.youtube.com/watch?v=9lgry2ScWgg" class="video-link" target="_blank" rel="noopener">«Ручні гранати ЗСУ» — огляд основних зразків (Хлопці з лісу)</a></li>
+            <li><a href="https://www.youtube.com/watch?v=MM40FeZvsVE" class="video-link" target="_blank" rel="noopener">«Граната Ф-1: підготовка до застосування» (ТрО G7)</a></li>
+            <li><a href="https://www.youtube.com/watch?v=25VlHmefuFE" class="video-link" target="_blank" rel="noopener">«M67 та DM51 — гранати НАТО в Україні»</a></li>
+            <li><a href="https://www.youtube.com/watch?v=Q1rlWyBTu7E" class="video-link" target="_blank" rel="noopener">Депутат підірвав гранати у сільраді на Закарпатті (новинний сюжет)</a> — для обговорення безпеки</li>
+          </ul>
+          <p style="font-size:0.85rem; margin-top:8px;">⚠️ <strong>Обов'язково попередити</strong> перед відео: будуть сцени метання гранат та вибухів. Учні без бажання можуть відвернутися або вийти.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================== 3.13 ===================== -->
+    <section class="topic-section" id="tema-3-13">
+      <div class="section-header">
+        <div class="section-num">3.13</div>
+        <div>
+          <h2>Ручні гранатомети: правила безпеки та вплив погоди</h2>
+          <p>Тренінг №5, урок 7 · 45 хв · Теорія</p>
+        </div>
+      </div>
+      <div class="prose">
+
+        <div class="callout callout-danger">
+          <div class="callout-title">⛔ ГОЛОВНА НЕБЕЗПЕКА: РЕАКТИВНИЙ СТРУМІНЬ</div>
+          <p>При пострілі з гранатомета позаду утворюється потужний реактивний струмінь (порохові гази + полум'я). <strong>Небезпечна зона позаду гранатометника: сектор 90°, радіус не менше 15–60 м</strong> (залежно від типу зброї). У цій зоні ЗАБОРОНЕНО перебувати людям і розміщувати боєприпаси або легкозаймисті речовини.</p>
+        </div>
+
+        <h3>Основні гранатомети в ЗСУ</h3>
+
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr><th>Гранатомет</th><th>Тип</th><th>Дистанція</th><th>Ключова особливість</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>РПГ-7</strong></td><td>Багаторазовий протитанковий</td><td>до 500 м (ефект.)</td><td>Найпоширеніший. Різні типи гранат. Підствольний варіант немає</td></tr>
+              <tr><td><strong>AT4 (Швеція)</strong></td><td>Одноразовий</td><td>до 400 м</td><td>Легкий, надійний. Є в ЗСУ у великій кількості</td></tr>
+              <tr><td><strong>RPG-75 (Чехія)</strong></td><td>Одноразовий</td><td>до 200 м (пост.)</td><td>Компактний, розсувний механізм. Час здійснення пострілу — 2 с</td></tr>
+              <tr><td><strong>NLAW (Велика Британія)</strong></td><td>Протитанковий керований</td><td>до 800 м</td><td>Можна стріляти з приміщень (мала небезпечна зона). Одноразовий</td></tr>
+              <tr><td><strong>Javelin (США)</strong></td><td>Протитанковий ракетний ПТРК</td><td>до 2500 м</td><td>Самонавідна ракета. Fire-and-forget. Можна стріляти з приміщень</td></tr>
+              <tr><td><strong>ГП-25 «Костер»</strong></td><td>Підствольний гранатомет до АК</td><td>до 400 м</td><td>Встановлюється під стволом АК. Осколково-фугасні гранати</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Правила безпеки при стрільбі з гранатомета</h3>
+
+        <ol class="steps-list">
+          <li>Перевірити небезпечну зону позаду (90°, мінімум 20 м) — жодних людей, боєприпасів, легкозаймистих речовин</li>
+          <li>Дульна частина гранатомета — не ближче 20 см від бруствера, стіни або укриття</li>
+          <li>Більшість гранатометів заборонено використовувати у закритих приміщеннях (бліндажі, кімнати) — смертельна травма стрільцю</li>
+          <li>Виняток: NLAW, Javelin і спеціально сертифіковані системи — дозволено з приміщень</li>
+          <li>Попередити всіх поруч перед пострілом</li>
+        </ol>
+
+        <h3>Вплив погодних умов на траєкторію гранати</h3>
+
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr><th>Фактор</th><th>Вплив</th><th>Корекція прицілу</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Боковий вітер</strong></td><td>Відхиляє гранату <strong>у напрямку, звідки дме вітер</strong> — через вплив на стабілізатор. Вітер справа → граната вправо</td><td>Цілитися <strong>за вітром</strong> (проти напрямку відхилення)</td></tr>
+              <tr><td><strong>Зустрічний вітер</strong></td><td>Зменшує дальність польоту гранати</td><td>Цілитися у верхній край цілі (при сильному вітрі)</td></tr>
+              <tr><td><strong>Попутний вітер</strong></td><td>Збільшує дальність</td><td>Цілитися в нижній край цілі (при сильному вітрі)</td></tr>
+              <tr><td><strong>Температура вище 0°С</strong></td><td>Тепліший пороховий заряд → більша дальність</td><td>Маховичок поправки на «+»; стрільба по додатковій мушці</td></tr>
+              <tr><td><strong>Температура нижче 0°С</strong></td><td>Холодний пороховий заряд → менша дальність</td><td>Маховичок поправки на «−»; стрільба по основній мушці</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout callout-tip">
+          <div class="callout-title">💡 Відеоматеріали для уроку</div>
+          <ul style="font-size:0.88rem; line-height:1.8;">
+            <li><a href="https://www.youtube.com/watch?v=JvcceJ2TbtA" class="video-link" target="_blank" rel="noopener">«ВСЕ, ЩО ВИ МАЄТЕ ЗНАТИ ПРО РПГ-7»</a></li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================== НОРМАТИВИ ===================== -->
+    <section class="topic-section" id="normatyvy">
+      <div class="section-header">
+        <div class="section-num">📋</div>
+        <div>
+          <h2>Зведена таблиця нормативів вогневої підготовки</h2>
+          <p>З Додатку 11 до програми МОН 2023</p>
+        </div>
+      </div>
+      <div class="prose">
+
+        <div class="norm-box">
+          <div class="norm-box-title">📋 Норматив №1: Приготування до стрільби і ведення вогню</div>
+          <p style="font-size:0.85rem; color:#555; margin-bottom:12px;">Учень з ММГ та магазином у підсумку виконує: займає місце, заряджає, готується до вогню і доповідає «До бою готовий!»</p>
+          <div class="norm-row header">
+            <div>Критерій</div>
+            <div class="norm-val">12</div>
+            <div class="norm-val">9</div>
+            <div class="norm-val">7</div>
+            <div class="norm-val">4</div>
+          </div>
+          <div class="norm-row">
+            <div>Виконання</div>
+            <div class="norm-val v12">Бездоганно</div>
+            <div class="norm-val v10">≤2 помилки</div>
+            <div class="norm-val v7">≤3 помилки</div>
+            <div class="norm-val v4">&gt;3 помилки</div>
+          </div>
+        </div>
+
+        <div class="norm-box">
+          <div class="norm-box-title">📋 Норматив №2 та №3: Розбирання / Складання АК</div>
+          <div class="norm-row header">
+            <div>Норматив</div>
+            <div class="norm-val">12 б</div>
+            <div class="norm-val">9 б</div>
+            <div class="norm-val">7 б</div>
+            <div class="norm-val">4 б</div>
+          </div>
+          <div class="norm-row">
+            <div>№2: Неповне розбирання</div>
+            <div class="norm-val v12">13 с</div>
+            <div class="norm-val v10">18 с</div>
+            <div class="norm-val v7">22 с</div>
+            <div class="norm-val v4">31 с</div>
+          </div>
+          <div class="norm-row">
+            <div>№3: Складання</div>
+            <div class="norm-val v12">23 с</div>
+            <div class="norm-val v10">28 с</div>
+            <div class="norm-val v7">33 с</div>
+            <div class="norm-val v4">41 с</div>
+          </div>
+        </div>
+
+        <div class="norm-box">
+          <div class="norm-box-title">📋 Норматив №5: Спорядження магазину патронами (30 патронів)</div>
+          <div class="norm-row header">
+            <div>Завдання</div>
+            <div class="norm-val">12 б</div>
+            <div class="norm-val">9 б</div>
+            <div class="norm-val">7 б</div>
+            <div class="norm-val">4 б</div>
+          </div>
+          <div class="norm-row">
+            <div>Спорядження магазину</div>
+            <div class="norm-val v12">35 с</div>
+            <div class="norm-val v10">46 с</div>
+            <div class="norm-val v7">53 с</div>
+            <div class="norm-val v4">62 с</div>
+          </div>
+        </div>
+
+        <div class="norm-box">
+          <div class="norm-box-title">📋 Норматив №17: Накладання турнікету (джгута) — вогнева підготовка + домедична</div>
+          <div class="norm-row header">
+            <div>Завдання</div>
+            <div class="norm-val">12 б</div>
+            <div class="norm-val">9 б</div>
+            <div class="norm-val">7 б</div>
+            <div class="norm-val">4 б</div>
+          </div>
+          <div class="norm-row">
+            <div>Накладання на стегно/плече без помилок</div>
+            <div class="norm-val v12">20 с</div>
+            <div class="norm-val v10">35 с</div>
+            <div class="norm-val v7">50 с</div>
+            <div class="norm-val v4">75 с</div>
+          </div>
+        </div>
+
+        <div class="callout callout-pract">
+          <div class="callout-title">✅ Рекомендовані ресурси для самопідготовки вчителя</div>
+          <ul style="font-size:0.88rem; line-height:1.8;">
+            <li>Денис Квебек (YouTube) — стрілецька підготовка та тактика</li>
+            <li>Петро Леусенко «Федорович» (YouTube) — вогнева підготовка</li>
+            <li>«Територіальна оборона України G7» (YouTube) — правильне поводження зі зброєю</li>
+            <li>Канал «Рекрут 4308» — розбирання та маніпуляції зі зброєю</li>
+            <li>Центр оперативних стандартів ЗСУ — Методика підготовки та проведення занять з вогневої підготовки</li>
+            <li>Командування СВ ЗСУ — Керівництво зі стрілецької справи (PDF)</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================== 3.14 ===================== -->
+    <section class="topic-section" id="tema-3-14">
+      <div class="section-header">
+        <div class="section-num">3.14</div>
+        <div>
+          <h2>Способи носіння зброї</h2>
+          <p>Додатковий урок · 35 хв · Теорія + відпрацювання</p>
+        </div>
+      </div>
+      <div class="prose">
+
+        <div class="key-questions">
+          <h4>Ключові питання уроку</h4>
+          <ul>
+            <li>Чому немає одного «правильного» способу носити автомат?</li>
+            <li>Який спосіб обрати під час маршу на броні, а який — під час штурму будівлі?</li>
+          </ul>
+        </div>
+
+        <p>Зброя має бути готовою до застосування миттєво, але спосіб її носіння залежить від конкретної ситуації: маршу, чергування на КПП, штурму чи перевірки документів у місцевих. Розрізняють три загальні режими носіння — <strong>вільне</strong>, <strong>тактичне</strong> та <strong>в момент наближення до цілі</strong> — а всередині кожного є кілька практичних варіантів положення зброї.</p>
+
+        <div class="card-grid">
+          <div class="info-card">
+            <div class="card-title">🎽 На грудях (ремінь через шию)</div>
+            <ul>
+              <li>Автомат стволом униз, приклад трохи нижче правого плеча</li>
+              <li>Не заважає в рукопашній — можна бити руками й ногами, падати, перекочуватись</li>
+              <li>Найзручніший спосіб швидко приготуватися до бою</li>
+            </ul>
+          </div>
+          <div class="info-card">
+            <div class="card-title">↔️ На грудях, ствол убік (під час висування)</div>
+            <ul>
+              <li>Тримається обома руками навхрест: одна на запобіжнику, друга на рукоятці затворної рами</li>
+              <li>Зручно при пересуванні та несенні служби на блокпості (КПП)</li>
+            </ul>
+          </div>
+          <div class="info-card">
+            <div class="card-title">🪖 На броні (марш)</div>
+            <ul>
+              <li>Ремінь через шию, автомат у руках</li>
+              <li>Не заважає швидко зістрибнути з машини, зручно наводити на ціль</li>
+            </ul>
+          </div>
+          <div class="info-card">
+            <div class="card-title">🦺 Петля на прикладі (огляд на КПП)</div>
+            <ul>
+              <li>Ремінь зачеплено за антабку приклада — автомат під правим плечем, легко піднімається однією рукою</li>
+              <li>Корпус розвернути лівим боком до того, кого перевіряють — зброя якнайдалі від нього</li>
+            </ul>
+          </div>
+          <div class="info-card">
+            <div class="card-title">🎯 Штурмові дії</div>
+            <ul>
+              <li>Приклад притиснутий до правої частини грудини, ствол униз і вперед — швидко піднімається в напрямку противника</li>
+            </ul>
+          </div>
+          <div class="info-card">
+            <div class="card-title">🏃 Атака на ходу</div>
+            <ul>
+              <li>Приклад притиснутий ближче до середини грудини, ствол уперед на противника, вогонь ведеться без зупинки</li>
+            </ul>
+          </div>
+          <div class="info-card">
+            <div class="card-title">🏙️ Штурм у місті / вузький провулок</div>
+            <ul>
+              <li>Зброя в руках, ствол уперед і вгору під кутом ≈60°</li>
+              <li>Дозволяє швидко спрямувати зброю в напрямку загрози у тісному просторі</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="callout callout-tip">
+          <div class="callout-title">💡 Триточковий тактичний ремінь</div>
+          <p>Більшість наведених способів практично реалізуються через триточковий тактичний ремінь — він дозволяє швидко переключати зброю між позиціями «вільно», «напоготові» й «у плече» без повного перехоплення руками. Перш ніж переходити до практики — перевірте, що ремінь підігнано під зріст і екіпірування кожного учня.</p>
+        </div>
+
+        <div class="activity-box">
+          <div class="activity-header">
+            <div class="activity-icon">🎯</div>
+            <div>
+              <h4>Практична активність: «Зміна способу носіння за командою»</h4>
+              <div class="activity-time">15 хв · Робота з макетами зброї</div>
+            </div>
+          </div>
+          <div class="activity-content">
+            <p>Учні з макетами зброї шикуються в ряд. Викладач називає ситуацію («марш на броні», «огляд на КПП», «штурм будівлі», «вільне пересування») — учні мають за 3–5 секунд прийняти відповідне положення зброї. Помилка — присід і повторення. Наприкінці — обговорення: який спосіб носіння найважче дався і чому.</p>
+          </div>
+        </div>
+
+        <div class="callout callout-pract">
+          <div class="callout-title">✅ Контрольні запитання</div>
+          <ul style="font-size:0.88rem; line-height:1.8;">
+            <li>Як правильно тримати автомат, здійснюючи марш на бронетехніці?</li>
+            <li>Який спосіб носіння оптимальний під час несення служби на блокпості?</li>
+            <li>Який спосіб носіння зброї найкраще підходить для маршу на значні відстані, коли є загроза раптового нападу? Обґрунтуйте.</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================== 3.15 ===================== -->
+    <section class="topic-section" id="tema-3-15">
+      <div class="section-header">
+        <div class="section-num">3.15</div>
+        <div>
+          <h2>Бойовий стрес та психологія екстремальних ситуацій</h2>
+          <p>Додатковий урок · 40 хв · Теорія + розбір алгоритму допомоги</p>
+        </div>
+      </div>
+      <div class="prose">
+
+        <div class="key-questions">
+          <h4>Ключові питання уроку</h4>
+          <ul>
+            <li>Чому бойовий стрес — це нормальна реакція здорової людини, а не слабкість?</li>
+            <li>Як відрізнити бойовий стрес від паніки чи звичайної втоми?</li>
+            <li>Що можна зробити для побратима «тут і зараз», не маючи медичної освіти?</li>
+          </ul>
+        </div>
+
+        <p><strong>Бойовий стрес</strong> (бойова стресова реакція) — психологічна реакція на небезпеку чи травматичну подію під час бойових дій. Це нормальний стан, який розвивається у психічно здорових людей під впливом ненормальних обставин: чим довша й сильніша дія загрозливих факторів, тим повільніше відбувається адаптація. Травматичність події визначає не об'єктивна небезпека сама собою, а суб'єктивне відчуття приголомшення та безпорадності.</p>
+
+        <div class="card-grid">
+          <div class="info-card">
+            <div class="card-title">⚡ Що провокує бойовий стрес</div>
+            <ul>
+              <li>Раптові гучні вибухи та постріли</li>
+              <li>Травматичні поранення й смерті побратимів на очах</li>
+              <li>Фізичне виснаження, тривала нестача сну</li>
+              <li>Постійне очікування небезпеки, невизначеність</li>
+              <li>Довга розлука з близькими</li>
+            </ul>
+          </div>
+          <div class="info-card">
+            <div class="card-title">🩺 Фізичні ознаки</div>
+            <ul>
+              <li>Тремор, неконтрольовані рухи, здригання на звук</li>
+              <li>Тимчасова втрата зору, слуху, чутливості</li>
+              <li>Ціпеніння, нерухомість під обстрілом — або, навпаки, біг під обстрілом</li>
+            </ul>
+          </div>
+          <div class="info-card">
+            <div class="card-title">🧠 Емоційні ознаки</div>
+            <ul>
+              <li>Дивна або занадто швидка мова, незв'язні фрази</li>
+              <li>Відсутність реакції на реальну небезпеку</li>
+              <li>Різкі перепади настрою, апатія, ізоляція, істерика</li>
+            </ul>
+          </div>
+        </div>
+
+        <p>Важливо відрізняти бойовий стрес від суміжних станів — <strong>бойової втоми</strong> (розтягнутий у часі процес виснаження) та <strong>посттравматичного стресового розладу</strong> (ПТСР), який проявляється вже після події, а не під час неї.</p>
+
+        <h3>Протокол ICOVER: швидка допомога побратиму</h3>
+
+        <p>Перше і головне правило допомоги: крик, штовхання чи побиття не приведуть людину до тями — вони лише посилять стрес. Так само не допомагають і надмірно ніжні слова: вони не активують ділянку мозку, відповідальну за логічне мислення. Мета допомоги — повернути постраждалого до усвідомленого мислення, і саме на це спрямований алгоритм ICOVER.</p>
+
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr><th>Крок</th><th>Дія</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>I — Ідентифікація</strong></td><td>Переконатися, що це саме гострий бойовий стрес, а не сп'яніння чи епілептичний напад</td></tr>
+              <tr><td><strong>C — Контакт</strong></td><td>Твердо, але не агресивно звернутися, попросити подивитися на вас і стиснути руку — зосередити увагу постраждалого на собі</td></tr>
+              <tr><td><strong>O — Обіцянка</strong></td><td>Запевнити, що людина не сама</td></tr>
+              <tr><td><strong>V — Верифікація фактів</strong></td><td>Поставити прості фактологічні запитання (назва взводу, ім'я командира, скільки БК) — не про емоції</td></tr>
+              <tr><td><strong>E — Етапність подій</strong></td><td>Коротко описати, що було, що відбувається і що буде далі — повернути усвідомлення ситуації</td></tr>
+              <tr><td><strong>R — Реалізація дій</strong></td><td>Дати просте, негайно виконуване завдання (встати, побігти, принести щось)</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout callout-tip">
+          <div class="callout-title">💡 Хто застосовує протокол</div>
+          <p>ICOVER застосовують саме побратими постраждалого на місці, а не тільки бойові медики — це перша лінія психологічної допомоги до того, як підключаться фахівці.</p>
+        </div>
+
+        <div class="callout callout-pract">
+          <div class="callout-title">✅ Базова профілактика для себе й побратимів</div>
+          <ul style="font-size:0.88rem; line-height:1.8;">
+            <li>Розуміти й приймати: бойовий стрес — нормальна реакція, а не слабкість чи «зрада»</li>
+            <li>Регулярна фізична активність, режим сну й відпочинку, де це можливо</li>
+            <li>Підтримка через спілкування з побратимами, а не замовчування</li>
+            <li>Своєчасне звернення до психолога чи психіатра — це професійна допомога, а не «здатися»</li>
+          </ul>
+        </div>
+
+        <div class="activity-box">
+          <div class="activity-header">
+            <div class="activity-icon">🎭</div>
+            <div>
+              <h4>Практична активність: рольове відпрацювання ICOVER</h4>
+              <div class="activity-time">15 хв · Робота в парах</div>
+            </div>
+          </div>
+          <div class="activity-content">
+            <p>Учні працюють у парах: один грає роль побратима в стані гострого стресу (за заданою викладачем легендою — без надмірної драматизації), другий проходить усі шість кроків ICOVER вголос. Після вправи — обмін ролями та коротке обговорення: який крок дався найважче.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <div class="page-nav">
+      <a href="modul-2.html">← Модуль 2. Управління та планування</a>
+      <a href="modul-4.html">Модуль 4. Основи дій та комунікації →</a>
+    </div>
+
+  </main>
+</div>
+
+<footer style="background:var(--ua-blue);color:rgba(255,255,255,0.65);text-align:center;padding:20px 32px;font-size:0.78rem;line-height:1.6;">
+  <strong style="color:var(--ua-yellow);">Захист України. Методичний довідник викладача</strong> · 10 клас, Модуль 3<br>
+  Радомишльський ліцей №3 · За програмою МОН (Наказ №1116 від 08.08.2024) · Матеріали тренінгів №3–5 (гриф №БО-0550-25, 30.12.2025)<br>
+  Рецензія: 12-та бригада «Азов» НГУ
+</footer>
+
+<script>
+const sections = document.querySelectorAll('.topic-section');
+const navLinks = document.querySelectorAll('.nav-list li a');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const id = entry.target.getAttribute('id');
+      navLinks.forEach(link => {
+        link.classList.toggle('active', link.getAttribute('href') === '#' + id);
+      });
+    }
+  });
+}, { rootMargin: '-20% 0px -70% 0px' });
+sections.forEach(section => observer.observe(section));
+</script>
+</body>
+</html>

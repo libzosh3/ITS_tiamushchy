@@ -1,0 +1,1511 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Модуль 6. Планую майбутнє — Захист України 11 клас</title>
+<style>
+:root {
+  --ua-blue: #003087;
+  --ua-yellow: #FFD700;
+  --olive: #4A5240;
+  --olive-light: #6B7A5A;
+  --sand: #F5F0E8;
+  --ink: #1C1C1C;
+  --white: #FFFFFF;
+  --divider: #C8C0B0;
+  --accent-red: #C0392B;
+  --accent-green: #2E7D32;
+  --card-bg: #FDFBF7;
+  --info-bg: #E8F0FE;
+  --info-border: #4A90D9;
+  --warn-bg: #FFF8E1;
+  --warn-border: #F9A825;
+  --pract-bg: #E8F5E9;
+  --pract-border: #2E7D32;
+  --tip-bg: #F3E5F5;
+  --tip-border: #7B1FA2;
+  --danger-bg: #FFEBEE;
+  --danger-border: #C62828;
+  --shadow: 0 2px 12px rgba(0,0,0,0.08);
+  --font-display: 'Georgia', 'Times New Roman', serif;
+  --font-body: 'Segoe UI', 'Arial', sans-serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: var(--font-body); background: var(--sand); color: var(--ink); line-height: 1.7; font-size: 15.5px; }
+.topbar-stripe { height: 4px; background: var(--ua-yellow); }
+.topbar { background: var(--ua-blue); color: rgba(255,255,255,0.75); font-size: 0.78rem; padding: 8px 32px; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.topbar a { color: var(--ua-yellow); text-decoration: none; }
+.module-header { background: linear-gradient(135deg, #2a1f00 0%, #6b4e00 45%, var(--olive) 100%); color: var(--white); padding: 48px 32px 40px; position: relative; overflow: hidden; }
+.module-header::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 4px; background: var(--ua-yellow); }
+.module-header-inner { max-width: 1100px; margin: 0 auto; }
+.module-eyebrow { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ua-yellow); margin-bottom: 12px; }
+.module-header h1 { font-family: var(--font-display); font-size: clamp(1.6rem, 4vw, 2.4rem); font-weight: 700; line-height: 1.2; margin-bottom: 14px; max-width: 780px; }
+.module-header-meta { display: flex; flex-wrap: wrap; gap: 20px; margin-top: 20px; }
+.meta-pill { background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2); border-radius: 20px; padding: 5px 14px; font-size: 0.8rem; display: flex; align-items: center; gap: 6px; }
+.meta-pill span { opacity: 0.7; }
+.page-layout { max-width: 1100px; margin: 0 auto; padding: 40px 32px 80px; display: grid; grid-template-columns: 260px 1fr; gap: 40px; align-items: start; }
+.sidebar { position: sticky; top: 16px; }
+.nav-block { background: var(--card-bg); border: 1px solid var(--divider); border-radius: 8px; overflow: hidden; margin-bottom: 20px; }
+.nav-block-title { background: var(--ua-blue); color: var(--ua-yellow); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.10em; text-transform: uppercase; padding: 10px 16px; }
+.nav-list { list-style: none; padding: 8px 0; }
+.nav-list li a { display: flex; align-items: flex-start; gap: 8px; padding: 7px 16px; text-decoration: none; color: var(--ink); font-size: 0.82rem; line-height: 1.4; transition: background 0.15s; }
+.nav-list li a:hover { background: #EEE8DC; color: var(--ua-blue); }
+.nav-list li a .nav-num { color: var(--olive-light); font-weight: 700; flex-shrink: 0; font-size: 0.75rem; margin-top: 1px; }
+.nav-list li a.active { background: #DDD5C5; font-weight: 600; color: var(--ua-blue); }
+.content { min-width: 0; }
+.topic-section { margin-bottom: 52px; scroll-margin-top: 20px; }
+.section-header { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 24px; padding-bottom: 14px; border-bottom: 2px solid var(--divider); }
+.section-num { background: var(--ua-blue); color: var(--ua-yellow); font-family: var(--font-display); font-size: 1rem; font-weight: 700; padding: 5px 12px; border-radius: 3px; flex-shrink: 0; margin-top: 3px; }
+.section-header h2 { font-family: var(--font-display); font-size: 1.35rem; font-weight: 700; color: var(--ua-blue); line-height: 1.25; }
+.section-header p { font-size: 0.84rem; color: #666; margin-top: 4px; }
+.prose p { margin-bottom: 14px; }
+.prose h3 { font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; color: var(--olive); margin: 24px 0 10px; }
+.prose h4 { font-size: 0.82rem; font-weight: 700; color: var(--ua-blue); margin: 18px 0 8px; text-transform: uppercase; letter-spacing: 0.04em; }
+.callout { border-left: 4px solid; border-radius: 4px; padding: 16px 20px; margin: 20px 0; }
+.callout-info { background: var(--info-bg); border-color: var(--info-border); }
+.callout-warn { background: var(--warn-bg); border-color: var(--warn-border); }
+.callout-pract { background: var(--pract-bg); border-color: var(--pract-border); }
+.callout-tip { background: var(--tip-bg); border-color: var(--tip-border); }
+.callout-danger { background: var(--danger-bg); border-color: var(--danger-border); }
+.callout-title { font-weight: 700; font-size: 0.82rem; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 8px; display: flex; align-items: center; gap: 6px; }
+.callout-info .callout-title { color: var(--info-border); }
+.callout-warn .callout-title { color: #B8860B; }
+.callout-pract .callout-title { color: var(--accent-green); }
+.callout-tip .callout-title { color: #6A0080; }
+.callout-danger .callout-title { color: var(--danger-border); }
+.callout p, .callout ul, .callout ol { font-size: 0.9rem; line-height: 1.6; }
+.callout p + p { margin-top: 8px; }
+.callout ul, .callout ol { padding-left: 18px; }
+.callout ul li, .callout ol li { margin-bottom: 4px; }
+.table-wrap { overflow-x: auto; margin: 20px 0; border-radius: 6px; border: 1px solid var(--divider); }
+.data-table { width: 100%; border-collapse: collapse; font-size: 0.87rem; background: var(--white); }
+.data-table th { background: var(--ua-blue); color: var(--white); padding: 10px 14px; text-align: left; font-weight: 600; font-size: 0.82rem; }
+.data-table td { padding: 9px 14px; border-bottom: 1px solid var(--divider); vertical-align: top; line-height: 1.5; }
+.data-table tr:last-child td { border-bottom: none; }
+.data-table tr:nth-child(even) td { background: #F7F3EC; }
+.data-table tr:hover td { background: #EDE8DC; }
+.data-table td.num { font-weight: 700; color: var(--ua-blue); text-align: center; }
+.definition { background: var(--white); border: 1px solid var(--divider); border-radius: 6px; padding: 16px 20px; margin: 16px 0; position: relative; }
+.definition::before { content: '📌'; position: absolute; top: 14px; right: 16px; font-size: 1rem; }
+.definition-term { font-weight: 700; font-size: 0.95rem; color: var(--ua-blue); margin-bottom: 6px; }
+.definition p { font-size: 0.88rem; color: #444; line-height: 1.6; }
+.steps-list { list-style: none; counter-reset: step-counter; margin: 16px 0; }
+.steps-list li { counter-increment: step-counter; display: flex; gap: 14px; align-items: flex-start; margin-bottom: 12px; background: var(--white); border: 1px solid var(--divider); border-radius: 5px; padding: 12px 14px; font-size: 0.9rem; line-height: 1.5; }
+.steps-list li::before { content: counter(step-counter); background: var(--ua-blue); color: var(--ua-yellow); font-weight: 700; font-size: 0.85rem; width: 26px; height: 26px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; margin: 16px 0; }
+.info-card { background: var(--card-bg); border: 1px solid var(--divider); border-radius: 6px; padding: 18px; font-size: 0.87rem; }
+.info-card .card-title { font-weight: 700; color: var(--ua-blue); margin-bottom: 8px; font-size: 0.9rem; display: flex; align-items: center; gap: 8px; }
+.info-card ul { padding-left: 16px; line-height: 1.65; }
+.info-card ul li { margin-bottom: 3px; }
+.activity-box { background: var(--card-bg); border: 1px solid var(--divider); border-radius: 8px; padding: 24px; margin: 20px 0; }
+.activity-header { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--divider); }
+.activity-icon { font-size: 1.6rem; }
+.activity-header h4 { font-family: var(--font-display); font-size: 1rem; font-weight: 700; color: var(--ua-blue); line-height: 1.3; }
+.activity-header .activity-time { font-size: 0.78rem; color: #888; margin-top: 2px; }
+.activity-content { font-size: 0.88rem; line-height: 1.65; }
+.activity-content p { margin-bottom: 10px; }
+.activity-content ul, .activity-content ol { padding-left: 18px; }
+.activity-content li { margin-bottom: 5px; }
+.video-link { display: inline-flex; align-items: center; gap: 8px; background: #B71C1C; color: var(--white); text-decoration: none; padding: 7px 16px; border-radius: 4px; font-size: 0.83rem; font-weight: 600; margin: 4px 0; transition: background 0.15s; }
+.video-link:hover { background: #8B0000; }
+.video-link::before { content: '▶'; }
+.breadcrumb { display: flex; align-items: center; gap: 8px; font-size: 0.8rem; color: #888; margin-bottom: 28px; flex-wrap: wrap; }
+.breadcrumb a { color: var(--ua-blue); text-decoration: none; }
+.breadcrumb .sep { color: #CCC; }
+.breadcrumb .current { color: var(--ink); font-weight: 600; }
+.module-progress { display: flex; gap: 4px; margin-bottom: 28px; }
+.progress-dot { width: 28px; height: 6px; border-radius: 3px; background: var(--divider); }
+.progress-dot.done { background: var(--ua-blue); }
+.progress-dot.current { background: var(--ua-yellow); }
+.page-nav { display: flex; justify-content: space-between; gap: 16px; margin-top: 48px; padding-top: 24px; border-top: 2px solid var(--divider); flex-wrap: wrap; }
+.page-nav a { display: flex; align-items: center; gap: 8px; color: var(--ua-blue); text-decoration: none; font-weight: 600; font-size: 0.9rem; padding: 10px 16px; border: 1px solid var(--divider); border-radius: 5px; background: var(--card-bg); transition: box-shadow 0.15s; }
+.page-nav a:hover { box-shadow: var(--shadow); }
+
+/* GOAL CARDS FOR GAME */
+.goal-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; margin: 20px 0; }
+.goal-card { background: var(--white); border: 1px solid var(--divider); border-radius: 8px; overflow: hidden; }
+.goal-card-header { padding: 12px 16px; color: white; font-weight: 700; }
+.goal-1 .goal-card-header { background: linear-gradient(135deg, #6b1a1a, #9C2B2B); }
+.goal-2 .goal-card-header { background: linear-gradient(135deg, #1a3a6b, #2563ae); }
+.goal-3 .goal-card-header { background: linear-gradient(135deg, #1a5c3a, #2E7D32); }
+.goal-card-body { padding: 12px 16px; font-size: 0.85rem; line-height: 1.6; }
+.goal-card-body .goal-label { font-weight: 700; color: var(--ua-blue); font-size: 0.76rem; text-transform: uppercase; margin-top: 8px; }
+.goal-card-body .goal-label:first-child { margin-top: 0; }
+
+/* ROLE CARDS (15 roles game) */
+.role-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; margin: 20px 0; }
+.role-card { background: var(--white); border: 1px solid var(--divider); border-radius: 8px; overflow: hidden; font-size: 0.84rem; }
+.role-card-header { background: var(--olive); color: white; padding: 8px 14px; display: flex; justify-content: space-between; align-items: center; }
+.role-card-header .role-callsign { font-weight: 700; font-size: 0.9rem; }
+.role-card-header .role-level { font-size: 0.7rem; background: rgba(255,255,255,0.2); padding: 2px 8px; border-radius: 10px; }
+.role-card-body { padding: 10px 14px; line-height: 1.55; }
+.role-card-body .role-label { font-weight: 700; color: var(--ua-blue); font-size: 0.74rem; text-transform: uppercase; margin-top: 6px; }
+.role-card-body .role-label:first-child { margin-top: 0; }
+.role-card-body .role-secret { color: var(--danger-border); font-style: italic; }
+
+/* SYNERGY CHAIN */
+.synergy-item { background: var(--white); border-left: 4px solid var(--tip-border); border-radius: 4px; padding: 10px 14px; margin: 8px 0; font-size: 0.85rem; }
+.synergy-item .synergy-combo { font-weight: 700; color: var(--ua-blue); }
+
+/* CASE CARDS ABITURIENT */
+.abiturient-card { background: var(--white); border: 1px solid var(--divider); border-radius: 8px; overflow: hidden; margin: 14px 0; }
+.abiturient-header { background: linear-gradient(135deg, #1a3a6b, #2563ae); color: white; padding: 10px 16px; font-weight: 700; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 6px; }
+.abiturient-header .ab-age { font-size: 0.76rem; opacity: 0.85; font-weight: 400; }
+.abiturient-body { padding: 14px 16px; font-size: 0.85rem; line-height: 1.6; }
+.abiturient-body .ab-label { font-weight: 700; color: var(--ua-blue); font-size: 0.76rem; text-transform: uppercase; margin-top: 8px; margin-bottom: 2px; }
+.abiturient-body .ab-label:first-child { margin-top: 0; }
+
+/* VVNZ CARD */
+.vvnz-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 14px; margin: 16px 0; }
+.vvnz-card { background: var(--card-bg); border: 1px solid var(--divider); border-radius: 6px; padding: 14px; font-size: 0.84rem; }
+.vvnz-card .vvnz-name { font-weight: 700; color: var(--ua-blue); margin-bottom: 6px; }
+.vvnz-card .vvnz-spec { font-size: 0.8rem; color: #555; margin-bottom: 6px; }
+.vvnz-card .vvnz-contact { font-size: 0.76rem; color: var(--olive); font-weight: 600; }
+
+/* MYTH BUSTING */
+.myth-card { background: var(--white); border-left: 4px solid var(--danger-border); border-radius: 4px; padding: 12px 16px; margin: 10px 0; font-size: 0.86rem; }
+.myth-card .myth-claim { font-weight: 700; color: var(--danger-border); margin-bottom: 4px; }
+.myth-card .myth-truth { color: #444; }
+
+/* SALARY TABLE compact */
+.salary-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 10px; margin: 16px 0; }
+.salary-card { background: var(--white); border: 1px solid var(--divider); border-radius: 6px; padding: 10px 12px; font-size: 0.82rem; }
+.salary-card .salary-role { font-weight: 700; color: var(--ua-blue); }
+.salary-card .salary-amount { color: var(--accent-green); font-weight: 700; font-size: 0.8rem; }
+
+/* COMPASS REFLECTION */
+.compass-block { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: 14px; margin: 20px 0; }
+.compass-card { border-radius: 8px; padding: 16px; }
+.compass-1 { background: #FFEBEE; border: 1px solid #E57373; }
+.compass-2 { background: #E3F2FD; border: 1px solid #64B5F6; }
+.compass-3 { background: #E8F5E9; border: 1px solid #81C784; }
+.compass-card .compass-title { font-weight: 700; margin-bottom: 6px; }
+
+@media (max-width: 860px) {
+  .page-layout { grid-template-columns: 1fr; }
+  .sidebar { position: static; }
+  .module-header { padding: 36px 16px 30px; }
+  .page-layout { padding: 24px 16px 60px; }
+}
+</style>
+</head>
+<body>
+
+<div class="topbar-stripe"></div>
+<div class="topbar">
+  <div>📘 <a href="../index.html">Довідник викладача «Захист України»</a> › 11 клас › Модуль 6</div>
+  <div>МОН 2024 · Інтегрований курс</div>
+</div>
+
+<header class="module-header">
+  <div class="module-header-inner">
+    <div class="module-eyebrow">11 клас · Модуль 6 · Тренінг №9 · ФІНАЛЬНИЙ МОДУЛЬ КУРСУ</div>
+    <h1>Планую майбутнє: профорієнтація та інтеграція знань</h1>
+    <div class="module-header-meta">
+      <div class="meta-pill">📋 <span>5 уроків · ~225 хв</span></div>
+      <div class="meta-pill">🤝 <span>Волонтерство, мережа підтримки</span></div>
+      <div class="meta-pill">🎮 <span>Гра «Оборонний Штаб 2.0»</span></div>
+      <div class="meta-pill">🎓 <span>ВВНЗ, кар'єрні траєкторії</span></div>
+    </div>
+  </div>
+</header>
+
+<div class="page-layout">
+  <aside class="sidebar">
+    <div class="nav-block">
+      <div class="nav-block-title">Теми модуля</div>
+      <ul class="nav-list">
+        <li><a href="#tema-6-vstup-1"><span class="nav-num">🇺🇦</span>Захист України як усвідомлений вибір</a></li>
+        <li><a href="#tema-6-vstup-2"><span class="nav-num">⚖️</span>Воля. Гідність. Самобутність. Свобода</a></li>
+        <li><a href="#tema-6-1"><span class="nav-num">6.1</span>Громадянське суспільство і обороноздатність</a></li>
+        <li><a href="#tema-6-2"><span class="nav-num">6.2</span>Гра «Оборонний Штаб 2.0»: підготовка</a></li>
+        <li><a href="#tema-6-3"><span class="nav-num">6.3</span>15 карток ролей гри</a></li>
+        <li><a href="#tema-6-4"><span class="nav-num">6.4</span>Хід гри, синергія професій, оцінювання</a></li>
+        <li><a href="#tema-6-5"><span class="nav-num">6.5</span>Трек А і Трек Б: військова та цивільна освіта</a></li>
+        <li><a href="#tema-6-6"><span class="nav-num">6.6</span>Довідник ВВНЗ та вимоги до вступу</a></li>
+        <li><a href="#tema-6-7"><span class="nav-num">6.7</span>13 кейс-карток абітурієнтів</a></li>
+        <li><a href="#tema-6-8"><span class="nav-num">6.8</span>Адаптація суспільства до потреб ветеранів</a></li>
+        <li><a href="#tema-6-9"><span class="nav-num">6.9</span>Ветеранський бізнес: приклади та програми</a></li>
+        <li><a href="#tema-6-10"><span class="nav-num">6.10</span>Інтеграція знань курсу: «Мій компас дій»</a></li>
+        <li><a href="#metodychni"><span class="nav-num">🔧</span>Методичні поради</a></li>
+      </ul>
+    </div>
+    <div class="nav-block">
+      <div class="nav-block-title">Навігація курсу</div>
+      <ul class="nav-list">
+        <li><a href="../index.html"><span class="nav-num">🏠</span>Головна</a></li>
+        <li><a href="modul-5.html"><span class="nav-num">←</span>Модуль 5. Цивільне населення</a></li>
+        <li><a href="../index.html"><span class="nav-num">🏁</span>Завершення курсу</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <main class="content">
+
+    <div class="breadcrumb">
+      <a href="../index.html">Довідник</a>
+      <span class="sep">/</span>
+      <span>11 клас</span>
+      <span class="sep">/</span>
+      <span class="current">Модуль 6. Планую майбутнє</span>
+    </div>
+
+    <div class="module-progress">
+      <div class="progress-dot done"></div>
+      <div class="progress-dot done"></div>
+      <div class="progress-dot done"></div>
+      <div class="progress-dot done"></div>
+      <div class="progress-dot done"></div>
+      <div class="progress-dot current"></div>
+    </div>
+
+    <div class="callout callout-info">
+      <div class="callout-title">ℹ️ Загальний огляд модуля</div>
+      <p>Це єдиний модуль усього двохрічного курсу, орієнтований не на конкретні навички виживання чи бою, а на <strong>профорієнтацію та інтеграцію знань</strong>. Він поєднує: громадянську активність (волонтерство), кар'єрне планування (військова освіта vs цивільна оборонна індустрія), соціальну емпатію (адаптація ветеранів) і фінальну рефлексію всього курсу «Захист України». Модуль завершує не лише 11 клас, а весь дворічний курс 10–11 класів.</p>
+      <p>Джерела: Тренінг №9 (МОН, 2025 р., гриф №БО-0550-25), Dovidka.info Центру стратегічних комунікацій, ГО «Азов.Супровід», Brave1, Український ветеранський фонд, Veteran Hub.</p>
+    </div>
+
+    <!-- ===================== ВСТУП 1 ===================== -->
+    <section class="topic-section" id="tema-6-vstup-1">
+      <div class="section-header">
+        <div class="section-num">Вступ</div>
+        <div>
+          <h2>Захист України як усвідомлений вибір</h2>
+          <p>Заняття 1 · 45 хв · Лекція-діалог + аналіз законодавства</p>
+        </div>
+      </div>
+      <div class="prose">
+
+        <div class="key-questions">
+          <h4>Ключові питання уроку</h4>
+          <ul>
+            <li>Чому захист держави — це не лише обов'язок, а й усвідомлений вибір кожного?</li>
+            <li>На яких законах тримається обороноздатність України?</li>
+            <li>З яких етапів складається підготовка солдата до захисту держави?</li>
+          </ul>
+        </div>
+
+        <p>Особиста роль кожного громадянина в обороні країни особливо актуальна в умовах гібридної війни, де фронт проходить не лише по лінії бойового зіткнення, а й в інформаційному та гуманітарному вимірах. Усвідомлений вибір захищати державу починається з розуміння того, на якій правовій основі ця оборона тримається.</p>
+
+        <h3>Законодавча база України у сфері оборони</h3>
+
+        <div class="card-grid">
+          <div class="info-card">
+            <div class="card-title">📜 Конституція України</div>
+            <ul>
+              <li>Ст. 17 — захист суверенітету й територіальної цілісності — пріоритет держави</li>
+              <li>Ст. 65 — обов'язок кожного громадянина захищати Батьківщину</li>
+            </ul>
+          </div>
+          <div class="info-card">
+            <div class="card-title">⚖️ Профільні закони</div>
+            <ul>
+              <li>«Про оборону України» — принципи, завдання, мобілізація ресурсів</li>
+              <li>«Про національну безпеку України» — координація силових структур</li>
+              <li>«Про правовий режим воєнного стану» — обмеження прав і організація оборонних заходів</li>
+            </ul>
+          </div>
+          <div class="info-card">
+            <div class="card-title">🛡️ Інші базові закони</div>
+            <ul>
+              <li>«Про Збройні Сили України», «Про мобілізаційну підготовку та мобілізацію»</li>
+              <li>«Про територіальну оборону України», «Про основи національного спротиву»</li>
+            </ul>
+          </div>
+        </div>
+
+        <h3>Етапи підготовки солдата до захисту держави</h3>
+
+        <p>Підготовка військовослужбовця — це не один навик, а комплекс взаємопов'язаних видів підготовки:</p>
+
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr><th>Вид підготовки</th><th>Що включає</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Загальновійськова</strong></td><td>Орієнтування на місцевості, володіння зброєю, тактичне переміщення, базова інженерія</td></tr>
+              <tr><td><strong>Фізична</strong></td><td>Сила, витривалість, координація, профілактика травм</td></tr>
+              <tr><td><strong>Психологічна</strong></td><td>Управління емоціями, стійкість до стресу, командний дух</td></tr>
+              <tr><td><strong>Тактична</strong></td><td>Дії в різних умовах місцевості, організація оборони й наступу</td></tr>
+              <tr><td><strong>Спеціальна</strong></td><td>Поглиблена підготовка за фахом — сапери, зв'язківці, медики, снайпери, танкісти</td></tr>
+              <tr><td><strong>Медична</strong></td><td>Зупинка кровотечі, обробка ран, тактична медицина, евакуація</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout callout-tip">
+          <div class="callout-title">💡 Героїчні приклади для обговорення</div>
+          <p>Оборона Донецького аеропорту («кіборги»), оборона Маріуполя й «Азовсталі», історії пілотів ППО, партизанський рух на окупованих територіях, внесок медиків і волонтерів — кожен із цих сюжетів ілюструє різні форми особистого вибору захищати державу, не лише на полі бою.</p>
+        </div>
+
+        <div class="activity-box">
+          <div class="activity-header">
+            <div class="activity-icon">💬</div>
+            <div>
+              <h4>Дискусія: «Мій усвідомлений вибір»</h4>
+              <div class="activity-time">15 хв · Загальне коло</div>
+            </div>
+          </div>
+          <div class="activity-content">
+            <p>Запропонуйте учням назвати один із видів підготовки (загальновійськова, фізична, психологічна, тактична, спеціальна, медична), у якому вони відчувають себе найсильнішими вже зараз — і один, який хотіли би розвинути найбільше. Завершіть обговоренням: чому усвідомлений вибір захищати державу починається не в момент загрози, а задовго до неї.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================== ВСТУП 2 ===================== -->
+    <section class="topic-section" id="tema-6-vstup-2">
+      <div class="section-header">
+        <div class="section-num">Вступ</div>
+        <div>
+          <h2>Воля. Гідність. Самобутність. Свобода — суспільно-державні цінності</h2>
+          <p>Заняття 2 · 45 хв · Лекція-діалог + аналіз кейсів</p>
+        </div>
+      </div>
+      <div class="prose">
+
+        <div class="key-questions">
+          <h4>Ключові питання уроку</h4>
+          <ul>
+            <li>Чим відрізняється індивідуальна воля від національної?</li>
+            <li>Чому Революція Гідності стала прикладом об'єднання навколо цінностей?</li>
+            <li>Що утримує самобутність суспільства під час кризи?</li>
+          </ul>
+        </div>
+
+        <p>Чотири поняття — воля, гідність, самобутність і свобода — формують ціннісний каркас, на якому тримається національна стійкість України під час війни. Це не абстрактні гасла, а конкретні орієнтири, які можна простежити в історії та в сучасних подіях.</p>
+
+        <div class="card-grid">
+          <div class="info-card">
+            <div class="card-title">🔥 Воля</div>
+            <ul>
+              <li>Індивідуальна — свобода вибору й відповідальність за свої дії</li>
+              <li>Національна — боротьба за незалежність: козацтво, події ХХ ст., сучасна війна</li>
+            </ul>
+          </div>
+          <div class="info-card">
+            <div class="card-title">🎗️ Гідність</div>
+            <ul>
+              <li>Основа самоповаги й моральної поведінки незалежно від статусу чи статку</li>
+              <li>Революція Гідності (2013–2014) — приклад об'єднання суспільства навколо цінностей</li>
+            </ul>
+          </div>
+          <div class="info-card">
+            <div class="card-title">🏵️ Самобутність</div>
+            <ul>
+              <li>Культура, традиції, мова як основи національної ідентичності</li>
+              <li>Освіта й виховання — механізми збереження самобутності в часі</li>
+            </ul>
+          </div>
+          <div class="info-card">
+            <div class="card-title">🕊️ Свобода</div>
+            <ul>
+              <li>Фундамент для розвитку держави, від Богдана Хмельницького до сучасної війни</li>
+              <li>Нерозривний зв'язок свободи з відповідальністю громадянина</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="callout callout-tip">
+          <div class="callout-title">💡 Чому саме ці чотири поняття разом</div>
+          <p>Воля без гідності легко переходить у свавілля; гідність без самобутності втрачає опору в традиції; самобутність без свободи перетворюється на музейний експонат. Усі чотири цінності працюють як система — випадання однієї послаблює решту.</p>
+        </div>
+
+        <div class="activity-box">
+          <div class="activity-header">
+            <div class="activity-icon">🗂️</div>
+            <div>
+              <h4>Практикум: «Цінність у дії»</h4>
+              <div class="activity-time">15 хв · Робота в малих групах</div>
+            </div>
+          </div>
+          <div class="activity-content">
+            <p>Кожна група отримує одну з чотирьох цінностей (воля, гідність, самобутність, свобода) і наводить конкретний приклад із сучасної війни або з історії, де ця цінність проявилась у дії — не як слово, а як вчинок. Групи презентують приклад і пояснюють, яку саме поведінку він ілюструє.</p>
+          </div>
+        </div>
+
+        <div class="callout callout-pract">
+          <div class="callout-title">✅ Контрольні запитання</div>
+          <ul style="font-size:0.88rem; line-height:1.8;">
+            <li>Наведіть приклад індивідуальної волі та приклад національної волі.</li>
+            <li>Чому Революцію 2013–2014 рр. називають Революцією Гідності?</li>
+            <li>Як освіта допомагає зберігати самобутність суспільства?</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================== 6.1 ===================== -->
+    <section class="topic-section" id="tema-6-1">
+      <div class="section-header">
+        <div class="section-num">6.1</div>
+        <div>
+          <h2>Роль громадянського суспільства у формуванні обороноздатності</h2>
+          <p>Урок 1 · 45 хв · Дискусія + аналіз відео + практикум</p>
+        </div>
+      </div>
+      <div class="prose">
+
+        <div class="callout callout-tip">
+          <div class="callout-title">💡 Питання для відкриття</div>
+          <p>«Чим українці та українки особливі у цій війні?»</p>
+        </div>
+
+        <h3>Сильні сторони українського суспільства та конкретні проєкти</h3>
+        <p>Спрямувати дискусію на ідентифікацію сильних сторін (креативність, самоорганізація, швидкість) і навести приклади, як вони відображаються у конкретних волонтерських проєктах.</p>
+
+        <div class="card-grid">
+          <div class="info-card">
+            <div class="card-title">🪖 Повернись Живим</div>
+            <p style="font-size:0.83rem;">Забезпечення військових технікою, спорядженням, навчанням</p>
+          </div>
+          <div class="info-card">
+            <div class="card-title">🛸 Victory Drones</div>
+            <p style="font-size:0.83rem;">Виробництво та постачання дронів для фронту</p>
+          </div>
+          <div class="info-card">
+            <div class="card-title">🐱 Солом'янські Котики</div>
+            <p style="font-size:0.83rem;">Волонтерська спільнота практичної допомоги</p>
+          </div>
+          <div class="info-card">
+            <div class="card-title">⚔️ «Тиловики Азову»</div>
+            <p style="font-size:0.83rem;">Системна підтримка підрозділу з тилу</p>
+          </div>
+          <div class="info-card">
+            <div class="card-title">💰 Фонд Притули</div>
+            <p style="font-size:0.83rem;">Масштабні збори на техніку та обладнання для ЗСУ</p>
+          </div>
+        </div>
+
+        <!-- ACTIVITY -->
+        <div class="activity-box">
+          <div class="activity-header">
+            <div class="activity-icon">🎬</div>
+            <div>
+              <h4>Відеоаналіз та обговорення</h4>
+              <div class="activity-time">15 хв</div>
+            </div>
+          </div>
+          <div class="activity-content">
+            <p>Перегляд відео «Оновлений предмет «Захист України» — це про те, ким ти здатен стати».</p>
+            <h4>Питання для обговорення</h4>
+            <ul>
+              <li>Чому багатьом українцям не байдуже?</li>
+              <li>Що це може свідчити про наші цінності?</li>
+              <li>Чи брали ви участь у волонтерських ініціативах? Якщо так, що це було? Для кого акумулювали допомогу?</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- ACTIVITY -->
+        <div class="activity-box">
+          <div class="activity-header">
+            <div class="activity-icon">📋</div>
+            <div>
+              <h4>Практикум «Розробка плану збору»</h4>
+              <div class="activity-time">10 хв · Малі групи</div>
+            </div>
+          </div>
+          <div class="activity-content">
+            <p>Завдання: розробити план волонтерського збору в громаді (наприклад, на дрон) за шаблоном:</p>
+            <ul>
+              <li><strong>Мета</strong></li>
+              <li><strong>Сума</strong></li>
+              <li><strong>Термін</strong></li>
+              <li><strong>Цільова аудиторія</strong></li>
+              <li><strong>Інструменти</strong></li>
+            </ul>
+            <p>Кожна група коротко представляє свій план збору та перший крок для його реалізації.</p>
+          </div>
+        </div>
+
+        <div class="callout callout-pract">
+          <div class="callout-title">✅ Варіанти домашніх завдань</div>
+          <ul>
+            <li>Дослідити ґенезу та місію відомої волонтерської організації («Повернись живим» або «Фонд Притули»), підготувати доповідь/інфографіку про найбільший успішний проєкт</li>
+            <li>Фіналізувати груповий план збору, підготувати детальний план реалізації</li>
+            <li>Провести коротке інтерв'ю з місцевим волонтером (можна онлайн) про найбільший виклик і найбільше натхнення; написати есе-рефлексію</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================== 6.2 ===================== -->
+    <section class="topic-section" id="tema-6-2">
+      <div class="section-header">
+        <div class="section-num">6.2</div>
+        <div>
+          <h2>Гра «Оборонний Штаб 2.0»: підготовка і три глобальні цілі</h2>
+          <p>Урок 2, частина 1 · Підготовка вчителя + презентація трьох цілей</p>
+        </div>
+      </div>
+      <div class="prose">
+
+        <div class="callout callout-info">
+          <div class="callout-title">ℹ️ Мета гри</div>
+          <p>Продемонструвати, що перемога та відбудова вимагають ефективної співпраці між різними цивільними професіями; що Defence-Tech створює інноваційну економіку та конкурентні зарплати; що цивільні навички (бізнес-планування, дисципліна, ІТ) є фундаментом для військового успіху; навчити нетворкінгу — швидкій оцінці чужих компетенцій і створенню команди під конкретну ціль.</p>
+        </div>
+
+        <h3>Кейс-стаді «Містер Український Тоні Старк»</h3>
+        <div class="card-grid">
+          <div class="info-card">
+            <div class="card-title">🏛️ Роман Шухевич</div>
+            <p style="font-size:0.83rem;">Власник рекламного агентства «Фама», професійний спортсмен і майстер спорту, архітектор та інтелектуал — а врешті командир, який створив цілу систему українського опору. <strong>Ключовий момент:</strong> справжній лідер — не лише «солдат», а той, хто вміє зібрати найкращий набір цивільних талантів і розкрити їхній потенціал задля спільної перемоги.</p>
+          </div>
+          <div class="info-card">
+            <div class="card-title">🚜 Роберт Бровді («Мадяр»)</div>
+            <p style="font-size:0.83rem;">До війни — успішний власник великої агрокомпанії. Цивільні навички управління територіями, логістикою постачання (насіння, пальне) та складним парком техніки безпосередньо перенесені у військову площину: керування FPV-дронами, логістика ремонтних баз, швидке прийняття рішень під час аеророзвідки.</p>
+          </div>
+        </div>
+
+        <h3>Три глобальні цілі гри</h3>
+
+        <div class="goal-grid">
+          <div class="goal-card goal-1">
+            <div class="goal-card-header">🔄 Ціль 1. «Перезавантаження»</div>
+            <div class="goal-card-body">
+              <div class="goal-label">Мета</div>
+              Створити комплексну програму повернення ветеранів до цивільного життя: від психологічної допомоги до відкриття власного бізнесу
+              <div class="goal-label">Потрібні навички</div>
+              Психологія, HR, Економіка/Бізнес, Юриспруденція, Відновлення інфраструктури
+            </div>
+          </div>
+          <div class="goal-card goal-2">
+            <div class="goal-card-header">🚀 Ціль 2. «Технологічний стрибок»</div>
+            <div class="goal-card-body">
+              <div class="goal-label">Мета</div>
+              Створити стратегію масового виробництва дешевих дронів (технології подвійного призначення) для СОУ, що фінансується шляхом цивільних аграрних замовлень
+              <div class="goal-label">Потрібні навички</div>
+              Інженерія, ІТ-безпека, Економіка/Фінанси, Логістика, Оператор БПЛА
+            </div>
+          </div>
+          <div class="goal-card goal-3">
+            <div class="goal-card-header">🛡️ Ціль 3. «Україна — щит Європи»</div>
+            <div class="goal-card-body">
+              <div class="goal-label">Мета</div>
+              Розробити інформаційну кампанію для європейських медіа, що поєднує журналістику з протидією дезінформації
+              <div class="goal-label">Потрібні навички</div>
+              Журналістика/PR, Кібербезпека, Економіка, Спеціаліст з ІПСО, Експерт з міжнародної політики
+            </div>
+          </div>
+        </div>
+
+        <div class="callout callout-tip">
+          <div class="callout-title">💡 Фраза для введення гри (озвучити учням)</div>
+          <p>«Сьогодні ви — команда інноваторів. Успіх місії залежить від того, наскільки швидко ви знайдете найкращих фахівців для своєї ЦІЛІ. Ваші навички — це ваша броня».</p>
+        </div>
+
+        <h3>Реквізит та підготовка</h3>
+        <ul style="padding-left:20px; line-height:1.9; font-size:0.9rem;">
+          <li>15 унікальних карток ролей, роздрукованих і розрізаних (для 12–17 учасників, деякі ролі можуть повторюватися)</li>
+          <li>Маркери, фліпчарт або дошка для фіксації планів команд</li>
+          <li>Вільний простір для «нетворкінгу» — швидкого перегрупування учнів</li>
+        </ul>
+
+      </div>
+    </section>
+
+    <!-- ===================== 6.3 ===================== -->
+    <section class="topic-section" id="tema-6-3">
+      <div class="section-header">
+        <div class="section-num">6.3</div>
+        <div>
+          <h2>15 карток ролей гри «Оборонний Штаб 2.0»</h2>
+          <p>Повний роздатковий матеріал (Додаток 4) — позивний, скіли, особиста ціль, таємний виклик</p>
+        </div>
+      </div>
+      <div class="prose">
+
+        <div class="callout callout-info">
+          <div class="callout-title">ℹ️ Структура кожної картки</div>
+          <p>Кожна роль містить: позивний, рівень (Новачок/Експерт), скіли (навички), особисту ціль (що мотивує гравця) і таємний виклик (прихована складність, що змушує до нетворкінгу та компромісів).</p>
+        </div>
+
+        <div class="role-grid">
+          <div class="role-card">
+            <div class="role-card-header"><span class="role-callsign">Водій-логіст «Штурман»</span><span class="role-level">Експерт</span></div>
+            <div class="role-card-body">
+              <div class="role-label">Скіли</div>
+              Швидко прокладає маршрути, веде облік вантажів, працює з картами, знаходить пальне й запчастини в кризових умовах
+              <div class="role-label">Особиста ціль</div>
+              Досягти 100% вчасної доставки
+              <div class="role-label">Таємний виклик</div>
+              <span class="role-secret">Якщо твою команду не покличуть для доставки, ресурси запізняться на важливий брифінг</span>
+            </div>
+          </div>
+
+          <div class="role-card">
+            <div class="role-card-header"><span class="role-callsign">Проєктний менеджер «Тайфун»</span><span class="role-level">Експерт</span></div>
+            <div class="role-card-body">
+              <div class="role-label">Скіли</div>
+              Організовує роботу команди, розподіляє завдання, встановлює пріоритети, швидко приймає рішення під тиском
+              <div class="role-label">Особиста ціль</div>
+              Реалізувати проєкт із мінімальними витратами часу та коштів
+              <div class="role-label">Таємний виклик</div>
+              <span class="role-secret">Маєш залучити хоча б одного «новачка» і дати йому важливе завдання</span>
+            </div>
+          </div>
+
+          <div class="role-card">
+            <div class="role-card-header"><span class="role-callsign">ІТ-спеціаліст «Кібер-Лис»</span><span class="role-level">Експерт</span></div>
+            <div class="role-card-body">
+              <div class="role-label">Скіли</div>
+              Розробка чат-ботів для збору даних, кібербезпека, аналіз великих масивів інформації, налаштування мереж
+              <div class="role-label">Особиста ціль</div>
+              Створити інструмент, що автоматизує рутинний процес у Штабі
+              <div class="role-label">Таємний виклик</div>
+              <span class="role-secret">Твоє обладнання конфліктує з обладнанням Інженера — потрібно домовитися</span>
+            </div>
+          </div>
+
+          <div class="role-card">
+            <div class="role-card-header"><span class="role-callsign">Аналітик «Фінанс-Брокер»</span><span class="role-level">Новачок</span></div>
+            <div class="role-card-body">
+              <div class="role-label">Скіли</div>
+              Складання бюджетів, пошук фінансування, прогнозування ризиків, робота з міжнародними грантами
+              <div class="role-label">Особиста ціль</div>
+              Переконати Штаб, що твій проєкт вартий інвестицій
+              <div class="role-label">Таємний виклик</div>
+              <span class="role-secret">Маєш обґрунтувати свій бюджет, навіть якщо це уповільнює розробку</span>
+            </div>
+          </div>
+
+          <div class="role-card">
+            <div class="role-card-header"><span class="role-callsign">Бухгалтер «Дебет»</span><span class="role-level">Новачок</span></div>
+            <div class="role-card-body">
+              <div class="role-label">Скіли</div>
+              Ведення фінансової звітності, контроль прозорості витрат, робота з податками та благодійними внесками, аудит
+              <div class="role-label">Особиста ціль</div>
+              Забезпечити абсолютну прозорість фінансування проєкту
+              <div class="role-label">Таємний виклик</div>
+              <span class="role-secret">На тебе тисне Фінанс-Брокер, щоб «обійти» правила заради швидкості — маєш відстояти законність</span>
+            </div>
+          </div>
+
+          <div class="role-card">
+            <div class="role-card-header"><span class="role-callsign">Психолог «Маяк»</span><span class="role-level">Експерт</span></div>
+            <div class="role-card-body">
+              <div class="role-label">Скіли</div>
+              Психологічна підтримка, оцінка ментального стану команди, кризове консультування
+              <div class="role-label">Особиста ціль</div>
+              Забезпечити психологічну стійкість команди під час операції
+            </div>
+          </div>
+
+          <div class="role-card">
+            <div class="role-card-header"><span class="role-callsign">Інженер «Майстер»</span><span class="role-level">Експерт</span></div>
+            <div class="role-card-body">
+              <div class="role-label">Скіли</div>
+              Ремонт техніки (від побутової до складної), розробка простих механічних інновацій, 3D-друк деталей, тестування обладнання
+              <div class="role-label">Особиста ціль</div>
+              Створити прототип, що підвищить ефективність дронів на 20%
+              <div class="role-label">Таємний виклик</div>
+              <span class="role-secret">Не вистачає одного важливого ресурсу, який має Логіст — доведеться переконувати</span>
+            </div>
+          </div>
+
+          <div class="role-card">
+            <div class="role-card-header"><span class="role-callsign">Технік-налагоджувальник «Контакт»</span><span class="role-level">Новачок</span></div>
+            <div class="role-card-body">
+              <div class="role-label">Скіли</div>
+              Швидке налаштування мережевого обладнання, дрібний ремонт електроніки, збірка технічних вузлів, налагодження зв'язку
+              <div class="role-label">Особиста ціль</div>
+              Забезпечити безперебійну роботу обладнання ІТ-спеціаліста та Інженера
+              <div class="role-label">Таємний виклик</div>
+              <span class="role-secret">Допомога потрібна одночасно «Кібер-Лису» і «Майстру» — маєш швидко визначити пріоритет</span>
+            </div>
+          </div>
+
+          <div class="role-card">
+            <div class="role-card-header"><span class="role-callsign">SMM-менеджер «Таргет»</span><span class="role-level">Новачок</span></div>
+            <div class="role-card-body">
+              <div class="role-label">Скіли</div>
+              Створення вірального контенту, таргетинг на міжнародну аудиторію, робота з соцмережами, контрпропаганда
+              <div class="role-label">Особиста ціль</div>
+              Забезпечити максимальне поширення ключового повідомлення Штабу
+              <div class="role-label">Таємний виклик</div>
+              <span class="role-secret">Терміново потрібен контент (фото чи відео), який має Журналіст</span>
+            </div>
+          </div>
+
+          <div class="role-card">
+            <div class="role-card-header"><span class="role-callsign">Перекладач «Голос»</span><span class="role-level">Експерт</span></div>
+            <div class="role-card-body">
+              <div class="role-label">Скіли</div>
+              Швидкий переклад (усно/письмово) з англійської, польської, знання культурних особливостей для дипломатичної комунікації
+              <div class="role-label">Особиста ціль</div>
+              Успішно провести міжнародний брифінг для союзників
+              <div class="role-label">Таємний виклик</div>
+              <span class="role-secret">Команда Інформаційного фронту не хоче використовувати твої поради щодо термінології</span>
+            </div>
+          </div>
+
+          <div class="role-card">
+            <div class="role-card-header"><span class="role-callsign">Спеціаліст з ІПСО</span><span class="role-level">Експерт</span></div>
+            <div class="role-card-body">
+              <div class="role-label">Скіли</div>
+              Аналіз інформаційних загроз, виявлення дезінформаційних кампаній, розробка контрнаративів
+              <div class="role-label">Особиста ціль</div>
+              Розробити ефективну контрпропагандистську стратегію
+            </div>
+          </div>
+
+          <div class="role-card">
+            <div class="role-card-header"><span class="role-callsign">Журналіст «Літописець»</span><span class="role-level">Експерт</span></div>
+            <div class="role-card-body">
+              <div class="role-label">Скіли</div>
+              Написання пресрелізів, сторітелінг, робота з фактами, швидка перевірка інформації, створення звітів
+              <div class="role-label">Особиста ціль</div>
+              Написати матеріал, який стане голосом українського опору ворожій пропаганді й ІПСО для міжнародних партнерів
+              <div class="role-label">Таємний виклик</div>
+              <span class="role-secret">Потрібно переконати Психолога, що навіть погані новини треба подавати емоційно нейтрально</span>
+            </div>
+          </div>
+
+          <div class="role-card">
+            <div class="role-card-header"><span class="role-callsign">Оператор Дронів «Око»</span><span class="role-level">Новачок</span></div>
+            <div class="role-card-body">
+              <div class="role-label">Скіли</div>
+              Пілотування безпілотників, маскування, ведення аеророзвідки, швидкий збір розвідувальних даних
+              <div class="role-label">Особиста ціль</div>
+              Зібрати ідеальні дані для технічного проєкту
+              <div class="role-label">Таємний виклик</div>
+              <span class="role-secret">Дані потрібні відразу двом командам — Технологічному прориву та Інформаційному фронту. Обирай пріоритет</span>
+            </div>
+          </div>
+
+          <div class="role-card">
+            <div class="role-card-header"><span class="role-callsign">Дизайнер «Креатив»</span><span class="role-level">Експерт</span></div>
+            <div class="role-card-body">
+              <div class="role-label">Скіли</div>
+              Створення інфографіки, розробка логотипів та фірмового стилю, візуалізація даних, швидке створення макетів
+              <div class="role-label">Особиста ціль</div>
+              Створити максимально зрозумілу інфографіку для міжнародного звіту
+              <div class="role-label">Таємний виклик</div>
+              <span class="role-secret">Маєш створити візуалізацію, що відповідає емоційному тону Психолога</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="callout callout-info">
+          <div class="callout-title">ℹ️ Примітка щодо складу карток</div>
+          <p>Універсальність Логістів і Техніків: ці ролі дубльовані та посилені, оскільки є критично важливими ресурсами, потрібними на всіх трьох Глобальних Цілях. Картки дозволяють комфортно грати групами від 12 до 15 осіб.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================== 6.4 ===================== -->
+    <section class="topic-section" id="tema-6-4">
+      <div class="section-header">
+        <div class="section-num">6.4</div>
+        <div>
+          <h2>Хід гри, неочевидні синергії професій та критерії оцінювання</h2>
+          <p>Урок 2, частина 2 · Повний регламент гри</p>
+        </div>
+      </div>
+      <div class="prose">
+
+        <h3>Етапи гри</h3>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>Етап</th><th>Діяльність</th><th>Час</th></tr></thead>
+            <tbody>
+              <tr><td><strong>1. Вступ та розподіл</strong></td><td>Презентація теми («Наказ Штабу»), розподіл 15 професійних ролей (карток)</td><td>7 хв</td></tr>
+              <tr><td><strong>2. Індивідуальна підготовка</strong></td><td>Учні вивчають свою унікальну роль (позивний, скіли) і ознайомлюються з трьома цілями; оцінюють, яка Ціль найкраще використовує їхній фах</td><td>5 хв</td></tr>
+              <tr><td><strong>3. Командотворення / Нетворкінг</strong></td><td>Учні вільно об'єднуються у команди (макс. 5 осіб) за обраною ціллю. <strong>Правило:</strong> заборонено називати свою професію/позивний — лише описувати скіли своїми словами</td><td>10 хв</td></tr>
+              <tr><td><strong>4. Фаза дії</strong></td><td>Розробка операції за структурою (мета, ролі, нетворкінг, бриф)</td><td>—</td></tr>
+              <tr><td><strong>5. Презентація</strong></td><td>Брифінг у Штабі — кожна команда має не більше 1,5 хвилини</td><td>≤1,5 хв/команда</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout callout-warn">
+          <div class="callout-title">⚠️ Ключовий елемент фасилітації вчителя</div>
+          <p>Під час етапу командотворення вчитель ходить між групами і підказує, кого критично не вистачає для успіху обраної цілі — наголос на тому, що навички (а не назви професій) визначають цінність гравця для команди.</p>
+        </div>
+
+        <h3>Структура брифінгу у Штабі (презентація команд)</h3>
+        <ol class="steps-list">
+          <li>Назва команди / місії</li>
+          <li>Основна мета (конкретизована)</li>
+          <li>Ролі в команді (без розкриття імен/професій)</li>
+          <li>Як їхня операція допоможе Україні (очікуваний результат)</li>
+        </ol>
+
+        <h3>Критерії оцінювання (звіт штабу)</h3>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>Критерій</th><th>0 (хаос)</th><th>1 (задовільно)</th><th>2 (висока синергія)</th></tr></thead>
+            <tbody>
+              <tr><td><strong>1. Синергія та взаємодія</strong></td><td>Команда працювала хаотично, без чіткого розподілу ролей; конфлікти</td><td>Розподілили ролі, але співпраця часткова; не всі навички задіяні</td><td>Чіткий розподіл, активна підтримка, використання унікальних талантів</td></tr>
+              <tr><td><strong>2. Стратегія операції (Мета)</strong></td><td>Мета не конкретизована, відсутність пріоритетів, нереалістичний план</td><td>Мета сформована загально, план нечіткий, не вистачає конкретики</td><td>Мета чітка, конкретизована й реалістична; продемонстровано розуміння пріоритетів і кроків</td></tr>
+              <tr><td><strong>3. Адаптація та підсилення (Нетворкінг)</strong></td><td>Команда не шукала фахівців поза своїм складом</td><td>Спроба шукати підсилення, але без чіткого обґрунтування або невдало</td><td>Ефективний пошук та обґрунтування необхідних навичок поза командою</td></tr>
+              <tr><td><strong>4. Бриф та повідомлення</strong></td><td>Бриф відсутній або не відповідає формату (перевищено 1,5 хв)</td><td>Бриф містить усі елементи, але виступ непереконливий; слоган нечіткий</td><td>Чіткий, лаконічний бриф; сильний, запам'ятовуваний слоган Місії, що відповідає меті</td></tr>
+              <tr><td><strong>5. Використання ресурсів команди</strong></td><td>Використано менше половини навичок команди; ресурси не залучені</td><td>Використано більшість навичок; деякі ресурси дублювалися або були зайвими</td><td>Ефективне залучення всіх унікальних навичок команди; ресурси розподілені оптимально</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>15 неочевидних ланцюжків синергії професій (для фасилітації)</h3>
+        <div class="synergy-item"><span class="synergy-combo">Інженер-конструктор + Агроном-технолог</span> = «Адаптація в полі»: дешеві надійні дрони для аграрних і військових задач одночасно</div>
+        <div class="synergy-item"><span class="synergy-combo">ІТ-безпека + Експерт з міжнародної політики</span> = «Захист суверенітету»: кіберзахист дипломатичних комунікацій</div>
+        <div class="synergy-item"><span class="synergy-combo">Економіст-аналітик + Спеціаліст з відновлення інфраструктури</span> = «Обґрунтована відбудова»: ТЕО для відбудовних проєктів, мінімізація корупційних ризиків</div>
+        <div class="synergy-item"><span class="synergy-combo">Медіа-менеджер (PR) + Військовий психолог</span> = «Гуманітарна комунікація»: інформкампанії без травматизації суспільства</div>
+        <div class="synergy-item"><span class="synergy-combo">Військовий психолог + Логіст-аналітик</span> = «Масштабована реабілітація»: доставка психологічних і матеріальних ресурсів ветеранам</div>
+        <div class="synergy-item"><span class="synergy-combo">Логіст-аналітик + Менеджер проєктів</span> = «Швидкість постачання»: оптимізація логістичних ланцюгів з мінімізацією затримок</div>
+        <div class="synergy-item"><span class="synergy-combo">Спеціаліст з ІПСО + Медіа-менеджер (PR)</span> = «Оперативна контрпропаганда»: швидке спростування фейків через довірені медіаканали</div>
+        <div class="synergy-item"><span class="synergy-combo">Менеджер проєктів + Спеціаліст з відновлення інфраструктури</span> = «Таймінг відбудови»: контроль термінів відновлювальних робіт</div>
+        <div class="synergy-item"><span class="synergy-combo">Спеціаліст з відновлення інфраструктури + Агроном-технолог</span> = «Розмінування та очищення»: координація очищення територій від боєприпасів і відновлення родючості ґрунтів</div>
+        <div class="synergy-item"><span class="synergy-combo">Експерт з міжнародної політики + Спеціаліст з ІПСО</span> = «Політичний вплив»: аналітика інформаційних загроз для зовнішньополітичного лобі</div>
+
+        <div class="callout callout-pract">
+          <div class="callout-title">✅ Додаткова допомога: карта місій</div>
+          <p>Можна зробити фізичну карту (A4) для кожної команди, де вони записуватимуть свої цілі та ресурси.</p>
+        </div>
+
+        <h3>Орієнтовні зарплати професій, представлених у грі</h3>
+        <div class="salary-grid">
+          <div class="salary-card"><div class="salary-role">Інженер-конструктор</div><div class="salary-amount">45 000–60 000+ грн</div></div>
+          <div class="salary-card"><div class="salary-role">Спеціаліст з ІТ-безпеки</div><div class="salary-amount">40 000–80 000+ грн</div></div>
+          <div class="salary-card"><div class="salary-role">Економіст-аналітик</div><div class="salary-amount">35 000–60 000 грн</div></div>
+          <div class="salary-card"><div class="salary-role">Медіа-менеджер (PR)</div><div class="salary-amount">30 000–45 000+ грн</div></div>
+          <div class="salary-card"><div class="salary-role">Військовий психолог</div><div class="salary-amount">25 000–120 000 грн</div></div>
+          <div class="salary-card"><div class="salary-role">Логіст-аналітик</div><div class="salary-amount">32 500–50 000 грн</div></div>
+          <div class="salary-card"><div class="salary-role">Агроном-технолог</div><div class="salary-amount">30 000–67 000+ грн</div></div>
+          <div class="salary-card"><div class="salary-role">Юрист-міжнародник</div><div class="salary-amount">30 000–70 000 грн</div></div>
+          <div class="salary-card"><div class="salary-role">Оператор БПЛА / Пілот</div><div class="salary-amount">60 000–120 000+ грн</div></div>
+          <div class="salary-card"><div class="salary-role">HR-спеціаліст</div><div class="salary-amount">35 000–55 000 грн</div></div>
+          <div class="salary-card"><div class="salary-role">Фахівець із грантів</div><div class="salary-amount">30 000–50 000 грн</div></div>
+          <div class="salary-card"><div class="salary-role">Комунікаційник (SMM)</div><div class="salary-amount">40 000–70 000+ грн</div></div>
+          <div class="salary-card"><div class="salary-role">Менеджер проєктів</div><div class="salary-amount">35 000–60 000+ грн</div></div>
+          <div class="salary-card"><div class="salary-role">Інженер з відновлення інфраструктури</div><div class="salary-amount">30 000–50 000 грн</div></div>
+          <div class="salary-card"><div class="salary-role">Експерт з міжнародної політики</div><div class="salary-amount">40 000–80 000+ грн</div></div>
+        </div>
+
+        <div class="callout callout-pract">
+          <div class="callout-title">✅ Варіанти домашніх завдань</div>
+          <ul>
+            <li><strong>«Подвійне призначення»:</strong> знайти 2–3 приклади українських стартапів/бізнесів, що використовують технології подвійного призначення</li>
+            <li><strong>«Мій план відбудови»:</strong> есей (150 слів) «Як моя майбутня професія допоможе реалізувати одну з 3 Цілей і як це вплине на мій професійний ріст?»</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================== 6.5 ===================== -->
+    <section class="topic-section" id="tema-6-5">
+      <div class="section-header">
+        <div class="section-num">6.5</div>
+        <div>
+          <h2>Трек А і Трек Б: військова освіта та цивільна оборонна індустрія</h2>
+          <p>Урок 3, частина 1 · 10 хв · Вступ та формування завдання</p>
+        </div>
+      </div>
+      <div class="prose">
+
+        <div class="callout callout-info">
+          <div class="callout-title">ℹ️ Нова освітня парадигма</div>
+          <p>У сучасних умовах війни Україна вибудовує нову освітню парадигму, в основі якої — професійна і громадянська стійкість. Внесок у стійкість держави можливий через два взаємопов'язані шляхи.</p>
+        </div>
+
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>Шлях</th><th>Опис</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Трек А — Військовий</strong></td><td>Вступ до ВВНЗ, кар'єра в Силах оборони на офіцерських посадах</td></tr>
+              <tr><td><strong>Трек Б — Технологічний/цивільний</strong></td><td>Цивільна освіта в ЗВО, робота в оборонній індустрії (ОПК), Brave1, Military Tech</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout callout-pract">
+          <div class="callout-title">✅ Ключова теза</div>
+          <p>Україна переходить до системи інтелектуальної оборони. Сектор Military Tech, кластери типу Brave1, програми дуальної освіти в ЗВО — приклади того, як держава зміщує фокус на мобілізацію інтелектів, а не лише фізичної сили. <strong>«Сучасна війна — це змагання технологій, де інженер, айтівець чи хімік є таким же важливим, як висококваліфікований офіцер»</strong>.</p>
+        </div>
+
+        <div class="callout callout-tip">
+          <div class="callout-title">💡 Роль учнів у вправі</div>
+          <p>«Ви — кар'єрні радники, які мають визначити оптимальний шлях та скласти план освітньої траєкторії». Мета — допомогти абітурієнту не просто вступити до ЗВО, а побудувати стійку й максимально ефективну кар'єру у сфері національної безпеки.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================== 6.6 ===================== -->
+    <section class="topic-section" id="tema-6-6">
+      <div class="section-header">
+        <div class="section-num">6.6</div>
+        <div>
+          <h2>Консолідований довідник ВВНЗ та вимоги до вступу</h2>
+          <p>Довідковий матеріал для рольової гри (Урок 3)</p>
+        </div>
+      </div>
+      <div class="prose">
+
+        <h3>Десять ВВНЗ України з контактами приймальних комісій</h3>
+
+        <div class="vvnz-grid">
+          <div class="vvnz-card">
+            <div class="vvnz-name">Національний університет оборони України (Київ)</div>
+            <div class="vvnz-spec">Стратегічний та оперативний рівні військового управління, підготовка фахівців для ЗСУ</div>
+            <div class="vvnz-contact">+380 44 271-05-92 · nuou.org.ua</div>
+          </div>
+          <div class="vvnz-card">
+            <div class="vvnz-name">Нац. академія сухопутних військ ім. Сагайдачного (Львів)</div>
+            <div class="vvnz-spec">Офіцери механізованих, танкових, інженерних військ, ракетних військ і артилерії, морально-психологічне забезпечення</div>
+            <div class="vvnz-contact">+380 32 238-65-34 · asv.mil.gov.ua</div>
+          </div>
+          <div class="vvnz-card">
+            <div class="vvnz-name">Харківський нац. університет Повітряних Сил ім. Кожедуба</div>
+            <div class="vvnz-spec">Авіаційні спеціальності, ППО (зенітно-ракетні, радіотехнічні війська), АСУ, метеозабезпечення</div>
+            <div class="vvnz-contact">+380 57 704-96-93/05 · hups.mil.gov.ua</div>
+          </div>
+          <div class="vvnz-card">
+            <div class="vvnz-name">Військова академія (Одеса)</div>
+            <div class="vvnz-spec">Фахівці Сухопутних військ (логістика, розвідувально-інформаційна робота), ДШВ, ВМС (берегові війська)</div>
+            <div class="vvnz-contact">+380 48 263-94-85 · vaodessa.mil.gov.ua</div>
+          </div>
+          <div class="vvnz-card">
+            <div class="vvnz-name">Військовий інститут телекомунікацій та інформатизації ім. Героїв Крут (Київ)</div>
+            <div class="vvnz-spec">Зв'язок, ІТ, кібербезпека, радіоелектронна боротьба та розвідка</div>
+            <div class="vvnz-contact">+380 44 288-86-60 · viti.edu.ua</div>
+          </div>
+          <div class="vvnz-card">
+            <div class="vvnz-name">Військовий інститут КНУ ім. Шевченка (Київ)</div>
+            <div class="vvnz-spec">Міжнародна інформація, військове право, фінанси та економіка, військова географія, перекладачі</div>
+            <div class="vvnz-contact">+380 44 521-35-29 · mil.knu.ua</div>
+          </div>
+          <div class="vvnz-card">
+            <div class="vvnz-name">Військовий інститут танкових військ НТУ ХПІ (Харків)</div>
+            <div class="vvnz-spec">Командири танкових підрозділів, інженери-механіки, РХБ захист та екологічна безпека</div>
+            <div class="vvnz-contact">+380 57 372-61-67 · vitv.kh.ua</div>
+          </div>
+          <div class="vvnz-card">
+            <div class="vvnz-name">Інститут ВМС «Одеська морська академія»</div>
+            <div class="vvnz-spec">Командні та інженерні спеціальності для ВМС (моряки, морська піхота)</div>
+            <div class="vvnz-contact">+380 48 263-94-85, 63-76-60 · onma.edu.ua</div>
+          </div>
+          <div class="vvnz-card">
+            <div class="vvnz-name">Національна академія внутрішніх справ</div>
+            <div class="vvnz-spec">«Право» та «Правоохоронна діяльність»</div>
+            <div class="vvnz-contact">+38 (068) 354-42-54 · vstup.navs.edu.ua</div>
+          </div>
+          <div class="vvnz-card">
+            <div class="vvnz-name">Національна академія СБУ</div>
+            <div class="vvnz-spec">Контррозвідувальна діяльність, кібербезпека, інформаційна безпека, національна безпека, переклад у сфері державної безпеки</div>
+            <div class="vvnz-contact">+38063 229 58 45 · nasbu.edu.ua</div>
+          </div>
+        </div>
+
+        <h3>Вимоги до вступу для цивільних осіб</h3>
+        <ol class="steps-list">
+          <li><strong>Повна загальна середня освіта</strong> (або освітньо-кваліфікаційний рівень молодшого спеціаліста / фахового молодшого бакалавра)</li>
+          <li><strong>Результати НМТ або ЗНО минулих років.</strong> Обов'язкові предмети: українська мова, математика. Профільні (залежно від спеціальності): історія України, іноземна мова, фізика, хімія, біологія, географія</li>
+          <li><strong>Військово-професійний відбір:</strong> медичний огляд (відповідність вимогам до стану здоров'я), психологічне обстеження, оцінка рівня фізичної підготовленості (нормативи)</li>
+        </ol>
+
+        <div class="callout callout-warn">
+          <div class="callout-title">⚠️ Подача документів</div>
+          <p>Кандидати подають документи через територіальні центри комплектування та соціальної підтримки (ТЦК та СП), де проходять первинний відбір. Для найточнішої інформації щодо конкретного року вступу необхідно самостійно перевіряти дані на офіційних сайтах ВВНЗ або Міністерства оборони.</p>
+        </div>
+
+        <h3>Бланк кар'єрного розвитку (шаблон для рольової гри)</h3>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>Розділ</th><th>Зміст</th></tr></thead>
+            <tbody>
+              <tr><td><strong>I. Вихідні дані абітурієнта</strong></td><td>Ім'я, ключова кар'єрна ціль, основні ризики/обмеження (з кейс-картки)</td></tr>
+              <tr><td><strong>II. Аналіз результатів НМТ</strong></td><td>Українська мова, математика, історія України, предмет на вибір — мінімальний бал, ваговий коефіцієнт, сильна/слабка сторона</td></tr>
+              <tr><td><strong>III. Оцінка не-технічних бар'єрів</strong></td><td>ВЛК, ППВ, фізична підготовка — аналіз ситуації в кейсі, рекомендація</td></tr>
+              <tr><td><strong>IV. Розробка траєкторій</strong></td><td>Трек А (військовий, ВВНЗ) і Трек Б (цивільний, ЗВО/ОПК) — пропонована спеціальність, заклад, аргументація</td></tr>
+              <tr><td><strong>V. Оптимальний шлях та план дій</strong></td><td>Рішення, обґрунтування, кінцева мета (посада/місце роботи), план на 3 місяці</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================== 6.7 ===================== -->
+    <section class="topic-section" id="tema-6-7">
+      <div class="section-header">
+        <div class="section-num">6.7</div>
+        <div>
+          <h2>13 кейс-карток абітурієнтів для рольової гри</h2>
+          <p>Урок 3, частина 2 · 15 хв рольова гра + 8 хв презентація</p>
+        </div>
+      </div>
+      <div class="prose">
+
+        <div class="callout callout-info">
+          <div class="callout-title">ℹ️ Формат рольової гри</div>
+          <p>Команди аналізують особисті картки абітурієнтів, використовуючи довідник ВВНЗ і ЗВО для пошуку конкретних факультетів, вимог НМТ/ВЛК, контактів ПК. Заповнюють бланк кар'єрного консультування відповідно до обраного кейсу. Кожна команда презентує 1 найскладніший кейс (2 хв).</p>
+        </div>
+
+        <div class="abiturient-card">
+          <div class="abiturient-header"><span>№1. Максим В.</span><span class="ab-age">17 років</span></div>
+          <div class="abiturient-body">
+            <div class="ab-label">Профіль</div>
+            Інтроверт, який усе розбирає та збирає, кімната-майстерня з платами й контролерами. Не бачить себе в окопах, мріє, щоб його винаходи змінили ситуацію на фронті. Ідея муштри лякає, сумнівається через невеликі проблеми зі здоров'ям, але його розум — головна зброя.
+            <div class="ab-label">Мотив</div>
+            Батьки — викладачі університету, заохочували до академічних знань. Мотивація — прагматичний патріотизм: бути максимально корисним інтелектом, а не фізичною силою.
+          </div>
+        </div>
+
+        <div class="abiturient-card">
+          <div class="abiturient-header"><span>№2. Софія Р.</span><span class="ab-age">17 років</span></div>
+          <div class="abiturient-body">
+            <div class="ab-label">Профіль</div>
+            Лідер за покликанням, знає, як організувати людей, швидко прийняти рішення. Мріє про погони й командування підрозділом. Фізична форма відмінна, точні науки складно даються — більше схильна до гуманітарних спеціальностей.
+            <div class="ab-label">Мотив</div>
+            Дідусь — полковник, старший брат служить у ДШВ. Виросла на історіях про честь, обов'язок, командирську відповідальність.
+          </div>
+        </div>
+
+        <div class="abiturient-card">
+          <div class="abiturient-header"><span>№3. Андрій Л.</span><span class="ab-age">16 років</span></div>
+          <div class="abiturient-body">
+            <div class="ab-label">Профіль</div>
+            «Геній логіки» — учасник олімпіад з програмування, мріє розшифровувати, аналізувати і захищати інформацію. Мета — Кібервійська. Готовий до фізичних тренувань.
+            <div class="ab-label">Мотив</div>
+            Батьки-юристи очікували продовження їхньої справи. Вибір кібервійни обґрунтовує тим, що оборона вимагає інтелектуального захисту.
+          </div>
+        </div>
+
+        <div class="abiturient-card">
+          <div class="abiturient-header"><span>№4. Вікторія С.</span><span class="ab-age">18 років</span></div>
+          <div class="abiturient-body">
+            <div class="ab-label">Профіль</div>
+            «Гуманітарій з математичним ухилом», креативна й системна. Не хоче бути в погонах, але хоче креслити те, що захищає. Надихається авіацією, ракетами, мріє про роботу в державному КБ.
+            <div class="ab-label">Мотив</div>
+            Батько 20 років пропрацював інженером на авіазаводі без військового звання. Мотив — продовжити технічну спадщину.
+          </div>
+        </div>
+
+        <div class="abiturient-card">
+          <div class="abiturient-header"><span>№5. Богдан К.</span><span class="ab-age">17 років</span></div>
+          <div class="abiturient-body">
+            <div class="ab-label">Профіль</div>
+            Мріє про десант з дитинства, постійно займається спортом. Запальність та імпульсивність — питання для психологів; хронічний гастрит може стати проблемою на ВЛК. Невисокі бали з точних наук.
+            <div class="ab-label">Мотив</div>
+            Батько — підполковник Нацполіції, сувора дисципліна. Прагнення до Десанту — «бунт» проти «тилової» роботи поліції, бажання довести найвищу жертовність.
+          </div>
+        </div>
+
+        <div class="abiturient-card">
+          <div class="abiturient-header"><span>№6. Олена З.</span><span class="ab-age">16 років</span></div>
+          <div class="abiturient-body">
+            <div class="ab-label">Профіль</div>
+            Вундеркінд логіки, алгоритмів, англійської. Не має чіткої «патріотичної» мети, прагне бути високооплачуваним фахівцем. Через поганий зір Шлях А закритий. Мета — системний архітектор.
+            <div class="ab-label">Мотив</div>
+            Сім'я ніколи не мала стосунку до армії. Мотив суто прагматичний і кар'єрний.
+          </div>
+        </div>
+
+        <div class="abiturient-card">
+          <div class="abiturient-header"><span>№7. Дмитро Т.</span><span class="ab-age">18 років</span></div>
+          <div class="abiturient-body">
+            <div class="ab-label">Профіль</div>
+            Пристрасть до важкої техніки (танки, БМП, артсистеми). Не хоче командувати, хоче ремонтувати й обслуговувати в найскладніших умовах. Середні бали НМТ, наполегливий, готовий працювати руками.
+            <div class="ab-label">Мотив</div>
+            Дідусь — водій-механік, батько ремонтує сільгосптехніку. Шлях А чи Б — поєднання родинного ремесла зі служінням країні.
+          </div>
+        </div>
+
+        <div class="abiturient-card">
+          <div class="abiturient-header"><span>№8. Марина П.</span><span class="ab-age">17 років</span></div>
+          <div class="abiturient-body">
+            <div class="ab-label">Профіль</div>
+            Емпатична й відповідальна, мріє стати військовим медиком. Відмінні знання з біології та хімії. Шлях військового медика вимагає не лише фізичної витривалості, а й високої психічної стійкості.
+            <div class="ab-label">Мотив</div>
+            Мама — головна медсестра цивільної лікарні. Мотив гуманістичний: перенести медичний хист туди, де це критично необхідно.
+          </div>
+        </div>
+
+        <div class="abiturient-card">
+          <div class="abiturient-header"><span>№9. Іван Р.</span><span class="ab-age">18 років</span></div>
+          <div class="abiturient-body">
+            <div class="ab-label">Профіль</div>
+            «Людина плану», цікавиться як мільйони одиниць техніки/продовольства вчасно потрапляють на передову — хоче бути «мозком» постачання. Хронічний отит обмежує роботу в умовах постійного шуму (артилерія, танки). Знання географії — перевага в логістиці.
+            <div class="ab-label">Мотив</div>
+            Батьки володіють логістичним бізнесом, знає принципи «just-in-time». Мотив — застосувати сімейні навички для ЗСУ.
+          </div>
+        </div>
+
+        <div class="abiturient-card">
+          <div class="abiturient-header"><span>№10. Тарас К.</span><span class="ab-age">17 років</span></div>
+          <div class="abiturient-body">
+            <div class="ab-label">Профіль</div>
+            Любить програмування, мріє про великі складні системи (керування радарами, автоматизація ППО). Не хоче бути офіцером, готовий працювати як цивільний програміст у військовій структурі. Алергія на пилок — не критично для ВЛК.
+            <div class="ab-label">Мотив</div>
+            Батько — військовий інженер-зв'язківець у Повітряних силах: «перемагає не танк, а зв'язок і точність».
+          </div>
+        </div>
+
+        <div class="abiturient-card">
+          <div class="abiturient-header"><span>№11. Анастасія К.</span><span class="ab-age">17 років</span></div>
+          <div class="abiturient-body">
+            <div class="ab-label">Профіль</div>
+            Прожила пів року в окупації, бачила беззаконня. Завищене почуття справедливості, мріє працювати слідчою (Нацполіція, СБУ) — розслідувати злочини проти цивільних. Середня фізична підготовка, дуже витривала психологічно.
+            <div class="ab-label">Мотив</div>
+            Не родинна традиція, а травматичний досвід окупації — боротьба з криміналітетом і колаборантами на деокупованих територіях.
+          </div>
+        </div>
+
+        <div class="abiturient-card">
+          <div class="abiturient-header"><span>№12. Максим С.</span><span class="ab-age">17 років</span></div>
+          <div class="abiturient-body">
+            <div class="ab-label">Профіль</div>
+            Активний, допитливий, цікавиться навчанням/роботою за кордоном. Не конфліктний, не заперечує Україну, але не вірить, що зможе реалізуватись тут. Відкрито говорить про плани виїхати після школи, батьки підтримують.
+            <div class="ab-label">Мотив</div>
+            Прагматичне бачення майбутнього поза Україною — складний кейс для дискусії про мотивацію та особисту свободу вибору.
+          </div>
+        </div>
+
+        <div class="abiturient-card">
+          <div class="abiturient-header"><span>№13. Артем К.</span><span class="ab-age">17 років</span></div>
+          <div class="abiturient-body">
+            <div class="ab-label">Профіль</div>
+            Живе у прифронтовому регіоні, багатодітна родина. Стриманий, мовчазний, рідко проявляє ініціативу. Навчання втратило сенс — не бачить зв'язку між зусиллям і результатом. Не будує довгострокових планів, головна стратегія — «пережити теперішній час».
+            <div class="ab-label">Мотив</div>
+            Виріс у реальності, де цінності — тиша без вибухів, світло вдома. Питання не в самореалізації, а в безпеці. Потребує не мотивації, а відчуття, що майбутнє взагалі можливе.
+          </div>
+        </div>
+
+        <div class="callout callout-warn">
+          <div class="callout-title">⚠️ Психологічна делікатність кейсів №12–13</div>
+          <p>Кейси Максима С. (бажання виїхати з України) та Артема К. (психологічна апатія прифронтового підлітка) — найскладніші для обговорення. Це не «неправильні» персонажі, а реалістичні психологічні портрети, з якими можуть ідентифікувати себе реальні учні в класі. Підхід вчителя: не засуджувати рішення персонажів, а допомогти команді знайти підтримуючу, реалістичну рекомендацію без осуду.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================== 6.8 ===================== -->
+    <section class="topic-section" id="tema-6-8">
+      <div class="section-header">
+        <div class="section-num">6.8</div>
+        <div>
+          <h2>Адаптація суспільства до потреб ветеранів та осіб з інвалідністю</h2>
+          <p>Урок 4, частина 1 · 25 хв · Розвінчування стереотипів</p>
+        </div>
+      </div>
+      <div class="prose">
+
+        <div class="callout callout-tip">
+          <div class="callout-title">💡 Емоційний гачок на старті</div>
+          <p>Коротка історія (відео/фото) ветерана, який успішно адаптувався. Питання: «Що ви уявляєте під словом «адаптація ветерана»? Які образи приходять?»</p>
+        </div>
+
+        <div class="callout callout-info">
+          <div class="callout-title">ℹ️ Що означає «адаптація» насправді</div>
+          <p>Не лише «повернення додому», а зміна взаємодії суспільства з людиною, яка пройшла службу чи має інвалідність унаслідок війни. Ключові поняття: <strong>реінтеграція</strong> і <strong>ПТЗ (Посттравматичне Зростання)</strong>. Матеріал розроблено на основі моделі системного супроводу ГО «Азов.Супровід».</p>
+        </div>
+
+        <h3>Розвінчування стереотипів про ветеранів</h3>
+
+        <div class="myth-card">
+          <div class="myth-claim">❌ Міф: «Усі ветерани мають ПТСР»</div>
+          <div class="myth-truth">За статистикою 22–37% ветеранів можуть мати ПТСР. Посттравматичний стресовий розлад — психіатричний діагноз, який можуть діагностувати лише лікарі. Не можна будь-які прояви небажаної поведінки називати «ПТСР».</div>
+        </div>
+        <div class="myth-card">
+          <div class="myth-claim">❌ Міф: «Усі ветерани бажають повернутися на службу»</div>
+          <div class="myth-truth">Зовсім не так. З 2022 року до війська пішли люди різних професій, переважна більшість планують повернутися до цивільних професій. Звісно, є й ті, хто планує будувати кар'єру у війську.</div>
+        </div>
+        <div class="myth-card">
+          <div class="myth-claim">❌ Міф: «Військові не здатні адаптуватись до цивільного життя»</div>
+          <div class="myth-truth">Адаптація — процес, який проходить по-різному. Якщо військового чекають, готуються до повернення і готові підтримати — адаптація пройде набагато легше.</div>
+        </div>
+        <div class="myth-card">
+          <div class="myth-claim">❌ Міф: «Ветерани не здатні працювати в команді з цивільними»</div>
+          <div class="myth-truth">Люди, що пройшли службу, мають гарно розвинені навички командної роботи (завдання виконуються разом з побратимами). Якщо цивільний колектив підготовлений, має спільні цінності й знання етичної комунікації — робота буде злагодженою.</div>
+        </div>
+        <div class="myth-card">
+          <div class="myth-claim">❌ Міф: «Військові завжди готові до насильства»</div>
+          <div class="myth-truth">Не всі посади у війську пов'язані з безпосереднім знищенням ворога. Ті, хто проявляли агресію в бойових умовах, спеціально навчались, коли і в якій формі це допустимо. Хто не був конфліктним до служби, не стане іншим після неї.</div>
+        </div>
+
+        <h3>Як не наговорити зайвого: правила комунікації</h3>
+        <div class="callout callout-danger">
+          <div class="callout-title">⛔ Чого не варто робити</div>
+          <ul>
+            <li>Не ставити дуже особисті питання просто заради цікавості — це може завдавати болю</li>
+            <li>Не давати поради, не обговорювати «як краще воювати» — якщо про це не просять</li>
+            <li><strong>Ніколи не казати «все буде добре»</strong> — сприймається як відверта брехня, не підтримує</li>
+            <li><strong>Ніколи не казати «я тебе розумію»</strong>, якщо не мали такого ж досвіду — викликає роздратування або злість</li>
+          </ul>
+        </div>
+
+        <h3>Зовнішні тригери: фізична безпека спілкування</h3>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>Тригер</th><th>Чому це важливо</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Гучні звуки</strong></td><td>Військові й ветерани можуть гостро реагувати на крики — сприймають як потенційну небезпеку</td></tr>
+              <tr><td><strong>Дотики</strong></td><td>Категорично заборонено торкатися без попередження — можуть бути поранення, дотик може завдати болю або сприйматися як напад. Завжди питати дозволу і попереджати словами («дозвольте потиснути руку», «можна вас обійняти?»)</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================== 6.9 ===================== -->
+    <section class="topic-section" id="tema-6-9">
+      <div class="section-header">
+        <div class="section-num">6.9</div>
+        <div>
+          <h2>Ветеранський бізнес: приклади, програми підтримки, «Мій внесок»</h2>
+          <p>Урок 4, частина 2 · 20 хв · Кейси + практична частина</p>
+        </div>
+      </div>
+      <div class="prose">
+
+        <h3>Приклади успішного ветеранського підприємництва</h3>
+
+        <div class="card-grid">
+          <div class="info-card">
+            <div class="card-title">🍕 Veterano Pizza</div>
+            <p style="font-size:0.83rem;">Перший заклад відкрив у Києві 2016 р. Леонід Остальцев, повернувшись з фронту, зрозумівши, що ветеранам важко влаштуватись на роботу. Нині піцерії в 7 містах України — нові робочі місця і можливості розвивати підприємництво для ветеранів.</p>
+          </div>
+          <div class="info-card">
+            <div class="card-title">☕ Veterano Coffee</div>
+            <p style="font-size:0.83rem;">Мережа кав'ярень заснована ветераном АТО Володимиром Шевченком у 2016 р. після повернення зі служби з 2015 р. Зараз знову військовий 46-ї ДШБ.</p>
+          </div>
+          <div class="info-card">
+            <div class="card-title">☕ Кава мілітарі</div>
+            <p style="font-size:0.83rem;">Ігор Фльорко, азовець з 2015 р., відкрив кав'ярню у 2020 р. Зараз знову захищає країну, поки бізнес працює — платформа, що демонструє: ветерани можуть бути успішними й корисними суспільству.</p>
+          </div>
+          <div class="info-card">
+            <div class="card-title">🥩 Сушена Радість</div>
+            <p style="font-size:0.83rem;">Бізнес з виготовлення джерків Сергія Жуковського. У лютому 2022 вивіз родину з Токмака, сам пішов добровольцем, був на харківському напрямку, у Серебрянському лісі, двічі поранений (вдруге — важка мінно-вибухова травма на запорізькому напрямку, 2023).</p>
+          </div>
+        </div>
+
+        <h3>Державні та громадські програми підтримки</h3>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>Програма</th><th>Призначення</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Міністерство у справах ветеранів</strong></td><td>Реінтеграція, професійна перепідготовка, гранти на власну справу, психологічна допомога (mva.gov.ua)</td></tr>
+              <tr><td><strong>Український ветеранський фонд</strong></td><td>Гранти від 500 тис до 3 млн грн на розвиток малого та середнього бізнесу ветеранів (veteranfund.com.ua)</td></tr>
+              <tr><td><strong>Veteran Hub</strong></td><td>Юридичні, кар'єрні, психологічні консультації, розширення мережі для адаптації (veteranhub.com.ua)</td></tr>
+              <tr><td><strong>«Бізнес 4.5.0» (Ощадбанк)</strong></td><td>Доступне кредитування для ветеранського бізнесу з менторською підтримкою</td></tr>
+              <tr><td><strong>Veteran Cyber Cluster</strong></td><td>Перекваліфікація ветеранів у сфері ІТ та кібербезпеки (veterano.org.ua)</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- ACTIVITY -->
+        <div class="activity-box">
+          <div class="activity-header">
+            <div class="activity-icon">🎯</div>
+            <div>
+              <h4>Практична частина: «Мій внесок»</h4>
+              <div class="activity-time">15 хв · Індивідуально + групи 4–5 осіб</div>
+            </div>
+          </div>
+          <div class="activity-content">
+            <p><strong>Індивідуально:</strong> кожен учень отримує стікер (колір залежить від фокусу: зелений — фізичний, оранжевий — ментальний, синій — соціальний аспект адаптації) і записує свою ідею.</p>
+            <p><strong>Групова робота:</strong> у групах по 4–5 осіб — обмін ідеями, вибір одного Проєкту-події (наприклад: міні-аудит доступності школи, бізнес-ярмарок із виробами ветеранів, тематичний подкаст у школі).</p>
+            <p><strong>Презентація:</strong> групи готують міні-план (дія, відповідальні, термін, ресурси), по 1–2 хв.</p>
+          </div>
+        </div>
+
+        <div class="callout callout-pract">
+          <div class="callout-title">✅ Підсумкова рефлексія уроку</div>
+          <p>«Що найбільше змінилося у моєму сприйнятті ветеранів/осіб з інвалідністю після цього заняття?» Підсумок: адаптація — це процес спільний.</p>
+        </div>
+
+        <div class="callout callout-tip">
+          <div class="callout-title">💡 Варіанти домашніх завдань</div>
+          <ul>
+            <li>Підготувати коротке відео/пост про одну з ініціатив адаптації — або описати, як реалізувати обраний проєкт у школі/громаді</li>
+            <li>Підготувати свій «Перелік етичних фраз» для спілкування з ветеранами та їхніми родинами («Мова єдності»)</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================== 6.10 ===================== -->
+    <section class="topic-section" id="tema-6-10">
+      <div class="section-header">
+        <div class="section-num">6.10</div>
+        <div>
+          <h2>Інтеграція знань курсу: від мислення до дії та суспільства Гідності</h2>
+          <p>Урок 5 · 45 хв · ФІНАЛЬНИЙ урок усього дворічного курсу</p>
+        </div>
+      </div>
+      <div class="prose">
+
+        <div class="callout callout-info">
+          <div class="callout-title">ℹ️ Особливий статус цього уроку</div>
+          <p>Це останній урок усього курсу «Захист України» — підсумок дворічного шляху (10 та 11 класи). Мета — не додати нові знання, а інтегрувати все вивчене у зв'язну особисту позицію та план дій.</p>
+        </div>
+
+        <div class="callout callout-tip">
+          <div class="callout-title">💡 Вступне питання для рефлексії</div>
+          <p>«Згадайте себе на першому уроці Захисту України у 10 класі. Якими були ваші перші асоціації зі словами «Армія», «Захист», «Волонтер»?» <strong>Вчительська теза:</strong> курс Захисту України — це не лише навички, а й трансформація мислення.</p>
+        </div>
+
+        <h3>Блок I: «Я ДІЮ» (фокус: волонтерство, ресурси, талант)</h3>
+        <div class="callout callout-tip">
+          <div class="callout-title">💡 Дискусія «Волонтерство як професія»</div>
+          <p>Завдання: скласти «формулу» ефективної допомоги. Що важливіше: донат, час чи навичка? <strong>Вчительський коментар:</strong> ми часто думаємо, що допомагати — це про гроші чи окопні свічки, але це про системність і використання свого таланту.</p>
+        </div>
+        <p>Стислі теми презентації: як ефективно допомагати волонтерам (системність, безпека); як не вигоріти у волонтерстві (ментальне здоров'я помічників); як використати навичку для пошуку посади в армії (не лише бойові, а й ІТ, логістика, комунікації).</p>
+        <p><strong>Стікер 1 (Колір А) — «Мій Талант»:</strong> учні записують свою унікальну навичку (дизайн, математика, мови, організація) і як вона потенційно застосовна для оборони (не обов'язково на фронті).</p>
+
+        <h3>Блок II: «Я РОЗУМІЮ» (фокус: ментальне здоров'я, спілкування з родинами, міфи)</h3>
+        <div class="callout callout-tip">
+          <div class="callout-title">💡 Аналіз міфів: ПТСР та полон</div>
+          <p>«Що ви знали про ПТСР до цього курсу, і що знаєте зараз? Чи справді ПТСР є у більшості людей, які пережили травму?» <strong>Найбільший міф</strong> — «ПТСР є у всіх військових». Ні, це клінічний діагноз. Але є ПТЗ (посттравматичне зростання), і кожному потрібна підтримка.</p>
+        </div>
+        <p>Стислі теми: ПТСР і чому його «у вас немає» (різниця між стресом і розладом); спілкування з тими, хто пережив полон (не запитувати про деталі, лише підтримка); спілкування з тими, хто чекає (не казати «тримайся», не тиснути, просто бути поруч).</p>
+        <p><strong>Стікер 2 (Колір Б) — «Розвіяний міф»:</strong> учні записують один стереотип чи міф, який був повністю розвіяний протягом курсу (про армію, психіку, волонтерство).</p>
+
+        <h3>Блок III: «Я ПОВАЖАЮ» (фокус: адаптація, Гідність, Мова єдності)</h3>
+
+        <div class="activity-box">
+          <div class="activity-header">
+            <div class="activity-icon">🎭</div>
+            <div>
+              <h4>Рольова гра «Слова, що створюють бар'єри»</h4>
+              <div class="activity-time">Частина блоку</div>
+            </div>
+          </div>
+          <div class="activity-content">
+            <p>Вчитель озвучує «недоречні» фрази, які люди часто говорять ветеранам (наприклад, «Ви мій герой, як вам тепер жити без ноги?», «Дякую, що вижили!»). Дискусія: чому ці фрази, хоч і сказані з добрим наміром, насправді створюють бар'єр?</p>
+          </div>
+        </div>
+
+        <div class="callout callout-info">
+          <div class="callout-title">ℹ️ Ключова теза</div>
+          <p>Ветеранам потрібна <strong>Гідність, а не жалість</strong>. Вони — повноправні члени суспільства. Адаптація — двосторонній процес: суспільство має змінитися фізично (пандуси, доступність) і ментально (Мова єдності).</p>
+        </div>
+
+        <p>Стислі теми: як не треба реагувати на людей з протезами (фокус на людині, а не на інвалідності); принципи «Мови єдності» (говорити про повагу, рівність, досвід).</p>
+        <p><strong>Стікер 3 (Колір В) — «Моє Правило»:</strong> учні записують одне правило комунікації з ветеранами чи їхніми родинами, яке вони відтепер будуть застосовувати.</p>
+
+        <!-- COMPASS -->
+        <div class="activity-box">
+          <div class="activity-header">
+            <div class="activity-icon">🧭</div>
+            <div>
+              <h4>Загальна рефлексія курсу: «Мій компас дій»</h4>
+              <div class="activity-time">8 хв · Фінальна вправа курсу</div>
+            </div>
+          </div>
+          <div class="activity-content">
+            <p>Учні підходять до плаката «Мій компас дій» і розміщують свої три стікери (Талант, Міф, Правило) у відповідних секторах.</p>
+
+            <div class="compass-block">
+              <div class="compass-card compass-1">
+                <div class="compass-title">🎯 Талант</div>
+                <p style="font-size:0.84rem;">Унікальна навичка і її застосування для оборони</p>
+              </div>
+              <div class="compass-card compass-2">
+                <div class="compass-title">💡 Розвіяний міф</div>
+                <p style="font-size:0.84rem;">Стереотип, подоланий за час курсу</p>
+              </div>
+              <div class="compass-card compass-3">
+                <div class="compass-title">🤝 Моє правило</div>
+                <p style="font-size:0.84rem;">Принцип комунікації з ветеранами/родинами</p>
+              </div>
+            </div>
+
+            <h4>Фінальні запитання-рефлексія (модерація вчителя)</h4>
+            <ul>
+              <li><strong>Зміна мислення:</strong> чи змінився ваш загальний погляд на поняття «захист України» — з віддаленого обов'язку на особистий, усвідомлений вибір та відповідальність?</li>
+              <li><strong>Дія:</strong> яке ваше головне, конкретне рішення після цього курсу?</li>
+            </ul>
+          </div>
+        </div>
+
+        <h3>Заключне слово та вшанування пам'яті</h3>
+        <div class="callout callout-pract">
+          <div class="callout-title">✅ Завершальний заклик курсу</div>
+          <p>«Захист України — це марафон. Кожен з вас — важливий гравець. Пам'ятайте про тих, хто віддав найцінніше». Коротке нагадування про важливість пам'яті про Героїв (матеріали SPRAVDI/Dovidka.Info «Вшануй. Як ми пам'ятаємо героїв»).</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================== МЕТОДИЧНІ ===================== -->
+    <section class="topic-section" id="metodychni">
+      <div class="section-header">
+        <div class="section-num">🔧</div>
+        <div>
+          <h2>Методичні поради та підсумки модуля</h2>
+        </div>
+      </div>
+      <div class="prose">
+
+        <h3>Технічне забезпечення модуля</h3>
+        <ul style="padding-left:20px; line-height:1.9; font-size:0.9rem;">
+          <li>Проєктор/екран для презентацій і відео</li>
+          <li>15 роздрукованих і розрізаних карток ролей гри «Оборонний Штаб 2.0»</li>
+          <li>Роздруковані бланки кар'єрного консультування та 13 кейс-карток абітурієнтів</li>
+          <li>Маркери, стікери трьох кольорів (зелений/оранжевий/синій для теми адаптації; інший набір кольорів А/Б/В для фінальної рефлексії)</li>
+          <li>Плакати/дошки: «Шлях адаптації: проблема — рішення — мій внесок», «Мій компас дій»</li>
+          <li>Таймер для контролю часу гри та брифінгів</li>
+        </ul>
+
+        <h3>Рекомендовані ресурси для поглибленої підготовки вчителя</h3>
+        <ul style="padding-left:20px; line-height:1.9; font-size:0.9rem;">
+          <li>Dovidka.info — «Волонтерство — теж робота. Як на ній не вигоріти?», «Сила людей. Як ефективно допомагати волонтерам?», «Як знайти посаду в армії?»</li>
+          <li>Dovidka.info — «Що таке ПТСР, і чому у вас його немає», SPRAVDI — «Що таке ПТСР насправді»</li>
+          <li>Dovidka.info, Центр громадянських свобод — про повагу до особистих кордонів, спілкування з людиною після полону</li>
+          <li>Dovidka.info — «Повернення з фронту. Як адаптуватися до мирного життя?», «Як не треба реагувати на людей з протезами»</li>
+          <li>ГО «Азов.Супровід» — «Як етично спілкуватись з ветеранами» (презентація)</li>
+          <li>Brave1.org — кластер оборонних технологій (зв'язок з Модулем 1)</li>
+          <li>mva.gov.ua, veteranfund.com.ua, veteranhub.com.ua, veterano.org.ua</li>
+          <li>SPRAVDI, Dovidka.Info — «Вшануй. Як ми пам'ятаємо героїв» (частини 1–2)</li>
+        </ul>
+
+        <div class="callout callout-pract">
+          <div class="callout-title">✅ ЗАВЕРШЕННЯ ДВОРІЧНОГО КУРСУ «ЗАХИСТ УКРАЇНИ»</div>
+          <p>Модуль 6 завершує не лише 11 клас, а весь курс 10–11 класів. Шлях учня пройшов через: розуміння держави й сектору безпеки, структуру Сил оборони, озброєння та стрільбу, тактику й топографію, життєво необхідну медицину (10 клас) — до військових технологій, поглибленої тактичної підготовки, інформаційної війни, поглибленої медицини, цивільного захисту і нарешті — усвідомленого вибору власного шляху служіння країні, яким би він не був: військовим чи цивільним, на фронті чи в лабораторії, з гвинтівкою чи з клавіатурою. <strong>Головний результат курсу — не перелік засвоєних навичок, а трансформоване мислення: від «обов'язку, що мене не стосується» до «особистої, усвідомленої відповідальності за країну»</strong>.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <div class="page-nav">
+      <a href="modul-5.html">← Модуль 5. Цивільне населення в кризових умовах</a>
+      <a href="../index.html">До переліку всіх модулів курсу →</a>
+    </div>
+
+  </main>
+</div>
+
+<footer style="background:var(--ua-blue);color:rgba(255,255,255,0.65);text-align:center;padding:20px 32px;font-size:0.78rem;line-height:1.6;">
+  <strong style="color:var(--ua-yellow);">Захист України. Методичний довідник викладача</strong> · 11 клас, Модуль 6 (фінальний модуль курсу)<br>
+  Радомишльський ліцей №3 · За програмою МОН (Наказ №1116 від 08.08.2024) · Матеріали тренінгу №9 (гриф №БО-0550-25, 30.12.2025)<br>
+  Dovidka.info Центру стратегічних комунікацій · ГО «Азов.Супровід» · Brave1 · Український ветеранський фонд
+</footer>
+
+<script>
+const sections = document.querySelectorAll('.topic-section');
+const navLinks = document.querySelectorAll('.nav-list li a');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const id = entry.target.getAttribute('id');
+      navLinks.forEach(link => {
+        link.classList.toggle('active', link.getAttribute('href') === '#' + id);
+      });
+    }
+  });
+}, { rootMargin: '-20% 0px -70% 0px' });
+sections.forEach(section => observer.observe(section));
+</script>
+</body>
+</html>

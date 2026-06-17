@@ -1,0 +1,1177 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Модуль 3. Інформаційна війна — Захист України 11 клас</title>
+<style>
+:root {
+  --ua-blue: #003087;
+  --ua-yellow: #FFD700;
+  --olive: #4A5240;
+  --olive-light: #6B7A5A;
+  --sand: #F5F0E8;
+  --ink: #1C1C1C;
+  --white: #FFFFFF;
+  --divider: #C8C0B0;
+  --accent-red: #C0392B;
+  --accent-green: #2E7D32;
+  --card-bg: #FDFBF7;
+  --info-bg: #E8F0FE;
+  --info-border: #4A90D9;
+  --warn-bg: #FFF8E1;
+  --warn-border: #F9A825;
+  --pract-bg: #E8F5E9;
+  --pract-border: #2E7D32;
+  --tip-bg: #F3E5F5;
+  --tip-border: #7B1FA2;
+  --danger-bg: #FFEBEE;
+  --danger-border: #C62828;
+  --shadow: 0 2px 12px rgba(0,0,0,0.08);
+  --font-display: 'Georgia', 'Times New Roman', serif;
+  --font-body: 'Segoe UI', 'Arial', sans-serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: var(--font-body); background: var(--sand); color: var(--ink); line-height: 1.7; font-size: 15.5px; }
+.topbar-stripe { height: 4px; background: var(--ua-yellow); }
+.topbar { background: var(--ua-blue); color: rgba(255,255,255,0.75); font-size: 0.78rem; padding: 8px 32px; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.topbar a { color: var(--ua-yellow); text-decoration: none; }
+.module-header { background: linear-gradient(135deg, #2a0a2e 0%, #4a1a4e 50%, var(--olive) 100%); color: var(--white); padding: 48px 32px 40px; position: relative; overflow: hidden; }
+.module-header::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 4px; background: var(--ua-yellow); }
+.module-header-inner { max-width: 1100px; margin: 0 auto; }
+.module-eyebrow { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ua-yellow); margin-bottom: 12px; }
+.module-header h1 { font-family: var(--font-display); font-size: clamp(1.6rem, 4vw, 2.4rem); font-weight: 700; line-height: 1.2; margin-bottom: 14px; max-width: 780px; }
+.module-header-meta { display: flex; flex-wrap: wrap; gap: 20px; margin-top: 20px; }
+.meta-pill { background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2); border-radius: 20px; padding: 5px 14px; font-size: 0.8rem; display: flex; align-items: center; gap: 6px; }
+.meta-pill span { opacity: 0.7; }
+.page-layout { max-width: 1100px; margin: 0 auto; padding: 40px 32px 80px; display: grid; grid-template-columns: 260px 1fr; gap: 40px; align-items: start; }
+.sidebar { position: sticky; top: 16px; }
+.nav-block { background: var(--card-bg); border: 1px solid var(--divider); border-radius: 8px; overflow: hidden; margin-bottom: 20px; }
+.nav-block-title { background: var(--ua-blue); color: var(--ua-yellow); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.10em; text-transform: uppercase; padding: 10px 16px; }
+.nav-list { list-style: none; padding: 8px 0; }
+.nav-list li a { display: flex; align-items: flex-start; gap: 8px; padding: 7px 16px; text-decoration: none; color: var(--ink); font-size: 0.82rem; line-height: 1.4; transition: background 0.15s; }
+.nav-list li a:hover { background: #EEE8DC; color: var(--ua-blue); }
+.nav-list li a .nav-num { color: var(--olive-light); font-weight: 700; flex-shrink: 0; font-size: 0.75rem; margin-top: 1px; }
+.nav-list li a.active { background: #DDD5C5; font-weight: 600; color: var(--ua-blue); }
+.content { min-width: 0; }
+.topic-section { margin-bottom: 52px; scroll-margin-top: 20px; }
+.section-header { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 24px; padding-bottom: 14px; border-bottom: 2px solid var(--divider); }
+.section-num { background: var(--ua-blue); color: var(--ua-yellow); font-family: var(--font-display); font-size: 1rem; font-weight: 700; padding: 5px 12px; border-radius: 3px; flex-shrink: 0; margin-top: 3px; }
+.section-header h2 { font-family: var(--font-display); font-size: 1.35rem; font-weight: 700; color: var(--ua-blue); line-height: 1.25; }
+.section-header p { font-size: 0.84rem; color: #666; margin-top: 4px; }
+.prose p { margin-bottom: 14px; }
+.prose h3 { font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; color: var(--olive); margin: 24px 0 10px; }
+.prose h4 { font-size: 0.82rem; font-weight: 700; color: var(--ua-blue); margin: 18px 0 8px; text-transform: uppercase; letter-spacing: 0.04em; }
+.callout { border-left: 4px solid; border-radius: 4px; padding: 16px 20px; margin: 20px 0; }
+.callout-info { background: var(--info-bg); border-color: var(--info-border); }
+.callout-warn { background: var(--warn-bg); border-color: var(--warn-border); }
+.callout-pract { background: var(--pract-bg); border-color: var(--pract-border); }
+.callout-tip { background: var(--tip-bg); border-color: var(--tip-border); }
+.callout-danger { background: var(--danger-bg); border-color: var(--danger-border); }
+.callout-title { font-weight: 700; font-size: 0.82rem; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 8px; display: flex; align-items: center; gap: 6px; }
+.callout-info .callout-title { color: var(--info-border); }
+.callout-warn .callout-title { color: #B8860B; }
+.callout-pract .callout-title { color: var(--accent-green); }
+.callout-tip .callout-title { color: #6A0080; }
+.callout-danger .callout-title { color: var(--danger-border); }
+.callout p, .callout ul, .callout ol { font-size: 0.9rem; line-height: 1.6; }
+.callout p + p { margin-top: 8px; }
+.callout ul, .callout ol { padding-left: 18px; }
+.callout ul li, .callout ol li { margin-bottom: 4px; }
+.table-wrap { overflow-x: auto; margin: 20px 0; border-radius: 6px; border: 1px solid var(--divider); }
+.data-table { width: 100%; border-collapse: collapse; font-size: 0.87rem; background: var(--white); }
+.data-table th { background: var(--ua-blue); color: var(--white); padding: 10px 14px; text-align: left; font-weight: 600; font-size: 0.82rem; }
+.data-table td { padding: 9px 14px; border-bottom: 1px solid var(--divider); vertical-align: top; line-height: 1.5; }
+.data-table tr:last-child td { border-bottom: none; }
+.data-table tr:nth-child(even) td { background: #F7F3EC; }
+.data-table tr:hover td { background: #EDE8DC; }
+.data-table td.num { font-weight: 700; color: var(--ua-blue); text-align: center; }
+.definition { background: var(--white); border: 1px solid var(--divider); border-radius: 6px; padding: 16px 20px; margin: 16px 0; position: relative; }
+.definition::before { content: '📌'; position: absolute; top: 14px; right: 16px; font-size: 1rem; }
+.definition-term { font-weight: 700; font-size: 0.95rem; color: var(--ua-blue); margin-bottom: 6px; }
+.definition p { font-size: 0.88rem; color: #444; line-height: 1.6; }
+.steps-list { list-style: none; counter-reset: step-counter; margin: 16px 0; }
+.steps-list li { counter-increment: step-counter; display: flex; gap: 14px; align-items: flex-start; margin-bottom: 12px; background: var(--white); border: 1px solid var(--divider); border-radius: 5px; padding: 12px 14px; font-size: 0.9rem; line-height: 1.5; }
+.steps-list li::before { content: counter(step-counter); background: var(--ua-blue); color: var(--ua-yellow); font-weight: 700; font-size: 0.85rem; width: 26px; height: 26px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; margin: 16px 0; }
+.info-card { background: var(--card-bg); border: 1px solid var(--divider); border-radius: 6px; padding: 18px; font-size: 0.87rem; }
+.info-card .card-title { font-weight: 700; color: var(--ua-blue); margin-bottom: 8px; font-size: 0.9rem; display: flex; align-items: center; gap: 8px; }
+.info-card ul { padding-left: 16px; line-height: 1.65; }
+.info-card ul li { margin-bottom: 3px; }
+.activity-box { background: var(--card-bg); border: 1px solid var(--divider); border-radius: 8px; padding: 24px; margin: 20px 0; }
+.activity-header { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--divider); }
+.activity-icon { font-size: 1.6rem; }
+.activity-header h4 { font-family: var(--font-display); font-size: 1rem; font-weight: 700; color: var(--ua-blue); line-height: 1.3; }
+.activity-header .activity-time { font-size: 0.78rem; color: #888; margin-top: 2px; }
+.activity-content { font-size: 0.88rem; line-height: 1.65; }
+.activity-content p { margin-bottom: 10px; }
+.activity-content ul, .activity-content ol { padding-left: 18px; }
+.activity-content li { margin-bottom: 5px; }
+.video-link { display: inline-flex; align-items: center; gap: 8px; background: #B71C1C; color: var(--white); text-decoration: none; padding: 7px 16px; border-radius: 4px; font-size: 0.83rem; font-weight: 600; margin: 4px 0; transition: background 0.15s; }
+.video-link:hover { background: #8B0000; }
+.video-link::before { content: '▶'; }
+.breadcrumb { display: flex; align-items: center; gap: 8px; font-size: 0.8rem; color: #888; margin-bottom: 28px; flex-wrap: wrap; }
+.breadcrumb a { color: var(--ua-blue); text-decoration: none; }
+.breadcrumb .sep { color: #CCC; }
+.breadcrumb .current { color: var(--ink); font-weight: 600; }
+.module-progress { display: flex; gap: 4px; margin-bottom: 28px; }
+.progress-dot { width: 28px; height: 6px; border-radius: 3px; background: var(--divider); }
+.progress-dot.done { background: var(--ua-blue); }
+.progress-dot.current { background: var(--ua-yellow); }
+.page-nav { display: flex; justify-content: space-between; gap: 16px; margin-top: 48px; padding-top: 24px; border-top: 2px solid var(--divider); flex-wrap: wrap; }
+.page-nav a { display: flex; align-items: center; gap: 8px; color: var(--ua-blue); text-decoration: none; font-weight: 600; font-size: 0.9rem; padding: 10px 16px; border: 1px solid var(--divider); border-radius: 5px; background: var(--card-bg); transition: box-shadow 0.15s; }
+.page-nav a:hover { box-shadow: var(--shadow); }
+
+/* GOAL CARDS */
+.goal-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 14px; margin: 16px 0; }
+.goal-card { border-radius: 6px; padding: 16px; font-size: 0.86rem; border: 1px solid rgba(0,0,0,0.1); }
+.goal-card .goal-icon { font-size: 1.6rem; margin-bottom: 6px; }
+.goal-card .goal-name { font-weight: 700; margin-bottom: 4px; }
+.goal-1 { background: #FFEBEE; border-color: #E57373; }
+.goal-2 { background: #FFF3E0; border-color: #FFB74D; }
+.goal-3 { background: #E3F2FD; border-color: #64B5F6; }
+.goal-4 { background: #F3E5F5; border-color: #BA68C8; }
+
+/* OPERATION CARDS */
+.op-card { background: var(--white); border: 1px solid var(--divider); border-radius: 8px; overflow: hidden; margin: 16px 0; }
+.op-card-header { background: linear-gradient(135deg, #5c0a0a, #8B0000); color: white; padding: 12px 18px; font-weight: 700; }
+.op-card-body { padding: 14px 18px; font-size: 0.87rem; line-height: 1.65; }
+.op-card-body .op-label { font-weight: 700; color: var(--ua-blue); font-size: 0.78rem; text-transform: uppercase; margin-top: 8px; margin-bottom: 3px; }
+.op-card-body .op-label:first-child { margin-top: 0; }
+
+/* FAKE OR TRUE CARDS */
+.fact-card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; margin: 16px 0; }
+.fact-card { background: var(--white); border: 2px solid var(--divider); border-radius: 6px; padding: 14px; font-size: 0.85rem; }
+.fact-card.is-fake { border-color: var(--danger-border); }
+.fact-card.is-true { border-color: var(--accent-green); }
+.fact-card .fact-verdict { font-weight: 700; font-size: 0.78rem; text-transform: uppercase; margin-top: 8px; }
+.fact-card.is-fake .fact-verdict { color: var(--danger-border); }
+.fact-card.is-true .fact-verdict { color: var(--accent-green); }
+
+/* PARTICIPANT ROLES */
+.role-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 12px; margin: 16px 0; }
+.role-card { background: var(--card-bg); border: 1px solid var(--divider); border-radius: 6px; padding: 12px 14px; text-align: center; font-size: 0.84rem; }
+.role-card .role-icon { font-size: 1.6rem; margin-bottom: 4px; }
+.role-card .role-name { font-weight: 700; color: var(--ua-blue); }
+
+/* PR VS PROPAGANDA */
+.compare-block { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0; }
+.compare-card { border-radius: 8px; padding: 18px; }
+.compare-pr { background: #E3F2FD; border: 1px solid #64B5F6; }
+.compare-prop { background: #FFEBEE; border: 1px solid #E57373; }
+.compare-card .compare-title { font-weight: 700; font-size: 1rem; margin-bottom: 8px; }
+.compare-card p { font-size: 0.85rem; line-height: 1.6; }
+
+/* MEDIA SAMPLE CARDS */
+.media-sample { background: var(--white); border-left: 4px solid; border-radius: 4px; padding: 12px 16px; margin: 10px 0; font-size: 0.85rem; }
+.media-journalism { border-color: var(--info-border); }
+.media-propaganda { border-color: var(--danger-border); }
+.media-pr { border-color: var(--tip-border); }
+.media-sample .media-headline { font-weight: 700; margin-bottom: 4px; }
+.media-sample .media-tag { font-size: 0.72rem; text-transform: uppercase; font-weight: 700; letter-spacing: 0.04em; }
+
+@media (max-width: 860px) {
+  .page-layout { grid-template-columns: 1fr; }
+  .sidebar { position: static; }
+  .module-header { padding: 36px 16px 30px; }
+  .page-layout { padding: 24px 16px 60px; }
+  .compare-block { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<div class="topbar-stripe"></div>
+<div class="topbar">
+  <div>📘 <a href="../index.html">Довідник викладача «Захист України»</a> › 11 клас › Модуль 3</div>
+  <div>МОН 2024 · Інтегрований курс</div>
+</div>
+
+<header class="module-header">
+  <div class="module-header-inner">
+    <div class="module-eyebrow">11 клас · Модуль 3 · Тренінги №6–7</div>
+    <h1>Інформаційна війна: від пропаганди до OSINT-розслідувань</h1>
+    <div class="module-header-meta">
+      <div class="meta-pill">📋 <span>14 уроків · ~630 хв</span></div>
+      <div class="meta-pill">🎯 <span>Цілі, методи, вербування</span></div>
+      <div class="meta-pill">🔍 <span>OSINT, GEOINT, FININT</span></div>
+      <div class="meta-pill">🛡️ <span>Кібербезпека, ШІ-загрози</span></div>
+    </div>
+  </div>
+</header>
+
+<div class="page-layout">
+  <aside class="sidebar">
+    <div class="nav-block">
+      <div class="nav-block-title">Теми модуля</div>
+      <ul class="nav-list">
+        <li><a href="#tema-3-1"><span class="nav-num">3.1</span>Цілі та завдання інформаційної війни</a></li>
+        <li><a href="#tema-3-2"><span class="nav-num">3.2</span>Учасники інформаційної війни</a></li>
+        <li><a href="#tema-3-3"><span class="nav-num">3.3</span>Піар vs пропаганда: Бернейс і Померанцев</a></li>
+        <li><a href="#tema-3-4"><span class="nav-num">3.4</span>Журналістські стандарти «Медіакомпас»</a></li>
+        <li><a href="#tema-3-5"><span class="nav-num">3.5</span>Критичне мислення і вербування молоді</a></li>
+        <li><a href="#tema-3-6"><span class="nav-num">3.6</span>Штучний інтелект в інформаційній війні</a></li>
+        <li><a href="#tema-3-7"><span class="nav-num">3.7</span>Кібербезпека та загрози месенджерів</a></li>
+        <li><a href="#tema-3-8"><span class="nav-num">3.8</span>OSINT: основи розвідки з відкритих джерел</a></li>
+        <li><a href="#tema-3-9"><span class="nav-num">3.9</span>Аналіз соцмереж (SOCMINT)</a></li>
+        <li><a href="#tema-3-10"><span class="nav-num">3.10</span>GEOINT: знімки, тіні, геолокація</a></li>
+        <li><a href="#tema-3-11"><span class="nav-num">3.11</span>Аналіз фінансових даних (FININT)</a></li>
+        <li><a href="#tema-3-12"><span class="nav-num">3.12</span>Інструменти OSINT: підсумкова практика</a></li>
+        <li><a href="#metodychni"><span class="nav-num">🔧</span>Методичні поради</a></li>
+      </ul>
+    </div>
+    <div class="nav-block">
+      <div class="nav-block-title">Навігація курсу</div>
+      <ul class="nav-list">
+        <li><a href="../index.html"><span class="nav-num">🏠</span>Головна</a></li>
+        <li><a href="modul-2.html"><span class="nav-num">←</span>Модуль 2. Стрілецька підготовка</a></li>
+        <li><a href="modul-4.html"><span class="nav-num">→</span>Модуль 4. Домедична допомога</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <main class="content">
+
+    <div class="breadcrumb">
+      <a href="../index.html">Довідник</a>
+      <span class="sep">/</span>
+      <span>11 клас</span>
+      <span class="sep">/</span>
+      <span class="current">Модуль 3. Інформаційна війна</span>
+    </div>
+
+    <div class="module-progress">
+      <div class="progress-dot done"></div>
+      <div class="progress-dot done"></div>
+      <div class="progress-dot current"></div>
+      <div class="progress-dot"></div>
+      <div class="progress-dot"></div>
+      <div class="progress-dot"></div>
+    </div>
+
+    <div class="callout callout-info">
+      <div class="callout-title">ℹ️ Загальний огляд модуля</div>
+      <p>Модуль 3 переходить від технологій фізичної війни (БпЛА, зброя) до технологій війни за свідомість. Об'єднує два тренінги: перший розкриває <strong>теорію та психологію</strong> інформаційної війни (цілі, учасники, методи, вербування), другий — дає <strong>практичні аналітичні навички</strong> (OSINT, GEOINT, FININT, кібербезпека), якими сьогодні користуються журналісти-розслідувачі, волонтерські OSINT-спільноти та аналітики розвідки.</p>
+      <p>Джерела: Тренінги №6–7 (МОН, 2025 р., гриф №БО-0550-25), Інститут Масової Інформації «Медіакомпас», Spravdi.gov.ua, Dovidka.info Центру стратегічних комунікацій, OSINT-агенція Molfar, Bellingcat, InformNapalm.</p>
+    </div>
+
+    <!-- ===================== 3.1 ===================== -->
+    <section class="topic-section" id="tema-3-1">
+      <div class="section-header">
+        <div class="section-num">3.1</div>
+        <div>
+          <h2>Цілі та завдання інформаційної війни</h2>
+          <p>Урок 3 (тренінг 6) · 45 хв · Інтерактивна лекція + аналіз кейсів</p>
+        </div>
+      </div>
+      <div class="prose">
+
+        <div class="callout callout-tip">
+          <div class="callout-title">💡 Питання для відкриття теми</div>
+          <p>«Чи траплялися вам у соцмережах новини, які потім виявилися неправдою?»</p>
+        </div>
+
+        <div class="definition">
+          <div class="definition-term">Інформаційна війна</div>
+          <p>Боротьба, у якій замість зброї використовують інформацію, щоб впливати на думки, почуття й поведінку людей. Її мета — послабити противника не через бомби, а через брехню, маніпуляції, страх і сумнів.</p>
+        </div>
+
+        <h3>Чотири цілі інформаційної війни</h3>
+
+        <div class="goal-grid">
+          <div class="goal-card goal-1">
+            <div class="goal-icon">📉</div>
+            <div class="goal-name">Послаблення супротивника</div>
+            <p>Зниження його реального потенціалу до боротьби</p>
+          </div>
+          <div class="goal-card goal-2">
+            <div class="goal-icon">💔</div>
+            <div class="goal-name">Деморалізація</div>
+            <p>Підрив волі до боротьби та віри в перемогу — серед військових і цивільних</p>
+          </div>
+          <div class="goal-card goal-3">
+            <div class="goal-icon">📢</div>
+            <div class="goal-name">Посилення власної сили</div>
+            <p>Нав'язування ідей і наративів, вигідних ворогу</p>
+          </div>
+          <div class="goal-card goal-4">
+            <div class="goal-icon">🔄</div>
+            <div class="goal-name">Зміна системи</div>
+            <p>У довгостроковій перспективі — трансформація або зникнення системи супротивника</p>
+          </div>
+        </div>
+
+        <h3>Три реальні російські інформаційні операції проти України</h3>
+
+        <div class="op-card">
+          <div class="op-card-header">🎯 Операція «Злочини України проти дітей»</div>
+          <div class="op-card-body">
+            <div class="op-label">Період</div>
+            З 2014 року, особливо інтенсивно з 2023–2024 (пік у 2024 р.)
+            <div class="op-label">Опис</div>
+            Кремль поширює твердження, що нібито Україна сама здійснює злочини проти власних дітей (живий щит, викрадення, жорстоке поводження) — як контрнаратив на документовані факти викрадення українських дітей Росією, особливо після видачі МКС ордера на арешт Путіна за це.
+            <div class="op-label">Цілі</div>
+            Деморалізація (шокує суспільство), посилення власної сили (дискредитація України як «аморальної держави»), послаблення супротивника (зменшення міжнародної підтримки)
+          </div>
+        </div>
+
+        <div class="op-card">
+          <div class="op-card-header">🎯 Операція розколу міжнародної підтримки</div>
+          <div class="op-card-body">
+            <div class="op-label">Опис</div>
+            Систематичне поширення дезінформації на міжнародних майданчиках: розкол союзників, підрив довіри до допомоги Україні, представлення України як корумпованої й нестабільної держави, що «не бажає миру»
+            <div class="op-label">Цілі</div>
+            Послаблення супротивника (менше ресурсів ззовні), деморалізація (страх, що «Україна залишається сама»), посилення власної сили (більший простір для переговорів РФ)
+          </div>
+        </div>
+
+        <div class="op-card">
+          <div class="op-card-header">🎯 Наратив «нацизм в Україні» / «денацифікація»</div>
+          <div class="op-card-body">
+            <div class="op-label">Період</div>
+            Від Майдану 2013–2014, системно з 2014, загострено з 2022 і дотепер
+            <div class="op-label">Опис</div>
+            Стверджується, що влада в Україні «нацистська» і потребує «денацифікації» — використовується для легітимізації агресії як «визвольної» операції. Приклад: операція Doppelgänger через фальшиві ЗМІ
+            <div class="op-label">Цілі</div>
+            Легітимізація агресії, деморалізація (образ України як «екстремістської держави»), послаблення супротивника, у довгостроковій перспективі — витіснення української ідентичності
+          </div>
+        </div>
+
+        <!-- ACTIVITY: FAKE OR TRUE -->
+        <div class="activity-box">
+          <div class="activity-header">
+            <div class="activity-icon">🎴</div>
+            <div>
+              <h4>Інтерактив «Фейк чи правда?»</h4>
+              <div class="activity-time">10 хв · Групова робота</div>
+            </div>
+          </div>
+          <div class="activity-content">
+            <p>Учні аналізують 4 твердження і визначають, фейк це чи правда, обґрунтовуючи відповідь.</p>
+
+            <div class="fact-card-grid">
+              <div class="fact-card is-fake">
+                <p>«Росіяни атакують енергетичні об'єкти України з 24 лютого 2022 р., але відключення почалися лише в жовтні 2022 р. Отже, це змова енергетичних компаній та уряду».</p>
+                <div class="fact-verdict">❌ Фейк</div>
+              </div>
+              <div class="fact-card is-fake">
+                <p>«Електроенергії достатньо для всіх, просто влада продає її закордон, заробляючи великі кошти».</p>
+                <div class="fact-verdict">❌ Фейк</div>
+              </div>
+              <div class="fact-card is-true">
+                <p>«Державна служба України з етнополітики та свободи совісті визнала Київську митрополію УПЦ (МП) залежною від РПЦ».</p>
+                <div class="fact-verdict">✅ Правда</div>
+              </div>
+              <div class="fact-card is-fake">
+                <p>«До 15 вересня можете отримати допомогу від Червоного Хреста... Розмір допомоги: одноразова виплата 9600 грн... Встигніть подати заявку».</p>
+                <div class="fact-verdict">❌ Фейк</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="callout callout-pract">
+          <div class="callout-title">✅ Підсумок уроку</div>
+          <p>Разом з класом скласти «ТОП-5 правил інформаційної безпеки школяра». Завершальна теза: <strong>«Фейк може вбивати так само, як зброя. Знання — це наша безпека»</strong>.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================== 3.2 ===================== -->
+    <section class="topic-section" id="tema-3-2">
+      <div class="section-header">
+        <div class="section-num">3.2</div>
+        <div>
+          <h2>Учасники інформаційної війни</h2>
+          <p>Урок 4 (тренінг 6) · 45 хв · Інтерактив + дискусія</p>
+        </div>
+      </div>
+      <div class="prose">
+
+        <h3>П'ять основних груп учасників</h3>
+
+        <div class="role-grid">
+          <div class="role-card"><div class="role-icon">🏛️</div><div class="role-name">Держави та спецслужби</div></div>
+          <div class="role-card"><div class="role-icon">📺</div><div class="role-name">Медіа (офіційні vs пропагандистські)</div></div>
+          <div class="role-card"><div class="role-icon">📱</div><div class="role-name">Блогери та лідери думок</div></div>
+          <div class="role-card"><div class="role-icon">🤖</div><div class="role-name">Боти і тролі</div></div>
+          <div class="role-card"><div class="role-icon">👤</div><div class="role-name">Звичайні громадяни</div></div>
+        </div>
+
+        <div class="activity-box">
+          <div class="activity-header">
+            <div class="activity-icon">🎭</div>
+            <div>
+              <h4>Інтерактив «Хто я?»</h4>
+              <div class="activity-time">10 хв</div>
+            </div>
+          </div>
+          <div class="activity-content">
+            <p>Кожен учень отримує картку з роллю (журналіст, бот, ворожий пропагандист, український військовий, пересічний громадянин). Завдання: пояснити, яку інформацію він поширює і чому. Клас має відгадати роль.</p>
+          </div>
+        </div>
+
+        <h3>Дискусія: чи може звичайна людина стати учасником інформаційної війни?</h3>
+        <ul style="padding-left:20px; line-height:1.9; font-size:0.9rem;">
+          <li>Як може вплинути на ситуацію публікація фото/відео з фронту?</li>
+          <li>Що може статися, якщо людина поширить неперевірену новину в соцмережах?</li>
+          <li>Чи можна ненавмисно допомогти ворогу, просто роблячи репост або коментар?</li>
+          <li>Чи завжди публікація правдивої інформації є безпечною під час війни?</li>
+        </ul>
+
+        <div class="callout callout-warn">
+          <div class="callout-title">⚠️ Ключовий висновок</div>
+          <p>Кожен користувач соцмереж — потенційний (свідомий чи несвідомий) учасник інформаційної війни. Навіть правдива інформація (геолокація, час, деталі) може бути небезпечною, якщо потрапляє у відкритий доступ під час бойових дій.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================== 3.3 ===================== -->
+    <section class="topic-section" id="tema-3-3">
+      <div class="section-header">
+        <div class="section-num">3.3</div>
+        <div>
+          <h2>Піар проти пропаганди: концепції Бернейса і Померанцева</h2>
+          <p>Уроки 5–6, частина 1 (тренінг 6) · Міні-лекція</p>
+        </div>
+      </div>
+      <div class="prose">
+
+        <div class="callout callout-tip">
+          <div class="callout-title">💡 Питання для відкриття</div>
+          <p>«Яка, на вашу думку, різниця між пропагандою та піаром?»</p>
+        </div>
+
+        <h3>Едвард Бернейс — «батько піару»</h3>
+        <p>Автор дослідницької праці «Пропаганда» (1928), де описав концепцію <strong>«інженерії згоди»</strong>. Приклад з практики: просування сигарет для жінок під покровом фемінізму. Також був залучений у переворот уряду в Гватемалі (1954) — демонструючи, що піар і пропаганда використовують ті самі засоби, але з різними мотивами.</p>
+
+        <h3>Пітер Померанцев — сучасне розуміння пропаганди</h3>
+        <p>Автор книги «Це не пропаганда» (2019). Пояснює: сучасна пропаганда не намагається переконати в одній істині, а прагне <strong>створити хаос та розмити межу між правдою і брехнею</strong>. Завдання — змусити людей не довіряти нікому.</p>
+
+        <h3>Ключова відмінність: ставлення до правди</h3>
+
+        <div class="compare-block">
+          <div class="compare-card compare-pr">
+            <div class="compare-title">📣 Піар (Бернейс)</div>
+            <p>«Інженерія згоди», що працює в умовах конкурентного інформаційного простору. Мета — сформувати позитивне ставлення до ідеї/продукту/особи, використовуючи достовірну (хоч і вибіркову) інформацію. Хоч і маніпулює, але зазвичай не будується на відкритій брехні — приховує правду, але не заперечує її існування.</p>
+          </div>
+          <div class="compare-card compare-prop">
+            <div class="compare-title">📢 Пропаганда (Померанцев)</div>
+            <p>Прагне знищити довіру до будь-яких джерел, крім власних. Не намагається переконати в одній «правді», а створює такий хаос і таку кількість суперечливих даних, що люди перестають вірити у можливість об'єктивної істини взагалі. Активно продукує фейки, а потім сама ж їх спростовує, створюючи кругообіг брехні.</p>
+          </div>
+        </div>
+
+        <div class="callout callout-info">
+          <div class="callout-title">ℹ️ Схожість механізмів</div>
+          <p>І піар, і пропаганда використовують емоційні апеляції, символи, історії, авторитет та постійне повторення для обходу критичного мислення. Обидва прагнуть створити позитивну асоціацію або підтвердити упередження. <strong>Відмінність — у доступі до альтернативної інформації</strong>: піар не перешкоджає їй, пропаганда — дезорієнтує і блокує критичне мислення.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================== 3.4 ===================== -->
+    <section class="topic-section" id="tema-3-4">
+      <div class="section-header">
+        <div class="section-num">3.4</div>
+        <div>
+          <h2>Журналістські стандарти «Медіакомпас» та аналіз кейсів</h2>
+          <p>Уроки 5–6, частина 2 (тренінг 6) · Практика з картками-кейсами</p>
+        </div>
+      </div>
+      <div class="prose">
+
+        <h3>Шість стандартів якісної журналістики (Інститут Масової Інформації)</h3>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>№</th><th>Стандарт</th></tr></thead>
+            <tbody>
+              <tr><td class="num">1</td><td><strong>Достовірність</strong></td></tr>
+              <tr><td class="num">2</td><td><strong>Баланс думок</strong></td></tr>
+              <tr><td class="num">3</td><td><strong>Оперативність</strong></td></tr>
+              <tr><td class="num">4</td><td><strong>Відокремлення фактів від коментарів</strong></td></tr>
+              <tr><td class="num">5</td><td><strong>Повнота</strong></td></tr>
+              <tr><td class="num">6</td><td><strong>Точність</strong></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>Ці стандарти — фільтр, що допомагає відокремити якісну журналістику від маніпуляцій.</p>
+
+        <!-- ACTIVITY: CARD ANALYSIS -->
+        <div class="activity-box">
+          <div class="activity-header">
+            <div class="activity-icon">🗂️</div>
+            <div>
+              <h4>Практичне завдання: журналістика, пропаганда чи піар?</h4>
+              <div class="activity-time">25 хв · Групи отримують по 3 картки</div>
+            </div>
+          </div>
+          <div class="activity-content">
+            <p>Кожна група аналізує приклади медіаповідомлень і визначає категорію.</p>
+
+            <h4>Зразки журналістських повідомлень</h4>
+            <div class="media-sample media-journalism">
+              <div class="media-tag" style="color:var(--info-border);">Журналістика</div>
+              <div class="media-headline">Наземний дрон евакуював пораненого бійця, витримавши підрив міни та скид із БПЛА</div>
+              <p style="font-size:0.82rem;">Детальний опис операції «ГВЕР»: 7 спроб евакуації, 33 дні від поранення, втрачено 6 НРК, тривалість 5 год 58 хв, конкретні цифри швидкості й відстані — джерело назване, факти перевірювані.</p>
+            </div>
+            <div class="media-sample media-journalism">
+              <div class="media-tag" style="color:var(--info-border);">Журналістика</div>
+              <div class="media-headline">Курс із DELTA в «Армія+» розпочали 13 тис. військових — це рекорд застосунку</div>
+              <p style="font-size:0.82rem;">Конкретні цифри (13000, 1500 завершили, 50 уроків, 5 годин), посилання на Міноборони — перевірювані факти без емоційного забарвлення.</p>
+            </div>
+
+            <h4>Зразки пропаганди</h4>
+            <div class="media-sample media-propaganda">
+              <div class="media-tag" style="color:var(--danger-border);">Пропаганда</div>
+              <div class="media-headline">Українські військові використовують хліб як зброю</div>
+              <p style="font-size:0.82rem;">«За повідомленнями з місць» (без джерела), емоційне забарвлення («благають про допомогу»), звинувачення у злочині проти людяності без доказів.</p>
+            </div>
+            <div class="media-sample media-propaganda">
+              <div class="media-tag" style="color:var(--danger-border);">Пропаганда</div>
+              <div class="media-headline">Усі українські військовослужбовці вживають наркотики</div>
+              <p style="font-size:0.82rem;">Узагальнення («усі»), псевдонауковий висновок з відеокадрів («це пояснює їхній фанатизм») без жодних перевірюваних даних.</p>
+            </div>
+
+            <h4>Зразки піару</h4>
+            <div class="media-sample media-pr">
+              <div class="media-tag" style="color:var(--tip-border);">Піар</div>
+              <div class="media-headline">Фонд «Єдине Серце» передав позашляховик на фронт</div>
+              <p style="font-size:0.82rem;">Відверто рекламний характер, лише позитивний кут, подяки благодійникам — не приховує своєї мети промоції, але й не обманює щодо фактів.</p>
+            </div>
+            <div class="media-sample media-pr">
+              <div class="media-tag" style="color:var(--tip-border);">Піар</div>
+              <div class="media-headline">Оновлена бібліотека в райцентрі: дякуємо депутату Петренку</div>
+              <p style="font-size:0.82rem;">Підкреслення заслуги конкретної особи, виключно позитивна рамка, типова комунікація місцевої влади.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="callout callout-pract">
+          <div class="callout-title">✅ Висновок для обговорення</div>
+          <p>Один і той же факт може бути поданий по-різному. Ключ до розпізнавання: чи названо джерело, чи є конкретні перевірювані дані, чи присутнє надмірне емоційне забарвлення, чи робляться узагальнення («усі», «завжди»).</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================== 3.5 ===================== -->
+    <section class="topic-section" id="tema-3-5">
+      <div class="section-header">
+        <div class="section-num">3.5</div>
+        <div>
+          <h2>Критичне мислення та вербування: реальні кейси СБУ</h2>
+          <p>Уроки 7–8 (тренінг 6) · 90 хв · Дослідницька робота + рольова гра</p>
+        </div>
+      </div>
+      <div class="prose">
+
+        <div class="callout callout-tip">
+          <div class="callout-title">💡 Питання для відкриття</div>
+          <p>«Хто, на вашу думку, є найбільш імовірною жертвою російських спецслужб для вчинення терактів?»</p>
+        </div>
+
+        <!-- ACTIVITY: RESEARCH + ROLEPLAY -->
+        <div class="activity-box">
+          <div class="activity-header">
+            <div class="activity-icon">🕵️</div>
+            <div>
+              <h4>Дослідницька робота і рольова гра «розробка стратегії вербування»</h4>
+              <div class="activity-time">60 хв · 3 групи</div>
+            </div>
+          </div>
+          <div class="activity-content">
+            <p><strong>Етап 1 (30 хв):</strong> кожна група отримує набір із 3 карток-кейсів реальних повідомлень СБУ і має описати три типові профілі потенційних виконавців, використовуючи шаблон.</p>
+            <p><strong>Етап 2 (30 хв):</strong> рольова гра — «Уявіть, що ви російські рекрутери. Розробіть стратегію вербування людини з обраним психологічним портретом» — з презентацією та рефлексією.</p>
+
+            <h4>Приклади реальних кейсів СБУ (для карток)</h4>
+            <div class="op-card">
+              <div class="op-card-header">📰 Підрив авто військового у Львові</div>
+              <div class="op-card-body">
+                СБУ затримала двох мешканців Закарпаття (22 і 23 роки), які на «гарячому» закладали саморобний вибуховий пристрій (4,5 кг ВР + гайки як уражаючі елементи) під авто воїна Сил оборони. Завербовані дистанційно через пошук «легких грошей» у Telegram-каналах.
+              </div>
+            </div>
+            <div class="op-card">
+              <div class="op-card-header">📰 Коригування ударів по інфраструктурі</div>
+              <div class="op-card-body">
+                31-річний безробітний з Хмельницького, завербований одразу двома співробітниками фсб через Telegram («швидкий заробіток»), передавав геолокації аеродромів ЗСУ та координати електропідстанцій для ракетно-дронових ударів.
+              </div>
+            </div>
+            <div class="op-card">
+              <div class="op-card-header">📰 Підпали неповнолітніми на Харківщині</div>
+              <div class="op-card-body">
+                Затримано чотирьох підлітків віком 14–16 років у складі двох груп: підпал релейної шафи на залізниці та службового автомобіля ЗСУ; підпал підвіконня сільради легкозаймистою суміш'ю.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <h3>Чому українська молодь стає мішенню</h3>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>Фактор</th><th>Механізм</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Маніпуляція через соцмережі</strong></td><td>Вербування через Telegram, TikTok, Discord під виглядом «легкого заробітку» або навіть «гри». Подається як анонімна справа («ніхто не дізнається»). Боти й псевдочати маскують координаторів</td></tr>
+              <tr><td><strong>Фінансова мотивація</strong></td><td>Діти з малозабезпечених сімей погоджуються за 2–10 тис. грн</td></tr>
+              <tr><td><strong>Довірливість</strong></td><td>Низька медіаграмотність, нездатність відрізнити фейк від правди. Можуть сказати, що «це допоможе Україні» навіть коли мішень — українська інфраструктура</td></tr>
+              <tr><td><strong>Відсутність дорослої підтримки</strong></td><td>Батьки не знають, чим займається дитина онлайн; немає довіри до школи/родини/поліції — дитина йде до маніпуляторів, які «дають увагу»</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout callout-warn">
+          <div class="callout-title">⚠️ Ключовий висновок для рефлексії</div>
+          <p>Портрет завербованих часто неочевидний: це не обов'язково маргінальні групи чи прихильники Росії. Реальні приклади показують, що під загрозою — кожен, і часто серед жертв вербування такі ж самі неповнолітні, як учні в класі. Усі згадані у кейсах особи були покарані — загинули внаслідок організованого теракту або понесли відповідальність за Законом України.</p>
+        </div>
+
+        <h3>Що робити, якщо намагаються завербувати</h3>
+        <ol class="steps-list">
+          <li><strong>Не погоджуватися</strong> — перше і найважливіше правило</li>
+          <li><strong>Припинити спілкування</strong> — не відповідати, блокувати підозрілих осіб</li>
+          <li><strong>Зберегти докази</strong> — скріншоти листування, контактів, номерів телефонів</li>
+          <li><strong>Розповісти дорослим</strong> — батькам, вчителям, людям, яким довіряєте</li>
+          <li><strong>Повідомити органи:</strong> чат-бот СБУ «Спали» ФСБшника» (t.me/Spaly_FSB_bot), гаряча лінія СБУ 0800 501 482, Національна поліція 102</li>
+        </ol>
+
+      </div>
+    </section>
+
+    <!-- ===================== 3.6 ===================== -->
+    <section class="topic-section" id="tema-3-6">
+      <div class="section-header">
+        <div class="section-num">3.6</div>
+        <div>
+          <h2>Роль штучного інтелекту в інформаційній війні</h2>
+          <p>Урок 1 (тренінг 7) · 45 хв · Аналіз прикладів + дискусія</p>
+        </div>
+      </div>
+      <div class="prose">
+
+        <div class="callout callout-tip">
+          <div class="callout-title">💡 Питання для відкриття</div>
+          <p>«Чи чули ви про відео чи аудіо, яке виявилося не тим, чим здається?»</p>
+        </div>
+
+        <h3>Як ШІ використовується в інформаційних атаках</h3>
+        <ul style="padding-left:20px; line-height:1.9; font-size:0.9rem;">
+          <li><strong>Генерація контенту:</strong> тексти, зображення, відео, створені алгоритмами замість людей</li>
+          <li><strong>Deepfake:</strong> підроблені відео/аудіо, де обличчя чи голос людини імітуються штучно</li>
+          <li><strong>Автоматизація аналізу даних:</strong> масове опрацювання інформації для виявлення вразливих аудиторій</li>
+        </ul>
+
+        <div class="activity-box">
+          <div class="activity-header">
+            <div class="activity-icon">🔍</div>
+            <div>
+              <h4>Аналіз прикладів: розпізнавання AI-контенту</h4>
+              <div class="activity-time">10 хв · Групова робота</div>
+            </div>
+          </div>
+          <div class="activity-content">
+            <p>Кожна група отримує приклад публікації (реальної або змодельованої) і виявляє ознаки AI-генерації, використовуючи критерії: джерело, якість зображення, голос, анотації, підписи, метадані.</p>
+          </div>
+        </div>
+
+        <h3>Ризики ШІ-зловживань</h3>
+        <ul style="padding-left:20px; line-height:1.9; font-size:0.9rem;">
+          <li>Зниження загальної довіри до візуального та аудіоконтенту</li>
+          <li>Маніпуляція суспільними настроями в масштабі, неможливому для людських команд пропагандистів</li>
+          <li>Втручання в особисте життя (фейкові компрометуючі матеріали)</li>
+          <li>Спотворення фактів про реальні події (війна, переговори, заяви політиків)</li>
+        </ul>
+
+        <div class="callout callout-pract">
+          <div class="callout-title">✅ Засоби захисту</div>
+          <ul>
+            <li>Медіаграмотність — розуміння того, як і навіщо створюється контент</li>
+            <li>Перевірка джерел — чи є оригінал, чи підтверджують інші медіа</li>
+            <li>Скепсис щодо емоційного контенту — чим сильніша емоційна реакція, тим вища ймовірність маніпуляції</li>
+            <li>Використання фактчекінгових ресурсів</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================== 3.7 ===================== -->
+    <section class="topic-section" id="tema-3-7">
+      <div class="section-header">
+        <div class="section-num">3.7</div>
+        <div>
+          <h2>Кібербезпека та загрози анонімних месенджерів</h2>
+          <p>Урок 2 (тренінг 7) · 45 хв · Практична вправа «кібергігієна»</p>
+        </div>
+      </div>
+      <div class="prose">
+
+        <h3>Основні кіберзагрози</h3>
+        <ul style="padding-left:20px; line-height:1.9; font-size:0.9rem;">
+          <li><strong>Фішинг</strong> — підроблені листи/сайти для викрадення даних</li>
+          <li><strong>Шкідливе програмне забезпечення</strong> — віруси, шпигунські програми</li>
+          <li><strong>Злом облікових записів</strong></li>
+          <li><strong>Витоки даних</strong></li>
+        </ul>
+
+        <h3>Чи становлять загрозу анонімні Telegram-канали?</h3>
+        <p>Обговорення з класом: де учні дізнаються новини, якими каналами користуються найчастіше. Перегляд матеріалу «Telegram — не зовсім надійне джерело новин» — обговорення ризиків споживання інформації з анонімних tg-каналів, де неможливо перевірити авторство та джерела.</p>
+
+        <div class="callout callout-info">
+          <div class="callout-title">ℹ️ Рекомендація</div>
+          <p>Підписуватись на авторитетні ЗМІ з верифікованим авторством та редакційними стандартами: «Українська Правда», «Суспільне», «Громадське» — замість анонімних каналів без джерел і відповідальності за публікації.</p>
+        </div>
+
+        <h3>Що не можна знімати й публікувати під час воєнного стану</h3>
+        <p>Перегляд матеріалу «Ваші фото розкажуть, де ви! Це легко дізнається ворог» (Spravdi, Dovidka.info). Обговорення правил особистої безпеки під час публікації фотографій — геолокація, орієнтири на фоні, час публікації відносно реальних подій.</p>
+
+        <div class="activity-box">
+          <div class="activity-header">
+            <div class="activity-icon">🛡️</div>
+            <div>
+              <h4>Практична вправа: складання правил кібергігієни</h4>
+              <div class="activity-time">10 хв · Групова робота</div>
+            </div>
+          </div>
+          <div class="activity-content">
+            <p>У групах учні складають список 5–7 правил кібербезпеки: сильні паролі, двофакторна автентифікація, перевірка посилань перед натисканням, оновлення ПЗ, обережність з публічним Wi-Fi, не повідомляти геолокацію в реальному часі, перевірка дозволів застосунків.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================== 3.8 ===================== -->
+    <section class="topic-section" id="tema-3-8">
+      <div class="section-header">
+        <div class="section-num">3.8</div>
+        <div>
+          <h2>OSINT: розвідка на основі відкритих джерел</h2>
+          <p>Урок 3 (тренінг 7) · 45 хв · Теорія + міні-практикум геолокації</p>
+        </div>
+      </div>
+      <div class="prose">
+
+        <div class="callout callout-tip">
+          <div class="callout-title">💡 Питання для відкриття</div>
+          <p>«Як можна перевірити, чи справжнє фото, яке ви побачили в соцмережі?» «Чи можна дізнатись, де перебувають російські військові, маючи лише комп'ютер та інтернет?»</p>
+        </div>
+
+        <div class="definition">
+          <div class="definition-term">OSINT (Open Source Intelligence)</div>
+          <p>Процес пошуку, аналізу та інтерпретації відкритих даних, отриманих легально й етично, для аналітичних або дослідницьких цілей. Допомагає: відстежувати загрози безпеці, перевіряти/розслідувати щодо осіб, підтверджувати чи спростовувати факти, виявляти сигнали кібератак, аналізувати конкурентне середовище.</p>
+        </div>
+
+        <h3>OSINT vs звичайний пошук у Google</h3>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>Характеристика</th><th>Стандартний пошук</th><th>OSINT-дослідження</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Мета</strong></td><td>Загальне розуміння теми</td><td>Підтримка ухвалення конкретного рішення (підтвердження особи, викриття зв'язків)</td></tr>
+              <tr><td><strong>Методологія</strong></td><td>Довільна</td><td>Суворо структурована, базується на розвідувальному циклі</td></tr>
+              <tr><td><strong>Критичний етап</strong></td><td>Збір інформації</td><td>Верифікація та аналіз джерел</td></tr>
+              <tr><td><strong>Вихідний продукт</strong></td><td>Реферат, стаття, набір фактів</td><td>Аналітичний звіт, висновок</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Джерела OSINT</h3>
+        <div class="card-grid">
+          <div class="info-card">
+            <div class="card-title">📰 Традиційні медіа</div>
+            <p style="font-size:0.83rem;">Газети, журнали, ТВ, радіо (BBC, CNN, DW, Суспільне, Укрінформ)</p>
+          </div>
+          <div class="info-card">
+            <div class="card-title">🌐 Інтернет-ресурси</div>
+            <p style="font-size:0.83rem;">Офіційні сайти влади, реєстри, форуми, архіви (Wayback Machine)</p>
+          </div>
+          <div class="info-card">
+            <div class="card-title">📱 Соціальні мережі</div>
+            <p style="font-size:0.83rem;">Facebook, X, Instagram, LinkedIn, Telegram, TikTok, Reddit</p>
+          </div>
+          <div class="info-card">
+            <div class="card-title">🛰️ Супутникові знімки</div>
+            <p style="font-size:0.83rem;">Та цифрові метадані, deep web</p>
+          </div>
+        </div>
+
+        <h3>Чотири основні типи OSINT</h3>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>Тип</th><th>Розшифрування</th><th>Суть</th></tr></thead>
+            <tbody>
+              <tr><td><strong>SOCMINT</strong></td><td>Social Media Intelligence</td><td>Аналітика даних із соцмереж — зв'язки, інтереси, настрої, місцеперебування людей</td></tr>
+              <tr><td><strong>GEOINT</strong></td><td>Geospatial Intelligence</td><td>Аналіз супутникових знімків, карт, геолокаційних даних</td></tr>
+              <tr><td><strong>FININT</strong></td><td>Financial Intelligence</td><td>Аналіз відкритих фінансових даних — підозрілі транзакції, корупційні схеми</td></tr>
+              <tr><td><strong>SIGINT</strong></td><td>Signals Intelligence</td><td>Дослідження відкритих сигналів/телеметрії для виявлення комунікаційних зв'язків</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Реальні приклади українських OSINT-розслідувань</h3>
+        <div class="op-card">
+          <div class="op-card-header">🔍 SOCMINT: розслідування Bellingcat про загін «Ахмат»</div>
+          <div class="op-card-body">Після появи кадрів жорстокого насильства влітку 2022 р. аналітики виявили причетних через відкриті профілі. Європейський суд з прав людини визнав звіти Bellingcat, Atlantic Council та InformNapalm надійним джерелом доказів.</div>
+        </div>
+        <div class="op-card">
+          <div class="op-card-header">🔍 SOCMINT: InformNapalm про збиття MH17</div>
+          <div class="op-card-body">Волонтери зібрали з відкритих профілів військових фото/пости про переміщення зенітних комплексів «Бук», визначивши причетних до катастрофи 2014 року. Доказова база передана до міжнародних судів.</div>
+        </div>
+        <div class="op-card">
+          <div class="op-card-header">🔍 GEOINT: підрив Каховської ГЕС</div>
+          <div class="op-card-body">«Схеми» першими опублікували супутникові знімки Planet Labs/Maxar, що засвідчили руйнування, підтоплення та спроби окупантів відновити переправи.</div>
+        </div>
+        <div class="op-card">
+          <div class="op-card-header">🔍 HUMINT: операція «Синиця» та «Список 31»</div>
+          <div class="op-card-body">ГУР переманило російського пілота гелікоптера Мі-8 на бік України разом із секретними документами. «Схеми» + «Ти як?» встановили маршрут депортації 31 дитини, ідентифікувавши причетних осіб — розслідування призвело до міжнародних санкцій.</div>
+        </div>
+
+        <!-- ACTIVITY: GEOLOCATION PRACTICE -->
+        <div class="activity-box">
+          <div class="activity-header">
+            <div class="activity-icon">📍</div>
+            <div>
+              <h4>Міні-практикум: «Знайди локацію»</h4>
+              <div class="activity-time">25 хв · Парна робота</div>
+            </div>
+          </div>
+          <div class="activity-content">
+            <h4>Етап 1: зворотний пошук зображення (10 хв)</h4>
+            <ol>
+              <li>Виконати зворотний пошук щонайменше двома інструментами (TinEye, Google Lens)</li>
+              <li>Знайти найраніше джерело (зазвичай Вікісховище, Flickr, блог фотографа) і зафіксувати дату публікації</li>
+              <li>Визначити назву об'єкта і загальне місцезнаходження</li>
+            </ol>
+            <h4>Етап 2: геолокація та верифікація (10 хв)</h4>
+            <ol>
+              <li>Проаналізувати геопідказки: архітектуру/ландшафт, транспорт (номерні знаки, моделі авто), вивіски/символіку</li>
+              <li>Зіставити деталі з Google Maps/Street View, визначити точну адресу чи координати</li>
+            </ol>
+            <h4>Етап 3: презентація (5 хв)</h4>
+            <p>Кожна пара представляє: які інструменти використали, яке найдавніше джерело знайшли, точну геолокацію, які підказки виявилися найкориснішими.</p>
+          </div>
+        </div>
+
+        <div class="callout callout-pract">
+          <div class="callout-title">✅ Домашнє завдання: OSINT-самоаудит</div>
+          <p>Спробувати знайти інформацію про себе, використовуючи власне ім'я, фото та ніки в соцмережах — практичне усвідомлення власного цифрового слідy.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================== 3.9 ===================== -->
+    <section class="topic-section" id="tema-3-9">
+      <div class="section-header">
+        <div class="section-num">3.9</div>
+        <div>
+          <h2>Аналіз соцмереж: цифровий слід і пошук за нікнеймом</h2>
+          <p>Урок 4 (тренінг 7) · 45 хв · Практика з пошуковими операторами</p>
+        </div>
+      </div>
+      <div class="prose">
+
+        <div class="definition">
+          <div class="definition-term">Цифровий слід</div>
+          <p>Сукупність публічних профілів і активності людини в інтернеті, які часто пов'язані одне з одним через спільні нікнейми, фото чи інші ідентифікатори, що в сумі створюють повний портрет особи.</p>
+        </div>
+
+        <h3>Інструменти аналізу соцмереж</h3>
+        <ul style="padding-left:20px; line-height:1.9; font-size:0.9rem;">
+          <li><strong>Сервіси перевірки нікнеймів</strong> — пошук профілів на різних платформах за одним і тим самим ніком</li>
+          <li><strong>Розширені пошукові оператори Google</strong> — наприклад, <code>site:facebook.com</code> або <code>site:linkedin.com</code> для цільового пошуку лише в певній соцмережі</li>
+        </ul>
+
+        <h3>Активний vs пасивний цифровий слід</h3>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>Тип</th><th>Приклад</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Активний</strong></td><td>Інформація, яку людина свідомо публікує: пости, фото, коментарі, профілі</td></tr>
+              <tr><td><strong>Пасивний</strong></td><td>Інформація, що збирається без прямого усвідомлення: метадані, geo-теги, статистика активності, цифрові відбитки браузера</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout callout-info">
+          <div class="callout-title">ℹ️ Етичні межі практики</div>
+          <p>Усі вправи з аналізу соцмереж на уроці використовують вигадані або безпечні навчальні приклади (наприклад, нікнейми публічних організацій). Реальний аналіз приватних осіб без їхньої згоди — поза навчальними рамками цього курсу.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================== 3.10 ===================== -->
+    <section class="topic-section" id="tema-3-10">
+      <div class="section-header">
+        <div class="section-num">3.10</div>
+        <div>
+          <h2>GEOINT: що нам кажуть знімки та тіні</h2>
+          <p>Урок 5 (тренінг 7) · 45 хв · Практика з Google Earth і SunCalc</p>
+        </div>
+      </div>
+      <div class="prose">
+
+        <div class="definition">
+          <div class="definition-term">GEOINT</div>
+          <p>Аналіз інформації про об'єкти на Землі, отриманої з супутникових знімків, мап, 3D-моделей та геолокаційних даних. Використовується для підтвердження місця і часу фото чи відео.</p>
+        </div>
+
+        <h3>Два ключові методи GEOINT</h3>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>Метод</th><th>Суть</th><th>Завдання</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Геолокація</strong></td><td>Порівняння візуальних підказок (будівлі, знаки, рослинність, рельєф) з картографічними даними</td><td>Знайти точні GPS-координати місця знімання</td></tr>
+              <tr><td><strong>Темпоральний аналіз (тіні)</strong></td><td>Використання даних про положення Сонця або історичних супутникових знімків</td><td>Визначити дату/час фільмування, чи відповідає заявленому</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Інструмент №1: Google Earth Pro</h3>
+        <p>Надає 3D-моделювання місцевості для зіставлення кута знімання, а також функцію <strong>«історичні знімки»</strong> — дозволяє переглянути, як виглядала територія раніше (наприклад, 2015 року), щоб довести, чи могла будівля на фото вже існувати на заявлену дату.</p>
+
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>Етап демонстрації</th><th>Що доводить</th></tr></thead>
+            <tbody>
+              <tr><td>Актуальний вигляд об'єкта на поточному знімку</td><td>Геолокація: об'єкт існує зараз</td></tr>
+              <tr><td>Активація історичних знімків (2015 рік)</td><td>Темпоральна верифікація: на цьому місці був пустир/поле/старий об'єкт</td></tr>
+              <tr><td>Плавний перехід між роками</td><td>Визначення точного проміжку часу, коли відбулися зміни</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout callout-info">
+          <div class="callout-title">ℹ️ Практичний висновок методу</div>
+          <p>«Якщо хтось опублікує фото будівлі й скаже, що це знято 15 років тому, ми можемо довести, що це неможливо, адже її тоді не існувало» — приклад спростування фейкової датировки фото.</p>
+        </div>
+
+        <h3>Інструмент №2: SunCalc — аналіз тіней</h3>
+        <p>Простий онлайн-інструмент, що показує траєкторію руху Сонця та напрямок тіней у будь-якій точці земної кулі на будь-яку дату. Принцип: якщо на фото є чітка тінь, можна зіставити її напрямок і довжину з показниками SunCalc для цієї геолокації.</p>
+
+        <div class="callout callout-pract">
+          <div class="callout-title">✅ Приклад верифікації</div>
+          <p>Якщо тінь на фото в Києві вказує на південь, а SunCalc для цієї години показує, що тінь мала б вказувати на північ — заявлений час/дата фільмування неправдиві. Простий і ефективний спосіб темпоральної верифікації.</p>
+        </div>
+
+        <div class="activity-box">
+          <div class="activity-header">
+            <div class="activity-icon">🌅</div>
+            <div>
+              <h4>Практичне завдання: геолокація + SunCalc</h4>
+              <div class="activity-time">Частина уроку</div>
+            </div>
+          </div>
+          <div class="activity-content">
+            <ol>
+              <li>Визначити унікальні об'єкти на фото</li>
+              <li>Знайти місцевість у Google Earth/мапах</li>
+              <li>Перевірити на SunCalc: чи може тінь на фото відповідати заявленому ранку/вечору цієї дати в цьому місці</li>
+            </ol>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================== 3.11 ===================== -->
+    <section class="topic-section" id="tema-3-11">
+      <div class="section-header">
+        <div class="section-num">3.11</div>
+        <div>
+          <h2>Аналіз фінансових даних (FININT)</h2>
+          <p>Урок 6 (тренінг 7) · 45 хв · Практика з державними реєстрами</p>
+        </div>
+      </div>
+      <div class="prose">
+
+        <div class="definition">
+          <div class="definition-term">FININT (Financial Intelligence) в OSINT</div>
+          <p>Збір та аналіз відкритої, офіційної інформації про фінансову та майнову діяльність організацій і публічних осіб. <strong>FININT — це не хакерство і не доступ до банківських рахунків</strong>: це легальна робота лише з даними, які держава зобов'язана публікувати для прозорості й боротьби з корупцією.</p>
+        </div>
+
+        <h3>Що дозволяє перевірити FININT</h3>
+        <ul style="padding-left:20px; line-height:1.9; font-size:0.9rem;">
+          <li>Чи існує компанія взагалі (статус і реєстрація)?</li>
+          <li>Хто справжній власник (засновник, кінцевий бенефіціар)?</li>
+          <li>Чи має компанія борги або судові позови?</li>
+          <li>Яким майном володіють публічні службовці та їхні родичі (через декларації)?</li>
+        </ul>
+
+        <h3>Інструмент №1: Єдиний державний реєстр (ЄДР)</h3>
+        <p>Найважливіше і найнадійніше джерело перевірки будь-якої юридичної особи в Україні. Дозволяє знайти: точну назву, статус (зареєстровано / у стані припинення / банкрутство), ПІБ керівника, основні види діяльності (КВЕД).</p>
+
+        <h3>Інструмент №2: Реєстр декларацій НАЗК</h3>
+        <p>Інструмент прозорості й доброчесності влади. Публічний пошук за ПІБ публічного службовця — дозволяє переглянути задекларовані доходи й майно.</p>
+
+        <div class="callout callout-warn">
+          <div class="callout-title">⚠️ Етичні межі FININT</div>
+          <p>Будь-які адреси чи телефони приватних осіб збирати заборонено. FININT застосовується лише для справ суспільного інтересу або верифікації надійності бізнес-партнера — не для переслідування чи стеження за приватними особами.</p>
+        </div>
+
+        <h3>Комерційні агрегатори (для контексту)</h3>
+        <p>YouControl, Opendatabot беруть дані з десятків державних реєстрів і об'єднують їх у зручний звіт. Для навчальних цілей курс фокусується на первинних державних джерелах — щоб учні розуміли, звідки беруться дані, а не лише користувались готовим звітом.</p>
+
+        <div class="activity-box">
+          <div class="activity-header">
+            <div class="activity-icon">📊</div>
+            <div>
+              <h4>Практичне завдання: перевірка компанії та декларації</h4>
+              <div class="activity-time">15 хв · Дві групи</div>
+            </div>
+          </div>
+          <div class="activity-content">
+            <p><strong>Група 1:</strong> знайти реальну місцеву компанію/ФОП в ЄДР, визначити точну назву, код ЄДРПОУ та статус.</p>
+            <p><strong>Група 2:</strong> вибрати місцевого депутата чи голову громади, знайти його щорічну декларацію за останні два роки в реєстрі НАЗК, зафіксувати задекларовану суму річного доходу.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================== 3.12 ===================== -->
+    <section class="topic-section" id="tema-3-12">
+      <div class="section-header">
+        <div class="section-num">3.12</div>
+        <div>
+          <h2>Інструменти OSINT: підсумкова практика розробки плану розслідування</h2>
+          <p>Урок 7 (тренінг 7) · 45 хв · Групова робота</p>
+        </div>
+      </div>
+      <div class="prose">
+
+        <div class="callout callout-info">
+          <div class="callout-title">ℹ️ Формат уроку</div>
+          <p>Це підсумковий урок-повторення. Завдання груп — не виконати розслідування повністю, а розробити <strong>детальний, покроковий, етично безпечний план</strong> на 5–6 кроків, вказавши для кожного кроку: що шукаємо, який тип OSINT використовуємо (SOCMINT/GEOINT/FININT/SIGINT), і який інструмент потрібен.</p>
+        </div>
+
+        <div class="op-card">
+          <div class="op-card-header">📋 Зразок кейсу: «Ненадійний забудовник»</div>
+          <div class="op-card-body">
+            <div class="op-label">Сценарій</div>
+            У місцевих новинах і соцмережах (SOCMINT) активно поширюється інформація, що велика будівельна компанія «ЛідерБуд» два тижні тому зупинила роботи на новому житловому комплексі. Клієнти хвилюються, компанія видалила зі свого сайту всі відгуки.
+            <div class="op-label">Завдання групи</div>
+            Розробити план верифікації надійності компанії та перевірки її репутації — поєднуючи: SOCMINT (аналіз обговорень і відгуків у соцмережах до видалення, через кеш Google чи Wayback Machine), FININT (перевірка статусу компанії в ЄДР, наявність судових справ/боргів), GEOINT (супутникові знімки будівництва — чи справді роботи зупинено).
+          </div>
+        </div>
+
+        <div class="callout callout-pract">
+          <div class="callout-title">✅ Структура плану розслідування (шаблон для груп)</div>
+          <table class="data-table">
+            <thead><tr><th>Крок</th><th>Що шукаємо</th><th>Тип OSINT</th><th>Інструмент</th></tr></thead>
+            <tbody>
+              <tr><td>1</td><td>...</td><td>SOCMINT / GEOINT / FININT / SIGINT</td><td>...</td></tr>
+              <tr><td>2</td><td>...</td><td>...</td><td>...</td></tr>
+              <tr><td>3-6</td><td>...</td><td>...</td><td>...</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================== МЕТОДИЧНІ ===================== -->
+    <section class="topic-section" id="metodychni">
+      <div class="section-header">
+        <div class="section-num">🔧</div>
+        <div>
+          <h2>Методичні поради та підсумки модуля</h2>
+        </div>
+      </div>
+      <div class="prose">
+
+        <h3>Психоемоційна безпека на заняттях модуля</h3>
+        <div class="callout callout-warn">
+          <div class="callout-title">⚠️ Особлива увага — тема вербування і теракти</div>
+          <p>Урок про вербування (3.5) працює з реальними кейсами насильства та смерті — потребує особливо ретельного дотримання правил психоемоційної безпеки: оцінка емоційного фону на початку, вправа на заспокоєння (дихання з рахунком до 4), правила безпечного спілкування. Якщо учень виглядає стривоженим або мовчить — індивідуальна підтримка після заняття.</p>
+        </div>
+
+        <h3>Нейродидактичні принципи модуля (для розуміння методики)</h3>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>Принцип</th><th>Чому це працює</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Емоційний гачок на старті</strong></td><td>Мозок підлітка краще реагує на емоційно насичену інформацію — активує лімбічну систему, підвищує дофамін і запам'ятовування</td></tr>
+              <tr><td><strong>Симуляція дилем (рольові гри)</strong></td><td>«Навчання через дію» активує ті самі нейронні мережі, що й реальне життя — формує глибші зв'язки, ніж пасивне слухання</td></tr>
+              <tr><td><strong>Групова робота і презентації</strong></td><td>Активує префронтальну кору (аналіз, мовлення); «навчаючи інших, вчишся сам»</td></tr>
+              <tr><td><strong>Мультимодальність</strong></td><td>Залучення кількох органів чуття (відео, текст, інтерактив) формує міцніші нейронні зв'язки</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Зведений словник абревіатур модуля</h3>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>Абревіатура</th><th>Розшифрування</th></tr></thead>
+            <tbody>
+              <tr><td><strong>OSINT</strong></td><td>Open Source Intelligence — розвідка на основі відкритих джерел</td></tr>
+              <tr><td><strong>SOCMINT</strong></td><td>Social Media Intelligence — розвідка соцмереж</td></tr>
+              <tr><td><strong>GEOINT</strong></td><td>Geospatial Intelligence — геопросторова розвідка</td></tr>
+              <tr><td><strong>FININT</strong></td><td>Financial Intelligence — фінансова розвідка</td></tr>
+              <tr><td><strong>SIGINT</strong></td><td>Signals Intelligence — розвідка сигналів</td></tr>
+              <tr><td><strong>HUMINT</strong></td><td>Human Intelligence — агентурна розвідка через людські джерела</td></tr>
+              <tr><td><strong>ЄДР</strong></td><td>Єдиний державний реєстр юридичних осіб, ФОП та громадських формувань</td></tr>
+              <tr><td><strong>НАЗК</strong></td><td>Національне агентство з питань запобігання корупції</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Технічне забезпечення модуля</h3>
+        <ul style="padding-left:20px; line-height:1.9; font-size:0.9rem;">
+          <li>Проєктор/інтерактивна дошка, стабільний доступ до інтернету</li>
+          <li>Комп'ютери/смартфони з браузером для практичних занять з OSINT/GEOINT/FININT</li>
+          <li>Доступ до Google Earth Pro, SunCalc, ЄДР, реєстру декларацій НАЗК (заздалегідь перевірені вчителем)</li>
+          <li>Роздруковані картки-кейси (СБУ, медіаповідомлення, ситуації для SALUTE з Модуля 2)</li>
+          <li>Ватмани, маркери, фліпчарт для групової роботи</li>
+        </ul>
+
+        <h3>Рекомендовані ресурси для поглибленої підготовки вчителя</h3>
+        <ul style="padding-left:20px; line-height:1.9; font-size:0.9rem;">
+          <li>Spravdi.gov.ua — Центр стратегічних комунікацій та інформаційної безпеки</li>
+          <li>Dovidka.info — практичні гайди з кібербезпеки та інформаційної гігієни</li>
+          <li>Інститут Масової Інформації — «Медіакомпас»</li>
+          <li>disinfo.detector.media</li>
+          <li>OSINT-агенція Molfar — навчальні матеріали з геолокації та аналізу</li>
+          <li>Bellingcat, InformNapalm — приклади професійних розслідувань</li>
+          <li>Е. Бернейс, «Пропаганда» (1928); П. Померанцев, «Це не пропаганда» (2019)</li>
+        </ul>
+
+        <div class="callout callout-pract">
+          <div class="callout-title">✅ Наскрізна ідея модуля</div>
+          <p>Від розуміння того, як працює маніпуляція (теми 3.1–3.5), до практичних навичок захисту й верифікації (теми 3.6–3.12) — модуль готує не лише жертв пасивного споживання інформації, а свідомих громадян, здатних критично аналізувати джерела і навіть самостійно проводити базову перевірку фактів.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <div class="page-nav">
+      <a href="modul-2.html">← Модуль 2. Стрілецька підготовка</a>
+      <a href="modul-4.html">Модуль 4. Домедична допомога поглиблено →</a>
+    </div>
+
+  </main>
+</div>
+
+<footer style="background:var(--ua-blue);color:rgba(255,255,255,0.65);text-align:center;padding:20px 32px;font-size:0.78rem;line-height:1.6;">
+  <strong style="color:var(--ua-yellow);">Захист України. Методичний довідник викладача</strong> · 11 клас, Модуль 3<br>
+  Радомишльський ліцей №3 · За програмою МОН (Наказ №1116 від 08.08.2024) · Матеріали тренінгів №6–7 (гриф №БО-0550-25, 30.12.2025)<br>
+  Інститут Масової Інформації · Spravdi.gov.ua · Dovidka.info · OSINT-агенція Molfar
+</footer>
+
+<script>
+const sections = document.querySelectorAll('.topic-section');
+const navLinks = document.querySelectorAll('.nav-list li a');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const id = entry.target.getAttribute('id');
+      navLinks.forEach(link => {
+        link.classList.toggle('active', link.getAttribute('href') === '#' + id);
+      });
+    }
+  });
+}, { rootMargin: '-20% 0px -70% 0px' });
+sections.forEach(section => observer.observe(section));
+</script>
+</body>
+</html>

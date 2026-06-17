@@ -1,0 +1,1379 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Модуль 6. Домедична допомога в умовах бою — Захист України 10 клас</title>
+<style>
+:root {
+  --ua-blue: #003087;
+  --ua-yellow: #FFD700;
+  --olive: #4A5240;
+  --olive-light: #6B7A5A;
+  --sand: #F5F0E8;
+  --ink: #1C1C1C;
+  --white: #FFFFFF;
+  --divider: #C8C0B0;
+  --accent-red: #C0392B;
+  --accent-green: #2E7D32;
+  --card-bg: #FDFBF7;
+  --info-bg: #E8F0FE;
+  --info-border: #4A90D9;
+  --warn-bg: #FFF8E1;
+  --warn-border: #F9A825;
+  --pract-bg: #E8F5E9;
+  --pract-border: #2E7D32;
+  --tip-bg: #F3E5F5;
+  --tip-border: #7B1FA2;
+  --danger-bg: #FFEBEE;
+  --danger-border: #C62828;
+  --shadow: 0 2px 12px rgba(0,0,0,0.08);
+  --font-display: 'Georgia', 'Times New Roman', serif;
+  --font-body: 'Segoe UI', 'Arial', sans-serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: var(--font-body); background: var(--sand); color: var(--ink); line-height: 1.7; font-size: 15.5px; }
+.topbar-stripe { height: 4px; background: var(--ua-yellow); }
+.topbar { background: var(--ua-blue); color: rgba(255,255,255,0.75); font-size: 0.78rem; padding: 8px 32px; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.topbar a { color: var(--ua-yellow); text-decoration: none; }
+.module-header { background: linear-gradient(135deg, #5c0a0a 0%, #7a1a1a 50%, var(--olive) 100%); color: var(--white); padding: 48px 32px 40px; position: relative; overflow: hidden; }
+.module-header::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 4px; background: var(--ua-yellow); }
+.module-header-inner { max-width: 1100px; margin: 0 auto; }
+.module-eyebrow { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ua-yellow); margin-bottom: 12px; }
+.module-header h1 { font-family: var(--font-display); font-size: clamp(1.6rem, 4vw, 2.4rem); font-weight: 700; line-height: 1.2; margin-bottom: 14px; max-width: 780px; }
+.module-header-meta { display: flex; flex-wrap: wrap; gap: 20px; margin-top: 20px; }
+.meta-pill { background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2); border-radius: 20px; padding: 5px 14px; font-size: 0.8rem; display: flex; align-items: center; gap: 6px; }
+.meta-pill span { opacity: 0.7; }
+.page-layout { max-width: 1100px; margin: 0 auto; padding: 40px 32px 80px; display: grid; grid-template-columns: 260px 1fr; gap: 40px; align-items: start; }
+.sidebar { position: sticky; top: 16px; }
+.nav-block { background: var(--card-bg); border: 1px solid var(--divider); border-radius: 8px; overflow: hidden; margin-bottom: 20px; }
+.nav-block-title { background: var(--ua-blue); color: var(--ua-yellow); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.10em; text-transform: uppercase; padding: 10px 16px; }
+.nav-list { list-style: none; padding: 8px 0; }
+.nav-list li a { display: flex; align-items: flex-start; gap: 8px; padding: 7px 16px; text-decoration: none; color: var(--ink); font-size: 0.82rem; line-height: 1.4; transition: background 0.15s; }
+.nav-list li a:hover { background: #EEE8DC; color: var(--ua-blue); }
+.nav-list li a .nav-num { color: var(--olive-light); font-weight: 700; flex-shrink: 0; font-size: 0.75rem; margin-top: 1px; }
+.nav-list li a.active { background: #DDD5C5; font-weight: 600; color: var(--ua-blue); }
+.content { min-width: 0; }
+.topic-section { margin-bottom: 52px; scroll-margin-top: 20px; }
+.section-header { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 24px; padding-bottom: 14px; border-bottom: 2px solid var(--divider); }
+.section-num { background: var(--ua-blue); color: var(--ua-yellow); font-family: var(--font-display); font-size: 1rem; font-weight: 700; padding: 5px 12px; border-radius: 3px; flex-shrink: 0; margin-top: 3px; }
+.section-header h2 { font-family: var(--font-display); font-size: 1.35rem; font-weight: 700; color: var(--ua-blue); line-height: 1.25; }
+.section-header p { font-size: 0.84rem; color: #666; margin-top: 4px; }
+.prose p { margin-bottom: 14px; }
+.prose h3 { font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; color: var(--olive); margin: 24px 0 10px; }
+.prose h4 { font-size: 0.82rem; font-weight: 700; color: var(--ua-blue); margin: 18px 0 8px; text-transform: uppercase; letter-spacing: 0.04em; }
+.callout { border-left: 4px solid; border-radius: 4px; padding: 16px 20px; margin: 20px 0; }
+.callout-info { background: var(--info-bg); border-color: var(--info-border); }
+.callout-warn { background: var(--warn-bg); border-color: var(--warn-border); }
+.callout-pract { background: var(--pract-bg); border-color: var(--pract-border); }
+.callout-tip { background: var(--tip-bg); border-color: var(--tip-border); }
+.callout-danger { background: var(--danger-bg); border-color: var(--danger-border); }
+.callout-title { font-weight: 700; font-size: 0.82rem; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 8px; display: flex; align-items: center; gap: 6px; }
+.callout-info .callout-title { color: var(--info-border); }
+.callout-warn .callout-title { color: #B8860B; }
+.callout-pract .callout-title { color: var(--accent-green); }
+.callout-tip .callout-title { color: #6A0080; }
+.callout-danger .callout-title { color: var(--danger-border); }
+.callout p, .callout ul, .callout ol { font-size: 0.9rem; line-height: 1.6; }
+.callout p + p { margin-top: 8px; }
+.callout ul, .callout ol { padding-left: 18px; }
+.callout ul li, .callout ol li { margin-bottom: 4px; }
+.table-wrap { overflow-x: auto; margin: 20px 0; border-radius: 6px; border: 1px solid var(--divider); }
+.data-table { width: 100%; border-collapse: collapse; font-size: 0.87rem; background: var(--white); }
+.data-table th { background: var(--ua-blue); color: var(--white); padding: 10px 14px; text-align: left; font-weight: 600; font-size: 0.82rem; }
+.data-table td { padding: 9px 14px; border-bottom: 1px solid var(--divider); vertical-align: top; line-height: 1.5; }
+.data-table tr:last-child td { border-bottom: none; }
+.data-table tr:nth-child(even) td { background: #F7F3EC; }
+.data-table tr:hover td { background: #EDE8DC; }
+.data-table td.num { font-weight: 700; color: var(--ua-blue); text-align: center; }
+.definition { background: var(--white); border: 1px solid var(--divider); border-radius: 6px; padding: 16px 20px; margin: 16px 0; position: relative; }
+.definition::before { content: '📌'; position: absolute; top: 14px; right: 16px; font-size: 1rem; }
+.definition-term { font-weight: 700; font-size: 0.95rem; color: var(--ua-blue); margin-bottom: 6px; }
+.definition p { font-size: 0.88rem; color: #444; line-height: 1.6; }
+.steps-list { list-style: none; counter-reset: step-counter; margin: 16px 0; }
+.steps-list li { counter-increment: step-counter; display: flex; gap: 14px; align-items: flex-start; margin-bottom: 12px; background: var(--white); border: 1px solid var(--divider); border-radius: 5px; padding: 12px 14px; font-size: 0.9rem; line-height: 1.5; }
+.steps-list li::before { content: counter(step-counter); background: var(--ua-blue); color: var(--ua-yellow); font-weight: 700; font-size: 0.85rem; width: 26px; height: 26px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; margin: 16px 0; }
+.info-card { background: var(--card-bg); border: 1px solid var(--divider); border-radius: 6px; padding: 18px; font-size: 0.87rem; }
+.info-card .card-title { font-weight: 700; color: var(--ua-blue); margin-bottom: 8px; font-size: 0.9rem; display: flex; align-items: center; gap: 8px; }
+.info-card ul { padding-left: 16px; line-height: 1.65; }
+.info-card ul li { margin-bottom: 3px; }
+.activity-box { background: var(--card-bg); border: 1px solid var(--divider); border-radius: 8px; padding: 24px; margin: 20px 0; }
+.activity-header { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--divider); }
+.activity-icon { font-size: 1.6rem; }
+.activity-header h4 { font-family: var(--font-display); font-size: 1rem; font-weight: 700; color: var(--ua-blue); line-height: 1.3; }
+.activity-header .activity-time { font-size: 0.78rem; color: #888; margin-top: 2px; }
+.activity-content { font-size: 0.88rem; line-height: 1.65; }
+.activity-content p { margin-bottom: 10px; }
+.activity-content ul, .activity-content ol { padding-left: 18px; }
+.activity-content li { margin-bottom: 5px; }
+.video-link { display: inline-flex; align-items: center; gap: 8px; background: #B71C1C; color: var(--white); text-decoration: none; padding: 7px 16px; border-radius: 4px; font-size: 0.83rem; font-weight: 600; margin: 4px 0; transition: background 0.15s; }
+.video-link:hover { background: #8B0000; }
+.video-link::before { content: '▶'; }
+.breadcrumb { display: flex; align-items: center; gap: 8px; font-size: 0.8rem; color: #888; margin-bottom: 28px; flex-wrap: wrap; }
+.breadcrumb a { color: var(--ua-blue); text-decoration: none; }
+.breadcrumb .sep { color: #CCC; }
+.breadcrumb .current { color: var(--ink); font-weight: 600; }
+.module-progress { display: flex; gap: 4px; margin-bottom: 28px; }
+.progress-dot { width: 28px; height: 6px; border-radius: 3px; background: var(--divider); }
+.progress-dot.done { background: var(--ua-blue); }
+.progress-dot.current { background: var(--ua-yellow); }
+.page-nav { display: flex; justify-content: space-between; gap: 16px; margin-top: 48px; padding-top: 24px; border-top: 2px solid var(--divider); flex-wrap: wrap; }
+.page-nav a { display: flex; align-items: center; gap: 8px; color: var(--ua-blue); text-decoration: none; font-weight: 600; font-size: 0.9rem; padding: 10px 16px; border: 1px solid var(--divider); border-radius: 5px; background: var(--card-bg); transition: box-shadow 0.15s; }
+.page-nav a:hover { box-shadow: var(--shadow); }
+
+/* MARCH BLOCK */
+.march-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; margin: 20px 0; }
+.march-card { border-radius: 8px; padding: 16px; color: white; }
+.march-card .march-letter { font-family: var(--font-display); font-size: 2.2rem; font-weight: 900; line-height: 1; }
+.march-card .march-name { font-weight: 700; font-size: 0.95rem; margin: 6px 0 4px; }
+.march-card p { font-size: 0.8rem; line-height: 1.5; opacity: 0.95; }
+.march-m { background: linear-gradient(135deg, #8B0000, #C0392B); }
+.march-a { background: linear-gradient(135deg, #1a5c3a, #2E7D32); }
+.march-r { background: linear-gradient(135deg, #1a3a6b, #2563ae); }
+.march-c { background: linear-gradient(135deg, #6b1a5c, #9C27B0); }
+.march-h { background: linear-gradient(135deg, #1a4a5c, #00838F); }
+
+/* TOURNIQUET TYPES */
+.tq-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 14px; margin: 16px 0; }
+.tq-card { background: var(--card-bg); border: 1px solid var(--divider); border-radius: 6px; padding: 14px; font-size: 0.84rem; }
+.tq-card .tq-name { font-weight: 700; color: var(--ua-blue); margin-bottom: 6px; }
+.tq-card .tq-models { font-size: 0.78rem; color: var(--olive); font-weight: 600; }
+
+/* PHASE TIMELINE */
+.phase-timeline { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; margin: 20px 0; border-radius: 8px; overflow: hidden; }
+.phase-block { padding: 18px 16px; color: white; position: relative; }
+.phase-red { background: linear-gradient(135deg, #8B0000, #C0392B); }
+.phase-yellow { background: linear-gradient(135deg, #B8860B, #F9A825); color: #2a2000; }
+.phase-green { background: linear-gradient(135deg, #1a5c3a, #2E7D32); }
+.phase-block .phase-title { font-weight: 700; font-size: 0.95rem; margin-bottom: 6px; }
+.phase-block .phase-en { font-size: 0.72rem; opacity: 0.85; font-style: italic; margin-bottom: 8px; }
+.phase-block ul { padding-left: 16px; font-size: 0.8rem; line-height: 1.6; }
+
+/* GEAR LIST */
+.gear-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; margin: 16px 0; }
+.gear-card { background: var(--white); border: 1px solid var(--divider); border-radius: 6px; padding: 12px 14px; font-size: 0.84rem; display: flex; gap: 10px; align-items: flex-start; }
+.gear-icon { font-size: 1.3rem; flex-shrink: 0; }
+.gear-name { font-weight: 700; color: var(--ua-blue); }
+.gear-desc { color: #555; font-size: 0.8rem; margin-top: 2px; }
+
+/* SCENARIO CARDS */
+.scenario-card { background: var(--white); border: 1px solid var(--divider); border-radius: 8px; overflow: hidden; margin: 16px 0; }
+.scenario-header { background: var(--olive); color: white; padding: 12px 18px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap: 8px; }
+.scenario-header .scenario-name { font-weight: 700; font-size: 1rem; }
+.scenario-header .scenario-meta { font-size: 0.78rem; opacity: 0.85; }
+.scenario-body { padding: 16px 18px; font-size: 0.88rem; line-height: 1.6; }
+.scenario-body .sc-label { font-weight: 700; color: var(--ua-blue); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.04em; margin-top: 10px; margin-bottom: 4px; }
+.scenario-body .sc-label:first-child { margin-top: 0; }
+
+/* STRESS RESPONSE GRID */
+.stress-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 14px; margin: 16px 0; }
+.stress-card { border-radius: 6px; padding: 14px; font-size: 0.84rem; border: 1px solid rgba(0,0,0,0.1); }
+.stress-fight { background: #FFEBEE; border-color: #E57373; }
+.stress-flight { background: #FFF3E0; border-color: #FFB74D; }
+.stress-freeze { background: #E3F2FD; border-color: #64B5F6; }
+.stress-card .stress-name { font-weight: 700; margin-bottom: 6px; }
+
+/* CARRY METHODS */
+.carry-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 14px; margin: 16px 0; }
+.carry-card { background: var(--card-bg); border: 1px solid var(--divider); border-radius: 6px; padding: 14px; font-size: 0.85rem; }
+.carry-card .carry-name { font-weight: 700; color: var(--ua-blue); margin-bottom: 6px; }
+
+@media (max-width: 860px) {
+  .page-layout { grid-template-columns: 1fr; }
+  .sidebar { position: static; }
+  .module-header { padding: 36px 16px 30px; }
+  .page-layout { padding: 24px 16px 60px; }
+  .phase-timeline { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<div class="topbar-stripe"></div>
+<div class="topbar">
+  <div>📘 <a href="../index.html">Довідник викладача «Захист України»</a> › 10 клас › Модуль 6</div>
+  <div>МОН 2024 · Інтегрований курс</div>
+</div>
+
+<header class="module-header">
+  <div class="module-header-inner">
+    <div class="module-eyebrow">10 клас · Модуль 6 · Тренінги №8–9 · Фінальний модуль</div>
+    <h1>Домедична допомога в умовах бою</h1>
+    <div class="module-header-meta">
+      <div class="meta-pill">📋 <span>11 уроків · ~495 хв</span></div>
+      <div class="meta-pill">🩹 <span>Турнікет, тампонування, бандаж</span></div>
+      <div class="meta-pill">🫁 <span>Дихання, пневмоторакс</span></div>
+      <div class="meta-pill">🧠 <span>Бойовий стрес, евакуація</span></div>
+    </div>
+  </div>
+</header>
+
+<div class="page-layout">
+  <aside class="sidebar">
+    <div class="nav-block">
+      <div class="nav-block-title">Теми модуля</div>
+      <ul class="nav-list">
+        <li><a href="#tema-6-1"><span class="nav-num">6.1</span>Протоколи TCCC: три фази</a></li>
+        <li><a href="#tema-6-2"><span class="nav-num">6.2</span>Бойовий стрес і саморегуляція</a></li>
+        <li><a href="#tema-6-3"><span class="nav-num">6.3</span>Алгоритм MARCH і аптечка IFAK</a></li>
+        <li><a href="#tema-6-4"><span class="nav-num">6.4</span>Огляд постраждалого і критична кровотеча</a></li>
+        <li><a href="#tema-6-5"><span class="nav-num">6.5</span>Турнікет: будова і типи</a></li>
+        <li><a href="#tema-6-6"><span class="nav-num">6.6</span>Накладання турнікета: покрокова інструкція</a></li>
+        <li><a href="#tema-6-7"><span class="nav-num">6.7</span>Тампонування рани: алгоритм 4Р</a></li>
+        <li><a href="#tema-6-8"><span class="nav-num">6.8</span>Бандажування та компресійні пов'язки</a></li>
+        <li><a href="#tema-6-9"><span class="nav-num">6.9</span>Дихальні шляхи та бокове положення</a></li>
+        <li><a href="#tema-6-10"><span class="nav-num">6.10</span>Дихання та пневмоторакс</a></li>
+        <li><a href="#tema-6-11"><span class="nav-num">6.11</span>Пульс, переохолодження, картка пораненого</a></li>
+        <li><a href="#tema-6-12"><span class="nav-num">6.12</span>Евакуація пораненого</a></li>
+        <li><a href="#tema-6-13"><span class="nav-num">6.13</span>Комплексні сценарії для практики</a></li>
+        <li><a href="#metodychni"><span class="nav-num">🔧</span>Методичні поради</a></li>
+      </ul>
+    </div>
+    <div class="nav-block">
+      <div class="nav-block-title">Навігація курсу</div>
+      <ul class="nav-list">
+        <li><a href="../index.html"><span class="nav-num">🏠</span>Головна</a></li>
+        <li><a href="modul-5.html"><span class="nav-num">←</span>Модуль 5. Орієнтування</a></li>
+        <li><a href="../11/modul-1.html"><span class="nav-num">→</span>11 клас. Модуль 1</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <main class="content">
+
+    <div class="breadcrumb">
+      <a href="../index.html">Довідник</a>
+      <span class="sep">/</span>
+      <span>10 клас</span>
+      <span class="sep">/</span>
+      <span class="current">Модуль 6. Домедична допомога в умовах бою</span>
+    </div>
+
+    <div class="module-progress">
+      <div class="progress-dot done"></div>
+      <div class="progress-dot done"></div>
+      <div class="progress-dot done"></div>
+      <div class="progress-dot done"></div>
+      <div class="progress-dot done"></div>
+      <div class="progress-dot current"></div>
+    </div>
+
+    <div class="callout callout-info">
+      <div class="callout-title">ℹ️ Загальний огляд модуля</div>
+      <p>Завершальний модуль 10 класу — найбільш практично орієнтований у всьому курсі. Понад половина всіх смертей на полі бою та в цивільних надзвичайних ситуаціях від крововтрати настається в перші хвилини, коли швидка допомога фізично не встигає прибути. <strong>Ключова ідея TCCC:</strong> кожна людина, незалежно від спеціальності, може стати першою особою, що рятує життя.</p>
+      <p>Джерела: Тренінги №8–9 (МОН, 2025 р., гриф №БО-0550-25), офіційний посібник з TCCC (naemt.org), Tactical Combat Casualty Care Handbook v5, tccc.org.ua, СоТССС Defense Health Agency.</p>
+    </div>
+
+    <div class="callout callout-warn">
+      <div class="callout-title">⚠️ Протипоказання та безпека тренувань — прочитати перед модулем</div>
+      <p>Перед практичним відпрацюванням накладання турнікетів ОБОВ'ЯЗКОВО опитайте учнів щодо протипоказань. Фраза для опитування: <em>«Перед початком відпрацювання, скажіть мені, якщо у вас є проблеми з судинами, варикоз, тромбоз, цукровий діабет або свіжі травми рук чи ніг. Якщо щось із цього є — ви можете брати участь у навчанні, але не накладатимемо турнікет на вас особисто»</em>.</p>
+          <p><strong>Протипоказання:</strong> варикозне розширення вен, хронічна венозна недостатність, тромбоз/тромбофлебіт в анамнезі, атеросклероз, встановлені стенти/шунти, полінейропатії, цукровий діабет з ураженням судин, порушення чутливості, свіжі травми/переломи/шви, лімфостаз, васкуліти, вагітність, відкриті рани в місці накладання.</p>
+      <p><strong>Правила безпечного тренування:</strong> навчальні (м'якші) турнікети, не більше 2–3 накладань на одну кінцівку за тренування, перерва між накладаннями мінімум 5 хв, чергування кінцівок. Негайно зупинити вправу при різкому болі, сильному оніміненні, блідості/синюшності пальців, запамороченні.</p>
+    </div>
+
+    <!-- ===================== 6.1 ===================== -->
+    <section class="topic-section" id="tema-6-1">
+      <div class="section-header">
+        <div class="section-num">6.1</div>
+        <div>
+          <h2>Протоколи TCCC: три фази допомоги пораненому</h2>
+          <p>Урок 5 (тренінг 8) · Теорія</p>
+        </div>
+      </div>
+      <div class="prose">
+
+        <div class="definition">
+          <div class="definition-term">TCCC (Tactical Combat Casualty Care)</div>
+          <p>Протокол тактичної допомоги пораненим в умовах бойових дій, що адаптує стандартні протоколи першої допомоги до специфічних загроз поля бою. Головна мета — зменшити кількість загиблих, розділяючи етапи надання допомоги відповідно до рівня загрози.</p>
+        </div>
+
+        <h3>Три фази протоколу TCCC</h3>
+
+        <div class="phase-timeline">
+          <div class="phase-block phase-red">
+            <div class="phase-title">🔴 Допомога під вогнем</div>
+            <div class="phase-en">Care Under Fire — «червона зона»</div>
+            <ul>
+              <li>Зона прямої загрози</li>
+              <li>Пріоритет — власна безпека</li>
+              <li>Єдина дія: накласти турнікет на масивну кровотечу кінцівки</li>
+              <li>Усе інше — заборонено, доки не в укритті</li>
+            </ul>
+          </div>
+          <div class="phase-block phase-yellow">
+            <div class="phase-title">🟡 Допомога в польових умовах</div>
+            <div class="phase-en">Tactical Field Care — «жовта зона»</div>
+            <ul>
+              <li>Відносно безпечна зона</li>
+              <li>Повноцінна допомога за алгоритмом MARCH</li>
+              <li>Розгорнутий огляд, тампонування, бандажування</li>
+            </ul>
+          </div>
+          <div class="phase-block phase-green">
+            <div class="phase-title">🟢 Допомога під час евакуації</div>
+            <div class="phase-en">Tactical Evacuation Care</div>
+            <ul>
+              <li>Надання допомоги під час транспортування</li>
+              <li>Підтримка стану до прибуття медиків</li>
+              <li>Передача за карткою пораненого</li>
+            </ul>
+          </div>
+        </div>
+
+        <h3>Тактичні пріоритети (послідовність дій)</h3>
+        <ol class="steps-list">
+          <li>Подбати про безпеку місця події</li>
+          <li>Перемістити пораненого/поранену в безпечне місце</li>
+          <li>Виявити та зупинити загрозливу для життя кровотечу</li>
+        </ol>
+
+        <div class="callout callout-warn">
+          <div class="callout-title">⚠️ Чому «безпека понад усе» — не просто слова</div>
+          <p>Якщо рятувальник буде поранений під час спроби допомогти — він не зможе допомогти ні собі, ні іншим. Перед будь-якими діями: оцінити ситуацію, визначити укриття, можливі шляхи евакуації та наявність небезпек (обстріли, уламки, вибухівка).</p>
+        </div>
+
+        <div class="callout callout-info">
+          <div class="callout-title">ℹ️ Реальний приклад застосування</div>
+          <p>Військовий з розвідбату Третьої штурмової бригади врятував життя пораненого у Венеції завдяки власній підготовці й знанням протоколу TCCC (джерело: ТСН) — підтвердження того, що ці навички працюють і поза полем бою.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================== 6.2 ===================== -->
+    <section class="topic-section" id="tema-6-2">
+      <div class="section-header">
+        <div class="section-num">6.2</div>
+        <div>
+          <h2>Бойовий стрес та психологія екстремальних ситуацій</h2>
+          <p>Урок 5 (тренінг 8) · Теорія + практичні техніки</p>
+        </div>
+      </div>
+      <div class="prose">
+
+        <h3>Реакції на стрес: Fight / Flight / Freeze</h3>
+
+        <div class="stress-grid">
+          <div class="stress-card stress-fight">
+            <div class="stress-name">⚔️ Боротьба (Fight)</div>
+            <p>Агресивна, активна реакція на загрозу. Мобілізація всіх ресурсів для протидії.</p>
+          </div>
+          <div class="stress-card stress-flight">
+            <div class="stress-name">🏃 Втеча (Flight)</div>
+            <p>Спроба уникнути загрози фізичним віддаленням. Може проявлятись як панічний біг.</p>
+          </div>
+          <div class="stress-card stress-freeze">
+            <div class="stress-name">❄️ Ступор (Freeze)</div>
+            <p>Повне «завмирання», нездатність діяти. Тіло «вимикається» для маскування від загрози.</p>
+          </div>
+        </div>
+
+        <div class="definition">
+          <div class="definition-term">Біологічний механізм: «рептильний мозок» vs логіка</div>
+          <p><strong>Амигдала</strong> (центр страху) реагує на загрозу миттєво, активуючи Fight/Flight/Freeze, і «захоплює» мозок у стані паніки. <strong>Префронтальна кора</strong> (логіка, планування) у гострому стресі різко пригнічується — тому довгі розмови й умовляння не діють. <strong>Гіпокамп</strong> (пам'ять) гальмується кортизолом — звідси фрагментовані, нечіткі спогади про травматичні події.</p>
+        </div>
+
+        <div class="callout callout-info">
+          <div class="callout-title">ℹ️ «Страх — твій слуга»</div>
+          <p>Мета не в тому, щоб усунути страх, а в тому, щоб підкорити його чіткими діями та командами. Адреналін може заблокувати відчуття болю від власного ранення — еволюційний механізм, що дозволяє продовжувати діяти. Тому перша команда собі в укритті — <strong>«Стоп-кадр»</strong>: огляньте себе, перевірте травми, лише потім допомагайте іншим.</p>
+        </div>
+
+        <h3>Техніки виходу зі стресового стану</h3>
+
+        <div class="card-grid">
+          <div class="info-card">
+            <div class="card-title">🌬️ Дихання «Квадрат»</div>
+            <ul>
+              <li>Вдих — рахунок до 4</li>
+              <li>Затримка — рахунок до 4</li>
+              <li>Видих — рахунок до 6 (довший за вдих!)</li>
+              <li>Пауза — рахунок до 2–4</li>
+            </ul>
+          </div>
+          <div class="info-card">
+            <div class="card-title">👁️ Заземлення «5-4-3-2-1»</div>
+            <ul>
+              <li>5 предметів, які бачите</li>
+              <li>4 речі, які відчуваєте дотиком</li>
+              <li>3 звуки, які чуєте</li>
+              <li>2 запахи</li>
+              <li>1 смак</li>
+            </ul>
+          </div>
+          <div class="info-card">
+            <div class="card-title">✊ М'язовий «стоп-кадр»</div>
+            <ul>
+              <li>Стиснути кулаки щосили (5 с)</li>
+              <li>Різко розслабити</li>
+              <li>Повторити кілька разів</li>
+            </ul>
+          </div>
+          <div class="info-card">
+            <div class="card-title">📍 Фізичний якір</div>
+            <ul>
+              <li>Ущипнути себе або натиснути нігтем у долоню</li>
+              <li>Сконцентруватись на відчутті болю</li>
+              <li>Різко повертає фокус з паніки на тіло</li>
+            </ul>
+          </div>
+        </div>
+
+        <h3>Протокол ЯАЛОМ — допомога постраждалому під стресом</h3>
+
+        <table class="data-table" style="margin:16px 0;">
+          <thead><tr><th>Буква</th><th>Дія</th><th>Фраза для постраждалого</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Я</strong></td><td>Я знаю / Я тут</td><td>«Я тут, щоб тобі допомогти»</td></tr>
+            <tr><td><strong>А</strong></td><td>А що з тобою?</td><td>«Що з тобою сталося? Де болить?»</td></tr>
+            <tr><td><strong>Л</strong></td><td>Лежи</td><td>«Лежи, не рухайся»</td></tr>
+            <tr><td><strong>О</strong></td><td>Озирнися</td><td>«Озирнися, ми зараз перемістимося в безпечне місце»</td></tr>
+            <tr><td><strong>М</strong></td><td>Можеш сам?</td><td>«Можеш повзти? Повзи!»</td></tr>
+          </tbody>
+        </table>
+
+        <h3>Протоколи реагування на специфічні стани (взаємодопомога)</h3>
+
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>Стан</th><th>Що робити</th><th>Що ЗАБОРОНЕНО</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Паніка</strong></td><td>Короткі прості команди («Сядь», «Дихай 4-6»), повернути увагу до тіла</td><td>Кричати у відповідь, давати складні інструкції, обговорювати ситуацію</td></tr>
+              <tr><td><strong>Ступор/завмирання</strong></td><td>Говорити тихо, повільно, чітко на вухо щось емоційно значуще (ім'я командира). Фізичний контакт, вирівняти своє дихання під його ритм</td><td>Примушувати до діалогу, шарпати, кричати, проявляти жалість</td></tr>
+              <tr><td><strong>Нервове тремтіння</strong></td><td>НЕ зупиняти, а підсилити! Взяти за плечі та різко потрясти 10–15 с — природний механізм скидання напруги</td><td>Обіймати, укривати, заспокоювати словами «візьми себе в руки»</td></tr>
+              <tr><td><strong>Нетримання</strong></td><td>НЕ КОМЕНТУВАТИ. Створити умови приватності. Нормалізувати: «Це нормальна реакція тіла. Це мине»</td><td>Висміювати, соромити, звертати увагу</td></tr>
+              <tr><td><strong>Апатія</strong></td><td>Проста рутинна робота (приготувати чай, зібрати спорядження), забезпечити теплом, їжею, водою</td><td>Надмірна жалість, змушувати розповідати про почуття</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout callout-tip">
+          <div class="callout-title">💡 Важливо для вчителя: нормалізація реакцій</div>
+          <p>Ці реакції абсолютно нормальні з біологічної точки зору. Після стабілізації важливо проговорити це з учнями: йдеться про захисний механізм, і з часом мозок навчиться краще з ним справлятися. Це не «проблема» — це «сигнал».</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================== 6.3 ===================== -->
+    <section class="topic-section" id="tema-6-3">
+      <div class="section-header">
+        <div class="section-num">6.3</div>
+        <div>
+          <h2>Алгоритм MARCH та склад аптечки IFAK</h2>
+          <p>Урок 7 (тренінг 8) · Теорія + практика з аптечкою</p>
+        </div>
+      </div>
+      <div class="prose">
+
+        <div class="definition">
+          <div class="definition-term">MARCH</div>
+          <p>Мнемонічний алгоритм послідовності дій при наданні допомоги пораненому, що визначає пріоритетність втручань за критичністю загрози життю.</p>
+        </div>
+
+        <div class="march-grid">
+          <div class="march-card march-m">
+            <div class="march-letter">M</div>
+            <div class="march-name">Massive Hemorrhage</div>
+            <p>Масивна кровотеча. Найважливіший крок — може вбити за лічені хвилини</p>
+          </div>
+          <div class="march-card march-a">
+            <div class="march-letter">A</div>
+            <div class="march-name">Airway</div>
+            <p>Дихальні шляхи. Перевірити, чи дихає поранений, чи прохідні шляхи</p>
+          </div>
+          <div class="march-card march-r">
+            <div class="march-letter">R</div>
+            <div class="march-name">Respiration</div>
+            <p>Дихання. Огляд грудної клітки, виявлення відкритих ран, оклюзійна пов'язка</p>
+          </div>
+          <div class="march-card march-c">
+            <div class="march-letter">C</div>
+            <div class="march-name">Circulation</div>
+            <p>Циркуляція. Інші джерела кровотечі, не зупинені турнікетами — бандажі, гемостатики</p>
+          </div>
+          <div class="march-card march-h">
+            <div class="march-letter">H</div>
+            <div class="march-name">Hypothermia / Head injury</div>
+            <p>Переохолодження / травма голови. Ізоляція від втрати тепла, обережність при ЧМТ</p>
+          </div>
+        </div>
+
+        <div class="callout callout-info">
+          <div class="callout-title">ℹ️ Зв'язок з фазами TCCC</div>
+          <p>У <strong>червоній зоні</strong> (під вогнем) допустима ЛИШЕ дія M — турнікет на масивну кровотечу. Повний алгоритм MARCH (A-R-C-H) виконується тільки в <strong>жовтій зоні</strong> (відносна безпека).</p>
+        </div>
+
+        <h3>Аптечка IFAK (Individual First Aid Kit)</h3>
+
+        <div class="definition">
+          <div class="definition-term">IFAK</div>
+          <p>Індивідуальна аптечка першої допомоги, призначена для екстреної медичної допомоги в бойових умовах чи надзвичайних ситуаціях. Завдання — забезпечити першу допомогу до прибуття медиків або евакуації.</p>
+        </div>
+
+        <div class="gear-grid">
+          <div class="gear-card"><div class="gear-icon">🩹</div><div><div class="gear-name">Турнікет</div><div class="gear-desc">Швидка зупинка сильної кровотечі з кінцівок</div></div></div>
+          <div class="gear-card"><div class="gear-icon">🎗️</div><div><div class="gear-name">Компресійний бинт (ізраїльський бандаж)</div><div class="gear-desc">Накладання на рану та зупинка кровотечі</div></div></div>
+          <div class="gear-card"><div class="gear-icon">🧪</div><div><div class="gear-name">Гемостатичний засіб</div><div class="gear-desc">Порошок або бинт для прискорення зсідання крові</div></div></div>
+          <div class="gear-card"><div class="gear-icon">🫁</div><div><div class="gear-name">Назофарингеальна трубка</div><div class="gear-desc">Підтримка прохідності дихальних шляхів у разі непритомності</div></div></div>
+          <div class="gear-card"><div class="gear-icon">🔲</div><div><div class="gear-name">Оклюзійна пов'язка</div><div class="gear-desc">Закриття відкритих ран грудної клітки, запобігання колапсу легені</div></div></div>
+          <div class="gear-card"><div class="gear-icon">🧤</div><div><div class="gear-name">Медичні рукавички</div><div class="gear-desc">Стерильність, захист від інфекцій і контакту з кров'ю</div></div></div>
+        </div>
+
+        <div class="activity-box">
+          <div class="activity-header">
+            <div class="activity-icon">🎒</div>
+            <div>
+              <h4>Практична активність: укомплектування аптечки</h4>
+              <div class="activity-time">25 хв · Парна та групова робота</div>
+            </div>
+          </div>
+          <div class="activity-content">
+            <p><strong>Базовий варіант:</strong> у парах — один дістає з аптечки предмет, інший називає і пояснює призначення. Потім міняються ролями.</p>
+            <p><strong>Просунутий варіант:</strong> покажіть зразкову аптечку, укомплектовану за IFAK. Роздайте 2–3 порожні аптечки та купу перемішаних медзасобів. Кожна група самостійно укомплектовує аптечку за схемою (зразок тримає лише вчитель — для перевірки).</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================== 6.4 ===================== -->
+    <section class="topic-section" id="tema-6-4">
+      <div class="section-header">
+        <div class="section-num">6.4</div>
+        <div>
+          <h2>Огляд постраждалого та ознаки критичної кровотечі</h2>
+          <p>Урок 8 (тренінг 8) · Теорія + практика</p>
+        </div>
+      </div>
+      <div class="prose">
+
+        <div class="callout callout-info">
+          <div class="callout-title">ℹ️ Чому огляд — найважливіший крок</div>
+          <p>«Огляд постраждалого — перший пункт вашого плану дій. Якщо ви не знаєте, що з ним, ви не зможете допомогти». Постраждалий з масивною кровотечею може померти за 3 хвилини — часу на роздуми немає.</p>
+        </div>
+
+        <h3>Швидкий огляд (15–30 секунд)</h3>
+        <p>Швидко пройтися по тілу, звертаючи увагу на дихання, рівень свідомості, великі плями крові, пошкоджений одяг.</p>
+
+        <h3>Ознаки критичної кровотечі</h3>
+
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>Ознака</th><th>Опис</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Пульсуюча кровотеча</strong></td><td>Кров б'є струменем в такт серцебиттю — артеріальна кровотеча</td></tr>
+              <tr><td><strong>Масивна калюжа крові</strong></td><td>Кров швидко накопичується під постраждалим</td></tr>
+              <tr><td><strong>Просочений кров'ю одяг</strong></td><td>Одяг мокрий і просочений кров'ю</td></tr>
+              <tr><td><strong>Втрата кінцівки</strong></td><td>Кінцівка відсутня або є лише її частина</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout callout-warn">
+          <div class="callout-title">⚠️ Важлива деталь огляду: перевірка взуття</div>
+          <p>Взуття може спрацьовувати як «губка», вбираючи велику кількість крові і приховуючи критичну кровотечу. Завжди перевіряйте стопи, навіть якщо зовні все виглядає нормально.</p>
+        </div>
+
+        <div class="activity-box">
+          <div class="activity-header">
+            <div class="activity-icon">🔍</div>
+            <div>
+              <h4>Практика: швидкий огляд у парах</h4>
+              <div class="activity-time">11 хв</div>
+            </div>
+          </div>
+          <div class="activity-content">
+            <p>У парах: один «рятувальник», інший «постраждалий». Рукавички обов'язково (рекомендовано білі нітрилові — щоб було видно кров після пальпації). Завдання: за 10–15 секунд оцінити стан, перевірити дихання, рівень свідомості, знайти і «озвучити» всі видимі травми. Комунікувати з постраждалим, якщо він при тямі.</p>
+          </div>
+        </div>
+
+        <div class="callout callout-tip">
+          <div class="callout-title">💡 Психологічна підготовка</div>
+          <p>Вигляд крові може викликати страх — це нормальна реакція, яку можна подолати тренуванням. «Кров — це страшно, але це лише симптом, а справжня небезпека — бездіяльність».</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================== 6.5 ===================== -->
+    <section class="topic-section" id="tema-6-5">
+      <div class="section-header">
+        <div class="section-num">6.5</div>
+        <div>
+          <h2>Турнікет: принцип дії та типи</h2>
+          <p>Урок 1 (тренінг 9), частина 1 · Теорія</p>
+        </div>
+      </div>
+      <div class="prose">
+
+        <div class="callout callout-danger">
+          <div class="callout-title">⛔ Правила, написані кров'ю</div>
+          <p>Неухильне дотримання протоколу, лише сертифіковані засоби, жодної імпровізації чи саморобних турнікетів. При критичній кровотечі смертельний об'єм крові втрачається менш ніж за 3 хвилини.</p>
+        </div>
+
+        <h3>Принцип дії турнікета</h3>
+
+        <div class="definition">
+          <div class="definition-term">Міф проти факту</div>
+          <p>Існує міф, що турнікет притискає судину до кістки — це не зовсім так. Завдяки конструкції створюється рівномірний <strong>циркулярний тиск</strong>, який стискає м'язи, а вже вони — судини. Правильно накладений турнікет зменшує ризик розвитку компартмент-синдрому.</p>
+        </div>
+
+        <h3>Класифікація турнікетів</h3>
+
+        <div class="tq-grid">
+          <div class="tq-card">
+            <div class="tq-name">⚙️ Механічні вороткові</div>
+            <p>Обертання воротка затягує строп навколо кінцівки, створюючи рівномірний тиск на м'язи</p>
+            <div class="tq-models">Сертифіковані TCCC: CAT, SOF, SAM</div>
+          </div>
+          <div class="tq-card">
+            <div class="tq-name">⚙️ Механічні храпові</div>
+            <p>Затягування відбувається завдяки зубчастому механізму, діє аналогічно вороткового</p>
+            <div class="tq-models">Сертифіковані TCCC: TX2, TX3, RMT</div>
+          </div>
+          <div class="tq-card">
+            <div class="tq-name">💨 Пневматичні (кінцівки)</div>
+            <p>Схожий на манжету тонометра, груша накачує манжету та створює тиск. Громіздкий, дорогий, рідко в індивідуальних аптечках</p>
+            <div class="tq-models">Delphi Emergency Medical Tourniquet, Tactical Pneumatic Tourniquet 2</div>
+          </div>
+          <div class="tq-card">
+            <div class="tq-name">🔗 Вузлові</div>
+            <p>Для кровотеч у паховій/пахвовій ділянці, де звичайні турнікети неефективні. Від вузлових кровотеч гине кожен 5-й поранений — типово для мінно-вибухових ушкоджень</p>
+            <div class="tq-models">SAM-JT (пневматичний, також тазовий фіксатор), JETT (механічний)</div>
+          </div>
+          <div class="tq-card">
+            <div class="tq-name">🫃 Абдомінальні</div>
+            <p>При вогнепальних пораненнях живота з внутрішніми кровотечами. Стискає черевну порожнину, тиск на черевний відділ аорти</p>
+            <div class="tq-models">AAJT — може працювати і як абдомінальний, і як вузловий</div>
+          </div>
+        </div>
+
+        <div class="callout callout-warn">
+          <div class="callout-title">⚠️ Сертифіковані vs несертифіковані</div>
+          <p>У США стандарти TCCC регулюють якість турнікетів. В Україні державних стандартів для тестування турнікетів немає — тому критично важливо обирати турнікети, сертифіковані за протоколами TCCC (CAT, SOF, SAM, TX2/TX3, RMT), а не дешеві підробки невідомого походження.</p>
+        </div>
+
+        <h3>Принцип «High and Tight» («високо і туго»)</h3>
+
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>Етап</th><th>Де накладати</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Допомога під вогнем (червона зона)</strong></td><td>Якнайвище на кінцівку — немає часу шукати точне місце поранення</td></tr>
+              <tr><td><strong>Допомога в польових умовах (жовта зона)</strong></td><td>Прицільно — на 5–8 см вище поранення, але ніколи не на суглоб</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout callout-warn">
+          <div class="callout-title">⚠️ Перед накладанням — обов'язкова перевірка</div>
+          <ul>
+            <li>Перевірити кишені на сторонні предмети (ключі, телефон, зброя) — заважають накласти турнікет або травмують</li>
+            <li>Якщо турнікет на ногу чоловіка — перевірити, щоб не затиснути статеві органи, у разі потреби обережно відсунути</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================== 6.6 ===================== -->
+    <section class="topic-section" id="tema-6-6">
+      <div class="section-header">
+        <div class="section-num">6.6</div>
+        <div>
+          <h2>Накладання турнікета: покрокова інструкція</h2>
+          <p>Урок 1 (тренінг 9), частина 2 · Практика</p>
+        </div>
+      </div>
+      <div class="prose">
+
+        <h3>Накладання турнікета на руку</h3>
+        <ol class="steps-list">
+          <li>Беремо турнікет за маркований кінець (стропом, кінцем до пораненого), робимо перший затяг — на себе, максимально щільно і сильно</li>
+          <li>Берімося за строп максимально близько до пряжки, розташовуємо платформу і вороток по центру зовнішнього боку руки (НЕ під пахвою, НЕ на трицепсі), дотягуємо перший затяг ще сильніше</li>
+          <li>Проклеюємо строп до фіксатора воротка</li>
+          <li>Дістаємо вороток із фіксатора, крутимо, доки не зупиниться кровотеча і не зникне пульс нижче турнікета</li>
+          <li>Фіксуємо вороток у фіксатор, переконуємося, що повністю зайшов</li>
+          <li>Беремо вільний строп, притягуємо в фіксатор</li>
+          <li>Намотуємо строп навколо воротка</li>
+          <li>Вдруге просуваємо строп у фіксатор воротка</li>
+          <li>Проклеюємо стрічку часу (фіксуємо час накладання)</li>
+        </ol>
+
+        <h3>Накладання турнікета на ногу (самонакладання)</h3>
+        <ol class="steps-list">
+          <li>Займаємо безпечне положення (лягаємо на спину)</li>
+          <li>Перевертаємось на бік, щоб поранена нога була зверху</li>
+          <li>Перевіряємо кишені на сторонні предмети — витягуємо або опускаємо кишеню вниз</li>
+          <li>Беремося за штанину в зоні коліна, підтягуємо якнайближче до грудної клітки</li>
+          <li>Дістаємо турнікет, повністю розкриваємо, витягуючи строп з пряжки</li>
+          <li>Протягуємо пряжку під ногу, виводимо назовні з боку стегна</li>
+          <li>Рухами, схожими на «пиляння», підтягуємо турнікет максимально високо</li>
+          <li>Протягуємо строп крізь пряжку, робимо максимально сильний перший затяг</li>
+          <li>Розташовуємо платформу і вороток по центру зовнішнього боку ноги (НЕ біля паху, НЕ під сідницею)</li>
+          <li>Проклеюємо строп до фіксатора воротка</li>
+          <li>Дістаємо вороток, крутимо, доки не зупиниться кровотеча і не зникне пульс нижче турнікета</li>
+          <li>Фіксуємо вороток у фіксатор повністю</li>
+          <li>Притягуємо залишок стропа у фіксатор воротка</li>
+          <li>Проклеюємо стрічку часу</li>
+          <li>Стабілізуємось: нижня рука під голову, верхня — збоку для опори</li>
+        </ol>
+
+        <h3>Безпечне зняття рукавичок (критично важливо)</h3>
+        <ol class="steps-list">
+          <li>Відійти якомога далі від інших людей</li>
+          <li>Не торкатися обличчя</li>
+          <li>Однією рукою взяти рукавичку в зоні долоні, тягнути на себе, не порвавши</li>
+          <li>Відтягнути й обережно зняти, вивертаючи назовні</li>
+          <li>Стиснути використану рукавичку в кулак (не надто сильно)</li>
+          <li>Мізинцем іншої руки підчепити другу рукавичку зсередини</li>
+          <li>Зняти так, щоб перша опинилась всередині другої</li>
+          <li>Викинути в спеціальний контейнер, обробити руки антисептиком</li>
+        </ol>
+
+        <h3>Методика відпрацювання навички (5 кроків)</h3>
+        <ol class="steps-list">
+          <li>Накладання без коментарів — повна демонстрація вчителем</li>
+          <li>Накладання з коментарями — вчитель проговорює кожен крок</li>
+          <li>Вчитель накладає сам собі, але кожен крок коментує учень — тренування вербалізації</li>
+          <li>Учні накладають самі собі</li>
+          <li>Учні накладають одне одному</li>
+        </ol>
+
+        <div class="callout callout-pract">
+          <div class="callout-title">✅ Зворотний зв'язок за принципом «бутерброда»</div>
+          <p>Що добре вийшло → що зроблено неправильно і потрібно переробити → що вийшло чудово. Застосовується після кожного відпрацювання навички в усьому модулі.</p>
+        </div>
+
+        <div class="activity-box">
+          <div class="activity-header">
+            <div class="activity-icon">🎯</div>
+            <div>
+              <h4>Комплексний сценарій: огляд + турнікет</h4>
+              <div class="activity-time">35 хв · Урок 2</div>
+            </div>
+          </div>
+          <div class="activity-content">
+            <p><strong>Сценарій:</strong> «постраждалий» імітує масивну кровотечу (червоний маркер, видимий лише після відгортання одягу). «Рятувальник» займає безпечне положення, підбігає, проводить швидкий візуальний огляд, розпізнає ознаки критичної кровотечі, комунікуючи з постраждалим, ухвалює рішення і накладає турнікет.</p>
+            <p><strong>Покрокові дії:</strong> 1) Огляд → 2) Знайти кровотечу → 3) Рішення про накладання турнікета → 4) Виконати покрокову інструкцію.</p>
+            <p><strong>Ускладнення для досвідчених:</strong> стрес-фактори (постраждалий заважає, кричить, чинить опір) або виконання на час для закріплення автоматизму.</p>
+          </div>
+        </div>
+
+        <div class="callout callout-tip">
+          <div class="callout-title">💡 Рекомендація для закріплення навички</div>
+          <p>Роздайте учням турнікети зранку у будь-який інший день навчання, і в випадковий момент виголосіть команду: «Права нога — турнікет». Часу мінімум, ефект несподіванки покаже, наскільки засвоєна навичка.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================== 6.7 ===================== -->
+    <section class="topic-section" id="tema-6-7">
+      <div class="section-header">
+        <div class="section-num">6.7</div>
+        <div>
+          <h2>Тампонування рани: алгоритм 4Р</h2>
+          <p>Урок 3 (тренінг 9) · Теорія + практика</p>
+        </div>
+      </div>
+      <div class="prose">
+
+        <div class="callout callout-info">
+          <div class="callout-title">ℹ️ Ключова логіка тактичної медицини</div>
+          <p><strong>«Турнікет рятує життя, а тампонування допомагає зберегти кінцівку».</strong> Турнікет — засіб екстреної зупинки масивної артеріальної кровотечі з кінцівки, накладається миттєво навіть у червоній зоні, його мета — врятувати життя за будь-яку ціну, навіть якщо кінцівку потім не вдасться зберегти.</p>
+        </div>
+
+        <h3>Порівняння гемостатичних засобів</h3>
+
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>Хімічна основа</th><th>Приклади</th><th>Механізм дії</th><th>Переваги / недоліки</th></tr></thead>
+            <tbody>
+              <tr>
+                <td><strong>Каолін</strong></td>
+                <td>Combat Gauze, QuikClot</td>
+                <td>Прискорює природне згортання крові (коагуляцію)</td>
+                <td>Безпечніший, не спричиняє інтоксикації, ефективний при масивних артеріальних кровотечах, потребує щільного притискання</td>
+              </tr>
+              <tr>
+                <td><strong>Хітозан</strong></td>
+                <td>Celox Gauze, ChitoGauze</td>
+                <td>Створює адгезивну («клейку») масу, що склеює тканини</td>
+                <td>Дуже ефективний при венозних і капілярних кровотечах, може бути більш токсичним для тканин, рідкісні алергічні реакції</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Алгоритм 4Р</h3>
+
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>Етап</th><th>Дія</th><th>Ключові моменти</th></tr></thead>
+            <tbody>
+              <tr><td class="num">P — Peel</td><td>Витягнути бинт з упаковки (зазвичай Z-складений)</td><td>Завжди в рукавичках. Переконатись, що бинт готовий до використання</td></tr>
+              <tr><td class="num">P — Push</td><td>Знайти джерело кровотечі, притиснути пальцями до кістки, ввести бинт у рану, щільно заповнюючи</td><td>Кожна наступна петля підводиться під пальці, якими продовжується тиск на судину. Заповнити всі «кишені» рани</td></tr>
+              <tr><td class="num">P — Pile</td><td>Залишити «грибочок» з кінців бинта на поверхні (≈2 см)</td><td>Слугує точкою опори для подальшого тиску та фіксації пов'язки</td></tr>
+              <tr><td class="num">P — Pressure</td><td>Здійснити прямий постійний тиск обома руками на «грибочок»</td><td>Гемостатичний бинт — мінімум 3 хв. Звичайний бинт — до 10 хв</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Повний алгоритм тампонування (деталізовано)</h3>
+        <ol class="steps-list">
+          <li>Якщо можливо, зняти обручки та металеві предмети</li>
+          <li>Вибрати правильний розмір нітрилових рукавичок (завеликі — ризик затампонувати їх у рану; замалі — порвуться)</li>
+          <li>Якщо одяг з довгими рукавами — рукавички натягуються поверх них</li>
+          <li>Перед тампонуванням — прямий тиск, щоб послабити кровотечу</li>
+          <li>Закрутити кінець бинта, утворюючи кульку (power ball)</li>
+          <li>Знайти джерело кровотечі (ушкоджену судину), за потреби очистити рановий канал</li>
+          <li>Ввести power ball у рану, великим пальцем створюючи тиск безпосередньо на ушкоджену артерію</li>
+          <li>Тампонувати великими пальцями максимально щільно — заповнити рановий канал повністю, включно з краями</li>
+          <li>Залишок бинта покласти поверх тампонування, продовжувати прямий тиск</li>
+          <li>Переоцінити: чи зупинилась кровотеча, чи потрібне додаткове тампонування або турнікет</li>
+          <li>Зафіксувати пов'язку</li>
+        </ol>
+
+        <div class="callout callout-danger">
+          <div class="callout-title">⛔ Чого НЕ робити</div>
+          <p>Відмова від застарілих і небезпечних засобів: порошкові гемостатики не рекомендовані сучасними протоколами. Чітко розрізняйте спеціалізовані ортопедичні вироби (наприклад, для гриж) і засоби контролю кровотечі — це не одне й те саме.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================== 6.8 ===================== -->
+    <section class="topic-section" id="tema-6-8">
+      <div class="section-header">
+        <div class="section-num">6.8</div>
+        <div>
+          <h2>Бандажування та компресійні пов'язки</h2>
+          <p>Урок 4 (тренінг 9) · Теорія + практика</p>
+        </div>
+      </div>
+      <div class="prose">
+
+        <div class="definition">
+          <div class="definition-term">Бандажування vs тампонування</div>
+          <p><strong>Тампонування</strong> — прямий тиск на джерело кровотечі. <strong>Бандажування</strong> — підтримка цього тиску, фіксація перев'язувального матеріалу і захист рани від зовнішнього впливу. <strong>Ніколи не накладайте бандаж замість тампонування, якщо воно необхідне!</strong> Кожна рана має бути тампонована, якщо можливо. Кожна рана має бути бандажована, якщо можливо.</p>
+        </div>
+
+        <h3>Ізраїльський бандаж (The First Care Bandage, ІПП)</h3>
+        <p>Конструкція включає еластичний бинт, вшиту неадгезивну подушечку та спеціальний аплікатор тиску, що дозволяє створювати тиск до 13,6 кг без додаткових предметів. Дозволяє накладання однією рукою — значна перевага для самодопомоги.</p>
+
+        <h3>Техніка накладання ізраїльського бандажа</h3>
+        <ol class="steps-list">
+          <li>Вийняти бандаж із прогумованої та поліетиленової упаковки</li>
+          <li>Прикласти подушечку безпосередньо до затампонованої рани, повністю закривши поверхню</li>
+          <li>Обернути еластичний бинт навколо ураженої ділянки один раз</li>
+          <li>Протягнути бинт через отвір аплікатора тиску, повернути в протилежний бік, притискаючи аплікатор до подушечки</li>
+          <li>Продовжувати щільно намотувати бинт, повністю покриваючи краї подушечки</li>
+          <li>Зафіксувати вільний кінець за допомогою кріплення на аплікаторі</li>
+        </ol>
+
+        <h3>Особливості накладання на різні ділянки тіла</h3>
+
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>Ділянка</th><th>Ключові ризики</th><th>Інструкції</th><th>Ознаки ефективності</th></tr></thead>
+            <tbody>
+              <tr>
+                <td><strong>Кінцівка</strong></td>
+                <td>Надмірне затягування → ішемія, повне припинення кровопостачання</td>
+                <td>Накладати поверх затампонованої рани. Протягнути бинт через аплікатор, створити тиск, зафіксувати</td>
+                <td>Кровотечу зупинено, пульс і чутливість нижче пов'язки збережені</td>
+              </tr>
+              <tr>
+                <td><strong>Шия</strong></td>
+                <td>Перетискання дихальних шляхів або судин до мозку, ризик задушення</td>
+                <td>Накладати обережно, уникаючи надмірного тиску на трахею. Компресія без порушення дихання</td>
+                <td>Кровотечу зупинено, дихання вільне</td>
+              </tr>
+              <tr>
+                <td><strong>Пахова ділянка</strong></td>
+                <td>Використання невідповідних ортопедичних бандажів без достатньої компресії</td>
+                <td>Використати ізраїльський бандаж або іншу компресійну пов'язку, щільна компресія</td>
+                <td>Кровотечу зупинено, тиск підтримується</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="activity-box">
+          <div class="activity-header">
+            <div class="activity-icon">🎯</div>
+            <div>
+              <h4>Комплексний сценарій: огляд + тампонування + бандаж</h4>
+              <div class="activity-time">25 хв</div>
+            </div>
+          </div>
+          <div class="activity-content">
+            <p>Учні відпрацьовують повний цикл: 1) Огляд постраждалого → 2) Тампонування поранення → 3) Накладання бандажа для фіксації (на різних ділянках тіла за можливості). Зворотний зв'язок одразу за принципом «бутерброда».</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================== 6.9 ===================== -->
+    <section class="topic-section" id="tema-6-9">
+      <div class="section-header">
+        <div class="section-num">6.9</div>
+        <div>
+          <h2>Контроль прохідності дихальних шляхів</h2>
+          <p>Урок 5 (тренінг 9) · Теорія + практика</p>
+        </div>
+      </div>
+      <div class="prose">
+
+        <div class="callout callout-info">
+          <div class="callout-title">ℹ️ Чому назофарингеальна трубка не вивчається на цьому рівні</div>
+          <p>НФТ потребує спеціальних знань — неправильне введення може спричинити додаткову кровотечу при травмах обличчя/голови, або потрапляння трубки в черепну порожнину при тяжкій ЧМТ. Для віку 15–17 років фокус — на техніках, що не можуть завдати шкоди навіть при неідеальному виконанні: виведення щелепи та стабільне бокове положення.</p>
+        </div>
+
+        <h3>Техніка «Бачу — чую — відчуваю»</h3>
+        <p>Базовий інструмент швидкої оцінки дихання за лічені секунди.</p>
+        <ol class="steps-list">
+          <li><strong>Бачу (See):</strong> нахилитись над постраждалим, спостерігати за рухом грудної клітки і живота</li>
+          <li><strong>Чую (Hear):</strong> притулити вухо до рота і носа, прислухатись до звуків — свист, хрипи, булькання (вказують на перешкоди — кров, блювота)</li>
+          <li><strong>Відчуваю (Feel):</strong> тримаючи вухо біля рота, відчувати щокою або рукою повітря, що виходить — тактильне підтвердження</li>
+        </ol>
+
+        <h3>Техніка виведення щелепи</h3>
+        <p>Застосовується при підозрі на травму шийного відділу хребта (після вибуху, ДТП тощо) — дозволяє відкрити дихальні шляхи, уникаючи руху шиї, що критично для запобігання вторинним ушкодженням.</p>
+
+        <h3>Стабільне бокове положення</h3>
+
+        <div class="definition">
+          <div class="definition-term">Призначення</div>
+          <p>Для постраждалих, які зомліли, але дихають. Головна мета — забезпечити прохідність дихальних шляхів і захистити від удушення, запобігаючи западанню язика (м'язи розслабляються, язик може повністю перекрити дихальні шляхи).</p>
+        </div>
+
+        <div class="callout callout-pract">
+          <div class="callout-title">✅ Правило</div>
+          <p>Якщо людина зомліла, але дихає — якнайшвидше переведіть її в стабільне бокове положення.</p>
+        </div>
+
+        <h3>Чому виникає блювота при крововтраті — геморагічний шок</h3>
+
+        <div class="definition">
+          <div class="definition-term">Геморагічний шок</div>
+          <p>Небезпечний стан внаслідок масивної та швидкої втрати крові — критичний збій у роботі всього організму, що загрожує життю і потребує негайного медичного втручання.</p>
+        </div>
+
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>Симптом</th><th>Механізм</th></tr></thead>
+            <tbody>
+              <tr><td>Бліда, холодна, спітніла шкіра</td><td>Перенаправлення крові до життєво важливих органів</td></tr>
+              <tr><td>Частий слабкий пульс</td><td>Серце компенсує знижений об'єм крові підвищеною частотою</td></tr>
+              <tr><td>Знижений артеріальний тиск</td><td>Прямий наслідок крововтрати</td></tr>
+              <tr><td><strong>Спрага, нудота, блювота</strong></td><td>Кисневе голодування шлунка/кишківника при перенаправленні крові; реакція блювотного центру стовбура мозку; можлива внутрішня кровотеча в ШКТ</td></tr>
+              <tr><td>Змінений психічний стан</td><td>Збудження або апатія, знепритомнення</td></tr>
+              <tr><td>Прискорене дихання</td><td>Компенсація кисневого голодування</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================== 6.10 ===================== -->
+    <section class="topic-section" id="tema-6-10">
+      <div class="section-header">
+        <div class="section-num">6.10</div>
+        <div>
+          <h2>Запобігання проблемам з диханням: пневмоторакс</h2>
+          <p>Урок 6 (тренінг 9) · Теорія + практика</p>
+        </div>
+      </div>
+      <div class="prose">
+
+        <h3>Базова анатомія: як працюють легені</h3>
+        <p>Грудна клітка — герметична коробка, що захищає легені. Легені знаходяться в мішку «плевра». Між легенями та стінкою грудної клітки є вузький простір — <strong>плевральна порожнина</strong> — з негативним тиском (нижчим за атмосферний), який не дає легеням здутися і допомагає розширюватись при вдиху.</p>
+
+        <p>Легені складаються з мільйонів альвеол — «губчаста» структура без власних м'язів, що залежить від роботи діафрагми і міжреберних м'язів для створення негативного тиску.</p>
+
+        <h3>Що таке пневмоторакс</h3>
+        <p>При проникаючому пораненні грудної клітки герметичний простір ушкоджується. Повітря ззовні заходить у грудну порожнину, здавлюючи легеню.</p>
+
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>Тип</th><th>Механізм</th><th>Небезпека</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Відкритий пневмоторакс</strong></td><td>Повітря вільно заходить і виходить через рану</td><td>Серйозний, але керованіший стан</td></tr>
+              <tr><td><strong>Напружений пневмоторакс</strong></td><td>Рана діє як односторонній клапан: повітря заходить на вдиху, не виходить на видиху</td><td><strong>Найнебезпечніший стан.</strong> Наростання тиску здавлює легеню, зміщує серце та судини → колапс легень, серцева недостатність</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Діагностика поранення грудної клітки</h3>
+        <p>Оглядати грудну клітку дуже уважно, розпрямляючи й злегка розтягуючи шкіру (наче розгладжуючи зім'яту тканину), щоб не пропустити дрібні, але глибокі проникаючі поранення. Протокол TCCC Module 08 вимагає пошуку ран пальпацією ковзними рухами обома руками по поверхні грудної клітки, живота і спини.</p>
+
+        <h3>Принцип роботи оклюзійної наліпки</h3>
+        <p>Створює однобічний клапан, що дозволяє випустити зайве повітря, не даючи новому потрапити всередину.</p>
+
+        <h3>Накладання оклюзійної наліпки</h3>
+        <ol class="steps-list">
+          <li>Надягнути нітрилові рукавички</li>
+          <li>Оглянути постраждалого, знайти вхідні та вихідні отвори поранень</li>
+          <li>Швидко очистити поранення і шкіру навколо</li>
+          <li>Накласти наліпку, розгладжуючи від центру до країв для герметичності, повністю покриваючи рану</li>
+          <li>Повторний огляд — контролювати стан після накладання</li>
+        </ol>
+
+        <div class="callout callout-warn">
+          <div class="callout-title">⚠️ Якщо стан погіршується після накладання</div>
+          <p>Це може свідчити про напружений пневмоторакс. Постраждалого необхідно покласти на бік, де є поранення, щоб полегшити дихання. Якщо наліпка не вентильована (без клапана) і стан погіршується — ненадовго відклеїти край наліпки, щоб випустити повітря і знизити тиск, потім знову щільно приклеїти.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================== 6.11 ===================== -->
+    <section class="topic-section" id="tema-6-11">
+      <div class="section-header">
+        <div class="section-num">6.11</div>
+        <div>
+          <h2>Пульс, переохолодження, картка пораненого</h2>
+          <p>Урок 7 (тренінг 9) · Теорія + практика + сценарії</p>
+        </div>
+      </div>
+      <div class="prose">
+
+        <h3>Вимірювання пульсу</h3>
+        <p>Пульс шукають на зап'ясті (променева артерія) або на шиї (сонна артерія).</p>
+
+        <div class="callout callout-pract">
+          <div class="callout-title">✅ «Правило 15»</div>
+          <p>Виміряти пульс за 15 секунд і помножити на 4. Для нерегулярного пульсу рахувати повну хвилину.</p>
+        </div>
+
+        <p><strong>Норма:</strong> 60–100 ударів за хвилину. Менше 60 — брадикардія, більше 100 — тахікардія.</p>
+
+        <div class="callout callout-danger">
+          <div class="callout-title">⛔ «Червоні прапорці» шоку</div>
+          <ul>
+            <li>Зміни свідомості без черепно-мозкової травми</li>
+            <li>Слабкий або відсутній радіальний пульс (на зап'ясті)</li>
+          </ul>
+          <p>Це головні ознаки шоку — стану, коли тіло не отримує достатньо кисню. Негайно повідомляти медиків.</p>
+        </div>
+
+        <h3>Ступені переохолодження</h3>
+
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>Ступінь</th><th>Ознаки</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Легке</strong></td><td>Тремтіння, «гусяча шкіра», холодні руки</td></tr>
+              <tr><td><strong>Середнє</strong></td><td>Повільна мова, апатія, «дерев'яні» пальці</td></tr>
+              <tr><td><strong>Важке</strong></td><td>Тремтіння зникає, можливе знепритомнення. Дуже небезпечно!</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Алгоритм «Ізоляція від землі»</h3>
+        <ol class="steps-list">
+          <li><strong>Підняти:</strong> підкласти під постраждалого щось тепле і сухе (плед)</li>
+          <li><strong>Загорнути:</strong> зняти мокрий одяг (якщо безпечно) або ізолювати і загорнути в суху термоковдру / застосувати HPMK (набір профілактики гіпотермії)</li>
+        </ol>
+
+        <div class="callout callout-warn">
+          <div class="callout-title">⚠️ Ворог №1 — мокрий одяг</div>
+          <p>Термоковдру ніколи не кладуть на мокрий одяг — це не зігріє, а лише ізолює вологу біля тіла. При підозрі на травму голови — не рухати постраждалого без нагальної потреби.</p>
+        </div>
+
+        <h3>Зв'язок крововтрати і гіпотермії</h3>
+        <p>Кров — не лише кисень, а й тепло; вона циркулює, розносячи тепло по тілу. При масивній крововтраті тіло швидко втрачає тепло, що призводить до шоку і гіпотермії, навіть якщо на вулиці не холодно. Тому зупинка кровотечі (M) і запобігання переохолодженню (H) у алгоритмі MARCH йдуть «рука в руку».</p>
+
+        <h3>Картка пораненого — «листок-рятівник»</h3>
+        <p>Передає всю важливу інформацію медикам, коли рятувальник вже не поруч.</p>
+
+        <div class="definition">
+          <div class="definition-term">Абревіатура ЧЩС</div>
+          <p><strong>Ч</strong>АС — час поранення та час надання допомоги. <strong>Щ</strong>О — що сталося і що ви зробили. <strong>С</strong>ТАН — пульс, дихання, рівень свідомості.</p>
+        </div>
+
+        <p>Офіційна форма картки — DD Form 1380 (картка пораненого TCCC).</p>
+
+        <div class="callout callout-info">
+          <div class="callout-title">ℹ️ Передача пораненого: короткий усний СІТ</div>
+          <p>При передачі медикам додатково передається коротка усна інформація за схемою <strong>СІТ</strong>: Стабільний/Нестабільний, Інjuries (травми), Treatments (лікування — що вже зроблено).</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================== 6.12 ===================== -->
+    <section class="topic-section" id="tema-6-12">
+      <div class="section-header">
+        <div class="section-num">6.12</div>
+        <div>
+          <h2>Евакуація пораненого із зони загрози</h2>
+          <p>Урок 6 (тренінг 8) · Теорія + практика переміщення</p>
+        </div>
+      </div>
+      <div class="prose">
+
+        <div class="callout callout-info">
+          <div class="callout-title">ℹ️ Принцип: «Швидко, але обдумано»</div>
+          <p>Швидкість евакуації важлива, але безпека — понад усе. Необдумані дії можуть спричинити появу нових постраждалих. Переміщенням повинні займатись мінімум двоє людей — один рятувальник — екстремальний, виключний варіант.</p>
+        </div>
+
+        <h3>План порятунку</h3>
+        <ol class="steps-list">
+          <li>Забезпечити власну безпеку — оцінити ситуацію, укриття, шляхи евакуації, наявність небезпек (обстріли, уламки, вибухівка)</li>
+          <li>Роззброїти пораненого (якщо застосовно)</li>
+          <li>Швидка оцінка стану — кровотечі, дихання, ушкодження хребта; чи можлива стабілізація на місці</li>
+          <li>Мінімізувати рух — особливо при підозрі на ушкодження хребта, тазу, внутрішні кровотечі</li>
+        </ol>
+
+        <h3>Способи евакуації одним рятувальником</h3>
+
+        <div class="carry-grid">
+          <div class="carry-card">
+            <div class="carry-name">🔄 Розвертання лежачи</div>
+            <p style="font-size:0.82rem;">Переміщення тіла на собі через перевертання. Найшвидший метод, обережність з головою</p>
+          </div>
+          <div class="carry-card">
+            <div class="carry-name">🚒 Метод «пожежного»</div>
+            <p style="font-size:0.82rem;">Взяти людину на плече. Вимагає фізичної сили, але звільняє одну руку рятувальника</p>
+          </div>
+        </div>
+
+        <h3>Способи евакуації двома рятувальниками</h3>
+
+        <div class="carry-grid">
+          <div class="carry-card">
+            <div class="carry-name">🤝 Зчеплені руки</div>
+            <p style="font-size:0.82rem;">Двоє людей утворюють «ноші» зі своїх рук — дозволяє переносити на певну відстань</p>
+          </div>
+          <div class="carry-card">
+            <div class="carry-name">🎒 Підручні засоби</div>
+            <p style="font-size:0.82rem;">Куртка або ремінь як імпровізовані ноші — значно полегшує перенесення</p>
+          </div>
+        </div>
+
+        <h3>Особливі випадки</h3>
+
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>Випадок</th><th>Що робити</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Травма хребта</strong></td><td>Будь-який рух — вкрай небезпечний. Обережно, не згинаючи тіло, перемістити на тверду поверхню (двері, щит)</td></tr>
+              <tr><td><strong>Масивна кровотеча</strong></td><td>Перед евакуацією зупинити кровотечу. Під час перенесення постійно контролювати, чи вона не відновилась</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Пріоритети транспортування поранених (при кількох постраждалих)</h3>
+        <ol class="steps-list">
+          <li><strong>За рівнем загрози для життя:</strong> першими евакуюються ті, чий стан може погіршитись через затримку</li>
+          <li><strong>За зоною ризику:</strong> першими ті, хто перебуває у найнебезпечніших місцях</li>
+          <li><strong>За можливістю самостійного переміщення:</strong> здатні рухатись самостійно — евакуюються власними силами, звільняючи ресурс рятувальника</li>
+          <li><strong>За можливістю надання ефективної допомоги:</strong> рятувальник обирає тих, кому реально можна допомогти</li>
+        </ol>
+
+        <div class="callout callout-pract">
+          <div class="callout-title">✅ Психологічний аспект евакуації</div>
+          <p>Спокій рятувальника передається пораненому, що значно покращує його стан. Завжди комунікуйте з пораненим, якщо він при тямі.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================== 6.13 ===================== -->
+    <section class="topic-section" id="tema-6-13">
+      <div class="section-header">
+        <div class="section-num">6.13</div>
+        <div>
+          <h2>Комплексні сценарії для підсумкової практики</h2>
+          <p>Підсумкова практична робота · Повний алгоритм MARCH</p>
+        </div>
+      </div>
+      <div class="prose">
+
+        <div class="callout callout-warn">
+          <div class="callout-title">⚠️ Правила безпеки і психологія перед практикою</div>
+          <ul>
+            <li>Безпека рятувальника: завжди починаємо з рукавичок</li>
+            <li>Не створювати тригерних ситуацій (крики, «імітація смерті») без згоди групи</li>
+            <li>Пояснити різницю між реальним і тренувальним застосуванням термоковдр</li>
+            <li>Нагадування: «Якщо хтось почувається погано під час практики — зупиняємося»</li>
+          </ul>
+        </div>
+
+        <div class="scenario-card">
+          <div class="scenario-header">
+            <span class="scenario-name">Сценарій 1: «Переохолоджений турист»</span>
+            <span class="scenario-meta">Легкий · акцент на H · 7 хв</span>
+          </div>
+          <div class="scenario-body">
+            <div class="sc-label">Умова</div>
+            На холодній землі сидить людина після довгого очікування евакуації. Одяг мокрий, скаржиться на озноб і слабкість.
+            <div class="sc-label">Ролі</div>
+            Рятувальник, постраждалий, спостерігач
+            <div class="sc-label">Дії рятувальника</div>
+            Перевірити безпеку, викликати швидку → M: немає кровотечі → A: людина розмовляє, все добре → R: дихання рівне → C: пульс — тахікардія 110 уд/хв → H: ізолює від землі, загортає в термоковдру, перевіряє пальці й обличчя → заповнює картку пораненого
+            <div class="sc-label">Критерії успіху</div>
+            Постраждалого ізольовано від землі, термоковдра використана правильно, у картці зафіксовано пульс, час, стан
+          </div>
+        </div>
+
+        <div class="scenario-card">
+          <div class="scenario-header">
+            <span class="scenario-name">Сценарій 2: «ДТП на холоді»</span>
+            <span class="scenario-meta">Середній · акцент на C + H</span>
+          </div>
+          <div class="scenario-body">
+            <div class="sc-label">Умова</div>
+            Автомобільна аварія. Постраждалий лежить на землі, сильна кровотеча зі стегна, скаржиться на холод і слабкість.
+            <div class="sc-label">Мета</div>
+            Зупинка масивної кровотечі, запобігання переохолодженню, базова оцінка життєвих показників, заповнення картки.
+          </div>
+        </div>
+
+        <div class="scenario-card">
+          <div class="scenario-header">
+            <span class="scenario-name">Сценарій 3: «Куля в груди»</span>
+            <span class="scenario-meta">Середній+ · акцент на R + C + H · 12 хв</span>
+          </div>
+          <div class="scenario-body">
+            <div class="sc-label">Умова</div>
+            Вогнепальне поранення грудної клітки. Дихає важко, скаржиться на задишку й запаморочення.
+            <div class="sc-label">Ролі</div>
+            Два рятувальники, постраждалий, спостерігач
+            <div class="sc-label">Дії рятувальників</div>
+            Перевірити безпеку → M: немає масивної кровотечі → A: у нормі (за потреби — стабільне бокове положення) → R: знаходить поранення грудної клітки, накладає оклюзійну наліпку; якщо звичайна (не вентильована) і стан погіршується — ненадовго відклеїти край для випуску повітря, знову щільно приклеїти → C: тахікардія 100 уд/хв, шкіра бліда → H: загортає в термоковдру → фіксує в картці локалізацію поранення, стан, час
+            <div class="sc-label">Критерії успіху</div>
+            Оклюзійна наліпка накладена герметично, пульс зафіксовано, картка містить повну інформацію
+          </div>
+        </div>
+
+        <div class="scenario-card">
+          <div class="scenario-header">
+            <span class="scenario-name">Сценарій 4: «Багато постраждалих»</span>
+            <span class="scenario-meta">Складний · повний MARCH · сортування</span>
+          </div>
+          <div class="scenario-body">
+            <div class="sc-label">Мета</div>
+            Відпрацювання всієї послідовності MARCH одночасно з кількома постраждалими — введення елементу сортування (triage) за пріоритетами транспортування з теми 6.12.
+          </div>
+        </div>
+
+        <h3>Методика тренування сценаріїв</h3>
+        <ul style="padding-left:20px; line-height:1.9; font-size:0.9rem;">
+          <li><strong>Ротація ролей:</strong> усі побувають рятувальником, постраждалим і спостерігачем</li>
+          <li><strong>Таймер:</strong> тренує швидкість і точність</li>
+          <li><strong>Реалізм:</strong> мокрий каремат, холодна пляшка під одягом, «кров» з червоного маркера</li>
+          <li><strong>Дебрифінг:</strong> після кожної симуляції — що зроблено правильно, що покращити</li>
+        </ul>
+
+      </div>
+    </section>
+
+    <!-- ===================== МЕТОДИЧНІ ===================== -->
+    <section class="topic-section" id="metodychni">
+      <div class="section-header">
+        <div class="section-num">🔧</div>
+        <div>
+          <h2>Методичні поради, підсумки модуля і курсу 10 класу</h2>
+        </div>
+      </div>
+      <div class="prose">
+
+        <h3>Психоемоційна безпека на заняттях модуля</h3>
+        <div class="callout callout-warn">
+          <div class="callout-title">⚠️ Обов'язково на кожному занятті модуля</div>
+          <ul>
+            <li>Оцінка емоційного фону: «Одним словом — як ви почуваєтесь сьогодні?»</li>
+            <li>Вправа на заспокоєння: дихання з рахунком до 4 (вдих-затримка-видих-затримка), повторити 2–3 рази</li>
+            <li>Правила безпечного спілкування: говорити по черзі, поважати думку інших, уникати жорстких політичних суджень</li>
+            <li>Індикатори стресу: емоційні (плач, дратівливість, апатія), фізичні (прискорене дихання, тремтіння), поведінкові (уникнення контакту, агресія, ізоляція)</li>
+          </ul>
+        </div>
+
+        <h3>Зведена таблиця абревіатур модуля</h3>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>Абревіатура</th><th>Розшифрування</th></tr></thead>
+            <tbody>
+              <tr><td><strong>TCCC</strong></td><td>Tactical Combat Casualty Care — тактична допомога пораненим у бою</td></tr>
+              <tr><td><strong>TECC</strong></td><td>Tactical Emergency Casualty Care — цивільна адаптація TCCC для надзвичайних ситуацій</td></tr>
+              <tr><td><strong>MARCH</strong></td><td>Massive bleeding → Airway → Respiration → Circulation → Hypothermia</td></tr>
+              <tr><td><strong>IFAK</strong></td><td>Individual First Aid Kit — індивідуальна аптечка першої допомоги</td></tr>
+              <tr><td><strong>HPMK</strong></td><td>Hypothermia Prevention and Management Kit — набір профілактики гіпотермії</td></tr>
+              <tr><td><strong>НФТ</strong></td><td>Назофарингеальна трубка</td></tr>
+              <tr><td><strong>ЧЩС</strong></td><td>Час / Що / Стан — структура картки пораненого</td></tr>
+              <tr><td><strong>СІТ</strong></td><td>Стабільний/нестабільний, Injuries, Treatments — усна передача при евакуації</td></tr>
+              <tr><td><strong>ЯАЛОМ</strong></td><td>Я знаю / А що з тобою / Лежи / Озирнися / Можеш сам — протокол психологічної підтримки</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Домашні завдання до модуля</h3>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>Завдання</th><th>Тип</th></tr></thead>
+            <tbody>
+              <tr><td>Намалювати схему алгоритму MARCH з коротким поясненням кожного пункту</td><td>Творче</td></tr>
+              <tr><td>Скласти список вмісту власної домашньої аптечки, порівняти з тактичною (IFAK)</td><td>Дослідження</td></tr>
+              <tr><td>Міні-дослідження цін сертифікованих турнікетів — порахувати, за скільки днів економії можна придбати турнікет</td><td>Практичне дослідження</td></tr>
+              <tr><td>Пройти всі етапи в онлайн-симуляторі LifesaverSIM</td><td>Цифрова практика</td></tr>
+              <tr><td>Переглянути «Шкідливі міфи домедичної допомоги, підробні турнікети» (Солом'янські котики)</td><td>Медіаграмотність</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Рекомендовані ресурси для поглибленої підготовки вчителя</h3>
+        <ul style="padding-left:20px; line-height:1.9; font-size:0.9rem;">
+          <li>Офіційний посібник з TCCC (США): naemt.org/education/naemt-tccc</li>
+          <li>Інструкція з виконання навичок TCCC ASM: tccc.org.ua</li>
+          <li>Tactical Combat Casualty Care Handbook, Version 5</li>
+          <li>Онлайн-симулятор LifesaverSIM (мобільний застосунок, реєстрація через «Дію»)</li>
+          <li>Курс «Базова психологічна допомога в умовах війни» (Prometheus)</li>
+          <li>СоТССС, Defense Health Agency — Курс допомоги пораненим у бойових умовах</li>
+        </ul>
+
+        <div class="callout callout-pract">
+          <div class="callout-title">✅ Завершення курсу 10 класу</div>
+          <p>Модуль 6 завершує програму 10 класу. Учні пройшли шлях від розуміння держави й сектору безпеки (Модуль 1), через структуру Сил оборони (Модуль 2), озброєння та стрільбу (Модуль 3), тактику й комунікацію (Модуль 4), орієнтування й фортифікацію (Модуль 5), до життєво необхідних медичних навичок (Модуль 6). У 11 класі ці знання поглиблюються та доповнюються темами інформаційної війни, цивільного захисту та профорієнтації.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <div class="page-nav">
+      <a href="modul-5.html">← Модуль 5. Орієнтування та фортифікація</a>
+      <a href="../index.html">До переліку всіх модулів →</a>
+    </div>
+
+  </main>
+</div>
+
+<footer style="background:var(--ua-blue);color:rgba(255,255,255,0.65);text-align:center;padding:20px 32px;font-size:0.78rem;line-height:1.6;">
+  <strong style="color:var(--ua-yellow);">Захист України. Методичний довідник викладача</strong> · 10 клас, Модуль 6<br>
+  Радомишльський ліцей №3 · За програмою МОН (Наказ №1116 від 08.08.2024) · Матеріали тренінгів №8–9 (гриф №БО-0550-25, 30.12.2025)<br>
+  TCCC ASM · naemt.org · tccc.org.ua · СоТССС Defense Health Agency
+</footer>
+
+<script>
+const sections = document.querySelectorAll('.topic-section');
+const navLinks = document.querySelectorAll('.nav-list li a');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const id = entry.target.getAttribute('id');
+      navLinks.forEach(link => {
+        link.classList.toggle('active', link.getAttribute('href') === '#' + id);
+      });
+    }
+  });
+}, { rootMargin: '-20% 0px -70% 0px' });
+sections.forEach(section => observer.observe(section));
+</script>
+</body>
+</html>

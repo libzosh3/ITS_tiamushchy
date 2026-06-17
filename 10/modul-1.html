@@ -1,0 +1,2225 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Модуль 1. Основи національної безпеки та оборони України — Захист України 10 клас</title>
+<style>
+:root {
+  --ua-blue: #003087;
+  --ua-yellow: #FFD700;
+  --olive: #4A5240;
+  --olive-light: #6B7A5A;
+  --sand: #F5F0E8;
+  --ink: #1C1C1C;
+  --white: #FFFFFF;
+  --divider: #C8C0B0;
+  --accent-red: #C0392B;
+  --accent-green: #2E7D32;
+  --card-bg: #FDFBF7;
+  --info-bg: #E8F0FE;
+  --info-border: #4A90D9;
+  --warn-bg: #FFF8E1;
+  --warn-border: #F9A825;
+  --pract-bg: #E8F5E9;
+  --pract-border: #2E7D32;
+  --tip-bg: #F3E5F5;
+  --tip-border: #7B1FA2;
+  --shadow: 0 2px 12px rgba(0,0,0,0.08);
+  --font-display: 'Georgia', 'Times New Roman', serif;
+  --font-body: 'Segoe UI', 'Arial', sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--sand);
+  color: var(--ink);
+  line-height: 1.7;
+  font-size: 15.5px;
+}
+
+/* TOP BAR */
+.topbar {
+  background: var(--ua-blue);
+  color: rgba(255,255,255,0.75);
+  font-size: 0.78rem;
+  padding: 8px 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.topbar a { color: var(--ua-yellow); text-decoration: none; }
+.topbar a:hover { text-decoration: underline; }
+
+.topbar-stripe { height: 4px; background: var(--ua-yellow); }
+
+/* HEADER */
+.module-header {
+  background: linear-gradient(135deg, var(--ua-blue) 0%, #001a52 70%, var(--olive) 100%);
+  color: var(--white);
+  padding: 48px 32px 40px;
+  position: relative;
+  overflow: hidden;
+}
+
+.module-header::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 4px;
+  background: var(--ua-yellow);
+}
+
+.module-header-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.module-eyebrow {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ua-yellow);
+  margin-bottom: 12px;
+}
+
+.module-header h1 {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 4vw, 2.4rem);
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 14px;
+  max-width: 780px;
+}
+
+.module-header-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.meta-pill {
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 20px;
+  padding: 5px 14px;
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.meta-pill span { opacity: 0.7; }
+
+/* LAYOUT */
+.page-layout {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 40px 32px 80px;
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+/* SIDEBAR */
+.sidebar {
+  position: sticky;
+  top: 16px;
+}
+
+.nav-block {
+  background: var(--card-bg);
+  border: 1px solid var(--divider);
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.nav-block-title {
+  background: var(--ua-blue);
+  color: var(--ua-yellow);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  padding: 10px 16px;
+}
+
+.nav-list {
+  list-style: none;
+  padding: 8px 0;
+}
+
+.nav-list li a {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 7px 16px;
+  text-decoration: none;
+  color: var(--ink);
+  font-size: 0.82rem;
+  line-height: 1.4;
+  transition: background 0.15s;
+}
+
+.nav-list li a:hover { background: #EEE8DC; color: var(--ua-blue); }
+.nav-list li a .nav-num { color: var(--olive-light); font-weight: 700; flex-shrink: 0; font-size: 0.75rem; margin-top: 1px; }
+.nav-list li a.active { background: #DDD5C5; font-weight: 600; color: var(--ua-blue); }
+
+/* MAIN CONTENT */
+.content { min-width: 0; }
+
+/* SECTION */
+.topic-section {
+  margin-bottom: 52px;
+  scroll-margin-top: 20px;
+}
+
+.topic-section:last-child { margin-bottom: 0; }
+
+.section-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  margin-bottom: 24px;
+  padding-bottom: 14px;
+  border-bottom: 2px solid var(--divider);
+}
+
+.section-num {
+  background: var(--ua-blue);
+  color: var(--ua-yellow);
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  padding: 5px 12px;
+  border-radius: 3px;
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+
+.section-header h2 {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--ua-blue);
+  line-height: 1.25;
+}
+
+.section-header p {
+  font-size: 0.84rem;
+  color: #666;
+  margin-top: 4px;
+}
+
+/* TEXT CONTENT */
+.prose p { margin-bottom: 14px; }
+.prose p:last-child { margin-bottom: 0; }
+
+.prose h3 {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--olive);
+  margin: 24px 0 10px;
+}
+
+.prose h4 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--ua-blue);
+  margin: 18px 0 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-size: 0.82rem;
+}
+
+/* CALLOUT BOXES */
+.callout {
+  border-left: 4px solid;
+  border-radius: 4px;
+  padding: 16px 20px;
+  margin: 20px 0;
+}
+
+.callout-info { background: var(--info-bg); border-color: var(--info-border); }
+.callout-warn { background: var(--warn-bg); border-color: var(--warn-border); }
+.callout-pract { background: var(--pract-bg); border-color: var(--pract-border); }
+.callout-tip { background: var(--tip-bg); border-color: var(--tip-border); }
+
+.callout-title {
+  font-weight: 700;
+  font-size: 0.82rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.callout-info .callout-title { color: var(--info-border); }
+.callout-warn .callout-title { color: #B8860B; }
+.callout-pract .callout-title { color: var(--accent-green); }
+.callout-tip .callout-title { color: #6A0080; }
+
+.callout p { font-size: 0.9rem; line-height: 1.6; }
+.callout p + p { margin-top: 8px; }
+.callout ul { padding-left: 18px; font-size: 0.9rem; line-height: 1.7; }
+.callout ul li { margin-bottom: 4px; }
+
+/* TABLES */
+.table-wrap {
+  overflow-x: auto;
+  margin: 20px 0;
+  border-radius: 6px;
+  border: 1px solid var(--divider);
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.87rem;
+  background: var(--white);
+}
+
+.data-table th {
+  background: var(--ua-blue);
+  color: var(--white);
+  padding: 10px 14px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.82rem;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+}
+
+.data-table td {
+  padding: 9px 14px;
+  border-bottom: 1px solid var(--divider);
+  vertical-align: top;
+  line-height: 1.5;
+}
+
+.data-table tr:last-child td { border-bottom: none; }
+.data-table tr:nth-child(even) td { background: #F7F3EC; }
+.data-table tr:hover td { background: #EDE8DC; }
+
+.data-table td.num { font-weight: 700; color: var(--ua-blue); text-align: center; white-space: nowrap; }
+.data-table td.good { color: var(--accent-green); font-weight: 600; }
+.data-table td.bad { color: var(--accent-red); }
+
+/* DEFINITION */
+.definition {
+  background: var(--white);
+  border: 1px solid var(--divider);
+  border-radius: 6px;
+  padding: 16px 20px;
+  margin: 16px 0;
+  position: relative;
+}
+
+.definition::before {
+  content: '📌';
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  font-size: 1rem;
+}
+
+.definition-term {
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--ua-blue);
+  margin-bottom: 6px;
+}
+
+.definition p {
+  font-size: 0.88rem;
+  color: #444;
+  line-height: 1.6;
+}
+
+/* ALGORITHM / STEPS */
+.steps-list {
+  list-style: none;
+  counter-reset: step-counter;
+  margin: 16px 0;
+}
+
+.steps-list li {
+  counter-increment: step-counter;
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  margin-bottom: 12px;
+  background: var(--white);
+  border: 1px solid var(--divider);
+  border-radius: 5px;
+  padding: 12px 14px;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.steps-list li::before {
+  content: counter(step-counter);
+  background: var(--ua-blue);
+  color: var(--ua-yellow);
+  font-weight: 700;
+  font-size: 0.85rem;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* CARD GRID */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 16px;
+  margin: 16px 0;
+}
+
+.info-card {
+  background: var(--card-bg);
+  border: 1px solid var(--divider);
+  border-radius: 6px;
+  padding: 18px;
+  font-size: 0.87rem;
+}
+
+.info-card .card-title {
+  font-weight: 700;
+  color: var(--ua-blue);
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.info-card ul {
+  padding-left: 16px;
+  line-height: 1.65;
+}
+
+.info-card ul li { margin-bottom: 3px; }
+
+/* COMPARISON TABLE COUNTRY CARDS */
+.country-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 14px;
+  margin: 16px 0;
+}
+
+.country-card {
+  background: var(--white);
+  border: 1px solid var(--divider);
+  border-radius: 6px;
+  overflow: hidden;
+  font-size: 0.85rem;
+}
+
+.country-card-header {
+  background: var(--olive);
+  color: var(--white);
+  padding: 8px 14px;
+  font-weight: 700;
+  font-size: 0.88rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.country-card-body {
+  padding: 12px 14px;
+  line-height: 1.6;
+}
+
+.country-field {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 5px;
+}
+
+.country-field-label {
+  color: #888;
+  font-size: 0.78rem;
+  min-width: 80px;
+  flex-shrink: 0;
+  padding-top: 1px;
+}
+
+.country-field-value {
+  font-weight: 600;
+  color: var(--ink);
+}
+
+/* ACTIVITY BOX */
+.activity-box {
+  background: var(--card-bg);
+  border: 1px solid var(--divider);
+  border-radius: 8px;
+  padding: 24px;
+  margin: 20px 0;
+}
+
+.activity-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--divider);
+}
+
+.activity-icon { font-size: 1.6rem; }
+
+.activity-header h4 {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--ua-blue);
+  line-height: 1.3;
+}
+
+.activity-header .activity-time {
+  font-size: 0.78rem;
+  color: #888;
+  margin-top: 2px;
+}
+
+.activity-box .activity-content {
+  font-size: 0.88rem;
+  line-height: 1.65;
+}
+
+.activity-box .activity-content p { margin-bottom: 10px; }
+.activity-box .activity-content ul { padding-left: 18px; }
+.activity-box .activity-content li { margin-bottom: 5px; }
+
+/* VIDEO LINK */
+.video-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #B71C1C;
+  color: var(--white);
+  text-decoration: none;
+  padding: 7px 16px;
+  border-radius: 4px;
+  font-size: 0.83rem;
+  font-weight: 600;
+  margin: 8px 0;
+  transition: background 0.15s;
+}
+
+.video-link:hover { background: #8B0000; }
+.video-link::before { content: '▶'; }
+
+/* LEGAL QUOTE */
+.legal-quote {
+  border-left: 4px solid var(--ua-blue);
+  padding: 14px 18px;
+  background: #EEF2FF;
+  margin: 16px 0;
+  border-radius: 0 5px 5px 0;
+  font-size: 0.88rem;
+  line-height: 1.65;
+  color: #222;
+}
+
+.legal-quote cite {
+  display: block;
+  font-size: 0.78rem;
+  color: #666;
+  margin-top: 8px;
+  font-style: normal;
+}
+
+/* KEY QUESTION */
+.key-questions {
+  background: var(--white);
+  border: 1px solid var(--divider);
+  border-radius: 6px;
+  padding: 16px 20px;
+  margin: 16px 0;
+}
+
+.key-questions h4 {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--olive);
+  margin-bottom: 12px;
+}
+
+.key-questions ul {
+  list-style: none;
+  padding: 0;
+}
+
+.key-questions ul li {
+  padding: 6px 0 6px 22px;
+  position: relative;
+  font-size: 0.9rem;
+  border-bottom: 1px dashed #DDD;
+  line-height: 1.5;
+}
+
+.key-questions ul li:last-child { border-bottom: none; }
+
+.key-questions ul li::before {
+  content: '?';
+  position: absolute;
+  left: 0;
+  color: var(--ua-blue);
+  font-weight: 700;
+}
+
+/* BREADCRUMB */
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8rem;
+  color: #888;
+  margin-bottom: 28px;
+  flex-wrap: wrap;
+}
+
+.breadcrumb a { color: var(--ua-blue); text-decoration: none; }
+.breadcrumb a:hover { text-decoration: underline; }
+.breadcrumb .sep { color: #CCC; }
+.breadcrumb .current { color: var(--ink); font-weight: 600; }
+
+/* PROGRESS */
+.module-progress {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 28px;
+  flex-wrap: wrap;
+}
+
+.progress-dot {
+  width: 28px;
+  height: 6px;
+  border-radius: 3px;
+  background: var(--divider);
+}
+
+.progress-dot.done { background: var(--ua-blue); }
+.progress-dot.current { background: var(--ua-yellow); }
+
+/* TAG BADGE */
+.tag {
+  display: inline-block;
+  background: #EAE8E0;
+  color: #555;
+  font-size: 0.72rem;
+  padding: 2px 8px;
+  border-radius: 2px;
+  margin-right: 4px;
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+.tag-blue { background: #DBEAFE; color: #1D4ED8; }
+.tag-green { background: #D1FAE5; color: #065F46; }
+.tag-red { background: #FEE2E2; color: #991B1B; }
+
+/* FOOTER NAV */
+.page-nav {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 48px;
+  padding-top: 24px;
+  border-top: 2px solid var(--divider);
+  flex-wrap: wrap;
+}
+
+.page-nav a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--ua-blue);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 10px 16px;
+  border: 1px solid var(--divider);
+  border-radius: 5px;
+  background: var(--card-bg);
+  transition: box-shadow 0.15s;
+}
+
+.page-nav a:hover { box-shadow: var(--shadow); }
+
+/* PRINT */
+@media print {
+  .topbar, .sidebar, .page-nav { display: none; }
+  .page-layout { grid-template-columns: 1fr; }
+  body { background: white; font-size: 12pt; }
+}
+
+/* RESPONSIVE */
+@media (max-width: 860px) {
+  .page-layout { grid-template-columns: 1fr; }
+  .sidebar { position: static; }
+  .module-header { padding: 36px 16px 30px; }
+  .page-layout { padding: 24px 16px 60px; }
+  .topbar { padding: 6px 16px; font-size: 0.72rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="topbar-stripe"></div>
+<div class="topbar">
+  <div>📘 <a href="../index.html">Довідник викладача «Захист України»</a> › 10 клас › Модуль 1</div>
+  <div>МОН 2024 · Інтегрований курс</div>
+</div>
+
+<header class="module-header">
+  <div class="module-header-inner">
+    <div class="module-eyebrow">10 клас · Модуль 1 · Тренінг №1</div>
+    <h1>Основи національної безпеки<br>та оборони України</h1>
+    <div class="module-header-meta">
+      <div class="meta-pill">📋 <span>8 уроків · ~360 хв</span></div>
+      <div class="meta-pill">📄 <span>~80 сторінок</span></div>
+      <div class="meta-pill">🎬 <span>6 відеоматеріалів</span></div>
+      <div class="meta-pill">🧩 <span>Ігри, дискусії, кейс-аналіз</span></div>
+    </div>
+  </div>
+</header>
+
+<div class="page-layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="nav-block">
+      <div class="nav-block-title">Теми модуля</div>
+      <ul class="nav-list">
+        <li><a href="#tema-1-1">
+          <span class="nav-num">1.1</span>
+          Взаємодія громадян і держави
+        </a></li>
+        <li><a href="#tema-1-2">
+          <span class="nav-num">1.2</span>
+          Конституційний і військовий обов'язок
+        </a></li>
+        <li><a href="#tema-1-3">
+          <span class="nav-num">1.3</span>
+          Сектор безпеки та оборони
+        </a></li>
+        <li><a href="#tema-1-4">
+          <span class="nav-num">1.4</span>
+          Територіальна цілісність. Нац. спротив
+        </a></li>
+        <li><a href="#tema-1-5">
+          <span class="nav-num">1.5</span>
+          НАТО та стратегічні партнери
+        </a></li>
+        <li><a href="#tema-1-6">
+          <span class="nav-num">1.6</span>
+          МГП: захист цивільних у конфлікті
+        </a></li>
+        <li><a href="#tema-1-7">
+          <span class="nav-num">1.7</span>
+          Волонтерство та цивільний внесок
+        </a></li>
+        <li><a href="#tema-1-8">
+          <span class="nav-num">1.8</span>
+          Ветерани та адаптація суспільства
+        </a></li>
+        <li><a href="#tema-1-9">
+          <span class="nav-num">1.9</span>
+          Оборонний бюджет України
+        </a></li>
+        <li><a href="#metodychni-porady">
+          <span class="nav-num">🔧</span>
+          Методичні поради
+        </a></li>
+        <li><a href="#proforiientatsiia">
+          <span class="nav-num">🎓</span>
+          Профорієнтація
+        </a></li>
+      </ul>
+    </div>
+
+    <div class="nav-block">
+      <div class="nav-block-title">Нормативна база</div>
+      <ul class="nav-list">
+        <li><a href="#"><span class="nav-num">⚖</span>Конституція України, ст.17, 65</a></li>
+        <li><a href="#"><span class="nav-num">⚖</span>ЗУ «Про оборону України»</a></li>
+        <li><a href="#"><span class="nav-num">⚖</span>ЗУ «Про нац. спротив» №1702-IX</a></li>
+        <li><a href="#"><span class="nav-num">⚖</span>ЗУ «Про Збройні Сили України»</a></li>
+        <li><a href="#"><span class="nav-num">⚖</span>Женевські конвенції 1949</a></li>
+      </ul>
+    </div>
+
+    <div class="nav-block">
+      <div class="nav-block-title">Навігація курсу</div>
+      <ul class="nav-list">
+        <li><a href="../index.html"><span class="nav-num">🏠</span>Головна сторінка</a></li>
+        <li><a href="modul-2.html"><span class="nav-num">→</span>Модуль 2. Управління та планування</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="content">
+
+    <div class="breadcrumb">
+      <a href="../index.html">Довідник</a>
+      <span class="sep">/</span>
+      <span>10 клас</span>
+      <span class="sep">/</span>
+      <span class="current">Модуль 1. Основи національної безпеки та оборони України</span>
+    </div>
+
+    <div class="module-progress">
+      <div class="progress-dot current" title="Модуль 1"></div>
+      <div class="progress-dot" title="Модуль 2"></div>
+      <div class="progress-dot" title="Модуль 3"></div>
+      <div class="progress-dot" title="Модуль 4"></div>
+      <div class="progress-dot" title="Модуль 5"></div>
+      <div class="progress-dot" title="Модуль 6"></div>
+    </div>
+
+    <!-- INTRO -->
+    <div class="callout callout-info">
+      <div class="callout-title">ℹ️ Загальний огляд модуля</div>
+      <p>Перший модуль курсу «Захист України» закладає фундамент оборонної свідомості. Учні переходять від абстрактного поняття «держава» до конкретного розуміння того, що <strong>кожен громадянин і громадянка є частиною системи захисту України</strong>. Модуль побудований у тренінговому форматі: мінімум лекцій, максимум ігор, дискусій та аналізу реальних кейсів.</p>
+      <p>Джерела: Тренінг №1 (МОН, 2025 р., схвалено гриф №БО-0550-25), програма МОН 2024 (Наказ №1116), матеріали Радомишльського ліцею №3.</p>
+    </div>
+
+    <!-- =========================================================
+         ТЕМА 1.1
+    ========================================================= -->
+    <section class="topic-section" id="tema-1-1">
+      <div class="section-header">
+        <div class="section-num">1.1</div>
+        <div>
+          <h2>Взаємодія між громадянами і державою у захисті країни</h2>
+          <p>Уроки 1–2 · Тривалість: 90 хв · Тип: імітаційна гра</p>
+        </div>
+      </div>
+
+      <div class="prose">
+
+        <div class="key-questions">
+          <h4>Ключові питання уроку</h4>
+          <ul>
+            <li>Чому громадянин або громадянка має захищати державу?</li>
+            <li>Як довіра між людьми впливає на здатність держави захищатися?</li>
+            <li>Що відбувається, коли громадяни діють лише у власних інтересах?</li>
+            <li>Які дії держави або громадян руйнують загальну систему довіри?</li>
+          </ul>
+        </div>
+
+        <h3>Теоретична основа: суспільний договір та оборона</h3>
+
+        <p>Зв'язок між державою та громадянами в питанні оборони визначається не лише законом — він є частиною <strong>суспільного договору</strong>. Держава гарантує безпеку, права та добробут громадян, а громадяни в обмін беруть на себе зобов'язання захищати цю спільну систему. Коли суспільний договір порушується — або через нерівність, або через корупцію, або через байдужість — система стає вразливою.</p>
+
+        <div class="definition">
+          <div class="definition-term">Оборонна свідомість</div>
+          <p>Сукупність знань, цінностей і готовності особистості до захисту незалежності та територіальної цілісності держави. Включає розуміння загроз, знання своїх прав і обов'язків, та готовність діяти. Оборонна свідомість — це не лише про зброю, а про довіру, солідарність і відповідальність кожного члена суспільства.</p>
+        </div>
+
+        <div class="definition">
+          <div class="definition-term">Суспільно-державні (національні) цінності</div>
+          <p>Фундаментальні принципи, на яких ґрунтується українська ідентичність: <strong>воля, гідність, самобутність, свобода</strong>. Закон України «Про основні засади державної політики у сфері утвердження української національної та громадянської ідентичності» визначає ці цінності як основу для освіти, культури та системи оборони.</p>
+        </div>
+
+        <h3>Нейродидактичний підхід: чому гра ефективна</h3>
+
+        <p>Тренінгова методика побудована на засадах нейродидактики — науки про те, як мозок найкраще засвоює знання. Ключові принципи для цього модуля:</p>
+
+        <div class="card-grid">
+          <div class="info-card">
+            <div class="card-title">🧠 Емоційний гачок</div>
+            <p>Мозок підлітка краще запам'ятовує емоційно насичену інформацію. Початок з яскравих ситуацій активує лімбічну систему та підвищує рівень дофаміну. <em>Емоції — це «клей» для знань.</em></p>
+          </div>
+          <div class="info-card">
+            <div class="card-title">🎮 Навчання через дію</div>
+            <p>Коли учень «проживає» ситуацію та ухвалює рішення, активуються ті самі нейронні мережі, що й у реальному житті. Формуються глибші зв'язки, ніж від пасивного слухання.</p>
+          </div>
+          <div class="info-card">
+            <div class="card-title">👥 Соціальна взаємодія</div>
+            <p>Спільне обговорення активує префронтальну кору. «Навчаючи інших, вчишся сам» — один із найефективніших принципів засвоєння матеріалу.</p>
+          </div>
+          <div class="info-card">
+            <div class="card-title">📱 Мультимодальність</div>
+            <p>Одночасне використання відео, тексту й онлайн-дошки залучає різні органи чуття. Мозок утворює міцніші зв'язки — краще розуміння і запам'ятовування.</p>
+          </div>
+        </div>
+
+        <!-- ACTIVITY: ГРА ДВІ ДЕРЖАВИ -->
+        <div class="activity-box">
+          <div class="activity-header">
+            <div class="activity-icon">🎲</div>
+            <div>
+              <h4>Практична активність: Гра «Дві держави»</h4>
+              <div class="activity-time">Автор: Тимур Демчук, Демократична школа «Майбутні» · 65 хв · 16–34 учасники</div>
+            </div>
+          </div>
+          <div class="activity-content">
+            <p><strong>Мета гри:</strong> на власному досвіді відчути, як рівень довіри та рівність між членами суспільства впливають на здатність держави функціонувати й захищатися. Учні переживають механіку «спільного блага» та «індивідуального інтересу» — і бачать наслідки обох стратегій.</p>
+
+            <h4>Реквізит</h4>
+            <ul>
+              <li>2 кола зі стільців (рівна кількість у кожному, гендерний та віковий баланс)</li>
+              <li>Підготовлені пакети з фішками «успіхів» (різна кількість для кожного учасника)</li>
+              <li>Фліпчарт або дошка, маркери</li>
+              <li>Ролі «держави» — 2 учні, визначені заздалегідь</li>
+            </ul>
+
+            <h4>Розподіл фішок (приклад для 20 учасників)</h4>
+            <p>Фішки символізують «успіхи» — ресурси, можливості, соціальний статус. Навмисна нерівність є частиною механіки гри.</p>
+
+            <div class="table-wrap">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Команда</th>
+                    <th>Тип держави</th>
+                    <th>Розподіл фішок (10 гравців)</th>
+                    <th>Всього</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>«Трикутник»</strong></td>
+                    <td>Нерівна (олігархи + бідні)</td>
+                    <td>1, 1, 1, 1, 1, 1, 2, 4, 12, 16</td>
+                    <td class="num">40</td>
+                  </tr>
+                  <tr>
+                    <td><strong>«Коло»</strong></td>
+                    <td>Середній клас домінує</td>
+                    <td>1, 2, 3, 3, 3, 4, 4, 5, 6, 9</td>
+                    <td class="num">40</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h4>Механіка раунду (6 раундів)</h4>
+            <ol class="steps-list">
+              <li>Ведучий (Світовий ринок) оголошує показник очікуваного зростання держскарбниці. Якщо досягнуто — кожен отримає по 1 бонусній фішці.</li>
+              <li>«Держава» (2 обрані учні) обходить гравців — кожен БЕРЕ зі скарбниці фішки (будь-яку кількість, анонімно).</li>
+              <li>«Держава» обходить вдруге — кожен ЗДАЄ фішки (будь-яку кількість на власний розсуд).</li>
+              <li>Підрахунок. 2 хвилини на обговорення стратегії всередині команди.</li>
+              <li>Якщо скарбниця виросла на потрібну суму → бонус від Світового ринку. Якщо виросла менше → нічого. Якщо зменшилась → штраф усім по 1 фішці до поповнення.</li>
+              <li>Якщо «помирає» гравець (0 фішок) → всі платять по 1. Якщо помирає 50%+ → країна програє.</li>
+            </ol>
+
+            <div class="callout callout-tip">
+              <div class="callout-title">🎓 Для вчителя/вчительки: що обговорювати після гри</div>
+              <ul>
+                <li><strong>«Чому так сталося?»</strong> — обидві команди мали однаковий стартовий розподіл між державою і громадянами, однаковий Світовий ринок. Але результати різні. Чому?</li>
+                <li>Вийдіть на <strong>фундаментальну різницю</strong> між командами — початковий розподіл фішок між гравцями (нерівність).</li>
+                <li>«Будувати довіру легше, коли якомога менша кількість людей почувається погано» — це стосується і держави, і армії, і класу.</li>
+                <li>Ключові теми для розвитку: довіра, відповідальність, справедливість, лідерство, «всі крадуть», командність, стратегія.</li>
+                <li>Акцентуйте: у цій грі йдеться не лише про гроші, а й про будь-які <em>атрибути успіху</em> — здоров'я, зв'язки, доступ до інформації.</li>
+              </ul>
+            </div>
+
+            <h4>Критерії успішності (для обговорення з учнями)</h4>
+            <div class="table-wrap">
+              <table class="data-table">
+                <thead>
+                  <tr><th>Рівень «успіхів»</th><th>Відповідник у реальному житті</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td class="bad">1–2 фішки</td><td>Обмежені ресурси, труднощі з базовими потребами, відчуття загрози та безвиході</td></tr>
+                  <tr><td>3–7 фішок</td><td>Стабільний середній клас: освіта, робота, базова безпека, можливість планувати</td></tr>
+                  <tr><td class="good">8–12 фішок</td><td>Висока реалізація: вплив, можливості для розвитку, авторитет у спільноті</td></tr>
+                  <tr><td class="good">13+ фішок</td><td>Елітарний статус: значний економічний та соціальний вплив</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <h3>Психоемоційна безпека на уроці</h3>
+
+        <p>Теми цього модуля — особиста безпека, втрата близьких, окупація, мобілізація — можуть торкатися болючих переживань учнів, особливо тих, хто має рідних на фронті або живе в прифронтових районах. Перед кожним уроком:</p>
+
+        <div class="callout callout-warn">
+          <div class="callout-title">⚠️ Індикатори стресу — на що звертати увагу</div>
+          <ul>
+            <li><strong>Емоційні:</strong> занепокоєння, плач, дратівливість, апатія, надмірна збудженість</li>
+            <li><strong>Фізичні:</strong> прискорене дихання, тремтіння рук, м'язове напруження, почервоніння</li>
+            <li><strong>Поведінкові:</strong> уникнення контакту, зацикленість на темі, агресія, ізоляція</li>
+          </ul>
+          <p><strong>Дії вчителя:</strong> зробити паузу, м'яко звернутися, запропонувати вийти або перейти на легшу вправу, забезпечити конфіденційність і підтримку.</p>
+        </div>
+
+        <div class="callout callout-pract">
+          <div class="callout-title">✅ Вправа на заспокоєння (на початку кожного уроку, 2–3 хв)</div>
+          <p><strong>Дихання 4-4-4-4:</strong> вдих (рахуємо до 4) → затримка (4) → видих (4) → затримка (4). Повторити 2–3 рази. Учні заплющують очі і зосереджуються на відчуттях.</p>
+          <p><strong>Слово настрою:</strong> «Одним словом — як ви почуваєтесь сьогодні?» Кожен по колу. Вчитель уважно слухає і відзначає тих, хто мовчить або виглядає стривожено.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =========================================================
+         ТЕМА 1.2
+    ========================================================= -->
+    <section class="topic-section" id="tema-1-2">
+      <div class="section-header">
+        <div class="section-num">1.2</div>
+        <div>
+          <h2>Конституційний обов'язок. Військовий обов'язок</h2>
+          <p>Урок 3 · Тривалість: 45 хв · Тип: дослідження + дебати</p>
+        </div>
+      </div>
+
+      <div class="prose">
+
+        <h3>Правова основа</h3>
+
+        <div class="legal-quote">
+          Стаття 17 Конституції України: «Захист суверенітету і територіальної цілісності України, забезпечення її економічної та інформаційної безпеки є найважливішими функціями держави, справою всього Українського народу.»
+          <cite>Конституція України, 1996 р.</cite>
+        </div>
+
+        <div class="legal-quote">
+          Стаття 65 Конституції України: «Захист Вітчизни, незалежності та територіальної цілісності України, шанування її державних символів є обов'язком громадян України. Громадяни відбувають військову службу відповідно до закону.»
+          <cite>Конституція України, 1996 р.</cite>
+        </div>
+
+        <h3>Закон про оборону України: ключові положення</h3>
+
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr><th>Вид служби</th><th>Характеристика</th><th>Тривалість</th><th>Категорія</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Строкова служба</strong></td>
+                <td>Обов'язкова для юнаків після 18 років. Базова бойова підготовка</td>
+                <td>12–18 місяців</td>
+                <td>Юнаки 18–25 р.</td>
+              </tr>
+              <tr>
+                <td><strong>Контрактна служба</strong></td>
+                <td>На добровільній основі. Вища зарплата та соціальний захист</td>
+                <td>3+ роки (контракт)</td>
+                <td>18–40 р. (чол. і жін.)</td>
+              </tr>
+              <tr>
+                <td><strong>Служба в ТрО</strong></td>
+                <td>Територіальна оборона. Служба за місцем проживання</td>
+                <td>Мобілізаційна</td>
+                <td>18–60 р.</td>
+              </tr>
+              <tr>
+                <td><strong>Альтернативна</strong></td>
+                <td>Для тих, хто не може служити зі зброєю за переконаннями чи здоров'ям</td>
+                <td>Відповідно до закону</td>
+                <td>Спеціальні умови</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Порівняльний аналіз: моделі мобілізаційної політики у світі</h3>
+
+        <p>Не існує єдиної «правильної» моделі. Кожна країна формує систему призову відповідно до свого геополітичного становища, культури та загроз. Аналіз міжнародного досвіду допомагає учням розуміти складність питань національної безпеки.</p>
+
+        <div class="country-grid">
+          <div class="country-card">
+            <div class="country-card-header">🇮🇱 Ізраїль</div>
+            <div class="country-card-body">
+              <div class="country-field"><span class="country-field-label">Жінки:</span><span class="country-field-value">Обов'язково</span></div>
+              <div class="country-field"><span class="country-field-label">Вік:</span><span class="country-field-value">18 р. (чол. і жін.)</span></div>
+              <div class="country-field"><span class="country-field-label">Термін:</span><span class="country-field-value">Чол. 32 міс., жін. 24 міс.</span></div>
+              <div class="country-field"><span class="country-field-label">Особливість:</span><span class="country-field-value">Єдина держава обов'язк. для обох статей. Ключ нац. ідентичності</span></div>
+            </div>
+          </div>
+          <div class="country-card">
+            <div class="country-card-header">🇸🇪 Швеція</div>
+            <div class="country-card-body">
+              <div class="country-field"><span class="country-field-label">Жінки:</span><span class="country-field-value">Вибірково обов'язково</span></div>
+              <div class="country-field"><span class="country-field-label">Вік:</span><span class="country-field-value">18 р.</span></div>
+              <div class="country-field"><span class="country-field-label">Термін:</span><span class="country-field-value">9–12 місяців</span></div>
+              <div class="country-field"><span class="country-field-label">Особливість:</span><span class="country-field-value">Реєстрація обов'язкова для всіх, служба — лише для найвмотивованіших</span></div>
+            </div>
+          </div>
+          <div class="country-card">
+            <div class="country-card-header">🇳🇴 Норвегія</div>
+            <div class="country-card-body">
+              <div class="country-field"><span class="country-field-label">Жінки:</span><span class="country-field-value">Вибірково обов'язково</span></div>
+              <div class="country-field"><span class="country-field-label">Вік:</span><span class="country-field-value">19 р.</span></div>
+              <div class="country-field"><span class="country-field-label">Термін:</span><span class="country-field-value">12 місяців</span></div>
+              <div class="country-field"><span class="country-field-label">Особливість:</span><span class="country-field-value">Перша країна NATO, що запровадила рівний призов для чол. і жін.</span></div>
+            </div>
+          </div>
+          <div class="country-card">
+            <div class="country-card-header">🇪🇪 Естонія</div>
+            <div class="country-card-body">
+              <div class="country-field"><span class="country-field-label">Жінки:</span><span class="country-field-value">Добровільно</span></div>
+              <div class="country-field"><span class="country-field-label">Вік:</span><span class="country-field-value">18–27 р.</span></div>
+              <div class="country-field"><span class="country-field-label">Термін:</span><span class="country-field-value">8 або 11 місяців</span></div>
+              <div class="country-field"><span class="country-field-label">Особливість:</span><span class="country-field-value">Модель для постсовєтської країни. Акцент на великому підготовленому резерві</span></div>
+            </div>
+          </div>
+          <div class="country-card">
+            <div class="country-card-header">🇨🇭 Швейцарія</div>
+            <div class="country-card-body">
+              <div class="country-field"><span class="country-field-label">Жінки:</span><span class="country-field-value">Добровільно</span></div>
+              <div class="country-field"><span class="country-field-label">Вік:</span><span class="country-field-value">18–34 р.</span></div>
+              <div class="country-field"><span class="country-field-label">Термін:</span><span class="country-field-value">18 тижнів + курси</span></div>
+              <div class="country-field"><span class="country-field-label">Особливість:</span><span class="country-field-value">3 варіанти: військова, цивільна, або податок на оборону</span></div>
+            </div>
+          </div>
+          <div class="country-card">
+            <div class="country-card-header">🇸🇬 Сінгапур</div>
+            <div class="country-card-body">
+              <div class="country-field"><span class="country-field-label">Жінки:</span><span class="country-field-value">Не існує</span></div>
+              <div class="country-field"><span class="country-field-label">Вік:</span><span class="country-field-value">18 р.</span></div>
+              <div class="country-field"><span class="country-field-label">Термін:</span><span class="country-field-value">24 місяці + резерв до 40 р.</span></div>
+              <div class="country-field"><span class="country-field-label">Особливість:</span><span class="country-field-value">Армія, поліція або цивільна оборона. Тривалий резервний обов'язок</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ACTIVITY -->
+        <div class="activity-box">
+          <div class="activity-header">
+            <div class="activity-icon">🗳️</div>
+            <div>
+              <h4>Практична активність: Сценарій «Міністерство оборони»</h4>
+              <div class="activity-time">45 хв · 3 групи</div>
+            </div>
+          </div>
+          <div class="activity-content">
+            <p><strong>Постановка задачі:</strong> «Ви — команда Міністерства оборони України, якій доручили розробити мобілізаційну політику у повоєнний період. Ваше завдання — запропонувати оптимальну модель з урахуванням світового досвіду та реалій нашої країни.»</p>
+
+            <h4>Структура заняття</h4>
+            <div class="table-wrap">
+              <table class="data-table">
+                <thead>
+                  <tr><th>Етап</th><th>Опис</th><th>Час</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td><strong>1. Голосування</strong></td><td>«Хто за обов'язковий призов? За контракт?» — підняттям руки. Фіксуємо позиції</td><td>5 хв</td></tr>
+                  <tr><td><strong>2. Сценарій</strong></td><td>Постановка ролі «Міністерства оборони» + інтерактивна мапа World Population Review</td><td>5 хв</td></tr>
+                  <tr><td><strong>3. Дослідження</strong></td><td>3 групи вивчають кейси по 3 країни. Заповнюють: тип служби, жінки, вік, термін, що корисно для України</td><td>15 хв</td></tr>
+                  <tr><td><strong>4. Презентація</strong></td><td>Кожна група представляє напрацювання. Загальна дискусія</td><td>15 хв</td></tr>
+                  <tr><td><strong>5. Рефлексія</strong></td><td>Чи змінились позиції після дослідження? Чому?</td><td>5 хв</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h4>Розподіл країн по групах</h4>
+            <ul>
+              <li><strong>Група 1:</strong> Ізраїль, Єгипет, Швеція</li>
+              <li><strong>Група 2:</strong> Норвегія, Туреччина, Північна Корея</li>
+              <li><strong>Група 3:</strong> Австрія, Естонія, Сінгапур</li>
+            </ul>
+
+            <div class="callout callout-tip">
+              <div class="callout-title">💡 Ключові питання для дискусії</div>
+              <ul>
+                <li>Яка головна мета військового обов'язку — лише забезпечення армії чи також соціальне єднання?</li>
+                <li>Як справедливо розподілити тягар оборони між громадянами незалежно від статі?</li>
+                <li>Яку ціну суспільство готове платити за безпеку — час? гроші? особисту свободу?</li>
+                <li>Яка модель найкраще підходить для України у повоєнний період?</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =========================================================
+         ТЕМА 1.3
+    ========================================================= -->
+    <section class="topic-section" id="tema-1-3">
+      <div class="section-header">
+        <div class="section-num">1.3</div>
+        <div>
+          <h2>Сектор безпеки та оборони України</h2>
+          <p>Урок 5 · Тривалість: 45 хв · Тип: аналіз структур + схеми</p>
+        </div>
+      </div>
+
+      <div class="prose">
+
+        <h3>Складові сектору безпеки та оборони</h3>
+
+        <p>Сектор безпеки та оборони України — це система державних органів та інституцій, що забезпечують захист суверенітету, конституційного ладу та безпеку громадян. Визначений Законом України «Про національну безпеку України» (2018).</p>
+
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr><th>Складова</th><th>Підпорядкування</th><th>Основні завдання</th><th>Чисельність (орієнт.)</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Збройні Сили України (ЗСУ)</strong></td>
+                <td>Президент → МО</td>
+                <td>Збройна оборона держави, відсіч агресії, участь у міжнародних операціях</td>
+                <td>700 000+ (2024)</td>
+              </tr>
+              <tr>
+                <td><strong>Національна гвардія (НГУ)</strong></td>
+                <td>МВС</td>
+                <td>Охорона громадського порядку, захист важливих об'єктів, охорона кордону (спільно з ДПС)</td>
+                <td>60 000+</td>
+              </tr>
+              <tr>
+                <td><strong>Державна прикордонна служба (ДПС)</strong></td>
+                <td>МВС</td>
+                <td>Охорона державного кордону, контроль переміщення осіб і вантажів</td>
+                <td>45 000+</td>
+              </tr>
+              <tr>
+                <td><strong>Служба безпеки України (СБУ)</strong></td>
+                <td>Президент</td>
+                <td>Контррозвідка, протидія тероризму, захист державної таємниці</td>
+                <td>Не публікується</td>
+              </tr>
+              <tr>
+                <td><strong>Розвідувальні органи</strong></td>
+                <td>Різне підпорядкування</td>
+                <td>Зовнішня розвідка (СЗР), воєнна розвідка (ГУР МО)</td>
+                <td>Засекречено</td>
+              </tr>
+              <tr>
+                <td><strong>Сили ТрО (ТрО)</strong></td>
+                <td>МО / ЗСУ</td>
+                <td>Захист та оборона за місцем дислокації, підтримка ЗСУ в їхній зоні відповідальності</td>
+                <td>120 000+</td>
+              </tr>
+              <tr>
+                <td><strong>Міністерство внутрішніх справ</strong></td>
+                <td>КМУ</td>
+                <td>Поліцейські функції, правопорядок, координація з НГУ та ДПС</td>
+                <td>—</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Система командування у воєнний час</h3>
+
+        <div class="callout callout-info">
+          <div class="callout-title">ℹ️ Схема підпорядкування</div>
+          <p><strong>Верховний Головнокомандувач</strong> — Президент України<br>
+          ↓<br>
+          <strong>Рада національної безпеки та оборони (РНБО)</strong> — координуючий орган<br>
+          ↓<br>
+          <strong>Міністерство оборони</strong> — цивільне управління<br>
+          ↓<br>
+          <strong>Головнокомандувач ЗСУ</strong> — оперативне командування<br>
+          ↓<br>
+          Оперативні командування (Північ, Схід, Південь, Захід) + Командування Повітряних Сил + Сили ТрО</p>
+        </div>
+
+        <h3>Воєнний стан та його наслідки для громадян</h3>
+
+        <div class="definition">
+          <div class="definition-term">Воєнний стан</div>
+          <p>Особливий правовий режим, що вводиться в разі збройної агресії проти України або реальної загрози такої агресії. Вводиться Президентом і затверджується Верховною Радою. Передбачає обмеження ряду прав і свобод громадян та розширення повноважень органів влади в інтересах оборони.</p>
+        </div>
+
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr><th>Обмеження під час воєнного стану</th><th>Підстава</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Мобілізаційний обов'язок чоловіків 18–60 років</td><td>ЗУ «Про мобілізаційну підготовку та мобілізацію»</td></tr>
+              <tr><td>Заборона або обмеження виїзду за кордон</td><td>Рішення в межах воєнного стану</td></tr>
+              <tr><td>Комендантська година (у визначених районах)</td><td>Рішення регіональної ВА</td></tr>
+              <tr><td>Перевірка документів без додаткових підстав</td><td>НГУ, поліція, ЗСУ</td></tr>
+              <tr><td>Вилучення транспортних засобів та майна для потреб оборони</td><td>З відшкодуванням після закінчення ВС</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout callout-warn">
+          <div class="callout-title">⚠️ Для викладача: чутлива тема</div>
+          <p>Обговорення воєнного стану та мобілізації може бути особисто болісним для учнів, які мають батьків або родичів, що служать або загинули. Підходьте до теми з емпатією. Зосередьтеся на <strong>правовому та структурному</strong> аспекті, а не на особистих прикладах.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =========================================================
+         ТЕМА 1.4
+    ========================================================= -->
+    <section class="topic-section" id="tema-1-4">
+      <div class="section-header">
+        <div class="section-num">1.4</div>
+        <div>
+          <h2>Територіальна цілісність держави. Національний спротив</h2>
+          <p>Урок 4 · Тривалість: 45 хв · Тип: кейс-аналіз + гра</p>
+        </div>
+      </div>
+
+      <div class="prose">
+
+        <div class="key-questions">
+          <h4>Ключові питання уроку</h4>
+          <ul>
+            <li>Що таке територіальна цілісність і чому вона ключова для держави?</li>
+            <li>Які є форми спротиву і як їх відрізнити від деструктивної поведінки?</li>
+            <li>Як міжнародний досвід допомагає зрозуміти Ukrainian спротив?</li>
+            <li>Яку роль відіграє КОЖЕН із нас у національному спротиві?</li>
+          </ul>
+        </div>
+
+        <h3>Правова основа</h3>
+
+        <div class="legal-quote">
+          Стаття 2 Конституції України: «Суверенітет України поширюється на всю її територію. Україна є унітарною державою. Територія України в межах існуючого кордону є цілісною і недоторканною.»
+          <cite>Конституція України, 1996 р.</cite>
+        </div>
+
+        <div class="definition">
+          <div class="definition-term">Національний спротив</div>
+          <p>Комплекс заходів, що здійснюються народом України для захисту суверенітету, конституційного ладу, незалежності та цілісності держави. Визначений Законом України «Про основи національного спротиву» №1702-IX. Включає <strong>три складники</strong>: (1) Територіальна оборона ЗСУ, (2) Рух опору, (3) Підготовка та залучення громадян.</p>
+        </div>
+
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr><th>Складник нацспротиву</th><th>Хто</th><th>Форма</th><th>Правова основа</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Територіальна оборона</strong></td>
+                <td>Сили ТрО ЗСУ</td>
+                <td>Збройна, військова</td>
+                <td>ЗУ «Про нац. спротив» + Статут ЗСУ</td>
+              </tr>
+              <tr>
+                <td><strong>Рух опору</strong></td>
+                <td>Цивільні, координовані ЗСУ/СБУ</td>
+                <td>Підпільна, партизанська, інформаційна</td>
+                <td>ЗУ «Про нац. спротив» №1702-IX</td>
+              </tr>
+              <tr>
+                <td><strong>Підготовка громадян</strong></td>
+                <td>Усі дієздатні громадяни</td>
+                <td>Навчання, волонтерство, цивільний захист</td>
+                <td>ЗУ «Про нац. спротив», ЗУ «ЦЗ»</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Форми легітимного спротиву</h3>
+
+        <div class="card-grid">
+          <div class="info-card">
+            <div class="card-title">⚔️ Збройний спротив</div>
+            <ul>
+              <li>Участь у ЗСУ, ТрО</li>
+              <li>Партизанські дії на окупованих територіях</li>
+              <li>Диверсійно-розвідувальні операції (у складі сил оборони)</li>
+            </ul>
+          </div>
+          <div class="info-card">
+            <div class="card-title">📢 Інформаційний спротив</div>
+            <ul>
+              <li>Поширення правди про реальну ситуацію</li>
+              <li>Документування злочинів окупантів</li>
+              <li>Контрпропаганда та викриття фейків</li>
+              <li>OSINT — відстеження пересувань ворога</li>
+            </ul>
+          </div>
+          <div class="info-card">
+            <div class="card-title">🤝 Громадянський спротив</div>
+            <ul>
+              <li>Ненасильницькі акції та демонстрації</li>
+              <li>Відмова співпрацювати з окупантами</li>
+              <li>Збереження та передача документів та символіки</li>
+              <li>Підтримка переміщених осіб</li>
+            </ul>
+          </div>
+          <div class="info-card">
+            <div class="card-title">💰 Економічний спротив</div>
+            <ul>
+              <li>Волонтерство та збір коштів для ЗСУ</li>
+              <li>Відмова сплачувати «податки» окупантам</li>
+              <li>Бойкот продукції країни-агресора</li>
+              <li>Підтримка вітчизняного виробника</li>
+            </ul>
+          </div>
+        </div>
+
+        <h3>Ключові кейси з історії: аналіз для учнів</h3>
+
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr><th>Кейс</th><th>Форма спротиву</th><th>Ризики</th><th>Уроки для України</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Холодноярська республіка</strong><br><em>1919–1922</em></td>
+                <td>Збройний, партизанський</td>
+                <td>Репресії більшовиків, оточення, знищення</td>
+                <td>Самоорганізація на місцях. Захист рідної землі починається з масової підтримки населення</td>
+              </tr>
+              <tr>
+                <td><strong>Кенгірське повстання</strong><br><em>1954, Казахська РСР</em></td>
+                <td>Ненасильницький громадянський</td>
+                <td>Розстріл, переслідування сімей</td>
+                <td>Солідарність у неволі — потужний моральний інструмент. Спільна вимога прав об'єднує</td>
+              </tr>
+              <tr>
+                <td><strong>Кримськотатарський спротив</strong><br><em>після 2014 р.</em></td>
+                <td>Інформаційний, ненасильницький</td>
+                <td>Арешти, депортації, тиск на сім'ї</td>
+                <td>Навіть малі акції привертають міжнародну увагу. Меншини — хранителі пам'яті</td>
+              </tr>
+              <tr>
+                <td><strong>Зимова війна (Фінляндія)</strong><br><em>1939–1940</em></td>
+                <td>Збройний + тотальна оборона</td>
+                <td>Великі людські втрати, окупація території</td>
+                <td>Єдність усіх верств суспільства. Мала нація може стримати агресора при високій мотивації</td>
+              </tr>
+              <tr>
+                <td><strong>Жовта стрічка (Херсон)</strong><br><em>2022–2023</em></td>
+                <td>Символічний, інформаційний</td>
+                <td>Арешти, обшуки, катування</td>
+                <td>Малими мирними діями зміцнюється нац. ідентичність. Символ — потужна зброя</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- ACTIVITY: ГРА СПРОТИВ ЧИ НЕ СПРОТИВ -->
+        <div class="activity-box">
+          <div class="activity-header">
+            <div class="activity-icon">⚖️</div>
+            <div>
+              <h4>Практична активність: Гра «Спротив чи не спротив?»</h4>
+              <div class="activity-time">15–20 хв · Опціонально замість або доповнення до групової роботи</div>
+            </div>
+          </div>
+          <div class="activity-content">
+            <p><strong>Порядок:</strong> вчитель читає ситуацію вголос → 30 секунд обговорення в парах → учні голосують «Спротив» чи «Не спротив» → аргументи від кожної сторони → 2 хв дискусії.</p>
+
+            <div class="table-wrap">
+              <table class="data-table">
+                <thead>
+                  <tr><th>Ситуація</th><th>Класифікація</th><th>Ключовий аргумент</th></tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Мешканці вночі вивісили великий прапор України на фасаді будинку під окупацією</td>
+                    <td class="good">✅ Спротив</td>
+                    <td>Ненасильницький протест, демонстрація нац. ідентичності. Психологічний вплив на окупантів</td>
+                  </tr>
+                  <tr>
+                    <td>Волонтери зібрали ліки для ЗСУ через Telegram-канал</td>
+                    <td class="good">✅ Спротив</td>
+                    <td>Економічний і громадянський спротив. Прямий внесок в обороноздатність</td>
+                  </tr>
+                  <tr>
+                    <td>Учень написав фарбою «Слава Україні» на стіні школи</td>
+                    <td>⚠️ Неоднозначно</td>
+                    <td>Патріотичне почуття + пошкодження майна. Чи виправдовує мотив засіб? Ключ — критичне мислення</td>
+                  </tr>
+                  <tr>
+                    <td>Група осіб розмалювала чорною фарбою білборд проросійського бренду</td>
+                    <td class="bad">❌ Не спротив (вандалізм)</td>
+                    <td>Пошкодження приватного майна. Виходить за межі легального спротиву. Підриває громадянську солідарність</td>
+                  </tr>
+                  <tr>
+                    <td>Школярка записала подкаст про життя у прифронтовому місті та поширила в соцмережах</td>
+                    <td class="good">✅ Спротив</td>
+                    <td>Інформаційний спротив. Висвітлення правди, мобілізація уваги</td>
+                  </tr>
+                  <tr>
+                    <td>Водій відмовився перевозити вантаж для окупаційних сил</td>
+                    <td class="good">✅ Спротив</td>
+                    <td>Економічний спротив. Підриває логістику ворога. Громадянська позиція</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="callout callout-pract">
+              <div class="callout-title">✅ Відеоматеріали для уроку</div>
+              <p>Перегляньте перед заняттям (і покажіть фрагменти учням):</p>
+              <ul>
+                <li><a href="https://www.youtube.com/watch?v=xnnQCXBmm_0" class="video-link" target="_blank" rel="noopener">Жовта стрічка — інтерв'ю з партизаном [2:45–6:16]</a></li>
+                <li><a href="https://www.youtube.com/watch?v=58_u3XC0QFc" class="video-link" target="_blank" rel="noopener">Як Херсон чинив спротив. Окупація та перші мітинги [8:22–10:40] (Ukraïner)</a></li>
+                <li><a href="https://www.youtube.com/watch?v=6mKPvAsPcbo" class="video-link" target="_blank" rel="noopener">«Крим. 10 років окупації» (Суспільне, документальний проєкт)</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =========================================================
+         ТЕМА 1.5
+    ========================================================= -->
+    <section class="topic-section" id="tema-1-5">
+      <div class="section-header">
+        <div class="section-num">1.5</div>
+        <div>
+          <h2>НАТО та стратегічні партнери України у сфері безпеки</h2>
+          <p>Урок 6 · Тривалість: 45 хв · Тип: аналіз + дискусія</p>
+        </div>
+      </div>
+
+      <div class="prose">
+
+        <h3>NATO: структура і принципи</h3>
+
+        <div class="definition">
+          <div class="definition-term">НАТО (North Atlantic Treaty Organization)</div>
+          <p>Військово-політичний альянс 32 держав-членів (станом на 2024 р.), заснований у 1949 р. Базовий документ — Вашингтонський договір. <strong>Стаття 5</strong> є ключовою: напад на одного члена вважається нападом на всіх. Принцип колективної оборони.</p>
+        </div>
+
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr><th>Ключовий принцип НАТО</th><th>Зміст</th><th>Значення для України</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Стаття 5 (Колективна оборона)</strong></td>
+                <td>Збройний напад на одного члена = напад на всіх. Відповідь — колективна</td>
+                <td>Членство в НАТО = автоматичний захист 32 держав від агресії</td>
+              </tr>
+              <tr>
+                <td><strong>Принцип консенсусу</strong></td>
+                <td>Рішення ухвалюються одностайно всіма членами</td>
+                <td>Жодна держава не може «заблокувати» захист</td>
+              </tr>
+              <tr>
+                <td><strong>«Відчинені двері»</strong></td>
+                <td>Стаття 10: будь-яка держава Європи може стати членом</td>
+                <td>Юридична основа для заявки України на членство</td>
+              </tr>
+              <tr>
+                <td><strong>2% ВВП на оборону</strong></td>
+                <td>Цільовий показник витрат на оборону для кожного члена</td>
+                <td>Україна витрачає ~25% ВВП — значно вище від усіх членів НАТО</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Формати відносин Україна–НАТО</h3>
+
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr><th>Формат</th><th>Зміст</th><th>Рік запровадження</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Рада Україна–НАТО (КУН)</strong></td><td>Регулярні консультації на рівні послів та міністрів</td><td>1997</td></tr>
+              <tr><td><strong>Хартія про особливе партнерство</strong></td><td>Базовий документ відносин</td><td>1997</td></tr>
+              <tr><td><strong>Індивідуальна програма партнерства (IPAP)</strong></td><td>Реформи у секторі безпеки відповідно до стандартів НАТО</td><td>2002</td></tr>
+              <tr><td><strong>Річна нац. програма (ANP)</strong></td><td>Щорічне планування реформ на шляху до членства</td><td>2009</td></tr>
+              <tr><td><strong>Оголошення Вільнюського саміту</strong></td><td>«Майбутнє України в НАТО». Запрошення без MAP після досягнення умов</td><td>2023</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Стратегічні партнери та коаліція на підтримку України (2024)</h3>
+
+        <div class="card-grid">
+          <div class="info-card">
+            <div class="card-title">🇺🇸 США</div>
+            <ul>
+              <li>Найбільший постачальник зброї ($50+ млрд)</li>
+              <li>Rozвідувальна підтримка (SIGINT, супутники)</li>
+              <li>Навчання особового складу ЗСУ</li>
+            </ul>
+          </div>
+          <div class="info-card">
+            <div class="card-title">🇬🇧 Велика Британія</div>
+            <ul>
+              <li>Перша країна, що надала далекобійні ракети (Storm Shadow)</li>
+              <li>Навчання за програмою Operation Interflex (10 000+ осіб)</li>
+              <li>Підтримка у сфері розвідки</li>
+            </ul>
+          </div>
+          <div class="info-card">
+            <div class="card-title">🇩🇪 Німеччина</div>
+            <ul>
+              <li>Танки Leopard 2, БМП Marder</li>
+              <li>Системи ППО (IRIS-T, Patriot)</li>
+              <li>Другий за обсягом донор після США</li>
+            </ul>
+          </div>
+          <div class="info-card">
+            <div class="card-title">🇵🇱 Польща</div>
+            <ul>
+              <li>Тисячі танків і гаубиць</li>
+              <li>Ключовий транзитний хаб для зброї</li>
+              <li>Прийняла найбільшу хвилю українських біженців</li>
+            </ul>
+          </div>
+          <div class="info-card">
+            <div class="card-title">🇫🇷 Франція</div>
+            <ul>
+              <li>Колісні танки AMX-10RC</li>
+              <li>Ракети SCALP (аналог Storm Shadow)</li>
+              <li>Обговорюється відправлення інструкторів</li>
+            </ul>
+          </div>
+          <div class="info-card">
+            <div class="card-title">🇨🇿 Чехія</div>
+            <ul>
+              <li>Ініціатива з закупівлі снарядів на міжнародному ринку</li>
+              <li>Масові постачання артилерійських систем</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="callout callout-info">
+          <div class="callout-title">ℹ️ Чому членство в НАТО важливе для України</div>
+          <ul>
+            <li><strong>Безпекові гарантії:</strong> стаття 5 гарантує захист усіх союзників</li>
+            <li><strong>Стандарти:</strong> сумісність з арміями 32 країн, обмін розвідкою</li>
+            <li><strong>Стримування:</strong> сама загроза членства змушує агресорів рахуватися</li>
+            <li><strong>Економічна інтеграція:</strong> ринки, інвестиції, технологічний доступ</li>
+            <li><strong>Демократичний контроль:</strong> цивільний нагляд над силовими структурами</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =========================================================
+         ТЕМА 1.6
+    ========================================================= -->
+    <section class="topic-section" id="tema-1-6">
+      <div class="section-header">
+        <div class="section-num">1.6</div>
+        <div>
+          <h2>Міжнародне гуманітарне право: захист цивільних у конфлікті</h2>
+          <p>Теорія + практика · Тривалість: 45 хв</p>
+        </div>
+      </div>
+
+      <div class="prose">
+
+        <div class="definition">
+          <div class="definition-term">Міжнародне гуманітарне право (МГП)</div>
+          <p>Галузь міжнародного права, що встановлює межі ведення збройного конфлікту з метою обмеження його наслідків. МГП захищає тих, хто не бере участь у бойових діях (цивільне населення, медичний персонал) та тих, хто припинив брати участь (поранені, полонені). Базується на Женевських конвенціях 1949 р. та Додаткових протоколах 1977 р.</p>
+        </div>
+
+        <h3>Основні принципи МГП</h3>
+
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr><th>Принцип</th><th>Зміст</th><th>Приклад порушення</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Розрізнення</strong></td>
+                <td>Воюючі сторони повинні завжди розрізняти комбатантів і цивільних. Удари — лише по воєнних об'єктах</td>
+                <td>Удар по лікарні, школі, житловому кварталу</td>
+              </tr>
+              <tr>
+                <td><strong>Пропорційність</strong></td>
+                <td>Заподіяна шкода цивільним не повинна бути надмірною порівняно з військовою перевагою</td>
+                <td>Знищення міста задля ліквідації однієї цілі</td>
+              </tr>
+              <tr>
+                <td><strong>Необхідність</strong></td>
+                <td>Застосовувати лише ті заходи, що необхідні для досягнення законної воєнної мети</td>
+                <td>Тортури, знущання над полоненими</td>
+              </tr>
+              <tr>
+                <td><strong>Гуманність</strong></td>
+                <td>Всі особи, що не беруть участь у бойових діях, мають право на гуманне поводження</td>
+                <td>Страти без суду, катування цивільних</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Женевські конвенції 1949 р.: чотири конвенції</h3>
+
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr><th>Конвенція</th><th>Захищає</th><th>Ключові норми</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>I</strong></td><td>Поранені та хворі в польових умовах</td><td>Медичний персонал і заклади недоторканні. Знак Червоного Хреста — міжнародний захист</td></tr>
+              <tr><td><strong>II</strong></td><td>Поранені, хворі та потерпілі від аварії кораблів на морі</td><td>Аналогічно I, але на морі. Госпітальні судна недоторканні</td></tr>
+              <tr><td><strong>III</strong></td><td>Військовополонені (ВП)</td><td>ВП мають право на гідне поводження. Тортури заборонені. Зобов'язані назвати лише ім'я, звання, дату народження, номер</td></tr>
+              <tr><td><strong>IV</strong></td><td>Цивільне населення</td><td>Цивільних не можна використовувати як щит. Заборонено депортації. Захист культурних цінностей</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Що ЗАБОРОНЕНО за МГП (абсолютні заборони)</h3>
+
+        <div class="callout callout-warn">
+          <div class="callout-title">⛔ Заборонені засоби та методи ведення воєнних дій</div>
+          <ul>
+            <li>Хімічна, біологічна, ядерна зброя (ЗМЗ)</li>
+            <li>Зброя, що спричиняє надмірні страждання (розривні кулі типу «дум-дум», лазерна зброя, що осліплює)</li>
+            <li>Напади на цивільне населення та немаркірованих комбатантів</li>
+            <li>Напади на медичний персонал, санітарні заклади та транспорт</li>
+            <li>Взяття заручників</li>
+            <li>Тортури та нелюдське поводження з полоненими</li>
+            <li>Знищення культурних цінностей</li>
+            <li>Виморювання голодом як метод ведення бойових дій</li>
+          </ul>
+        </div>
+
+        <h3>Міжнародні розпізнавальні знаки</h3>
+
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr><th>Знак</th><th>Що захищає</th><th>Значення</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>🔴 Червоний Хрест</td><td>Медперсонал, санітарні транспорти та заклади</td><td>Напад — воєнний злочин</td></tr>
+              <tr><td>🌙 Червоний Півмісяць</td><td>Те саме (використовується в мусульманських країнах)</td><td>Той самий захист</td></tr>
+              <tr><td>🔷 Синьо-білий щит</td><td>Культурні цінності (пам'ятки, музеї, архіви)</td><td>Гаазька конвенція 1954 р.</td></tr>
+              <tr><td>⬜ Біла пов'язка</td><td>Парламентарі (посередники)</td><td>Їх не можна затримувати або вбивати</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout callout-pract">
+          <div class="callout-title">✅ Практичне завдання: аналіз воєнних злочинів РФ</div>
+          <p>На основі задокументованих фактів (Буча, Маріуполь, Херсон, удари по лікарнях та школах) учні аналізують: яке саме положення МГП порушено, яка відповідальність передбачена, в якому міжнародному суді розглядаються справи. Джерела: Human Rights Watch, Amnesty International, матеріали МКС.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =========================================================
+         ТЕМА 1.7
+    ========================================================= -->
+    <section class="topic-section" id="tema-1-7">
+      <div class="section-header">
+        <div class="section-num">1.7</div>
+        <div>
+          <h2>Волонтерський рух та способи реалізувати свій талант в обороні</h2>
+          <p>Урок 7 · Тривалість: 45 хв · Тип: профорієнтаційна дискусія</p>
+        </div>
+      </div>
+
+      <div class="prose">
+
+        <p>Волонтерство — одна з найпотужніших форм громадянського спротиву. З 2014 р. волонтерський рух в Україні перетворився на значущу складову системи оборони держави, яку держава офіційно визнала частиною національного спротиву.</p>
+
+        <h3>Внесок волонтерства в оборону (2022–2024)</h3>
+
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr><th>Напрям</th><th>Приклади</th><th>Масштаб</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Постачання зброї та спорядження</strong></td><td>Збори на дрони, автомобілі, тепловізори, бронежилети</td><td>Млрд грн щороку</td></tr>
+              <tr><td><strong>Медична підтримка</strong></td><td>Операції для ветеранів, ліки, протези, реабілітація</td><td>Тисячі пацієнтів</td></tr>
+              <tr><td><strong>IT та технологічна підтримка</strong></td><td>Кібератаки, OSINT, програмні рішення для ЗСУ, дрони</td><td>Тисячі фахівців</td></tr>
+              <tr><td><strong>Інформаційна робота</strong></td><td>Документування злочинів, пропаганда в іноземних ЗМІ</td><td>Глобальне охоплення</td></tr>
+              <tr><td><strong>Психологічна підтримка</strong></td><td>Допомога ветеранам та їхнім родинам, ПТСР-реабілітація</td><td>Тисячі людей</td></tr>
+              <tr><td><strong>Гуманітарна допомога</strong></td><td>Евакуація, забезпечення переміщених осіб</td><td>Мільйони людей</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>«Карта думок»: способи реалізувати талант в обороні України</h3>
+
+        <div class="card-grid">
+          <div class="info-card">
+            <div class="card-title">💻 IT та технології</div>
+            <ul>
+              <li>Розробка програм для ЗСУ</li>
+              <li>Кібербезпека та кібератаки</li>
+              <li>Виробництво та програмування дронів</li>
+              <li>OSINT-розвідка</li>
+            </ul>
+          </div>
+          <div class="info-card">
+            <div class="card-title">🏥 Медицина</div>
+            <ul>
+              <li>Домедична допомога (навчання та практика)</li>
+              <li>Психологічна підтримка ветеранів</li>
+              <li>Медичне волонтерство</li>
+              <li>Збір коштів на протези та ліки</li>
+            </ul>
+          </div>
+          <div class="info-card">
+            <div class="card-title">📢 Медіа та комунікації</div>
+            <ul>
+              <li>Журналістика та документування</li>
+              <li>Соціальні мережі та інфографіка</li>
+              <li>Переклад (іноземні мови)</li>
+              <li>Підкасти та ютуб про Україну</li>
+            </ul>
+          </div>
+          <div class="info-card">
+            <div class="card-title">🔧 Виробництво та інженерія</div>
+            <ul>
+              <li>3D-друк тактичних виробів</li>
+              <li>Ремонт і обслуговування техніки</li>
+              <li>Виробництво дронів</li>
+              <li>Сітки маскувальні</li>
+            </ul>
+          </div>
+          <div class="info-card">
+            <div class="card-title">📚 Освіта</div>
+            <ul>
+              <li>Навчання домедичній допомозі</li>
+              <li>Проведення тренінгів з безпеки</li>
+              <li>Документальні проєкти</li>
+              <li>Розробка навчальних матеріалів</li>
+            </ul>
+          </div>
+          <div class="info-card">
+            <div class="card-title">🚗 Логістика</div>
+            <ul>
+              <li>Постачання гуманітарної допомоги</li>
+              <li>Евакуація цивільних</li>
+              <li>Координація волонтерських центрів</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="callout callout-tip">
+          <div class="callout-title">💡 Для профорієнтаційної бесіди</div>
+          <p>Запитайте учнів: «Який із напрямів вас приваблює найбільше? Які навички у вас вже є? Які хотіли б розвинути за два роки навчання?» Пов'яжіть відповіді з конкретними модулями курсу та реальними можливостями для участі вже зараз.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =========================================================
+         ТЕМА 1.8
+    ========================================================= -->
+    <section class="topic-section" id="tema-1-8">
+      <div class="section-header">
+        <div class="section-num">1.8</div>
+        <div>
+          <h2>Адаптація суспільства до потреб ветеранів і ветеранок</h2>
+          <p>Урок 8 · Тривалість: 45 хв · Тип: дискусія + проєктна робота</p>
+        </div>
+      </div>
+
+      <div class="prose">
+
+        <p>В умовах повномасштабної війни десятки тисяч українців повертаються зі служби з фізичними або психологічними травмами. Суспільство має бути готовим прийняти їх із повагою та надати належну підтримку. Це — частина національного спротиву.</p>
+
+        <h3>Основні категорії потреб ветеранів</h3>
+
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr><th>Категорія потреб</th><th>Конкретні виклики</th><th>Форми підтримки</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Фізичне здоров'я</strong></td>
+                <td>Ампутації, поранення, хронічний біль, втрата зору/слуху</td>
+                <td>Реабілітація, протезування, медична допомога. Держпрограми та НКО</td>
+              </tr>
+              <tr>
+                <td><strong>Психічне здоров'я</strong></td>
+                <td>ПТСР (посттравматичний стресовий розлад), депресія, тривожність, труднощі адаптації</td>
+                <td>Психологічна підтримка, групи взаємодопомоги, кризові центри</td>
+              </tr>
+              <tr>
+                <td><strong>Соціальна адаптація</strong></td>
+                <td>Повернення до сімейного/суспільного життя, зміна ролей, відчуття нерозуміння</td>
+                <td>Соціальні програми, тренінги з ресоціалізації, підтримка сімей</td>
+              </tr>
+              <tr>
+                <td><strong>Зайнятість та освіта</strong></td>
+                <td>Втрата роботи, зміна кваліфікації, навчання з урахуванням обмежень</td>
+                <td>Програми перепідготовки, пріоритетне працевлаштування, доступна освіта</td>
+              </tr>
+              <tr>
+                <td><strong>Правовий захист</strong></td>
+                <td>Статус учасника бойових дій, пільги, компенсації, юридичні питання</td>
+                <td>Безоплатна правова допомога, ветеранські організації</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Правила спілкування з ветеранами і ветеранками</h3>
+
+        <div class="callout callout-pract">
+          <div class="callout-title">✅ Як говорити — і чого уникати</div>
+          <ul>
+            <li>✅ Запитати, як ветеран почувається, і <strong>слухати</strong> — без порад, якщо їх не просять</li>
+            <li>✅ Висловити повагу до служби та вдячність за захист</li>
+            <li>✅ Не вимагати розповідей «про бойові дії», якщо людина сама не хоче</li>
+            <li>✅ Сприймати можливі зміни в поведінці (роздратованість, закритість) як норму адаптації, а не «дивацтво»</li>
+            <li>❌ Не казати «ти маєш бути вдячний/вдячна, що повернувся/повернулась» — це знецінює травму</li>
+            <li>❌ Не порівнювати з іншими ветеранами («ось інші ж справляються»)</li>
+            <li>❌ Не лякатися або уникати спілкування з людиною з інвалідністю</li>
+            <li>❌ Не жаліти демонстративно або ставитися як до «жертви»</li>
+          </ul>
+        </div>
+
+        <div class="activity-box">
+          <div class="activity-header">
+            <div class="activity-icon">💬</div>
+            <div>
+              <h4>Практична активність: Проєкт «Моя підтримка»</h4>
+              <div class="activity-time">20 хв + домашнє завдання</div>
+            </div>
+          </div>
+          <div class="activity-content">
+            <p>Учні в малих групах розробляють конкретний міні-проєкт підтримки ветеранів у своїй громаді. Вибір серед:</p>
+            <ul>
+              <li>Листівки та відеопривітання для ветеранів і солдатів</li>
+              <li>Організація збору коштів на реабілітацію</li>
+              <li>Створення інфографіки про ПТСР для ровесників</li>
+              <li>Підготовка та проведення зустрічі з ветераном у школі</li>
+              <li>Розробка посібника «Як спілкуватися з ветераном» для школярів</li>
+            </ul>
+            <p>Проєкт презентується перед класом та може бути реалізований протягом навчального року.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =========================================================
+         ТЕМА 1.9
+    ========================================================= -->
+    <section class="topic-section" id="tema-1-9">
+      <div class="section-header">
+        <div class="section-num">1.9</div>
+        <div>
+          <h2>Оборонний бюджет України</h2>
+          <p>Додатковий урок · 35 хв · Аналіз даних + дискусія</p>
+        </div>
+      </div>
+      <div class="prose">
+
+        <div class="key-questions">
+          <h4>Ключові питання уроку</h4>
+          <ul>
+            <li>З яких джерел фінансується оборона держави під час повномасштабної війни?</li>
+            <li>Чому оборонний бюджет — це не лише «гроші на зброю»?</li>
+            <li>Хто контролює, як витрачаються ці кошти?</li>
+          </ul>
+        </div>
+
+        <p><strong>Оборонний бюджет</strong> — частина державного бюджету, яка покриває витрати сектору безпеки й оборони: грошове забезпечення військовослужбовців, закупівлю та ремонт озброєння й техніки, логістику, резерви та розвиток оборонно-промислового комплексу. З 2022 року це найбільша й найпріоритетніша стаття витрат держави.</p>
+
+        <div class="card-grid">
+          <div class="info-card">
+            <div class="card-title">💰 Масштаб бюджету-2026</div>
+            <ul>
+              <li>Видатки на сектор безпеки й оборони — близько 4,37 трлн грн (≈99 млрд дол. США) після травневих змін до бюджету</li>
+              <li>Початково ухвалений у грудні 2025 р. обсяг становив приблизно 2,8 трлн грн (27,2% ВВП)</li>
+            </ul>
+          </div>
+          <div class="info-card">
+            <div class="card-title">🪖 Грошове забезпечення</div>
+            <ul>
+              <li>Понад 1,45 трлн грн — виплати військовослужбовцям</li>
+            </ul>
+          </div>
+          <div class="info-card">
+            <div class="card-title">🔧 Озброєння та техніка</div>
+            <ul>
+              <li>Близько 2,3 трлн грн — закупівля й ремонт озброєння, боєприпасів, бронетехніки</li>
+            </ul>
+          </div>
+          <div class="info-card">
+            <div class="card-title">🛟 Резерв сектору безпеки й оборони</div>
+            <ul>
+              <li>Окремий резервний фонд на непередбачені потреби сектору</li>
+            </ul>
+          </div>
+        </div>
+
+        <h3>Звідки беруться кошти</h3>
+
+        <p>Усі внутрішні податкові надходження держави у воєнний час спрямовуються виключно на потреби оборони. Оскільки цього недостатньо, держава залучає зовнішнє фінансування — гранти й пільгові позики партнерів. Один із прикладів — кредитна програма Європейського Союзу Ukraine Support Loan, яка у 2026 році дозволила суттєво збільшити фінансування сектору безпеки й оборони додатковими коштами.</p>
+
+        <div class="callout callout-info">
+          <div class="callout-title">ℹ️ Хто контролює витрати</div>
+          <ul>
+            <li>Верховна Рада ухвалює закон про державний бюджет і всі зміни до нього</li>
+            <li>Міністерство фінансів та Міністерство оборони звітують про використання коштів</li>
+            <li>Рахункова палата та громадські організації (наприклад, антикорупційні аналітичні центри) здійснюють незалежний моніторинг закупівель</li>
+          </ul>
+        </div>
+
+        <div class="callout callout-tip">
+          <div class="callout-title">💡 Чому цифри в новинах «не сходяться»</div>
+          <p>Оборонний бюджет протягом року неодноразово коригується законами про внесення змін — тому різні джерела можуть називати різні суми залежно від дати публікації. Привчайте учнів перевіряти дату новини й офіційне джерело (Міністерство фінансів, Верховна Рада), а не орієнтуватися лише на заголовок.</p>
+        </div>
+
+        <div class="activity-box">
+          <div class="activity-header">
+            <div class="activity-icon">📊</div>
+            <div>
+              <h4>Практична активність: «Розподіли бюджет»</h4>
+              <div class="activity-time">15 хв · Робота в малих групах</div>
+            </div>
+          </div>
+          <div class="activity-content">
+            <p>Кожна група отримує умовну «суму» (наприклад, 100 умовних одиниць) і список статей витрат сектору оборони (грошове забезпечення, озброєння й техніка, медицина, розвідка, резерв, оборонна промисловість). Завдання — розподілити суму між статтями та обґрунтувати пріоритети. Після цього групи порівнюють свій розподіл із реальними пропорціями бюджету з картки вище й обговорюють, чому держава розставляє пріоритети саме так.</p>
+          </div>
+        </div>
+
+        <div class="callout callout-pract">
+          <div class="callout-title">✅ Контрольні запитання</div>
+          <ul style="font-size:0.88rem; line-height:1.8;">
+            <li>Які три основні категорії витрат складають оборонний бюджет?</li>
+            <li>Чому самих внутрішніх податкових надходжень недостатньо для фінансування оборони?</li>
+            <li>Хто в Україні контролює витрачання оборонного бюджету?</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =========================================================
+         МЕТОДИЧНІ ПОРАДИ
+    ========================================================= -->
+    <section class="topic-section" id="metodychni-porady">
+      <div class="section-header">
+        <div class="section-num">🔧</div>
+        <div>
+          <h2>Методичні поради для викладача</h2>
+          <p>Організація Модуля 1. Практичні рекомендації</p>
+        </div>
+      </div>
+
+      <div class="prose">
+
+        <h3>Організація простору «Осередок»</h3>
+
+        <p>Нова програма МОН 2024 передбачає організацію навчання у форматі <strong>тренінгового осередку</strong> — спеціально обладнаного простору. Рекомендована організація:</p>
+
+        <ul style="padding-left:20px; line-height:1.9; font-size:0.9rem;">
+          <li>Столи та стільці переставлені у <strong>коло або U-подібне розміщення</strong> (не рядами)</li>
+          <li>Фліпчарт або маркерна дошка у центрі для видимості всім</li>
+          <li>Проєктор або великий екран</li>
+          <li>Колонки для відеоматеріалів (перевірте звук заздалегідь!)</li>
+          <li>Запас стікерів, маркерів, ватманів для групових активностей</li>
+          <li>Таймер (можна на телефоні) — строге дотримання часових рамок</li>
+        </ul>
+
+        <h3>Алгоритм підготовки до кожного уроку Модуля 1</h3>
+
+        <ol class="steps-list">
+          <li>За 1–2 дні: прочитати план уроку повністю, відмітити чутливі теми, підготувати роздаткові матеріали</li>
+          <li>Перевірити техніку: проєктор, звук, інтернет. Знайти та протестувати всі відеоматеріали за посиланнями</li>
+          <li>Підготувати «психологічну аптечку»: знати, як реагувати на плач, агресію, ступор</li>
+          <li>За годину до уроку: розставити меблі, роздати матеріали по місцях, вивісити ватман із цілями</li>
+          <li>Перед стартом: провести власну вправу на заспокоєння. Нагадати правила безпечного спілкування</li>
+        </ol>
+
+        <h3>Роль вчителя/вчительки у Модулі 1</h3>
+
+        <div class="callout callout-tip">
+          <div class="callout-title">💡 Фасилітатор, а не лектор</div>
+          <p>Ваша ключова роль — <strong>не передавати інформацію, а створювати умови для її відкриття</strong>. Ви: ставите питання, не даючи готових відповідей; спостерігаєте за груповою динамікою; регулюєте темп; підтримуєте психологічно безпечний клімат; підсумовуєте після кожної активності. Мінімізуйте час, протягом якого ви говорите — він не має перевищувати 20–25% уроку.</p>
+        </div>
+
+        <h3>Рекомендовані відеоматеріали до Модуля 1</h3>
+
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr><th>Відео</th><th>До теми</th><th>Час</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><a href="https://www.youtube.com/watch?v=xnnQCXBmm_0" class="video-link" target="_blank" rel="noopener">Жовта стрічка — інтерв'ю з партизаном</a></td>
+                <td>1.4 Нацспротив</td>
+                <td>Фрагмент 2:45–6:16</td>
+              </tr>
+              <tr>
+                <td><a href="https://www.youtube.com/watch?v=58_u3XC0QFc" class="video-link" target="_blank" rel="noopener">Як Херсон чинив спротив (Ukraïner)</a></td>
+                <td>1.4 Нацспротив</td>
+                <td>Фрагмент 8:22–10:40</td>
+              </tr>
+              <tr>
+                <td><a href="https://www.nato.int/cps/uk/natohq/132885.htm" class="video-link" target="_blank" rel="noopener">НАТО: як це працює (офіційний пояснювальний матеріал НАТО)</a></td>
+                <td>1.5 НАТО</td>
+                <td>До 8 хв</td>
+              </tr>
+              <tr>
+                <td><a href="https://www.youtube.com/watch?v=gNoVD7p0UKU" class="video-link" target="_blank" rel="noopener">Женевські конвенції: пояснення (МКЧХ)</a></td>
+                <td>1.6 МГП</td>
+                <td>До 5 хв</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Домашні завдання до Тренінгу 1</h3>
+
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr><th>Завдання</th><th>Тип</th><th>Терміни</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Знайти та прочитати Закон «Про основи нац. спротиву» — ст. 1-5. Виписати три ключові положення</td><td>Самостійна робота</td><td>До наступного уроку</td></tr>
+              <tr><td>Поговорити з кимось із родини/знайомих, хто служить або волонтерить. Записати 3 запитання та відповіді</td><td>Інтерв'ю</td><td>До уроку 4</td></tr>
+              <tr><td>Переглянути документальний проєкт «Крим. 10 років окупації» (Суспільне) та написати короткий відгук</td><td>Перегляд відео</td><td>До уроку 5</td></tr>
+              <tr><td>Розробити власну «Карту думок: як я можу долучитись до оборони» — мінімум 5 конкретних ідей</td><td>Творче завдання</td><td>До уроку 7</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =========================================================
+         ПРОФОРІЄНТАЦІЯ
+    ========================================================= -->
+    <section class="topic-section" id="proforiientatsiia">
+      <div class="section-header">
+        <div class="section-num">🎓</div>
+        <div>
+          <h2>Профорієнтація: освітньо-професійний шлях у секторі оборони</h2>
+          <p>Наскрізна тема Модуля 1</p>
+        </div>
+      </div>
+
+      <div class="prose">
+
+        <p>Відповідно до програми МОН 2024, кожен модуль курсу має профорієнтаційне спрямування. У Модулі 1 учні знайомляться з можливостями реалізувати себе в секторі безпеки та оборони.</p>
+
+        <h3>Вищі військові навчальні заклади України</h3>
+
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr><th>Заклад</th><th>Місто</th><th>Спеціалізація</th><th>Вимоги до вступу</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Нац. університет оборони України</strong></td>
+                <td>Київ</td>
+                <td>Вища військова освіта, стратегічне управління</td>
+                <td>Офіцери ЗСУ</td>
+              </tr>
+              <tr>
+                <td><strong>Нац. академія Держ. прикордонної служби</strong></td>
+                <td>Хмельницький</td>
+                <td>Охорона державного кордону</td>
+                <td>НМТ + медкомісія</td>
+              </tr>
+              <tr>
+                <td><strong>Харківський нац. університет ПС</strong></td>
+                <td>Харків</td>
+                <td>Авіація, протиповітряна оборона</td>
+                <td>НМТ + медкомісія + льотна відповідність</td>
+              </tr>
+              <tr>
+                <td><strong>Нац. академія Нац. гвардії</strong></td>
+                <td>Харків</td>
+                <td>Управління в НГУ</td>
+                <td>НМТ + медкомісія</td>
+              </tr>
+              <tr>
+                <td><strong>Інститут спеціального зв'язку та захисту інформації</strong></td>
+                <td>Київ</td>
+                <td>Кіберзахист, зв'язок, IT</td>
+                <td>НМТ (математика, фізика або інформатика)</td>
+              </tr>
+              <tr>
+                <td><strong>Одеська військова академія</strong></td>
+                <td>Одеса</td>
+                <td>Сухопутні та морські операції</td>
+                <td>НМТ + медкомісія</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout callout-info">
+          <div class="callout-title">ℹ️ Також варто розглянути</div>
+          <ul>
+            <li>Цивільні університети з кафедрами військової підготовки (ВВНЗ)</li>
+            <li>IT-спеціальності (кібербезпека, розробка дронів, AI для оборони)</li>
+            <li>Медичні спеціальності та тактична медицина</li>
+            <li>Журналістика, комунікації, медіа (інформаційна оборона)</li>
+            <li>Інженерія та виробництво (ОПК — оборонно-промисловий комплекс)</li>
+          </ul>
+        </div>
+
+        <div class="callout callout-pract">
+          <div class="callout-title">✅ Профорієнтаційна вправа: Тест нахилів</div>
+          <p>Рекомендовані онлайн-тести для самодіагностики: <strong>«Профорієнтація» від Jobs.ua</strong>, тест Холланда, або вбудований тест на порталі НМТ. Після проходження учні заповнюють таблицю: «Мої сильні сторони → Потенційна роль в обороні → Освітній шлях».</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- PAGE NAV -->
+    <div class="page-nav">
+      <a href="../index.html">← Головна сторінка довідника</a>
+      <a href="modul-2.html">Модуль 2: Управління та планування →</a>
+    </div>
+
+  </main>
+</div>
+
+<footer style="background:var(--ua-blue);color:rgba(255,255,255,0.65);text-align:center;padding:20px 32px;font-size:0.78rem;line-height:1.6;">
+  <strong style="color:var(--ua-yellow);">Захист України. Методичний довідник викладача</strong> · 10 клас, Модуль 1<br>
+  Радомишльський ліцей №3 · За програмою МОН (Наказ №1116 від 08.08.2024) · Матеріали тренінгу схвалено МОН (грифб №БО-0550-25, 30.12.2025)
+</footer>
+
+<script>
+// Активне посилання в навбарі при скролі
+const sections = document.querySelectorAll('.topic-section');
+const navLinks = document.querySelectorAll('.nav-list li a');
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const id = entry.target.getAttribute('id');
+      navLinks.forEach(link => {
+        link.classList.toggle('active', link.getAttribute('href') === '#' + id);
+      });
+    }
+  });
+}, { rootMargin: '-20% 0px -70% 0px' });
+
+sections.forEach(section => observer.observe(section));
+</script>
+
+</body>
+</html>

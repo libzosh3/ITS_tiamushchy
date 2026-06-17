@@ -1,0 +1,1376 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Модуль 5. Цивільне населення в кризових умовах — Захист України 11 клас</title>
+<style>
+:root {
+  --ua-blue: #003087;
+  --ua-yellow: #FFD700;
+  --olive: #4A5240;
+  --olive-light: #6B7A5A;
+  --sand: #F5F0E8;
+  --ink: #1C1C1C;
+  --white: #FFFFFF;
+  --divider: #C8C0B0;
+  --accent-red: #C0392B;
+  --accent-green: #2E7D32;
+  --card-bg: #FDFBF7;
+  --info-bg: #E8F0FE;
+  --info-border: #4A90D9;
+  --warn-bg: #FFF8E1;
+  --warn-border: #F9A825;
+  --pract-bg: #E8F5E9;
+  --pract-border: #2E7D32;
+  --tip-bg: #F3E5F5;
+  --tip-border: #7B1FA2;
+  --danger-bg: #FFEBEE;
+  --danger-border: #C62828;
+  --shadow: 0 2px 12px rgba(0,0,0,0.08);
+  --font-display: 'Georgia', 'Times New Roman', serif;
+  --font-body: 'Segoe UI', 'Arial', sans-serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: var(--font-body); background: var(--sand); color: var(--ink); line-height: 1.7; font-size: 15.5px; }
+.topbar-stripe { height: 4px; background: var(--ua-yellow); }
+.topbar { background: var(--ua-blue); color: rgba(255,255,255,0.75); font-size: 0.78rem; padding: 8px 32px; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.topbar a { color: var(--ua-yellow); text-decoration: none; }
+.module-header { background: linear-gradient(135deg, #2a1a00 0%, #4a3000 50%, var(--olive) 100%); color: var(--white); padding: 48px 32px 40px; position: relative; overflow: hidden; }
+.module-header::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 4px; background: var(--ua-yellow); }
+.module-header-inner { max-width: 1100px; margin: 0 auto; }
+.module-eyebrow { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ua-yellow); margin-bottom: 12px; }
+.module-header h1 { font-family: var(--font-display); font-size: clamp(1.6rem, 4vw, 2.4rem); font-weight: 700; line-height: 1.2; margin-bottom: 14px; max-width: 780px; }
+.module-header-meta { display: flex; flex-wrap: wrap; gap: 20px; margin-top: 20px; }
+.meta-pill { background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2); border-radius: 20px; padding: 5px 14px; font-size: 0.8rem; display: flex; align-items: center; gap: 6px; }
+.meta-pill span { opacity: 0.7; }
+.page-layout { max-width: 1100px; margin: 0 auto; padding: 40px 32px 80px; display: grid; grid-template-columns: 260px 1fr; gap: 40px; align-items: start; }
+.sidebar { position: sticky; top: 16px; }
+.nav-block { background: var(--card-bg); border: 1px solid var(--divider); border-radius: 8px; overflow: hidden; margin-bottom: 20px; }
+.nav-block-title { background: var(--ua-blue); color: var(--ua-yellow); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.10em; text-transform: uppercase; padding: 10px 16px; }
+.nav-list { list-style: none; padding: 8px 0; }
+.nav-list li a { display: flex; align-items: flex-start; gap: 8px; padding: 7px 16px; text-decoration: none; color: var(--ink); font-size: 0.82rem; line-height: 1.4; transition: background 0.15s; }
+.nav-list li a:hover { background: #EEE8DC; color: var(--ua-blue); }
+.nav-list li a .nav-num { color: var(--olive-light); font-weight: 700; flex-shrink: 0; font-size: 0.75rem; margin-top: 1px; }
+.nav-list li a.active { background: #DDD5C5; font-weight: 600; color: var(--ua-blue); }
+.content { min-width: 0; }
+.topic-section { margin-bottom: 52px; scroll-margin-top: 20px; }
+.section-header { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 24px; padding-bottom: 14px; border-bottom: 2px solid var(--divider); }
+.section-num { background: var(--ua-blue); color: var(--ua-yellow); font-family: var(--font-display); font-size: 1rem; font-weight: 700; padding: 5px 12px; border-radius: 3px; flex-shrink: 0; margin-top: 3px; }
+.section-header h2 { font-family: var(--font-display); font-size: 1.35rem; font-weight: 700; color: var(--ua-blue); line-height: 1.25; }
+.section-header p { font-size: 0.84rem; color: #666; margin-top: 4px; }
+.prose p { margin-bottom: 14px; }
+.prose h3 { font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; color: var(--olive); margin: 24px 0 10px; }
+.prose h4 { font-size: 0.82rem; font-weight: 700; color: var(--ua-blue); margin: 18px 0 8px; text-transform: uppercase; letter-spacing: 0.04em; }
+.callout { border-left: 4px solid; border-radius: 4px; padding: 16px 20px; margin: 20px 0; }
+.callout-info { background: var(--info-bg); border-color: var(--info-border); }
+.callout-warn { background: var(--warn-bg); border-color: var(--warn-border); }
+.callout-pract { background: var(--pract-bg); border-color: var(--pract-border); }
+.callout-tip { background: var(--tip-bg); border-color: var(--tip-border); }
+.callout-danger { background: var(--danger-bg); border-color: var(--danger-border); }
+.callout-title { font-weight: 700; font-size: 0.82rem; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 8px; display: flex; align-items: center; gap: 6px; }
+.callout-info .callout-title { color: var(--info-border); }
+.callout-warn .callout-title { color: #B8860B; }
+.callout-pract .callout-title { color: var(--accent-green); }
+.callout-tip .callout-title { color: #6A0080; }
+.callout-danger .callout-title { color: var(--danger-border); }
+.callout p, .callout ul, .callout ol { font-size: 0.9rem; line-height: 1.6; }
+.callout p + p { margin-top: 8px; }
+.callout ul, .callout ol { padding-left: 18px; }
+.callout ul li, .callout ol li { margin-bottom: 4px; }
+.table-wrap { overflow-x: auto; margin: 20px 0; border-radius: 6px; border: 1px solid var(--divider); }
+.data-table { width: 100%; border-collapse: collapse; font-size: 0.87rem; background: var(--white); }
+.data-table th { background: var(--ua-blue); color: var(--white); padding: 10px 14px; text-align: left; font-weight: 600; font-size: 0.82rem; }
+.data-table td { padding: 9px 14px; border-bottom: 1px solid var(--divider); vertical-align: top; line-height: 1.5; }
+.data-table tr:last-child td { border-bottom: none; }
+.data-table tr:nth-child(even) td { background: #F7F3EC; }
+.data-table tr:hover td { background: #EDE8DC; }
+.data-table td.num { font-weight: 700; color: var(--ua-blue); text-align: center; }
+.definition { background: var(--white); border: 1px solid var(--divider); border-radius: 6px; padding: 16px 20px; margin: 16px 0; position: relative; }
+.definition::before { content: '📌'; position: absolute; top: 14px; right: 16px; font-size: 1rem; }
+.definition-term { font-weight: 700; font-size: 0.95rem; color: var(--ua-blue); margin-bottom: 6px; }
+.definition p { font-size: 0.88rem; color: #444; line-height: 1.6; }
+.steps-list { list-style: none; counter-reset: step-counter; margin: 16px 0; }
+.steps-list li { counter-increment: step-counter; display: flex; gap: 14px; align-items: flex-start; margin-bottom: 12px; background: var(--white); border: 1px solid var(--divider); border-radius: 5px; padding: 12px 14px; font-size: 0.9rem; line-height: 1.5; }
+.steps-list li::before { content: counter(step-counter); background: var(--ua-blue); color: var(--ua-yellow); font-weight: 700; font-size: 0.85rem; width: 26px; height: 26px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; margin: 16px 0; }
+.info-card { background: var(--card-bg); border: 1px solid var(--divider); border-radius: 6px; padding: 18px; font-size: 0.87rem; }
+.info-card .card-title { font-weight: 700; color: var(--ua-blue); margin-bottom: 8px; font-size: 0.9rem; display: flex; align-items: center; gap: 8px; }
+.info-card ul { padding-left: 16px; line-height: 1.65; }
+.info-card ul li { margin-bottom: 3px; }
+.activity-box { background: var(--card-bg); border: 1px solid var(--divider); border-radius: 8px; padding: 24px; margin: 20px 0; }
+.activity-header { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--divider); }
+.activity-icon { font-size: 1.6rem; }
+.activity-header h4 { font-family: var(--font-display); font-size: 1rem; font-weight: 700; color: var(--ua-blue); line-height: 1.3; }
+.activity-header .activity-time { font-size: 0.78rem; color: #888; margin-top: 2px; }
+.activity-content { font-size: 0.88rem; line-height: 1.65; }
+.activity-content p { margin-bottom: 10px; }
+.activity-content ul, .activity-content ol { padding-left: 18px; }
+.activity-content li { margin-bottom: 5px; }
+.video-link { display: inline-flex; align-items: center; gap: 8px; background: #B71C1C; color: var(--white); text-decoration: none; padding: 7px 16px; border-radius: 4px; font-size: 0.83rem; font-weight: 600; margin: 4px 0; transition: background 0.15s; }
+.video-link:hover { background: #8B0000; }
+.video-link::before { content: '▶'; }
+.breadcrumb { display: flex; align-items: center; gap: 8px; font-size: 0.8rem; color: #888; margin-bottom: 28px; flex-wrap: wrap; }
+.breadcrumb a { color: var(--ua-blue); text-decoration: none; }
+.breadcrumb .sep { color: #CCC; }
+.breadcrumb .current { color: var(--ink); font-weight: 600; }
+.module-progress { display: flex; gap: 4px; margin-bottom: 28px; }
+.progress-dot { width: 28px; height: 6px; border-radius: 3px; background: var(--divider); }
+.progress-dot.done { background: var(--ua-blue); }
+.progress-dot.current { background: var(--ua-yellow); }
+.page-nav { display: flex; justify-content: space-between; gap: 16px; margin-top: 48px; padding-top: 24px; border-top: 2px solid var(--divider); flex-wrap: wrap; }
+.page-nav a { display: flex; align-items: center; gap: 8px; color: var(--ua-blue); text-decoration: none; font-weight: 600; font-size: 0.9rem; padding: 10px 16px; border: 1px solid var(--divider); border-radius: 5px; background: var(--card-bg); transition: box-shadow 0.15s; }
+.page-nav a:hover { box-shadow: var(--shadow); }
+
+/* NS LEVEL CARDS */
+.level-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin: 20px 0; }
+.level-card { border-radius: 8px; padding: 16px; border: 1px solid rgba(0,0,0,0.1); }
+.level-card .level-name { font-weight: 700; font-size: 0.95rem; margin-bottom: 8px; }
+.level-card ul { padding-left: 16px; font-size: 0.82rem; line-height: 1.6; }
+.level-state { background: #FFEBEE; border-color: #E57373; }
+.level-region { background: #FFF3E0; border-color: #FFB74D; }
+.level-local { background: #E3F2FD; border-color: #64B5F6; }
+.level-object { background: #E8F5E9; border-color: #81C784; }
+
+/* SHELTER GRID */
+.shelter-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; margin: 16px 0; }
+.shelter-card { border-radius: 6px; padding: 14px; font-size: 0.84rem; border: 1px solid rgba(0,0,0,0.1); }
+.shelter-best { background: #E8F5E9; border-color: #2E7D32; }
+.shelter-natural { background: #FFF3E0; border-color: #FFB74D; }
+.shelter-temp { background: #E3F2FD; border-color: #64B5F6; }
+.shelter-danger { background: #FFEBEE; border-color: #C62828; }
+.shelter-card .shelter-name { font-weight: 700; margin-bottom: 4px; font-size: 0.88rem; }
+
+/* WMD CARDS */
+.wmd-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; margin: 20px 0; }
+.wmd-card { background: var(--white); border: 1px solid var(--divider); border-radius: 8px; overflow: hidden; }
+.wmd-card-header { background: linear-gradient(135deg, #5c0a0a, #8B0000); color: white; padding: 10px 16px; font-weight: 700; }
+.wmd-card-body { padding: 14px 16px; font-size: 0.86rem; line-height: 1.6; }
+.wmd-card-body .wmd-label { font-weight: 700; color: var(--ua-blue); font-size: 0.78rem; text-transform: uppercase; margin-top: 8px; margin-bottom: 3px; }
+.wmd-card-body .wmd-label:first-child { margin-top: 0; }
+
+/* WAR VS TERROR COMPARE */
+.compare-block { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0; }
+.compare-card { border-radius: 8px; padding: 18px; }
+.compare-war { background: #E3F2FD; border: 1px solid #64B5F6; }
+.compare-terror { background: #FFEBEE; border: 1px solid #E57373; }
+.compare-card .compare-title { font-weight: 700; font-size: 1rem; margin-bottom: 8px; }
+.compare-card p { font-size: 0.85rem; line-height: 1.6; }
+
+/* CASE VERDICT CARDS */
+.case-verdict { background: var(--white); border-left: 4px solid; border-radius: 4px; padding: 12px 16px; margin: 10px 0; font-size: 0.85rem; }
+.case-verdict.v-terror { border-color: var(--danger-border); }
+.case-verdict.v-warcrime { border-color: #8B0000; }
+.case-verdict.v-war { border-color: var(--info-border); }
+.case-verdict .v-tag { font-size: 0.72rem; text-transform: uppercase; font-weight: 700; letter-spacing: 0.04em; }
+
+/* STRESS REACTION HELP */
+.help-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin: 16px 0; }
+.help-card { background: var(--card-bg); border: 1px solid var(--divider); border-radius: 6px; padding: 14px; font-size: 0.85rem; }
+.help-card .help-name { font-weight: 700; color: var(--ua-blue); margin-bottom: 6px; }
+
+/* SURVIVAL PRIORITY */
+.survival-rule { display: flex; align-items: center; gap: 16px; background: #1a1a2e; color: white; border-radius: 8px; padding: 14px 20px; margin: 8px 0; font-size: 0.95rem; }
+.survival-rule .sr-time { font-weight: 900; color: var(--ua-yellow); font-size: 1.3rem; min-width: 90px; }
+
+/* CLIMATE CARDS */
+.climate-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px; margin: 20px 0; }
+.climate-card { background: var(--white); border: 1px solid var(--divider); border-radius: 8px; overflow: hidden; }
+.climate-card-header { padding: 10px 16px; font-weight: 700; color: white; }
+.climate-cold .climate-card-header { background: linear-gradient(135deg, #1a3a6b, #2563ae); }
+.climate-hot .climate-card-header { background: linear-gradient(135deg, #B8860B, #F9A825); }
+.climate-wet .climate-card-header { background: linear-gradient(135deg, #1a5c5c, #00838F); }
+.climate-card-body { padding: 14px 16px; font-size: 0.85rem; line-height: 1.6; }
+
+@media (max-width: 860px) {
+  .page-layout { grid-template-columns: 1fr; }
+  .sidebar { position: static; }
+  .module-header { padding: 36px 16px 30px; }
+  .page-layout { padding: 24px 16px 60px; }
+  .compare-block { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<div class="topbar-stripe"></div>
+<div class="topbar">
+  <div>📘 <a href="../index.html">Довідник викладача «Захист України»</a> › 11 клас › Модуль 5</div>
+  <div>МОН 2024 · Інтегрований курс</div>
+</div>
+
+<header class="module-header">
+  <div class="module-header-inner">
+    <div class="module-eyebrow">11 клас · Модуль 5 · Тренінг №8</div>
+    <h1>Цивільне населення в кризових умовах</h1>
+    <div class="module-header-meta">
+      <div class="meta-pill">📋 <span>8 уроків · ~360 хв</span></div>
+      <div class="meta-pill">🚨 <span>НС, евакуація, обстріли</span></div>
+      <div class="meta-pill">☢️ <span>ЗМУ, тероризм</span></div>
+      <div class="meta-pill">🏔️ <span>Виживання, психостійкість</span></div>
+    </div>
+  </div>
+</header>
+
+<div class="page-layout">
+  <aside class="sidebar">
+    <div class="nav-block">
+      <div class="nav-block-title">Теми модуля</div>
+      <ul class="nav-list">
+        <li><a href="#tema-5-1"><span class="nav-num">5.1</span>Надзвичайні ситуації: рівні та класифікація</a></li>
+        <li><a href="#tema-5-2"><span class="nav-num">5.2</span>Воєнний стан: правовий режим</a></li>
+        <li><a href="#tema-5-3"><span class="nav-num">5.3</span>Евакуація цивільного населення</a></li>
+        <li><a href="#tema-5-4"><span class="nav-num">5.4</span>Тривожний рюкзак і план родини</a></li>
+        <li><a href="#tema-5-5"><span class="nav-num">5.5</span>Дії під час обстрілів і нальотів</a></li>
+        <li><a href="#tema-5-6"><span class="nav-num">5.6</span>Захисні властивості укриттів</a></li>
+        <li><a href="#tema-5-7"><span class="nav-num">5.7</span>Зброя масового ураження: ознаки і дії</a></li>
+        <li><a href="#tema-5-8"><span class="nav-num">5.8</span>Вибухонебезпечні предмети</a></li>
+        <li><a href="#tema-5-9"><span class="nav-num">5.9</span>Тероризм: відмінність від війни</a></li>
+        <li><a href="#tema-5-10"><span class="nav-num">5.10</span>Порядок дій під час теракту</a></li>
+        <li><a href="#tema-5-11"><span class="nav-num">5.11</span>Стресові реакції та взаємодопомога</a></li>
+        <li><a href="#tema-5-12"><span class="nav-num">5.12</span>Основи виживання: принципи й одяг</a></li>
+        <li><a href="#tema-5-13"><span class="nav-num">5.13</span>Фільтрування води і добування вогню</a></li>
+        <li><a href="#metodychni"><span class="nav-num">🔧</span>Методичні поради</a></li>
+      </ul>
+    </div>
+    <div class="nav-block">
+      <div class="nav-block-title">Навігація курсу</div>
+      <ul class="nav-list">
+        <li><a href="../index.html"><span class="nav-num">🏠</span>Головна</a></li>
+        <li><a href="modul-4-2.html"><span class="nav-num">←</span>Модуль 4. Домедична допомога</a></li>
+        <li><a href="modul-6.html"><span class="nav-num">→</span>Модуль 6. Планую майбутнє</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <main class="content">
+
+    <div class="breadcrumb">
+      <a href="../index.html">Довідник</a>
+      <span class="sep">/</span>
+      <span>11 клас</span>
+      <span class="sep">/</span>
+      <span class="current">Модуль 5. Цивільне населення в кризових умовах</span>
+    </div>
+
+    <div class="module-progress">
+      <div class="progress-dot done"></div>
+      <div class="progress-dot done"></div>
+      <div class="progress-dot done"></div>
+      <div class="progress-dot done"></div>
+      <div class="progress-dot current"></div>
+      <div class="progress-dot"></div>
+    </div>
+
+    <div class="callout callout-info">
+      <div class="callout-title">ℹ️ Загальний огляд модуля</div>
+      <p>Модуль 5 зміщує фокус курсу від військовослужбовця до <strong>звичайного громадянина</strong>: як діяти, коли надзвичайна ситуація, обстріл, теракт чи евакуація стосуються не солдата на позиції, а родини в квартирі чи учня на вулиці. Це найбільш «життєво застосовний» модуль для кожного, незалежно від майбутньої професії.</p>
+      <p>Джерела: Тренінг №8 (МОН, 2025 р., гриф №БО-0550-25), Закон України «Про правовий режим воєнного стану», Постанова КМУ №368 від 24.03.2004, Dovidka.info Центру стратегічних комунікацій, ДСНС України, стандарти ЮНІСЕФ з мінної безпеки.</p>
+    </div>
+
+    <!-- ===================== 5.1 ===================== -->
+    <section class="topic-section" id="tema-5-1">
+      <div class="section-header">
+        <div class="section-num">5.1</div>
+        <div>
+          <h2>Надзвичайні ситуації: причини, класифікація, рівні</h2>
+          <p>Урок 1, частина 1 · 45 хв · Міні-лекція + інтерактив з кейсами</p>
+        </div>
+      </div>
+      <div class="prose">
+
+        <div class="callout callout-tip">
+          <div class="callout-title">💡 Питання для відкриття теми</div>
+          <p>«Чи бувало у вас таке, що через одну подію (наприклад, бурю чи аварію) звичне життя зупинялось? Як ви діяли?»</p>
+        </div>
+
+        <div class="definition">
+          <div class="definition-term">Надзвичайна ситуація (НС)</div>
+          <p>Порушення нормальних умов життя та діяльності людей, що виникає внаслідок аварій, катастроф, стихійних лих, епідемій, терористичних актів, воєнних дій тощо.</p>
+        </div>
+
+        <h3>Чотири критерії визначення рівня НС</h3>
+        <ol class="steps-list">
+          <li><strong>Територіальне поширення</strong> — один об'єкт, район, область, кілька областей чи вся країна</li>
+          <li><strong>Людські втрати</strong> — кількість загиблих і постраждалих</li>
+          <li><strong>Умови життєдіяльності</strong> — скільки людей не можуть нормально жити (немає води, світла, житла)</li>
+          <li><strong>Економічні збитки</strong> — розраховуються у «мінімальних зарплатах» (офіційний критерій)</li>
+        </ol>
+
+        <h3>Чотири рівні надзвичайних ситуацій</h3>
+
+        <div class="level-grid">
+          <div class="level-card level-state">
+            <div class="level-name">🔴 Державний рівень</div>
+            <ul>
+              <li>Виходить за межі України або охоплює 2+ регіони</li>
+              <li>Загинуло понад 10 осіб, постраждало понад 300</li>
+              <li>Або понад 50 000 осіб &gt;3 доби не можуть жити нормально</li>
+              <li>Збитки понад 150 000 мінімальних зарплат</li>
+              <li><strong>Приклади:</strong> ракетні обстріли енергоінфраструктури восени 2022 р., аварія на ЧАЕС (1986)</li>
+            </ul>
+          </div>
+          <div class="level-card level-region">
+            <div class="level-name">🟠 Регіональний рівень</div>
+            <ul>
+              <li>Поширюється на 2+ райони однієї області</li>
+              <li>Загибель 3–5 осіб, постраждало 50–100</li>
+              <li>Порушено життя 1 000–10 000 осіб &gt;3 доби</li>
+              <li>Збитки від 5 000 до 15 000 мінімальних зарплат</li>
+              <li><strong>Приклади:</strong> повінь у Карпатах, що зачіпає кілька районів</li>
+            </ul>
+          </div>
+          <div class="level-card level-local">
+            <div class="level-name">🔵 Місцевий рівень</div>
+            <ul>
+              <li>Вийшла за межі одного об'єкта, загрожує довкіллю/сусідам</li>
+              <li>Загибель 1–2 особи, постраждало 20–50</li>
+              <li>Порушено життя 100–1000 осіб &gt;3 доби</li>
+              <li>Збитки від 500 мінімальних зарплат</li>
+              <li><strong>Приклади:</strong> вибух на газопроводі, велика пожежа на складі</li>
+            </ul>
+          </div>
+          <div class="level-card level-object">
+            <div class="level-name">🟢 Об'єктовий рівень</div>
+            <ul>
+              <li>Стосується лише одного підприємства/установи</li>
+              <li>Ліквідується силами самого об'єкта</li>
+              <li>Не виходить за межі території об'єкта</li>
+              <li><strong>Приклади:</strong> пожежа у школі, яку швидко загасили; витік газу на заводі без постраждалих ззовні</li>
+            </ul>
+          </div>
+        </div>
+
+        <h3>Характер НС</h3>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>Характер</th><th>Приклади</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Природний</strong></td><td>Землетруси, повені, пожежі, епідемії</td></tr>
+              <tr><td><strong>Техногенний</strong></td><td>Аварії на виробництві (вибухи), аварії на транспорті (авіаційні, залізничні, автомобільні, морські)</td></tr>
+              <tr><td><strong>Соціальний</strong></td><td>Масові заворушення, теракти</td></tr>
+              <tr><td><strong>Воєнний</strong></td><td>Бойові дії, обстріли, застосування зброї</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Ознаки НС</h3>
+        <ul style="padding-left:20px; line-height:1.9; font-size:0.9rem;">
+          <li>Різке порушення нормального життя</li>
+          <li>Загроза здоров'ю та життю</li>
+          <li>Необхідність спеціальних заходів захисту</li>
+        </ul>
+
+        <!-- ACTIVITY: REAL CASES -->
+        <div class="activity-box">
+          <div class="activity-header">
+            <div class="activity-icon">📋</div>
+            <div>
+              <h4>Інтерактив: аналіз реальних кейсів НС</h4>
+              <div class="activity-time">11 хв · Групова робота</div>
+            </div>
+          </div>
+          <div class="activity-content">
+            <p>Клас отримує 3 кейси на картках. Завдання: визначити причини, тип НС, ознаки.</p>
+
+            <div class="case-verdict v-war">
+              <div class="v-tag">Природний / стихійне лихо</div>
+              <p><strong>Паводок на заході України, 2008 рік:</strong> через інтенсивні грозові дощі різко піднявся рівень води в річках. У кількох західних областях постраждали близько 500 людей, загинуло щонайменше 30 осіб. Під воду пішли понад 15,5 тис. житлових будинків, майже 17 тис. га сільгоспугідь, пошкоджено 145 автомобільних і 95 пішохідних мостів, розмито 140 км дорід. На ліквідацію виділено 5,8 млрд грн.</p>
+            </div>
+            <div class="case-verdict v-war">
+              <div class="v-tag">Техногенний</div>
+              <p><strong>Аварія в Горлівці, 6 серпня 2013 р.:</strong> на заводі ПАТ «Концерн Стирол» (Донецька обл.) відбувся викид аміаку в повітря. Загинуло 6 осіб, постраждало 26, 25 із них госпіталізовано. Наймасштабніша аварія на підприємствах хімічної промисловості України за роки незалежності.</p>
+            </div>
+            <div class="case-verdict v-war">
+              <div class="v-tag">Природний</div>
+              <p><strong>Лісова пожежа, Дворічанське лісництво, Харківщина, 2 вересня 2020 р.:</strong> загорілося близько 80 га, через пориви вітру площа зросла до 500 га, полум'я почало перекидатись на верхівки дерев і житлові будівлі.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="callout callout-tip">
+          <div class="callout-title">💡 Питання для обговорення з класом</div>
+          <p>Якого характеру НС може бути у вашому населеному пункті?</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================== 5.2 ===================== -->
+    <section class="topic-section" id="tema-5-2">
+      <div class="section-header">
+        <div class="section-num">5.2</div>
+        <div>
+          <h2>Воєнний стан: правовий режим</h2>
+          <p>Урок 1, частина 2 · Теорія + практична вправа</p>
+        </div>
+      </div>
+      <div class="prose">
+
+        <div class="definition">
+          <div class="definition-term">Воєнний стан</div>
+          <p>Особливий правовий режим, що вводиться в Україні або в окремих її місцевостях у разі збройної агресії чи загрози нападу, небезпеки державній незалежності України, її територіальній цілісності. Передбачає надання органам державної влади, військовому командуванню, військовим адміністраціям та органам місцевого самоврядування повноважень, необхідних для відвернення загрози, відсічі збройної агресії та забезпечення національної безпеки, а також тимчасове, зумовлене загрозою, обмеження конституційних прав і свобод людини і громадянина та прав юридичних осіб із зазначенням строку дії цих обмежень.</p>
+        </div>
+
+        <ul style="padding-left:20px; line-height:1.9; font-size:0.9rem;">
+          <li>Вводиться Указом Президента, затверджується Верховною Радою</li>
+          <li>Може обмежувати певні права на певний час: пересування, проведення мітингів, діяльність партій/ЗМІ</li>
+        </ul>
+
+        <h3>Обов'язки громадян під час воєнного стану</h3>
+        <ul style="padding-left:20px; line-height:1.9; font-size:0.9rem;">
+          <li>Дотримуватись комендантської години та правил</li>
+          <li>Виконувати розпорядження органів влади та військових адміністрацій</li>
+          <li>Брати участь у заходах цивільного захисту (волонтерство, допомога)</li>
+        </ul>
+
+        <div class="callout callout-tip">
+          <div class="callout-title">💡 Питання для міні-дискусії</div>
+          <ul>
+            <li>«Чому важливо знати правила під час воєнного стану?»</li>
+            <li>«Які наслідки можуть бути за порушення правового режиму воєнного стану?»</li>
+          </ul>
+        </div>
+
+        <div class="activity-box">
+          <div class="activity-header">
+            <div class="activity-icon">🎯</div>
+            <div>
+              <h4>Практична вправа «Алгоритм дій»</h4>
+              <div class="activity-time">10 хв · Групи 4–5 осіб</div>
+            </div>
+          </div>
+          <div class="activity-content">
+            <p>Кожна група отримує ситуацію (наприклад: «Почався обстріл у місті», «Виявлено підозрілий предмет на вулиці») і складає короткий алгоритм дій.</p>
+          </div>
+        </div>
+
+        <div class="callout callout-pract">
+          <div class="callout-title">✅ Рефлексія наприкінці уроку</div>
+          <ul>
+            <li>«Що з уроку я можу застосувати вже сьогодні?»</li>
+            <li>«Яку пораду я дам своїй родині?»</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================== 5.3 ===================== -->
+    <section class="topic-section" id="tema-5-3">
+      <div class="section-header">
+        <div class="section-num">5.3</div>
+        <div>
+          <h2>Евакуація цивільного населення</h2>
+          <p>Урок 2, частина 1 · 25 хв · Теорія</p>
+        </div>
+      </div>
+      <div class="prose">
+
+        <div class="callout callout-tip">
+          <div class="callout-title">💡 Питання для відкриття</div>
+          <p>«Якщо у вашому місті повідомлять про можливі бойові дії — що ви зробите першими трьома кроками?»</p>
+        </div>
+
+        <h3>Ознаки наближення бойових дій</h3>
+        <ol class="steps-list">
+          <li>Часті повітряні тривоги та повідомлення про бої неподалік (зміна на картах DeepState)</li>
+          <li>Офіційні оголошення від військових адміністрацій чи ДСНС про евакуацію</li>
+          <li>Погіршення інфраструктури: проблеми зі світлом, водою, транспортом, зв'язком</li>
+          <li>Інформація з надійних джерел, що лінія фронту рухається ближче</li>
+        </ol>
+
+        <div class="callout callout-warn">
+          <div class="callout-title">⚠️ Чому орієнтуватись лише на офіційні повідомлення</div>
+          <p>Чутки чи телеграм-канали без підтвердження можуть поширювати дезінформацію (зв'язок з Модулем 3 «Інформаційна війна») — паніка через неперевірену інформацію небезпечніша за саму ситуацію.</p>
+        </div>
+
+        <h3>Як діяти цивільній людині: шість головних правил</h3>
+        <ol class="steps-list">
+          <li><strong>Заспокоїтися і перевірити інформацію.</strong> Паніка — найгірший порадник</li>
+          <li><strong>Підготувати тривожний наплічник</strong></li>
+          <li><strong>Знати, де найближче укриття чи пункт збору.</strong> Дослідити укриття за допомогою інтерактивних карт</li>
+          <li><strong>Домовитися з рідними про план дій.</strong> Якщо немає зв'язку — куди йти, де зустрітися</li>
+          <li><strong>Слухати вказівки влади.</strong> Місцеві органи знають безпечні маршрути</li>
+          <li><strong>У разі оголошення евакуації — підготуватись і дотримуватись правил</strong></li>
+        </ol>
+
+        <div class="callout callout-info">
+          <div class="callout-title">ℹ️ Хто організовує евакуацію</div>
+          <p>Обласні військово-цивільні адміністрації спільно з фахівцями Товариства Червоного Хреста України, поліцією, рятувальниками (ДСНС) та місцевою владою. На власному авто можна здійснювати евакуацію, приєднавшись до евакуаційної колони з автобусами, рухаючись чітко за її маршрутом.</p>
+        </div>
+
+        <h3>Оповіщення про евакуацію</h3>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>Канали оповіщення</th><th>Яку інформацію отримаєте</th></tr></thead>
+            <tbody>
+              <tr><td>Радіо та телебачення</td><td>План евакуації</td></tr>
+              <tr><td>Мобільний зв'язок</td><td>Пункти збору</td></tr>
+              <tr><td>Соціальні мережі й месенджери</td><td>Маршрути руху</td></tr>
+              <tr><td>Рухомі групи з гучномовцями</td><td>Контакти штабів евакуації</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout callout-warn">
+          <div class="callout-title">⚠️ Перевірка достовірності</div>
+          <p>Якщо сумніваєтесь у достовірності повідомлення (наприклад, почутого з гучномовця) — перевірте його в інших джерелах. Особливо уважними будьте в соцмережах і месенджерах.</p>
+        </div>
+
+        <h3>Добровільна та обов'язкова евакуація</h3>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>Тип</th><th>Опис</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Добровільна</strong></td><td>Людина сама вирішує виїхати, щоб не чекати загрози. Завжди безпечніше — є час зібратись</td></tr>
+              <tr><td><strong>Обов'язкова</strong></td><td>Оголошує влада, коли ситуація стає критичною. Особливо стосується дітей та вразливих груп — їх обов'язково вивозять. Якщо батьки відмовляються евакуюватися, дитина може бути передана іншим родичам або, якщо сирота, уповноваженому представнику органу опіки та піклування</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout callout-warn">
+          <div class="callout-title">⚠️ Чому важливо не чекати до останнього</div>
+          <p>З часом виїхати стає все складніше: зменшується кількість транспорту, дороги можуть бути обстріляні чи перекриті, гуманітарні коридори закриваються.</p>
+        </div>
+
+        <div class="callout callout-tip">
+          <div class="callout-title">💡 Питання для обговорення</div>
+          <p>«Чому деякі люди не хочуть евакуюватися?» (Очікувані відповіді: бояться залишити дім, не хочуть кидати майно чи тварин, не довіряють владі, вірять «зі мною нічого не станеться»). Обговорити історичні приклади (Чорнобильська катастрофа і явище «самоселів») та сучасні кейси (Маріуполь, Покровськ).</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================== 5.4 ===================== -->
+    <section class="topic-section" id="tema-5-4">
+      <div class="section-header">
+        <div class="section-num">5.4</div>
+        <div>
+          <h2>Тривожний рюкзак і план дій родини</h2>
+          <p>Урок 2, частина 2 · 20 хв · Практична вправа + дискусія</p>
+        </div>
+      </div>
+      <div class="prose">
+
+        <h3>Зміст тривожного наплічника</h3>
+        <div class="card-grid">
+          <div class="info-card">
+            <div class="card-title">📄 Документи та фінанси</div>
+            <ul>
+              <li>Документи та гроші</li>
+            </ul>
+          </div>
+          <div class="info-card">
+            <div class="card-title">💊 Здоров'я</div>
+            <ul>
+              <li>Ліки</li>
+            </ul>
+          </div>
+          <div class="info-card">
+            <div class="card-title">🍞 Харчування</div>
+            <ul>
+              <li>Вода й сухі продукти</li>
+            </ul>
+          </div>
+          <div class="info-card">
+            <div class="card-title">🧥 Побут</div>
+            <ul>
+              <li>Теплий одяг, засоби гігієни</li>
+              <li>Павербанк чи батарейки</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- ACTIVITY -->
+        <div class="activity-box">
+          <div class="activity-header">
+            <div class="activity-icon">🎒</div>
+            <div>
+              <h4>Практичне завдання «Евакуація» за кейсами</h4>
+              <div class="activity-time">10 хв · Групова робота</div>
+            </div>
+          </div>
+          <div class="activity-content">
+            <p>Учні об'єднуються у групи, кожна отримує кейс:</p>
+            <ol>
+              <li>Сім'я з маленькою дитиною</li>
+              <li>Студентська компанія</li>
+              <li>Людина з інвалідністю, яка потребує допомоги в транспортуванні</li>
+            </ol>
+            <p><strong>Завдання:</strong> прописати 5–6 кроків від моменту оголошення евакуації до виїзду, продумати хто допомагає, як зібратися, що взяти. Кожна група презентує свій план.</p>
+          </div>
+        </div>
+
+        <div class="callout callout-tip">
+          <div class="callout-title">💡 Міні-дискусія «Залишатися чи виїжджати?»</div>
+          <p>Переглянути уривок відео Радіо Свобода про евакуацію через наближення фронту до Добропілля. Обговорити: чому деякі люди не хочуть евакуюватися? Які ризики залишатися під час бойових дій? Чому важливо виконувати вказівки влади?</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================== 5.5 ===================== -->
+    <section class="topic-section" id="tema-5-5">
+      <div class="section-header">
+        <div class="section-num">5.5</div>
+        <div>
+          <h2>Дії під час обстрілів і нальотів</h2>
+          <p>Урок 3, частина 1 · 17 хв · Робота в групах з реальними матеріалами</p>
+        </div>
+      </div>
+      <div class="prose">
+
+        <!-- ACTIVITY -->
+        <div class="activity-box">
+          <div class="activity-header">
+            <div class="activity-icon">📱</div>
+            <div>
+              <h4>Групова робота з матеріалами Dovidka.Info</h4>
+              <div class="activity-time">7 хв читання + 2 хв на групу для презентації</div>
+            </div>
+          </div>
+          <div class="activity-content">
+            <p>Три групи ознайомлюються з реальними публікаціями та записують ключові поради:</p>
+            <ol>
+              <li><strong>Група 1:</strong> Dovidka.Info, допис про ракетні атаки</li>
+              <li><strong>Група 2:</strong> Dovidka.Info, допис про атаки керованими авіаційними бомбами</li>
+              <li><strong>Група 3:</strong> Dovidka.Info, допис про фізичне явище — конус Маха</li>
+            </ol>
+          </div>
+        </div>
+
+        <h3>Короткі алгоритми дій при обстрілах</h3>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>Тип обстрілу</th><th>Алгоритм дій</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Стрілецький</strong></td><td>Падати, прикрити голову, до укриття повзком</td></tr>
+              <tr><td><strong>Артилерійський</strong></td><td>Падати ногами до вибуху (захист життєво важливих органів), прикрити голову, відкрити рот, чекати тиші</td></tr>
+              <tr><td><strong>Авіаційний / ракетний</strong></td><td>Сирена, укриття, відійти від вікон, чекати «відбою»</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout callout-info">
+          <div class="callout-title">ℹ️ Чому «відкрити рот» при артобстрілі</div>
+          <p>Це знижує ризик баротравми (пошкодження барабанних перетинок і внутрішніх органів) від ударної хвилі вибуху, вирівнюючи тиск.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================== 5.6 ===================== -->
+    <section class="topic-section" id="tema-5-6">
+      <div class="section-header">
+        <div class="section-num">5.6</div>
+        <div>
+          <h2>Захисні властивості споруд, техніки та місцевості</h2>
+          <p>Урок 3, частина 2 · 7 хв · Демонстрація + обговорення</p>
+        </div>
+      </div>
+      <div class="prose">
+
+        <h3>Класифікація укриттів за рівнем захисту</h3>
+        <div class="shelter-grid">
+          <div class="shelter-card shelter-best">
+            <div class="shelter-name">✅ Найкраще</div>
+            <p>Сховища, метро, підвали (придатні для захисту)</p>
+          </div>
+          <div class="shelter-card shelter-natural">
+            <div class="shelter-name">🌳 Природні</div>
+            <p>Яри, рови, канави</p>
+          </div>
+          <div class="shelter-card shelter-temp">
+            <div class="shelter-name">🛡️ Тимчасово</div>
+            <p>Бетонні плити, броньована техніка</p>
+          </div>
+          <div class="shelter-card shelter-danger">
+            <div class="shelter-name">⛔ Небезпечно</div>
+            <p>Балкони, зупинки, легкі споруди</p>
+          </div>
+        </div>
+
+        <p>Засоби індивідуального захисту: каска, бронежилет, аптечка, рюкзак із необхідним.</p>
+
+        <div class="callout callout-tip">
+          <div class="callout-title">💡 Перед темою — перегляд відео</div>
+          <p>«Що робити, якщо потрапили під завал будинку» (1 хв) — практичний контекст для обговорення вибору укриттів.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================== 5.7 ===================== -->
+    <section class="topic-section" id="tema-5-7">
+      <div class="section-header">
+        <div class="section-num">5.7</div>
+        <div>
+          <h2>Зброя масового ураження: ознаки застосування та дії</h2>
+          <p>Урок 3, частина 3 · 10 хв · Відео + ключові алгоритми</p>
+        </div>
+      </div>
+      <div class="prose">
+
+        <div class="wmd-grid">
+          <div class="wmd-card">
+            <div class="wmd-card-header">☢️ Ядерна зброя</div>
+            <div class="wmd-card-body">
+              <div class="wmd-label">Ознаки</div>
+              Яскравий спалах, потужна ударна хвиля, радіоактивне забруднення
+              <div class="wmd-label">Дії</div>
+              Сховатися в укриття (найглибше), не дивитися на спалах, захистити органи дихання (маска, тканина), чекати офіційних вказівок
+            </div>
+          </div>
+          <div class="wmd-card">
+            <div class="wmd-card-header">☣️ Хімічна зброя</div>
+            <div class="wmd-card-body">
+              <div class="wmd-label">Ознаки</div>
+              Різкий запах (хлор — різкий, гірчичний газ — часниковий), утруднене дихання, раптова недієздатність людей, подразнення очей і шкіри. Немає часу визначати конкретну речовину
+              <div class="wmd-label">Дії</div>
+              Прикрити рот і ніс тканиною (по можливості змоченою водою), сховатися у приміщенні, щільно закрити вікна/двері, не торкатися підозрілих рідин чи предметів
+            </div>
+          </div>
+          <div class="wmd-card">
+            <div class="wmd-card-header">🦠 Біологічна зброя</div>
+            <div class="wmd-card-body">
+              <div class="wmd-label">Ознаки</div>
+              Зазвичай не помітно відразу; інформацію повідомляють офіційні джерела (раптове захворювання великої кількості людей)
+            </div>
+          </div>
+        </div>
+
+        <!-- ACTIVITY -->
+        <div class="activity-box">
+          <div class="activity-header">
+            <div class="activity-icon">🧘</div>
+            <div>
+              <h4>Психологічна вправа: тренуємо стійкість</h4>
+              <div class="activity-time">5 хв</div>
+            </div>
+          </div>
+          <div class="activity-content">
+            <p>«Дихання коробочкою» (4-4-4-4) та «Заземлення 5-4-3-2-1». Коротке обговорення: «Що допомагає вам тримати себе в руках?»</p>
+          </div>
+        </div>
+
+        <div class="callout callout-tip">
+          <div class="callout-title">💡 Додаткова групова робота (за наявності часу)</div>
+          <p>Клас об'єднується у 3 групи, кожна отримує сценарій і складає короткий план дій: a) ви на вулиці під час артобстрілу; b) ви вдома, чутно підозрілий запах; c) у новинах повідомили про небезпеку біологічної атаки.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================== 5.8 ===================== -->
+    <section class="topic-section" id="tema-5-8">
+      <div class="section-header">
+        <div class="section-num">5.8</div>
+        <div>
+          <h2>Попередження ризиків від вибухонебезпечних предметів</h2>
+          <p>Урок 4 · 45 хв · За стандартами ЮНІСЕФ з мінної безпеки</p>
+        </div>
+      </div>
+      <div class="prose">
+
+        <div class="callout callout-info">
+          <div class="callout-title">ℹ️ Рекомендований підхід</div>
+          <p>Для цієї теми найкраще звернутись до стандартизованих підходів — стандартів ЮНІСЕФ з мінної безпеки. Експерти організації розробили спеціальний урок для учнів старшої школи. Детальний план роботи з темою — у матеріалі «Посібник для освітян. Як розповідати школярам про мінну безпеку».</p>
+        </div>
+
+        <h3>Цілі заняття</h3>
+        <ul style="padding-left:20px; line-height:1.9; font-size:0.9rem;">
+          <li>Назвати основні види вибухонебезпечних предметів (ВНП)</li>
+          <li>Розпізнавати ознаки мін, снарядів, «розтяжок», підозрілих предметів</li>
+          <li>Пояснити правила поведінки при виявленні ВНП</li>
+          <li>Сформувати алгоритм: <strong>«побачив — зупинився — відійшов — повідомив»</strong></li>
+          <li>Усвідомити особисту відповідальність за власну безпеку та безпеку інших</li>
+        </ul>
+
+        <div class="callout callout-pract">
+          <div class="callout-title">✅ Зв'язок з 10 класом</div>
+          <p>Ця тема поглиблює матеріал з Модуля 5 (10 клас, тема 5.11 «Міни та ВНП: класифікація та безпека») через структурований підхід ЮНІСЕФ, орієнтований саме на вікову групу старшої школи.</p>
+        </div>
+
+        <div class="callout callout-tip">
+          <div class="callout-title">💡 Додаткові джерела</div>
+          <p>Dovidka.Info: «Як поводитись в умовах загрози замінування»</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================== 5.9 ===================== -->
+    <section class="topic-section" id="tema-5-9">
+      <div class="section-header">
+        <div class="section-num">5.9</div>
+        <div>
+          <h2>Тероризм: відмінність від війни і воєнних злочинів</h2>
+          <p>Урок 5, частина 1 · 20 хв · Дискусія-розігрів + теоретична рамка</p>
+        </div>
+      </div>
+      <div class="prose">
+
+        <div class="callout callout-tip">
+          <div class="callout-title">💡 Дискусія-розігрів</div>
+          <p>«Що таке тероризм?» «Чи відрізняється це від війни?» «Чи можна сказати, що війна і терор — це одне і те саме?» <em>Порада вчителю:</em> не виправляйте відповіді одразу, записуйте ключові слова, щоб зіставити їх з теорією пізніше.</p>
+        </div>
+
+        <div class="definition">
+          <div class="definition-term">Карл фон Клаузевіц</div>
+          <p>«Війна — це продовження політики іншими засобами».</p>
+        </div>
+
+        <div class="compare-block">
+          <div class="compare-card compare-war">
+            <div class="compare-title">⚔️ Війна</div>
+            <p>Держави застосовують силу, щоб змусити противника прийняти їхні вимоги. Веде держава, яка має армію, владу, ресурси. Мета — знищити армію супротивника. Засоби: літаки, танки, артилерія.</p>
+          </div>
+          <div class="compare-card compare-terror">
+            <div class="compare-title">💣 Тероризм</div>
+            <p>Недержавні організації або групи застосовують насильство для досягнення політичних цілей. Значно менше ресурсів, ніж у держави. Мета — вдарити по цивільних, посіяти страх, змусити уряд виконати вимоги. Методи: бомби в людних місцях, захоплення заручників, атаки на транспорт, напади смертників.</p>
+          </div>
+        </div>
+
+        <h3>Три критерії відмінності</h3>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>Критерій</th><th>Війна</th><th>Тероризм</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Хто воює?</strong></td><td>Держави з армією, владою, ресурсами</td><td>Групи зі значно меншими ресурсами</td></tr>
+              <tr><td><strong>Проти кого?</strong></td><td>Армія супротивника</td><td>Цивільні — щоб посіяти страх</td></tr>
+              <tr><td><strong>Методи</strong></td><td>Літаки, танки, артилерія</td><td>«Дешевші» методи: бомби, заручники, смертники</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="definition">
+          <div class="definition-term">Воєнний злочин</div>
+          <p>Якщо армія цілеспрямовано атакує цивільних, лікарні, школи, житлові квартали — це вже не «просто війна», де комбатанти воюють проти комбатантів, а воєнний злочин. Наприклад, коли російська армія обстрілює житлові будинки чи лікарні в Україні — це воєнні злочини. Вони схожі на терористичні акти, тільки вчинені не окремою групою, а державою.</p>
+        </div>
+
+        <div class="callout callout-warn">
+          <div class="callout-title">⚠️ Спільне і відмінне</div>
+          <p>В обох випадках можуть гинути мирні жителі; обидва використовують страх і насильство для політичних цілей. Але важливо: <strong>будь-які навмисні атаки на цивільних — злочин</strong>, незалежно від того, хто їх здійснює — держава чи терористична група.</p>
+        </div>
+
+        <!-- ACTIVITY: CASE ANALYSIS -->
+        <div class="activity-box">
+          <div class="activity-header">
+            <div class="activity-icon">⚖️</div>
+            <div>
+              <h4>Аналіз ситуацій: тероризм, воєнний злочин чи воєнні дії?</h4>
+              <div class="activity-time">15 хв · Мозковий штурм</div>
+            </div>
+          </div>
+          <div class="activity-content">
+            <div class="case-verdict v-terror">
+              <div class="v-tag">Тероризм</div>
+              <p><strong>Лондонське метро, 7 липня 2005 р.:</strong> близько 8:50 прогриміли три вибухи в метро (26 загиблих на «Рассел-Сквер», 6 — на «Еджвер-роуд», 7 — на «Олдгейт»), згодом четвертий пристрій вибухнув в автобусі.</p>
+            </div>
+            <div class="case-verdict v-warcrime">
+              <div class="v-tag">Воєнний злочин</div>
+              <p><strong>Дніпро, 14 січня 2023 р.:</strong> російська ракета Х-22 влучила у багатоповерхівку на проспекті Перемоги. Десятки загиблих, серед них діти. Жодного військового об'єкта поруч не було.</p>
+            </div>
+            <div class="case-verdict v-terror">
+              <div class="v-tag">Тероризм (історичний приклад)</div>
+              <p><strong>Серія викрадень літаків, вересень 1970 р.:</strong> протягом кількох днів кілька пасажирських літаків з Європи до США були захоплені групами озброєних людей з політичними вимогами.</p>
+            </div>
+            <div class="case-verdict v-warcrime">
+              <div class="v-tag">Воєнний злочин</div>
+              <p><strong>Драмтеатр Маріуполя, березень 2022 р.:</strong> на площі перед театром написали слово «ДІТИ», щоб було видно з неба, але авіабомба впала на будівлю. Точна кількість загиблих невідома, рахунок ішов на сотні.</p>
+            </div>
+            <div class="case-verdict v-terror">
+              <div class="v-tag">Тероризм (вигадана історія)</div>
+              <p>Вибух у звичайному автобусі — група, яка хотіла показати владі свою силу, налякати населення й примусити уряд прийняти політичні вимоги.</p>
+            </div>
+            <div class="case-verdict v-war">
+              <div class="v-tag">Воєнні дії (не злочин, вигадана історія)</div>
+              <p>Удар ракетами по військовій базі в степу — казарми, танки, склади боєприпасів. Мета — послабити армію супротивника. Цивільних у зоні немає.</p>
+            </div>
+
+            <p style="margin-top:10px; font-style:italic; color:#666;">Останній кейс (супермаркет у містечку, до якого наближаються бойові дії) залишено відкритим для обговорення власної інтерпретації учнями на основі вивчених критеріїв.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================== 5.10 ===================== -->
+    <section class="topic-section" id="tema-5-10">
+      <div class="section-header">
+        <div class="section-num">5.10</div>
+        <div>
+          <h2>Порядок дій під час терористичних актів</h2>
+          <p>Урок 5, частина 2 · 12 хв · Алгоритми за типом ситуації</p>
+        </div>
+      </div>
+      <div class="prose">
+
+        <h3>Дії під час перестрілки</h3>
+        <ul style="padding-left:20px; line-height:1.9; font-size:0.9rem;">
+          <li>Якщо стрілянина застала на вулиці: негайно ляжте, знайдіть укриття — виступ будинку, бетонний стовп, пам'ятник, канаву</li>
+          <li><strong>Машина не є надійним укриттям:</strong> тонкий метал і бензин небезпечні</li>
+          <li>Коли є шанс — сховайтесь у під'їзді чи підземному переході й дочекайтеся закінчення стрілянини</li>
+          <li>Якщо з вами діти — прикрийте їх собою, подбайте про їхню безпеку</li>
+          <li>У приміщенні найкраще укриття — ванна кімната: лягайте на підлогу, тримайтесь подалі від вікон</li>
+          <li>Якщо почалася пожежа, а стрілянина не припинилася — виходьте в під'їзд, тримайтеся якомога далі від вікон</li>
+        </ul>
+
+        <h3>Якщо вас утримують у літаку чи автобусі</h3>
+        <ul style="padding-left:20px; line-height:1.9; font-size:0.9rem;">
+          <li>Не привертайте увагу нападників: сидіть спокійно, не пересувайтесь без дозволу</li>
+          <li>Уважно огляньте салон, відзначте місця, де можна сховатися під час стрілянини</li>
+          <li>Намагайтеся заспокоїти себе</li>
+          <li>Зніміть прикраси, не дивіться нападникам в очі</li>
+          <li>Уникайте будь-яких провокацій чи суперечок</li>
+          <li>Якщо почнеться штурм — негайно лягайте на підлогу між кріслами й не рухайтеся до кінця операції</li>
+          <li>Після звільнення якнайшвидше залиште салон: можливе замінування чи вибух парів пального</li>
+        </ul>
+
+        <h3>Якщо ви отримали телефонну погрозу</h3>
+        <ul style="padding-left:20px; line-height:1.9; font-size:0.9rem;">
+          <li>Використайте інший телефон (наприклад, сусідів) і повідомте поліцію: причину дзвінка, своє ім'я, адресу, номер</li>
+          <li>Намагайтеся максимально довго говорити з нападником: записати розмову чи дати почути свідкам</li>
+          <li>Поліція зможе встановити номер телефону й особу того, хто телефонував</li>
+        </ul>
+
+        <h3>Класифікація терористичних актів (структура для самостійного заповнення)</h3>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>Критерій класифікації</th><th>Види терористичних актів</th></tr></thead>
+            <tbody>
+              <tr><td>За засобом (методами)</td><td><em>заповнюється з учнями: підрив, захоплення заручників, кіберзлочин тощо</em></td></tr>
+              <tr><td>За географічним охопленням</td><td><em>локальний, національний, міжнародний</em></td></tr>
+              <tr><td>За виконавцем</td><td><em>одинак, організована група, державний/спонсорований</em></td></tr>
+              <tr><td>За ідеологією</td><td><em>релігійний, політичний, етнічний, екологічний тощо</em></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout callout-pract">
+          <div class="callout-title">✅ Підсумкові визначення для закріплення</div>
+          <ul>
+            <li><strong>Тероризм</strong> — дії найчастіше недержавних організацій, спрямовані на цивільні групи населення для досягнення політичних цілей</li>
+            <li><strong>Війна</strong> — збройний конфлікт між державами або всередині держави, у якому застосовується організована збройна сила</li>
+            <li><strong>Воєнний злочин</strong> — порушення правил війни: умисний напад на мирних жителів, тортури полонених, використання забороненої зброї чи руйнування цивільних об'єктів без воєнної потреби</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================== 5.11 ===================== -->
+    <section class="topic-section" id="tema-5-11">
+      <div class="section-header">
+        <div class="section-num">5.11</div>
+        <div>
+          <h2>Стресові реакції, саморегуляція та взаємодопомога</h2>
+          <p>Урок 6 · 45 хв · Теорія + практика само- та взаємодопомоги</p>
+        </div>
+      </div>
+      <div class="prose">
+
+        <div class="callout callout-tip">
+          <div class="callout-title">💡 Питання для відкриття</div>
+          <p>«Що ви зазвичай відчуваєте, коли трапляється щось несподіване і страшне?» Зауважте: «Це нормально — кожен реагує по-своєму. Але є техніки, які допомагають тримати себе в руках».</p>
+        </div>
+
+        <h3>Типові прояви стресових реакцій</h3>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>Тип реакції</th><th>Прояви</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Гнів, агресія</strong></td><td>Викид енергії назовні</td></tr>
+              <tr><td><strong>Паніка, тривога, істерика</strong></td><td>Надлишок енергії</td></tr>
+              <tr><td><strong>Ступор, апатія</strong></td><td>«Завмирання»</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Прийоми саморегуляції</h3>
+        <div class="card-grid">
+          <div class="info-card">
+            <div class="card-title">🌬️ Дихальні</div>
+            <ul>
+              <li>«Коробочка» 4-4-4-4</li>
+              <li>Подовжений видих</li>
+            </ul>
+          </div>
+          <div class="info-card">
+            <div class="card-title">🧠 Когнітивні</div>
+            <ul>
+              <li>«Я зараз у безпеці»</li>
+              <li>«Я знаю, що робити»</li>
+            </ul>
+          </div>
+          <div class="info-card">
+            <div class="card-title">👁️ Заземлення</div>
+            <ul>
+              <li>«5-4-3-2-1»</li>
+              <li>Вправа «Безпечне місце»</li>
+            </ul>
+          </div>
+        </div>
+
+        <h3>Алгоритми само- та взаємодопомоги за типом реакції</h3>
+        <div class="help-grid">
+          <div class="help-card">
+            <div class="help-name">😱 Паніка / істерика</div>
+            <ul style="padding-left:14px; font-size:0.82rem; line-height:1.6;">
+              <li>Говоримо спокійним голосом</li>
+              <li>Даємо просте завдання («подивись на мене», «дихай разом зі мною»)</li>
+              <li>Уникаємо криків і фізичного примусу</li>
+            </ul>
+          </div>
+          <div class="help-card">
+            <div class="help-name">😟 Тривога</div>
+            <ul style="padding-left:14px; font-size:0.82rem; line-height:1.6;">
+              <li>Допомогти зосередитися на диханні</li>
+              <li>Переключити увагу на дію («рахуємо кроки», «тиснемо кулаки»)</li>
+            </ul>
+          </div>
+          <div class="help-card">
+            <div class="help-name">❄️ Ступор</div>
+            <ul style="padding-left:14px; font-size:0.82rem; line-height:1.6;">
+              <li>Легкий тактильний контакт (доторкнутися до плеча)</li>
+              <li>Проста команда: «Підніми руку», «Зроби крок»</li>
+            </ul>
+          </div>
+          <div class="help-card">
+            <div class="help-name">😔 Апатія</div>
+            <ul style="padding-left:14px; font-size:0.82rem; line-height:1.6;">
+              <li>Підтримка і залучення до простих дій</li>
+              <li>Нагадування: «Я з тобою»</li>
+            </ul>
+          </div>
+          <div class="help-card">
+            <div class="help-name">😠 Гнів / агресія</div>
+            <ul style="padding-left:14px; font-size:0.82rem; line-height:1.6;">
+              <li>Зберігати дистанцію</li>
+              <li>Говорити короткими спокійними фразами</li>
+              <li>Допомогти переключити енергію (м'яч, папір для зминання)</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- ACTIVITY -->
+        <div class="activity-box">
+          <div class="activity-header">
+            <div class="activity-icon">🤝</div>
+            <div>
+              <h4>Групова робота: алгоритми допомоги за ситуаціями</h4>
+              <div class="activity-time">15 хв · 4 групи</div>
+            </div>
+          </div>
+          <div class="activity-content">
+            <p>Кожна група отримує ситуацію: a) однокласник у паніці; b) хтось у ступорі; c) дівчинка плаче в істериці; d) хлопець кричить і злий. <strong>Завдання:</strong> скласти 3 кроки допомоги, презентація по 2 хв.</p>
+          </div>
+        </div>
+
+        <div class="activity-box">
+          <div class="activity-header">
+            <div class="activity-icon">💬</div>
+            <div>
+              <h4>Психологічна вправа «Колесо підтримки»</h4>
+              <div class="activity-time">7 хв</div>
+            </div>
+          </div>
+          <div class="activity-content">
+            <p>Кожен називає одну фразу, якою можна заспокоїти людину поруч. Приклади: «Ти не один», «Я з тобою», «Ми впораємося». Обговорення: «Які слова працюють найкраще?»</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================== 5.12 ===================== -->
+    <section class="topic-section" id="tema-5-12">
+      <div class="section-header">
+        <div class="section-num">5.12</div>
+        <div>
+          <h2>Основи та принципи виживання: правило пріоритетів і одяг</h2>
+          <p>Уроки 7–8, частина 1 · 40 хв · Теорія + групова робота</p>
+        </div>
+      </div>
+      <div class="prose">
+
+        <div class="definition">
+          <div class="definition-term">Виживання</div>
+          <p>Активні дії для збереження життя в автономних умовах.</p>
+        </div>
+
+        <h3>Основні фактори виживання</h3>
+        <ul style="padding-left:20px; line-height:1.9; font-size:0.9rem;">
+          <li>Психологічний стан (керування стресом, страхом, апатією)</li>
+          <li>Фізична підготовленість</li>
+          <li>Спорядження та його використання</li>
+          <li>Знання місцевості (орієнтування) та клімату</li>
+          <li><strong>Стресори виживання:</strong> біль, холод, спека, спрага, голод, перевтома</li>
+        </ul>
+
+        <h3>Правило «пріоритетів виживання»</h3>
+        <div class="survival-rule"><div class="sr-time">3 хв</div>без повітря</div>
+        <div class="survival-rule"><div class="sr-time">3 години</div>без укриття в екстремальних умовах</div>
+        <div class="survival-rule"><div class="sr-time">3 дні</div>без води</div>
+        <div class="survival-rule"><div class="sr-time">3 тижні</div>без їжі</div>
+
+        <div class="callout callout-warn">
+          <div class="callout-title">⚠️ Уникати «пастки хаотичних дій»</div>
+          <p>Навіть у найгірших обставинах варто діяти за алгоритмом: <strong>оцінка ситуації → план → дії → контроль результатів</strong>, а не панікувати.</p>
+        </div>
+
+        <h3>Оптимізація рішень в екстремальних умовах</h3>
+        <p>Оптимальне рішення в екстримі — це не ідеальне, а <strong>достатньо безпечне й здійсненне зараз із наявними ресурсами</strong>.</p>
+
+        <ol class="steps-list">
+          <li>Визначити мету найближчого порядку (вижити цю ніч, вийти до води, скоротити ризики)</li>
+          <li>Перелічити ресурси і обмеження (погода, час доби, рівень сил, спорядження, стан напарника)</li>
+          <li>Оцінити варіанти за принципом «користь/ризик/ціна по силах»</li>
+          <li>Обрати найменш ризикове й стійке</li>
+          <li>Діяти малими кроками з частими перевірками реальності</li>
+        </ol>
+
+        <div class="callout callout-info">
+          <div class="callout-title">ℹ️ Принцип 70%: не «все або нічого»</div>
+          <p>Краще забезпечити 70% потреби у теплі й тиші, ніж витратити останні сили на «ідеальне» укриття й зірватися від виснаження. Рішення завжди «заземляйте» на контекст: у холоді кожна хвилина на вітрі без рукавичок має ціну, у спеці кожен зайвий метр у полудень — це вода. У холоди рішення зміщуються на теплоізоляцію і захист від вітру, у спеку — на тінь, гідратацію і мінімізацію руху в гарячі години.</p>
+        </div>
+
+        <div class="callout callout-pract">
+          <div class="callout-title">✅ «Внутрішній чек-лист» під психологічним тиском</div>
+          <ul>
+            <li>Чи не дію з паніки?</li>
+            <li>Чи не ігнорую очевидний ризик?</li>
+            <li>Чи не перевищує план мої реальні сили?</li>
+            <li>Чи є запасний варіант, якщо щось піде не так?</li>
+          </ul>
+        </div>
+
+        <h3>Одяг і спорядження за кліматичними умовами</h3>
+
+        <div class="climate-grid">
+          <div class="climate-card climate-cold">
+            <div class="climate-card-header">❄️ Холодний режим</div>
+            <div class="climate-card-body">
+              <p><strong>Принцип багатошаровості:</strong></p>
+              <ul style="padding-left:16px;">
+                <li>Базовий шар (термобілизна) — відводить вологу</li>
+                <li>Ізоляційний шар (фліс, светр, ватник) — зберігає тепло</li>
+                <li>Зовнішній шар (куртка з мембраною, вітрозахист) — від вітру й опадів</li>
+              </ul>
+              <p style="margin-top:8px;"><strong>До 70% тепла</strong> губиться через відкриті ділянки тіла — потрібні шапка, балаклава, рукавиці. Взуття утеплене, але сухе, запас сухих шкарпеток. Додатково: термоковдра, спальник, каремат, плівка/тент.</p>
+            </div>
+          </div>
+          <div class="climate-card climate-hot">
+            <div class="climate-card-header">☀️ Спекотний режим</div>
+            <div class="climate-card-body">
+              <p>Одяг вільний, легкий, світлих відтінків (відбиває сонце). Голова: широкополий капелюх, кепка з накидкою на шию, шарф-шемаг. Матеріали — натуральні тканини (бавовна, льон). Взуття — легкі закриті черевики (захист від каміння, піску, укусів). Засоби: сонцезахисні окуляри, крем від УФ, ємності для води.</p>
+              <p style="margin-top:8px;"><strong>Правило:</strong> уникати пересування вдень (12:00–16:00), користуватись тінню, робити тенти.</p>
+            </div>
+          </div>
+          <div class="climate-card climate-wet">
+            <div class="climate-card-header">🌧️ Вологий клімат</div>
+            <div class="climate-card-body">
+              <p>Головне завдання — <strong>залишатися сухим</strong>. Верхній шар: водонепроникний плащ-дощовик, мембранна куртка. Штани із захистом від намокання. Взуття — гумові чи непромокальні берці + кілька пар сухих шкарпеток. Засоби: тент або поліетиленова плівка, мотузка для швидкого облаштування укриття.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- ACTIVITY -->
+        <div class="activity-box">
+          <div class="activity-header">
+            <div class="activity-icon">🎒</div>
+            <div>
+              <h4>Практична вправа: складання набору виживання</h4>
+              <div class="activity-time">20 хв · 3 групи</div>
+            </div>
+          </div>
+          <div class="activity-content">
+            <p><strong>Група 1 — Засніжений ліс:</strong> високі дерева, глибокий снігу, морозний туман, низька температура, холодний вітер. Завдання: підібрати одяг і спорядження для збереження тепла, захисту від вітру, організації ночівлі.</p>
+            <p><strong>Група 2 — Підвал/укриття без світла й опалення:</strong> кілька діб, лише мінімум ковдр і свічки. Завдання: визначити одяг і підручні засоби для збереження тепла й сил.</p>
+            <p><strong>Група 3 — Сухий степ/пустеля:</strong> високе сонце, відсутність тіні, потрісканий ґрунт, загроза перегрівання і зневоднення. Завдання: набір одягу для захисту від сонця, економії та зберігання води.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================== 5.13 ===================== -->
+    <section class="topic-section" id="tema-5-13">
+      <div class="section-header">
+        <div class="section-num">5.13</div>
+        <div>
+          <h2>Практика виживання: фільтрування води та добування вогню</h2>
+          <p>Уроки 7–8, частина 2 · 45 хв · Інтенсивна практика з безпековими протоколами</p>
+        </div>
+      </div>
+      <div class="prose">
+
+        <!-- ACTIVITY: WATER FILTER -->
+        <div class="activity-box">
+          <div class="activity-header">
+            <div class="activity-icon">💧</div>
+            <div>
+              <h4>Навички фільтрування води</h4>
+              <div class="activity-time">20 хв · Групи до 5 осіб</div>
+            </div>
+          </div>
+          <div class="activity-content">
+            <p><strong>Вступна теза для учнів:</strong> «Людина може прожити без їжі тиждень, але без води — максимум 3 дні». Небезпека не тільки у спразі, а й у мікроорганізмах у непитній воді.</p>
+
+            <h4>Реквізит для кожної групи</h4>
+            <ul>
+              <li>1 пластикова пляшка (обрізана навпіл)</li>
+              <li>Шматок тканини/марлі</li>
+              <li>Чистий пісок</li>
+              <li>Гравій/камінці</li>
+              <li>Ємність для збору очищеної води</li>
+            </ul>
+
+            <h4>Алгоритм для групи</h4>
+            <ol>
+              <li>Закрити шийку пляшки тканиною</li>
+              <li>Насипати шари: гравій → пісок → вугілля → пісок → гравій</li>
+              <li>Повільно налити «брудну воду» (звичайна вода з доданим чаєм, землею чи кавовою гущею для кольору)</li>
+              <li>Зібрати фільтрат у ємність</li>
+              <li>Оцінити: чи стала вода прозорішою?</li>
+            </ol>
+
+            <div class="callout callout-warn">
+              <div class="callout-title">⚠️ Критично важливе уточнення</div>
+              <p>Фільтр прибирає сміття й частину домішок, <strong>але не знезаражує воду від бактерій</strong>. Додаткові методи: кип'ятіння 5–10 хв, спеціальні таблетки.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- ACTIVITY: FIRE -->
+        <div class="activity-box">
+          <div class="activity-header">
+            <div class="activity-icon">🔥</div>
+            <div>
+              <h4>Добування вогню</h4>
+              <div class="activity-time">20 хв · 2 групи</div>
+            </div>
+          </div>
+          <div class="activity-content">
+            <div class="callout callout-danger">
+              <div class="callout-title">⛔ Обов'язкові заходи безпеки перед вправою</div>
+              <p><strong>1. Місце проведення:</strong> лише на відкритому майданчику з негорючою поверхнею (асфальт, пісок, камінь); мінімум 3 метри від кущів, дерев, сміття, сухої трави; кожна група має свою «точку».</p>
+              <p><strong>2. Використання матеріалів:</strong> працювати тільки з невеликим об'ємом сухої трави, паперу й трісок; заборонено легкозаймисті рідини (бензин, спирт); вогонь розводиться лише у бляшанці або металевій мисці.</p>
+              <p><strong>3. Поведінка під час вправи:</strong> усі дії виконувати спокійно, без метання палаючих предметів; руки на безпечній відстані від полум'я; якщо загорівся одяг/рукавичка — негайно збити полум'я перекочуванням по землі.</p>
+              <p><strong>4. Засоби безпеки:</strong> біля кожної групи — ємність із водою або пісок для гасіння; вчитель контролює весь процес.</p>
+            </div>
+
+            <h4>Завдання</h4>
+            <ol>
+              <li>Спробувати розпалити «міні-багаття» кресалом</li>
+              <li>Потім — запальничкою</li>
+            </ol>
+
+            <h4>Альтернативний метод: лінза</h4>
+            <p>Підходить лише для сонячної погоди. Прямі промені, проходячи крізь лінзу бінокля, скельця окулярів, годинника чи лупу, збираються в пучок. Важливо підібрати правильну відстань до трута, щоб світло максимально зосереджувалося в одній точці. Коли матеріал почне тліти, його слід обережно роздмухати, щоб з'явився вогонь. Якщо немає лінзи — товсте скло, флягу з водою, поліетиленовий пакет або інша прозора рідина в прозорій ємності.</p>
+
+            <h4>Питання для обговорення</h4>
+            <ul>
+              <li>Що було легше: кресало чи запальничка?</li>
+              <li>Які матеріали краще брали іскру чи займалися швидше?</li>
+              <li>Які труднощі виникли?</li>
+              <li>Як ці вміння зможуть допомогти в кризових умовах?</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="callout callout-pract">
+          <div class="callout-title">✅ Підсумкова рефлексія модуля</div>
+          <p>Чи почуватимуться учні в кризах тепер більш впевнено? Яку навичку їм би хотілось потренувати ще?</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================== МЕТОДИЧНІ ===================== -->
+    <section class="topic-section" id="metodychni">
+      <div class="section-header">
+        <div class="section-num">🔧</div>
+        <div>
+          <h2>Методичні поради та підсумки модуля</h2>
+        </div>
+      </div>
+      <div class="prose">
+
+        <h3>Диференційовані домашні завдання за уроками</h3>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>Урок</th><th>Завдання</th></tr></thead>
+            <tbody>
+              <tr><td>Урок 3 (обстріли, ЗМУ)</td><td>Намалювати карту укриттів у своєму районі; скласти власну «пам'ятку безпеки» (≤10 пунктів); підготувати доповідь «Які природні об'єкти можна використати як захист?»</td></tr>
+              <tr><td>Урок 5 (тероризм)</td><td>Розробити алгоритм дій, якщо в центрі вашого міста скоєно терористичний акт</td></tr>
+              <tr><td>Урок 6 (стрес)</td><td>Написати «мій список спокою» (5 речей, що допомагають заспокоїтися); вивчити «дихання коробочкою» і застосувати вдома; підготувати приклад з життя, коли впоралися зі стресом</td></tr>
+              <tr><td>Уроки 7–8 (виживання)</td><td>Прочитати статтю ВВС «Замерзле місто України. Як це було в Алчевську в 2006-му»; сформувати особистий план виживання в місті без світла, тепла й води</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Технічне забезпечення модуля</h3>
+        <ul style="padding-left:20px; line-height:1.9; font-size:0.9rem;">
+          <li>Презентації/слайди з алгоритмами та схемами укриттів і ЗМУ</li>
+          <li>Картки з кейсами НС, терактів, ситуацій для груп</li>
+          <li>Реквізит для фільтрування води: пляшки, тканина, пісок, гравій</li>
+          <li>Реквізит для вогню: кресало, запальничка, лінза/бінокль, ємність з водою/піском для гасіння</li>
+          <li>Маркери, аркуші, ватман, таймер/секундомір</li>
+          <li>Роздруківки-пам'ятки з техніками саморегуляції</li>
+        </ul>
+
+        <h3>Зведений словник термінів модуля</h3>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>Термін</th><th>Визначення</th></tr></thead>
+            <tbody>
+              <tr><td><strong>НС</strong></td><td>Надзвичайна ситуація</td></tr>
+              <tr><td><strong>ЗМУ</strong></td><td>Зброя масового ураження (ядерна, хімічна, біологічна)</td></tr>
+              <tr><td><strong>ВНП</strong></td><td>Вибухонебезпечні предмети</td></tr>
+              <tr><td><strong>Конус Маха</strong></td><td>Фізичне явище надзвукового польоту, пов'язане зі звуковим ударом</td></tr>
+              <tr><td><strong>Triage</strong></td><td>Принцип пріоритезації допомоги (зустрічається й у евакуації цивільних)</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout callout-pract">
+          <div class="callout-title">✅ Наскрізна ідея модуля</div>
+          <p>Незалежно від майбутньої професії — військової чи цивільної — кожен громадянин має знати: як розпізнати рівень небезпеки, коли і як евакуюватися, як захиститися від різних типів обстрілів і ЗМУ, як відрізнити тероризм від воєнних дій, як допомогти собі та іншим у стресі, і як вижити автономно, якщо звична інфраструктура зникла. Це не military-специфічні навички — це навички громадянина країни, що живе в умовах війни.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <div class="page-nav">
+      <a href="modul-4-2.html">← Модуль 4. Домедична допомога поглиблено</a>
+      <a href="modul-6.html">Модуль 6. Планую майбутнє →</a>
+    </div>
+
+  </main>
+</div>
+
+<footer style="background:var(--ua-blue);color:rgba(255,255,255,0.65);text-align:center;padding:20px 32px;font-size:0.78rem;line-height:1.6;">
+  <strong style="color:var(--ua-yellow);">Захист України. Методичний довідник викладача</strong> · 11 клас, Модуль 5<br>
+  Радомишльський ліцей №3 · За програмою МОН (Наказ №1116 від 08.08.2024) · Матеріали тренінгу №8 (гриф №БО-0550-25, 30.12.2025)<br>
+  Dovidka.info Центру стратегічних комунікацій · ДСНС України · ЮНІСЕФ (мінна безпека)
+</footer>
+
+<script>
+const sections = document.querySelectorAll('.topic-section');
+const navLinks = document.querySelectorAll('.nav-list li a');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const id = entry.target.getAttribute('id');
+      navLinks.forEach(link => {
+        link.classList.toggle('active', link.getAttribute('href') === '#' + id);
+      });
+    }
+  });
+}, { rootMargin: '-20% 0px -70% 0px' });
+sections.forEach(section => observer.observe(section));
+</script>
+</body>
+</html>
